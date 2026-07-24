@@ -1,0 +1,135 @@
+openapi: 3.0.3
+info:
+  title: Omniful Integration APIs Background Jobs POS API
+  version: v1
+  description: Omniful unified supply chain and fulfillment platform integration APIs (Order Management, Warehouse/Inventory, Returns, Purchase Orders, Shipment/TMS, Webhooks). Derived faithfully from the provider-published Postman collection at docs.omniful.tech; paths, methods, parameters, and request examples are as published, response schemas are not enumerated in the source.
+  contact:
+    url: https://docs.omniful.tech
+servers:
+- url: https://prodapi.omniful.com
+security:
+- bearerAuth: []
+tags:
+- name: POS
+paths:
+  /sales-channel/public/v1/pos/order:
+    post:
+      summary: Create POS Order
+      operationId: postCreatePosOrder
+      tags:
+      - POS
+      description: 'Query Params should_not_adjust_inventory (string): Set to true if you do not want to adjust inventory; otherwise, the inventory will always be adjusted. Example: {{base_url}}/sales-channel/public/v1/pos/order?should_not_adjust_inventory=true Order Details order_id (String) Unique identifier for the order. order_alias (String) Alias or alternate identifier for the order. customer (Object) Details of the customer placing the order. first_name (String): First name of the customer. last_name (String'
+      requestBody:
+        content:
+          application/json:
+            example:
+              order_id: pos-test-1
+              order_alias: ORD_ALIAS_123
+              customer:
+                id: CUST123
+                first_name: John
+                last_name: Doe
+                mobile: '9876543210'
+                mobile_code: '+1'
+                country_code: US
+                email: john.doe@example.com
+                avatar: https://example.com/avatar.jpg
+                gender: male
+              hub_code: ONLS
+              order_created_at: '2023-07-28T09:00:00Z'
+              order_items:
+              - sales_channel_sku_id: SKU123
+                seller_sku_code: SELLER123
+                sales_channel_order_item_id: ITEM001
+                display_price: 19.99
+                selling_price: 15.99
+                quantity: 2
+                tax_percent: 5
+                tax: 1.6
+                unit_price: 30.99
+                total: 61.98
+                subtotal: 59.98
+                tax_inclusive: true
+                discount: 5.0
+              invoice:
+                sc_invoice_number: INV123456
+                currency: USD
+                subtotal: 59.98
+                shipping_tax: 1.5
+                sub_total_tax_inclusive: true
+                sub_total_discount_inclusive: true
+                shipping_tax_inclusive: true
+                shipping_discount_inclusive: true
+                shipping_price: 5.0
+                shipping_refund: 0
+                tax: 3.6
+                tax_percent: 6
+                discount: 5.0
+                total: 69.98
+                total_paid: 70.0
+                total_due: 0
+                total_refunded: 0
+                payment_mode: credit_card
+                loyalty_discount: 2.0
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/pos/returns/order:
+    post:
+      summary: Create POS Return Order
+      operationId: postCreatePosReturnOrder
+      tags:
+      - POS
+      description: 'Return Order Details return_order_id (String) Unique identifier for the return order. order_id (String) Original order''s identifier. return_order_alias (String) Alias or alternate identifier for the return order. hub_code (String) Code identifying the hub related to the return order. customer (Object) Details of the customer returning the order. id (String): Unique identifier for the customer. first_name (String): First name of the customer. last_name (String): Last name of the customer. order_i'
+      requestBody:
+        content:
+          application/json:
+            example:
+              return_order_id: Pos-return-test-3
+              order_id: pos-test-3
+              return_order_alias: RO-123
+              hub_code: ONLS
+              customer:
+                id: CUST123
+                first_name: John
+                last_name: Doe
+                mobile: '9876543210'
+                mobile_code: '+91'
+                country_code: IN
+                email: john.doe@example.com
+                avatar: https://example.com/avatar.jpg
+                gender: male
+              order_items:
+              - seller_sku_code: SELLER123
+                return_reason: Defective
+                refunded_quantity: 1
+                returned_quantity: 2
+                uom: ea
+                discount: 10
+                total: 100
+                selling_price: 100
+                unit_price: 90
+              refund_status: pending
+              return_reason: wrong_items
+              invoice:
+                invoice_number: INV-123456
+                currency: USD
+                subtotal: 100.5
+                discount: 10
+                sub_total_tax_inclusive: true
+                sub_total_discount_inclusive: true
+                tax: 5.25
+                tax_percent: 5
+                total: 105.75
+                total_refunded: 20
+                payment_mode: Credit Card
+              order_created_at: '2023-07-28T09:00:00Z'
+              order_url: https://example.com/orders/789012
+      responses:
+        '200':
+          description: Successful response
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer

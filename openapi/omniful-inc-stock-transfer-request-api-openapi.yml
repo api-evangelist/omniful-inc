@@ -1,0 +1,136 @@
+openapi: 3.0.3
+info:
+  title: Omniful Integration APIs Background Jobs Stock Transfer Request API
+  version: v1
+  description: Omniful unified supply chain and fulfillment platform integration APIs (Order Management, Warehouse/Inventory, Returns, Purchase Orders, Shipment/TMS, Webhooks). Derived faithfully from the provider-published Postman collection at docs.omniful.tech; paths, methods, parameters, and request examples are as published, response schemas are not enumerated in the source.
+  contact:
+    url: https://docs.omniful.tech
+servers:
+- url: https://prodapi.omniful.com
+security:
+- bearerAuth: []
+tags:
+- name: Stock Transfer Request
+paths:
+  /sales-channel/public/v1/orders/sto/requests:
+    post:
+      summary: Create Stock Transfer Request
+      operationId: postCreateStockTransferRequest
+      tags:
+      - Stock Transfer Request
+      description: 'Required Fields for Creating Stock Transfer Requests: transfer_id (string): The unique identifier for the stock transfer (must be unique always). order_items (array of objects): An array of objects representing the items in the stock transfer. sku_code (string): The stock keeping unit code for the item. quantity (integer): The quantity of the item being transferred. source_hub_code (string): The hub code from which the stock is being transferred. destination_hub_code (string): The hub code to wh'
+      requestBody:
+        content:
+          application/json:
+            example:
+              customer:
+                first_name: John
+                last_name: Doe
+                mobile: '7044063694'
+                country_calling_code: '+91'
+                country_code: IN
+                mobile_code: '91'
+                email: john.doe@example.com
+                avatar: https://example.com/avatar.jpg
+                gender: male
+              order_items:
+              - sku_code: samsung190
+                quantity: 2
+              source_hub_code: Shubhra001
+              destination_hub_code: SHUBHRA
+              sto_request_id: sto_id_27651
+      responses:
+        '200':
+          description: Successful response
+    get:
+      summary: Get Stock Transfer Requests
+      operationId: getGetStockTransferRequests
+      tags:
+      - Stock Transfer Request
+      description: 'Response Fields Explained is_success (boolean): Indicates if the request was successful. status_code (integer): The HTTP status code returned by the API. data (array): Contains the list of stock transfer requests. sto_id (string): Unique identifier for the stock transfer. customer (object): Information about the customer associated with the transfer. first_name (string): Customer''s first name. last_name (string): Customer''s last name. mobile (string): Customer''s mobile number. mobile_code (strin'
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/orders/sto/requests/{sto_request_id}:
+    put:
+      summary: Update Stock Transfer Request
+      operationId: putUpdateStockTransferRequest
+      tags:
+      - Stock Transfer Request
+      description: 'Required Fields for Updating Stock Transfer Requests: action_type (string): Specifies the action to perform. "add_items": To add new items to the stock transfer request. "edit_items": To edit existing items in the stock transfer request. order_items (array of objects): An array of objects representing the items in the stock transfer. sku_code (string): The stock keeping unit code for the item. quantity (integer): The quantity of the item to be added or updated.'
+      parameters:
+      - name: sto_request_id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json: {}
+      responses:
+        '200':
+          description: Successful response
+    get:
+      summary: Get Stock Transfer Request
+      operationId: getGetStockTransferRequest
+      tags:
+      - Stock Transfer Request
+      description: 'Response Fields Explained is_success (boolean): Indicates if the request was successful. status_code (integer): The HTTP status code returned by the API. data (object): Contains details about the stock transfer request. sto_id (string): Unique identifier for the stock transfer. customer (object): Information about the customer associated with the transfer. first_name (string): Customer''s first name. last_name (string): Customer''s last name. mobile (string): Customer''s mobile number. mobile_code '
+      parameters:
+      - name: sto_request_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/orders/sto/requests/{sto_request_id}/approve:
+    put:
+      summary: Approve Stock Transfer Request
+      operationId: putApproveStockTransferRequest
+      tags:
+      - Stock Transfer Request
+      description: 'Required Fields for Approving Stock Transfer Requests: order_items (array of objects): An array of objects representing the items being approved in the stock transfer. sku_code (string): The stock keeping unit code for the item. quantity (integer): The quantity of the item being approved.'
+      parameters:
+      - name: sto_request_id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              order_items:
+              - sku_code: iPhone 15 Pro
+                quantity: 1
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/orders/sto/requests/{sto_request_id}/reject:
+    put:
+      summary: Reject Stock Transfer Request
+      operationId: putRejectStockTransferRequest
+      tags:
+      - Stock Transfer Request
+      description: 'Required Fields for Rejecting Stock Transfer Requests: reason (string): A mandatory field that specifies the reason for rejecting the stock transfer request. This helps provide clarity on the decision.'
+      parameters:
+      - name: sto_request_id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              reason: Product not required
+      responses:
+        '200':
+          description: Successful response
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer

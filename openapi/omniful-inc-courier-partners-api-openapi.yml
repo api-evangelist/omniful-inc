@@ -1,0 +1,37 @@
+openapi: 3.0.3
+info:
+  title: Omniful Integration APIs Background Jobs Courier Partners API
+  version: v1
+  description: Omniful unified supply chain and fulfillment platform integration APIs (Order Management, Warehouse/Inventory, Returns, Purchase Orders, Shipment/TMS, Webhooks). Derived faithfully from the provider-published Postman collection at docs.omniful.tech; paths, methods, parameters, and request examples are as published, response schemas are not enumerated in the source.
+  contact:
+    url: https://docs.omniful.tech
+servers:
+- url: https://prodapi.omniful.com
+security:
+- bearerAuth: []
+tags:
+- name: Courier Partners
+paths:
+  /sales-channel/public/v1/courier_partners:
+    get:
+      summary: Get Courier Partners
+      operationId: getGetCourierPartners
+      tags:
+      - Courier Partners
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/tenants/courier_partners:
+    get:
+      summary: Get Courier Partners
+      operationId: getGetCourierPartners2
+      tags:
+      - Courier Partners
+      responses:
+        '200':
+          description: Successful response
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer

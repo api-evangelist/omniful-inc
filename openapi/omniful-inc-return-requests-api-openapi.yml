@@ -1,0 +1,136 @@
+openapi: 3.0.3
+info:
+  title: Omniful Integration APIs Background Jobs Return Requests API
+  version: v1
+  description: Omniful unified supply chain and fulfillment platform integration APIs (Order Management, Warehouse/Inventory, Returns, Purchase Orders, Shipment/TMS, Webhooks). Derived faithfully from the provider-published Postman collection at docs.omniful.tech; paths, methods, parameters, and request examples are as published, response schemas are not enumerated in the source.
+  contact:
+    url: https://docs.omniful.tech
+servers:
+- url: https://prodapi.omniful.com
+security:
+- bearerAuth: []
+tags:
+- name: Return Requests
+paths:
+  /sales-channel/public/v1/tenants/sellers/{seller_code}/return_requests:
+    get:
+      summary: Get Return Requests
+      operationId: getGetReturnRequests2
+      tags:
+      - Return Requests
+      description: '📌 Get Return Request API - Overview The Get Return Request API allows users to retrieve return requests for orders based on request status, order ID, and return order ID. 📌 Filters Available: order_id – Fetch return requests for a specific order. status – Filter return requests by status. created_from - Filter return request by date of creation created_to - Filter return request by date of creation By default, return requests will be returned for the last 3 months only. The supported date format'
+      parameters:
+      - name: seller_code
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/tenants/sellers/{seller_code}/orders/{id}/return_requests:
+    post:
+      summary: Create Return Request
+      operationId: postCreateReturnRequest2
+      tags:
+      - Return Requests
+      parameters:
+      - name: seller_code
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              hub_code: ONLS
+              return_items:
+              - seller_sku_code: '1108322'
+                quantity: 1
+                return_reason: Damaged product
+                refund_amount: 49.99
+                return_reasons:
+                - reason: Damaged product
+                  quantity: 1
+              return_reason: Customer dissatisfaction
+              return_request_number: RET-2024-001
+              additional_charges:
+              - type: shipping
+                cost_with_tax: 5.99
+                tax_percentage: 10.0
+              - type: restocking_fee
+                cost_with_tax: 2.5
+                tax_percentage: 5.0
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/tenants/sellers/{seller_code}/return_requests/{return_request_id}/reject:
+    put:
+      summary: Reject Return Request
+      operationId: putRejectReturnRequest2
+      tags:
+      - Return Requests
+      parameters:
+      - name: seller_code
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: return_request_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/tenants/sellers/{seller_code}/return_requests/{return_request_id}/approve:
+    put:
+      summary: Approve Return Request
+      operationId: putApproveReturnRequest3
+      tags:
+      - Return Requests
+      parameters:
+      - name: seller_code
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: return_request_id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              return_reason: Product damaged during shipping
+              order_items:
+              - sku_code: srv-sku-10
+                return_quantity: 1
+                return_reason: Damaged item
+              total_refundable_amount: 159.99
+              approval_mode: full
+              return_request_id: RR-2024-123456
+              additional_charges:
+              - type: restocking_fee
+                cost_with_tax: 10.5
+                tax_percentage: 5.0
+              - type: return_shipping
+                cost_with_tax: 15.99
+                tax_percentage: 8.0
+      responses:
+        '200':
+          description: Successful response
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer

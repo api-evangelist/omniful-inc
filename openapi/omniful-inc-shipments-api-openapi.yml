@@ -1,0 +1,188 @@
+openapi: 3.0.3
+info:
+  title: Omniful Integration APIs Background Jobs Shipments API
+  version: v1
+  description: Omniful unified supply chain and fulfillment platform integration APIs (Order Management, Warehouse/Inventory, Returns, Purchase Orders, Shipment/TMS, Webhooks). Derived faithfully from the provider-published Postman collection at docs.omniful.tech; paths, methods, parameters, and request examples are as published, response schemas are not enumerated in the source.
+  contact:
+    url: https://docs.omniful.tech
+servers:
+- url: https://prodapi.omniful.com
+security:
+- bearerAuth: []
+tags:
+- name: Shipments
+paths:
+  /sales-channel/public/v2/tms/shipments:
+    post:
+      summary: Create Shipment
+      operationId: postCreateShipment
+      tags:
+      - Shipments
+      description: '📦 Shipment API Documentation 📌 Create Shipment– Overview The Create Shipment API allows users to initiate and register a new shipment for an order or set of packages. This API enables sellers, logistics partners, and system integrators to define shipment details such as pickup location, delivery destination, package dimensions, product information, and service type. It is useful for automating the shipping process, ensuring accurate order fulfillment, and integrating with logistics partners for '
+      requestBody:
+        content:
+          application/json:
+            example:
+              reference_id: ORD-2024-101
+              seller_reference_id: Display-Order-ID
+              seller_hub_code: seamlessretail
+              customer_info:
+                name: John Doe
+                code: CUST001
+                email: john.doe@example.com
+                country_code: SA
+                phone: '501234567'
+                address:
+                  code: ADDR001
+                  address_line_1: 123 Business Street
+                  address_line_2: Suite 100
+                  city: Dubai
+                  state: Dubai
+                  country: United Arab Emirates
+                  country_code: AE
+                  city_id: city_001
+                  state_id: state_001
+                  country_id: country_001
+                  postal_code: '12345'
+                  latitude: 25.2048
+                  longitude: 55.2708
+                  national_address_code: new_code
+              payment_info:
+                currency: AED
+                payment_type: prepaid
+                declared_value: 150.0
+                total_due: 0.0
+                total_paid: 150.0
+              product_type: physical_product
+              service_type: standard
+              pickup_type: pickup_by_logistics
+              delivery_type: delivery_by_logistics
+              handling_granularity: package
+              shipment_type: forward
+              delivery_preference:
+                delivery_date: '2025-12-30T00:00:00Z'
+                start_time: '2025-12-30T09:00:00Z'
+                end_time: '2025-12-30T18:00:00Z'
+                delivery_instruction: Please deliver to reception desk
+              sales_channel_info:
+                seller_sales_channel_id: channel_001
+                sales_channel:
+                  id: amazon_ae
+                  tag: amazon
+                  name: Amazon UAE
+                  category: marketplace
+                  logo_url: https://example.com/amazon-logo.png
+                  link: https://amazon.ae
+                  store_name: Amazon UAE Store
+              packages:
+              - reference_id: PKG-001
+                payment_info:
+                  currency: AED
+                  payment_type: prepaid
+                  declared_value: 150.0
+                  total_due: 0.0
+                  total_paid: 150.0
+                packaging_info:
+                  length: 30.0
+                  height: 20.0
+                  width: 25.0
+                  weight: 2.5
+                  volume: 15000.0
+                items:
+                - item_id: item_001
+                  sku:
+                    id: sku_001
+                    name: Wireless Bluetooth Headphones
+                    code: WH-001
+                    description: High-quality wireless headphones with noise cancellation
+                    image_urls:
+                    - https://example.com/headphones-1.jpg
+                    - https://example.com/headphones-2.jpg
+                    barcodes:
+                    - '1234567890123'
+                    - '9876543210987'
+                    weight: 0.5
+                    currency: AED
+                    selling_price: 150.0
+                  quantity: 1
+                  return_reason: ''
+                  note: ''
+                  image_urls:
+                  - https://example.com/headphones-1.jpg
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v2/tms/shipments/{shipment_id}:
+    get:
+      summary: Get Shipment
+      operationId: getGetShipment
+      tags:
+      - Shipments
+      description: 📌 Fetch Shipment by Shipment ID– Overview The Fetch Shipment by Shipment ID API delivers complete shipment details using the system-generated Shipment ID. This API ensures accurate retrieval of shipment records directly tied to the internal database. Response Body Format Field Data Type Description is_success boolean Indicates if the request was successful. status_code number HTTP status code of the response. data.shipment.id string Unique shipment identifier. data.shipment.awb_number string The
+      parameters:
+      - name: shipment_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v2/tms/shipments/reference/{reference_id}:
+    get:
+      summary: Get Shipment by Reference
+      operationId: getGetShipmentByReference
+      tags:
+      - Shipments
+      description: 📌 Fetch Shipment by Reference ID – Overview The Fetch Shipment by Reference ID API allows users to retrieve shipment details based on a custom Reference ID assigned during order creation. This method is useful when shipments need to be linked to internal business processes or third-party systems.
+      parameters:
+      - name: reference_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v2/tms/shipments/awb/{awb}:
+    get:
+      summary: Get Shipment by Awb
+      operationId: getGetShipmentByAwb
+      tags:
+      - Shipments
+      description: 📌 Fetch Shipment by AWB– Overview The Fetch Shipment by AWB API provides detailed information about a shipment using its unique Air Waybill (AWB) number. This method allows users to directly track the journey of a specific parcel without needing order-level references.
+      parameters:
+      - name: awb
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v2/tms/shipments/{shipment_id}/cancel:
+    put:
+      summary: Cancel Shipment
+      operationId: putCancelShipment
+      tags:
+      - Shipments
+      description: 📌 Cancel Shipment – Overview The Cancel Shipment by Shipment ID API lets users cancel a shipment using the system-assigned Shipment ID. This approach ensures accuracy by targeting shipments uniquely identified within the system, reducing the risk of errors in cancellation. Field Data Type Required Description reason string Yes The reason for cancelling the shipment.
+      parameters:
+      - name: shipment_id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              reason: not required now
+      responses:
+        '200':
+          description: Successful response
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer

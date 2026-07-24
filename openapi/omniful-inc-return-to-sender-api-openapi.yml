@@ -1,0 +1,221 @@
+openapi: 3.0.3
+info:
+  title: Omniful Integration APIs Background Jobs Return To Sender API
+  version: v1
+  description: Omniful unified supply chain and fulfillment platform integration APIs (Order Management, Warehouse/Inventory, Returns, Purchase Orders, Shipment/TMS, Webhooks). Derived faithfully from the provider-published Postman collection at docs.omniful.tech; paths, methods, parameters, and request examples are as published, response schemas are not enumerated in the source.
+  contact:
+    url: https://docs.omniful.tech
+servers:
+- url: https://prodapi.omniful.com
+security:
+- bearerAuth: []
+tags:
+- name: Return To Sender
+paths:
+  /sales-channel/public/v1/tenants/sellers/{seller_code}/return_to_sender:
+    post:
+      summary: Create Return To Sender Order
+      operationId: postCreateReturnToSenderOrder
+      tags:
+      - Return To Sender
+      parameters:
+      - name: seller_code
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              order_id: rtv_to_supplier_4
+              hub_code: ONLS
+              recipient_details:
+                type: supplier
+                code: SA-659
+              order_items:
+              - sku_code: srv-sku-12323
+                name: iPhone 15 Pro
+                display_price: 799
+                selling_price: 699
+                is_substituted: false
+                quantity: 1
+                tax_percent: 10
+                tax: 69.9
+                unit_price: 699
+                subtotal: 699
+                total: 768.9
+                discount: 100
+                tax_inclusive: true
+              billing_address:
+                address1: 123 Main Street
+                city: New York
+                country: United States
+                first_name: John
+                last_name: Doe
+                phone: 123-456-7890
+                state: NY
+                zip: '10001'
+                state_code: NY
+                country_code: US
+                latitude: 40.7128
+                longitude: -74.006
+                national_address_code: nac_1234
+              shipping_address:
+                address1: 456 Elm Street
+                city: Los Angeles
+                country: United States
+                first_name: Jane
+                last_name: Smith
+                phone: 987-654-3210
+                state: CA
+                zip: '90001'
+                state_code: CA
+                country_code: US
+                latitude: 34.0522
+                longitude: -118.2437
+                national_address_code: nac_1234
+              order_created_at: '2024-09-19T07:15:25.220Z'
+              invoice:
+                currency: USD
+                subtotal: 699
+                shipping_price: 0
+                shipping_refund: 0
+                tax: 69.9
+                discount: 100
+                total: 768.9
+                total_paid: 768.9
+                total_due: 0
+                total_refunded: 0
+                payment_method: Credit Card
+                tax_percent: 10
+                shipping_tax: 0
+                sub_total_tax_inclusive: true
+                sub_total_discount_inclusive: true
+                shipping_tax_inclusive: false
+                shipping_discount_inclusive: false
+              customer:
+                first_name: John
+                last_name: Doe
+                mobile: '1234567890'
+                mobile_code: '+1'
+                email: john.doe@example.com
+                avatar: https://example.com/avatar.jpg
+                gender: male
+              shipment:
+                shipping_partner_name: CourierX
+                shipping_partner_tag: courierx123
+                awb_number: AWB-456
+                awb_label: https://example.com/awb-label.jpg
+                tracking_link: https://example.com/tracking/456
+              payment_method: prepaid
+              is_cash_on_delivery: false
+              note: Please deliver during weekdays
+              meta_data:
+                name: Metadata
+                has_options: true
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/return_to_sender/orders:
+    post:
+      summary: Create Order
+      operationId: postCreateOrder2
+      tags:
+      - Return To Sender
+      description: '⚠️ Important Notice: The "meta_data" field will be deprecated from the response of this API, effective February 15, 2025. Please update your integrations to accommodate this change and ensure a smooth transition. 📌 Return-to-Sender Order API - Overview The Return-to-Sender Order API is used to create return orders for SKUs that need to be sent back due to expiration, quality check failures, or incorrect items received in a purchase order. 📌 Return Type Guidelines: Supplier Returns: Set the type '
+      requestBody:
+        content:
+          application/json:
+            example:
+              order_id: rtv_to_supplier_1
+              hub_code: Shubhra001
+              recipient_details:
+                type: supplier
+                code: At-H
+              order_items:
+              - sku_code: iPhone 15 Pro
+                name: iPhone 15 Pro
+                display_price: 799
+                selling_price: 699
+                is_substituted: false
+                quantity: 1
+                tax_percent: 10
+                tax: 69.9
+                unit_price: 699
+                subtotal: 699
+                total: 768.9
+                discount: 100
+                tax_inclusive: true
+              billing_address:
+                address1: 123 Main Street
+                city: New York
+                country: United States
+                first_name: John
+                last_name: Doe
+                phone: 123-456-7890
+                state: NY
+                zip: '10001'
+                state_code: NY
+                country_code: US
+                latitude: 40.7128
+                longitude: -74.006
+                national_address_code: nac_1234
+              shipping_address:
+                address1: 456 Elm Street
+                city: Los Angeles
+                country: United States
+                first_name: Jane
+                last_name: Smith
+                phone: 987-654-3210
+                state: CA
+                zip: '90001'
+                state_code: CA
+                country_code: US
+                latitude: 34.0522
+                longitude: -118.2437
+                national_address_code: nac_1234
+              order_created_at: '2024-09-19T07:15:25.220Z'
+              invoice:
+                currency: USD
+                subtotal: 699
+                shipping_price: 0
+                shipping_refund: 0
+                tax: 69.9
+                discount: 100
+                total: 768.9
+                total_paid: 768.9
+                total_due: 0
+                total_refunded: 0
+                payment_method: Credit Card
+                tax_percent: 10
+                shipping_tax: 0
+                sub_total_tax_inclusive: true
+                sub_total_discount_inclusive: true
+                shipping_tax_inclusive: false
+                shipping_discount_inclusive: false
+              customer:
+                first_name: John
+                last_name: Doe
+                mobile: '1234567890'
+                mobile_code: '+1'
+                email: john.doe@example.com
+                avatar: https://example.com/avatar.jpg
+                gender: male
+              shipment:
+                shipping_partner_name: CourierX
+                shipping_partner_tag: courierx123
+                awb_number: AWB-456
+                awb_label: https://example.com/awb-label.jpg
+                tracking_link: https://example.com/tracking/456
+              payment_method: prepaid
+              is_cash_on_delivery: false
+              note: Please deliver during weekdays
+      responses:
+        '200':
+          description: Successful response
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer

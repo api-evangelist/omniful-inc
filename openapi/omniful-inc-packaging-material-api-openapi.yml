@@ -1,0 +1,39 @@
+openapi: 3.0.3
+info:
+  title: Omniful Integration APIs Background Jobs Packaging Material API
+  version: v1
+  description: Omniful unified supply chain and fulfillment platform integration APIs (Order Management, Warehouse/Inventory, Returns, Purchase Orders, Shipment/TMS, Webhooks). Derived faithfully from the provider-published Postman collection at docs.omniful.tech; paths, methods, parameters, and request examples are as published, response schemas are not enumerated in the source.
+  contact:
+    url: https://docs.omniful.tech
+servers:
+- url: https://prodapi.omniful.com
+security:
+- bearerAuth: []
+tags:
+- name: Packaging Material
+paths:
+  /sales-channel/public/v1/seller/hubs/{hub_code}/orders/{order_id}/packaging_materials:
+    get:
+      summary: Get Packaging Material
+      operationId: getGetPackagingMaterial
+      tags:
+      - Packaging Material
+      parameters:
+      - name: hub_code
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: order_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer

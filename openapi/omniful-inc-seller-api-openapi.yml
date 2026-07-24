@@ -1,0 +1,103 @@
+openapi: 3.0.3
+info:
+  title: Omniful Integration APIs Background Jobs Seller API
+  version: v1
+  description: Omniful unified supply chain and fulfillment platform integration APIs (Order Management, Warehouse/Inventory, Returns, Purchase Orders, Shipment/TMS, Webhooks). Derived faithfully from the provider-published Postman collection at docs.omniful.tech; paths, methods, parameters, and request examples are as published, response schemas are not enumerated in the source.
+  contact:
+    url: https://docs.omniful.tech
+servers:
+- url: https://prodapi.omniful.com
+security:
+- bearerAuth: []
+tags:
+- name: Seller
+paths:
+  /sales-channel/public/v1/tenants/sellers:
+    get:
+      summary: Get Sellers
+      operationId: getGetSellers
+      tags:
+      - Seller
+      description: Description Retrieves a paginated list of sellers belonging to the tenant. Use this endpoint when you need to fetch sellers by filters such as seller code, name, or email. Parameters Query Parameters Name Type Required Example page integer True 1 per_page integer True 10 email string False store@saudielectronics.com seller_codes array[string] False seller_codes=GP-803&amp;seller_codes=SG-333 name string False Saudi is_active boolean False true include_all_sellers boolean False true Filters &amp;
+      responses:
+        '200':
+          description: Successful response
+    post:
+      summary: Create Seller
+      operationId: postCreateSeller
+      tags:
+      - Seller
+      description: Description Creates a new seller under the authenticated Omniful tenant. Use this endpoint when onboarding a new seller.The endpoint returns the created Seller ID on success. Parameters Body Parameters Name Type Required Example name string True "Omniful Electronics Store" phone string True "501234567" code string True "Test-123" country_code string True "SA" country_calling_code string True "+966" email string True "omniful@saudielectronics.com" address object True {...} address object Field Ty
+      requestBody:
+        content:
+          application/json:
+            example:
+              name: Omniful Electronics Store
+              phone: '501234565'
+              code: Test-hj
+              country_code: SA
+              country_calling_code: '+966'
+              email: 23ewdew4@saudielectronics.com
+              address:
+                address_line1: King Fahd Road
+                address_line2: Al Olaya District
+                city_name: Riyadh
+                country_name: Saudi Arabia
+                national_address_code: nac_1234
+                postal_code: '12214'
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/tenants/sellers/{seller_code}:
+    get:
+      summary: Get Single Seller
+      operationId: getGetSingleSeller
+      tags:
+      - Seller
+      description: Description Retrieves details of a single seller belonging to the tenant. Use this endpoint when you need to fetch a seller using their seller_code. Parameters Query Parameters Name Type Required Example seller_code string True seller_codes=GP-803
+      parameters:
+      - name: seller_code
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+    put:
+      summary: Update Seller
+      operationId: putUpdateSeller
+      tags:
+      - Seller
+      description: Description Updates an existing seller under the authenticated Omniful tenant. Use this endpoint when modifying seller details such as name, phone number, address or status (active/inactive). The endpoint returns the updated Seller ID on success. Parameters Body Parameters Name Type Required Example name string True "Saudi Electronics Store" phone string True "501234567" country_code string True "SA" country_calling_code string True "+966" email string True "omniful@saudielectronics.com" address
+      parameters:
+      - name: seller_code
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              name: Saudi Electronics Store
+              phone: '501234567'
+              country_code: SA
+              country_calling_code: '+966'
+              email: wew@saudielectronics.com
+              address:
+                address_line1: King Fahd Road
+                address_line2: Al Olaya District
+                city_name: Riyadh
+                country_name: Saudi Arabia
+                postal_code: '12214'
+                national_address_code: code
+              is_active: true
+      responses:
+        '200':
+          description: Successful response
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer

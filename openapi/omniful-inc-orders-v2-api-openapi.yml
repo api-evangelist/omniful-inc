@@ -1,0 +1,62 @@
+openapi: 3.0.3
+info:
+  title: Omniful Integration APIs Background Jobs Orders (V2) API
+  version: v1
+  description: Omniful unified supply chain and fulfillment platform integration APIs (Order Management, Warehouse/Inventory, Returns, Purchase Orders, Shipment/TMS, Webhooks). Derived faithfully from the provider-published Postman collection at docs.omniful.tech; paths, methods, parameters, and request examples are as published, response schemas are not enumerated in the source.
+  contact:
+    url: https://docs.omniful.tech
+servers:
+- url: https://prodapi.omniful.com
+security:
+- bearerAuth: []
+tags:
+- name: Orders (V2)
+paths:
+  /sales-channel/public/v2/seller/orders:
+    get:
+      summary: Get Orders
+      operationId: getGetOrders
+      tags:
+      - Orders (V2)
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v2/seller/orders/search:
+    get:
+      summary: Get Order Search
+      operationId: getGetOrderSearch
+      tags:
+      - Orders (V2)
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v2/tenants/sellers/{seller}-code/orders:
+    get:
+      summary: Get Orders
+      operationId: getGetOrders2
+      tags:
+      - Orders (V2)
+      parameters:
+      - name: seller
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v2/tenants/orders/search:
+    get:
+      summary: Get Order Search
+      operationId: getGetOrderSearch2
+      tags:
+      - Orders (V2)
+      description: 'Searches tenant orders using optional filters and can return a maximum of 100 orders per request. Method: GETEndpoint: {{base_url}}/sales-channel/public/v2/tenants/orders/search This request is used to retrieve orders that match the supplied search criteria. Authentication appears to be required because the request uses the available {{access_token}} variable. This API can send a maximum of 100 orders only. All query parameters are optional unless otherwise indicated. Available query parameters '
+      responses:
+        '200':
+          description: Successful response
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer

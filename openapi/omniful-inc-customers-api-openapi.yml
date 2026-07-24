@@ -1,0 +1,134 @@
+openapi: 3.0.3
+info:
+  title: Omniful Integration APIs Background Jobs Customers API
+  version: v1
+  description: Omniful unified supply chain and fulfillment platform integration APIs (Order Management, Warehouse/Inventory, Returns, Purchase Orders, Shipment/TMS, Webhooks). Derived faithfully from the provider-published Postman collection at docs.omniful.tech; paths, methods, parameters, and request examples are as published, response schemas are not enumerated in the source.
+  contact:
+    url: https://docs.omniful.tech
+servers:
+- url: https://prodapi.omniful.com
+security:
+- bearerAuth: []
+tags:
+- name: Customers
+paths:
+  /sales-channel/public/v1/customers:
+    post:
+      summary: Create Customer
+      operationId: postCreateCustomer
+      tags:
+      - Customers
+      description: 'Required fields to create customer: first_name: First name of the customer. address: Nested object representing customer''s address details. a. address1: Address line 1 b. city: City of the address c. country: Country of the address. Optional Field : title : An optional field to specify the title of the individual. If provided, it must be one of the supported titles.Supported Titles: Mr Mrs Ms Dr Prof Rev Hon Sir Lady Optional Field gender : An optional field to specify the gender of the individu'
+      requestBody:
+        content:
+          application/json:
+            example:
+              title: Mr
+              first_name: Shubhra
+              last_name: Ghosh
+              email: shubhra.omniful@example14.com
+              mobile: '7075156612'
+              country_calling_code: '+91'
+              country_code: IN
+              gender: male
+              date_of_birth: '1990-01-01'
+              user_name: shubhra_ghosh
+              preferred_languages:
+              - en
+              - es
+              alternate_contact_number: 09876543211
+              nationality: Indian
+              address:
+                address1: 123 Main St
+                address2: Apt 101
+                city: Riyadh
+                country: SA
+                country_code: SA
+                state: Riyadh
+                zip: '10001'
+                default_address: true
+                national_address_code: ''
+              documents:
+              - type: passport
+                number: 4XEC5R67VT8BY
+                issue_country_code: SA
+                issue_date: '2015-06-19'
+                expiry_date: '2025-06-12'
+                urls:
+                - https://example.com/passport-front.jpg
+                - https://example.com/passport-back.jpg
+      responses:
+        '200':
+          description: Successful response
+    get:
+      summary: Get Customers
+      operationId: getGetCustomers
+      tags:
+      - Customers
+      description: 'InternalCustomer Object Field Data Type Description first_name String First name of the customer. last_name String Last name of the customer. email String Email address of the customer. mobile String Mobile number of the customer. country_calling_code String Country calling code for the mobile number. country_code String Country code of the customer''s address. address Object Nested object representing customer''s address details. CustomerAddress Object (nested within InternalCustomer) Field Data '
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/customers/{customer_id}:
+    get:
+      summary: Get Customer
+      operationId: getGetCustomer
+      tags:
+      - Customers
+      description: 'InternalCustomer Object Field Data Type Description first_name String First name of the customer. last_name String Last name of the customer. email String Email address of the customer. mobile String Mobile number of the customer. country_calling_code String Country calling code for the mobile number. country_code String Country code of the customer''s address. address Object Nested object representing customer''s address details. CustomerAddress Object (nested within InternalCustomer) Field Data '
+      parameters:
+      - name: customer_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+    put:
+      summary: Update Customer
+      operationId: putUpdateCustomer
+      tags:
+      - Customers
+      description: 'InternalCustomer Object Field Data Type Description first_name String First name of the customer. last_name String Last name of the customer. email String Email address of the customer. mobile String Mobile number of the customer. country_calling_code String Country calling code for the mobile number. country_code String Country code of the customer''s address. address Object Nested object representing customer''s address details. CustomerAddress Object (nested within InternalCustomer) Field Data '
+      parameters:
+      - name: customer_id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              first_name: Shubhra
+              last_name: Omniful
+              email: shubhra@omniful.com
+              mobile: '7044063691'
+              country_calling_code: '+91'
+              country_code: IN
+              documents:
+              - type: passport
+                number: 4XEC5R67VT8BY
+                issue_country_code: SA
+                issue_date: '2016-06-19'
+                expiry_date: '2026-06-12'
+                urls:
+                - https://example.com/passport-front.jpg
+                - https://example.com/passport-back.jpg
+              - type: driving_license
+                number: D5R67VT87BY
+                issue_country_code: SA
+                issue_date: '2015-06-19'
+                expiry_date: '2025-06-12'
+                urls:
+                - https://example.com/passport-front.jpg
+                - https://example.com/passport-back.jpg
+      responses:
+        '200':
+          description: Successful response
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer

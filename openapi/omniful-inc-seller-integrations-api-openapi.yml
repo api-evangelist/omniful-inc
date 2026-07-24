@@ -1,0 +1,54 @@
+openapi: 3.0.3
+info:
+  title: Omniful Integration APIs Background Jobs Seller Integrations API
+  version: v1
+  description: Omniful unified supply chain and fulfillment platform integration APIs (Order Management, Warehouse/Inventory, Returns, Purchase Orders, Shipment/TMS, Webhooks). Derived faithfully from the provider-published Postman collection at docs.omniful.tech; paths, methods, parameters, and request examples are as published, response schemas are not enumerated in the source.
+  contact:
+    url: https://docs.omniful.tech
+servers:
+- url: https://prodapi.omniful.com
+security:
+- bearerAuth: []
+tags:
+- name: Seller Integrations
+paths:
+  /sales-channel/public/v1/channels/integrations:
+    get:
+      summary: Get Seller Integrations
+      operationId: getGetSellerIntegrations
+      tags:
+      - Seller Integrations
+      description: Fetches all the stores integrated with the seller’s account, including metadata like platform type, store name, and activation status. 📘 Response Object IntegratedStore Object Field Data Type Description integration_id String Unique identifier for the store integration. tag String Type of integration (e.g., shopify, custom). store_entity String Store-specific identifier on the platform (if any). name String Store name given by the seller. is_active Boolean Indicates if the store integration is c
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/channels/integrations/{integration_token}:
+    get:
+      summary: Get Seller Integration by Token
+      operationId: getGetSellerIntegrationByToken
+      tags:
+      - Seller Integrations
+      description: Fetches detailed information of a specific store integration using the integration_id. 🔸 Path Variable Variable Type Description integration_id String Unique identifier of the integrated store 📘 Response Object IntegratedStore Object Field Data Type Description integration_id String Unique identifier for the store integration. tag String Type of integration (e.g., shopify, custom). store_entity String Store-specific identifier on the platform (if any). name String Store name given by the seller.
+      parameters:
+      - name: integration_token
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/tenants/sellers/EX-637/channels/integrations:
+    get:
+      summary: Seller Integrations
+      operationId: getSellerIntegrations
+      tags:
+      - Seller Integrations
+      responses:
+        '200':
+          description: Successful response
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer

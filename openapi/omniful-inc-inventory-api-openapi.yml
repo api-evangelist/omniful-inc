@@ -1,0 +1,204 @@
+openapi: 3.0.3
+info:
+  title: Omniful Integration APIs Background Jobs Inventory API
+  version: v1
+  description: Omniful unified supply chain and fulfillment platform integration APIs (Order Management, Warehouse/Inventory, Returns, Purchase Orders, Shipment/TMS, Webhooks). Derived faithfully from the provider-published Postman collection at docs.omniful.tech; paths, methods, parameters, and request examples are as published, response schemas are not enumerated in the source.
+  contact:
+    url: https://docs.omniful.tech
+servers:
+- url: https://prodapi.omniful.com
+security:
+- bearerAuth: []
+tags:
+- name: Inventory
+paths:
+  /sales-channel/public/v1/seller/inventory/hubs/{hub_code}:
+    get:
+      summary: Get Seller Hub Inventory
+      operationId: getGetSellerHubInventory
+      tags:
+      - Inventory
+      description: 📌 Get Seller Hub Inventory API - Overview The Get Seller Hub Inventory API retrieves inventory details for all SKUs stored in a specific warehouse for a seller. This API helps sellers track stock levels, monitor availability, and manage inventory efficiently at a single warehouse location.
+      parameters:
+      - name: hub_code
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/seller/inventory/hubs/{hub_code}/report:
+    get:
+      summary: Get Seller Hub Inventory Report of a Seller
+      operationId: getGetSellerHubInventoryReportOfASeller
+      tags:
+      - Inventory
+      description: '📌 Get Seller Hub Inventory Report API - Overview The Get Seller Hub Inventory Report API provides a detailed inventory report of all SKUs stored at a specific hub for a seller. This report is sent to the webhook URL configured in the Custom Sales Channel settings, allowing automated inventory tracking and real-time stock updates. Sample Webhook: { "event_name": "inventory.report.event", "data": { "inventory_report_url": "https://omniful-production-uploads.s3.amazonaws.com/analytics/reports/downl'
+      parameters:
+      - name: hub_code
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/inventory/hubs/skus/{sku_code}:
+    get:
+      summary: Get Inventory for SKU Across All Hubs
+      operationId: getGetInventoryForSkuAcrossAllHubs
+      tags:
+      - Inventory
+      description: 📌 Get Inventory for SKU Across All Hubs API - Overview The Get All Hubs Inventory API retrieves inventory details of a specific SKU across all mapped hubs. This API helps users track stock availability at multiple locations, ensuring efficient inventory distribution and fulfillment management.Gives the Inventory of a SKU at all mapped hubs
+      parameters:
+      - name: sku_code
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/inventory/hubs/{hub_code}:
+    post:
+      summary: Post Hub Inventory
+      operationId: postPostHubInventory
+      tags:
+      - Inventory
+      description: '📌 Update Hub Inventory API - Overview The Update Hub Inventory API allows users to modify inventory levels for specific SKUs at a given hub. 📌 Key Points to Consider: The hub must have location inventory turned off; otherwise, this API will return a bad request. This API requires hub code and SKU details, including SKU code and quantity. 📌 Required Fields: hub_code (string) – Unique identifier of the hub where inventory needs to be updated. sku_detail (array of objects, max length: 200) – List o'
+      parameters:
+      - name: hub_code
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              sku_detail:
+              - sku_code: SKU-TV-123
+                quantity: 100
+              - sku_code: samsung190
+                quantity: 1
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/inventory/hubs/{hub_code}/safety_stock:
+    put:
+      summary: Push Safety Stock
+      operationId: putPushSafetyStock
+      tags:
+      - Inventory
+      parameters:
+      - name: hub_code
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              sku_detail:
+              - sku_code: '67999801331808'
+                quantity: 101
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/tenants/hubs/{hub_code}/sellers/{seller_code}/inventory:
+    put:
+      summary: Push Inventory
+      operationId: putPushInventory
+      tags:
+      - Inventory
+      description: 'Push Hub Inventory This endpoint allows you to update the inventory corresponding to a specific seller and hub. By providing the seller''s unique code and the hub''s unique code, you can modify the available quantities of skus of that seller in that hub. This route can only be used for hubs which are location-inventory off. Request Method: PUT Endpoint: {{base_url}}/sales-channel/public/v1/tenants/hubs/:hub_code/sellers/:seller_code/inventory Request Body The request body must be in JSON format an'
+      parameters:
+      - name: hub_code
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: seller_code
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              sku_detail:
+              - sku_code: sku-srv
+                quantity: 10
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/tenants/hubs/{hub_code}/inventory:
+    get:
+      summary: Get Hub Inventory
+      operationId: getGetHubInventory
+      tags:
+      - Inventory
+      parameters:
+      - name: hub_code
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/tenants/sellers/{seller_code}/skus/{sku_code}/inventory:
+    get:
+      summary: Get Inventory for SKU Across All Hubs
+      operationId: getGetInventoryForSkuAcrossAllHubs2
+      tags:
+      - Inventory
+      parameters:
+      - name: seller_code
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: sku_code
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/tenants/hubs/{hub_code}/sellers/{seller_code}/safety_stock:
+    put:
+      summary: Push Safety Stock
+      operationId: putPushSafetyStock2
+      tags:
+      - Inventory
+      parameters:
+      - name: hub_code
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: seller_code
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              sku_detail:
+              - sku_code: '65525900136597'
+                quantity: 1001
+      responses:
+        '200':
+          description: Successful response
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer

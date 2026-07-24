@@ -1,0 +1,367 @@
+openapi: 3.0.3
+info:
+  title: Omniful Integration APIs Background Jobs Hubs API
+  version: v1
+  description: Omniful unified supply chain and fulfillment platform integration APIs (Order Management, Warehouse/Inventory, Returns, Purchase Orders, Shipment/TMS, Webhooks). Derived faithfully from the provider-published Postman collection at docs.omniful.tech; paths, methods, parameters, and request examples are as published, response schemas are not enumerated in the source.
+  contact:
+    url: https://docs.omniful.tech
+servers:
+- url: https://prodapi.omniful.com
+security:
+- bearerAuth: []
+tags:
+- name: Hubs
+paths:
+  /sales-channel/public/v1/tenants/hubs:
+    post:
+      summary: Create Hub
+      operationId: postCreateHub
+      tags:
+      - Hubs
+      description: 'Description Creates a new hub within a tenant. Use this endpoint to register a warehouse, dark store, or fulfillment location with full configuration for inventory, picking, packing, cycle count, schedule order, and other operational behaviors. On success, the endpoint returns the newly created Hub object. 📌 Required fields for creating a Hub: name — Hub name code — Unique hub code type — Hub type (e.g., "warehouse", "dark_store") email — Valid email address phone_number, country_code, country_c'
+      requestBody:
+        content:
+          application/json:
+            example:
+              name: Dark_str_1
+              code: Dark_sst
+              type: dark_store
+              email: hub-location-off@gmail.com
+              address:
+                address_line1: 19 ش النهضة  النهضة  النهضة 1  مركز صحارى
+                address_line2: 19 ش النهضة  النهضة  النهضة 1  مركز صحارى
+                state_name: ''
+                city_name: Riyadh
+                postal_code: '00000'
+                latitude: 25.2709141
+                longitude: 55.300312
+                country:
+                  name: Saudi Arabia
+                  code: SA
+                additional_number: '1233'
+                area: mera area
+                national_address_code: RAFC1231
+                building_number: '1234'
+                street: 123 Main St
+              working_hours:
+                monday:
+                - start_time: 900
+                  end_time: 2359
+                tuesday:
+                - start_time: 900
+                  end_time: 2359
+                wednesday:
+                - start_time: 800
+                  end_time: 2359
+                thursday:
+                - start_time: 800
+                  end_time: 2359
+                friday:
+                - start_time: 600
+                  end_time: 2359
+                saturday:
+                - start_time: 700
+                  end_time: 2359
+                sunday:
+                - start_time: 500
+                  end_time: 2359
+              configuration:
+                location_inventory:
+                  enabled: true
+                inwarding_configuration:
+                  auto_generate_serialised_barcode: true
+                stock_transfer_order:
+                  enabled: false
+                hub_location_mapping:
+                  bins_enabled: false
+                  rack_enabled: false
+                  zone_enabled: false
+                  aisle_enabled: false
+                  floor_enabled: false
+                  shelf_enabled: false
+                adjust_inventory:
+                  manual_barcode_allowed: true
+                  enter_quantity_manually: true
+                gate_entry:
+                  enabled: true
+                bulk_ship_configuration:
+                  picker_capacity: 5
+                picking:
+                  enabled: true
+                  cart_capacity: 10
+                  picker_capacity: 10
+                  bin_scan_enabled: true
+                  single_order_tags:
+                  - name: create tags
+                  - name: test
+                  - name: prepaid
+                  location_scan_enabled: true
+                  manual_barcode_allowed: true
+                  enter_quantity_manually: true
+                  multi_order_picking_type: 3
+                  single_order_picking_type: 1
+                  multi_order_picking_allowed: true
+                  single_order_picking_allowed: true
+                  multi_piece_picking_cart_association: false
+                  single_piece_picking_cart_association: true
+                bin:
+                  enabled: true
+                location_configuration:
+                  layout:
+                    bin:
+                      exist: false
+                      order: 8
+                      prefix: B
+                      display_name: Bin
+                    hall:
+                      exist: false
+                      order: 3
+                      prefix: H
+                      display_name: Hall
+                    rack:
+                      exist: false
+                      order: 5
+                      prefix: R
+                      display_name: Rack
+                    aisle:
+                      exist: false
+                      order: 4
+                      prefix: A
+                      display_name: Aisle
+                    floor:
+                      exist: false
+                      order: 2
+                      prefix: F
+                      display_name: Floor
+                    shelf:
+                      exist: false
+                      order: 6
+                      prefix: S
+                      display_name: Shelf
+                    location:
+                      exist: false
+                      order: 7
+                      prefix: L
+                      display_name: Location
+                    custom_prefix:
+                      exist: true
+                      order: 1
+                      prefix: P
+                      display_name: Prefix
+                  enabled: false
+                put_away:
+                  manual_barcode_allowed: true
+                  enter_quantity_manually: true
+                expiry_configuration:
+                  include_near_expiry_items: false
+                acceptable_shelf_life_validation:
+                  enabled: false
+                schedule_order:
+                  time:
+                    hour: '0'
+                    minute: '0'
+                  enabled: false
+                cycle_count_configuration:
+                  blind_count: false
+                  update_inventory: false
+                  manual_barcode_allowed: true
+                  enter_quantity_manually: true
+                packing_configuration:
+                  qc_enabled: true
+                  manual_barcode_allowed: true
+                  enter_quantity_manually: true
+                  automatic_shipment_creation: false
+                  auto_print_awb_on_all_items_scanned: true
+                purchase_order:
+                  enabled: true
+                  over_receive_allowed: true
+              is_click_and_collect: false
+              country_calling_code: '+91'
+              country_code: IN
+              phone_number: '9871627354'
+              timezone: Asia/Kolkata
+              currency:
+                name: Indian Rupee
+                code: INR
+                display_name: INR (Indian Rupee)
+              is_pos_enabled: false
+              is_wms_enabled: true
+      responses:
+        '200':
+          description: Successful response
+    get:
+      summary: Get Tenant Hubs
+      operationId: getGetTenantHubs
+      tags:
+      - Hubs
+      description: Description Retrieves a paginated list of hubs for a tenant. Use this endpoint to search hubs using filters such as name, code, and to optionally include address details in the response. This endpoint supports filters + pagination, and returns a structured list of hub objects. Parameters Query Parameters Name Type Required Default Example Description include_address boolean False false true If true, hub address details are included in the response code string False - "sc-2321" Filter hubs by exa
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/tenants/hubs/Dark_store_1k:
+    put:
+      summary: Update Hub
+      operationId: putUpdateHub
+      tags:
+      - Hubs
+      description: 'Description Updates an existing tenant hub’s details and configuration. Use this endpoint when you need to change a hub’s address, services (e.g., WMS/POS), working hours, or operational configurations (picking, packing, cycle count, etc.). The endpoint performs a partial update: most fields are optional, but when an object is provided (like address, configuration.picking, etc.), the required fields inside that object must be present. 📌 Key things to know: hub_code (in path) identifies which hub'
+      requestBody:
+        content:
+          application/json:
+            example:
+              type: dark_store
+              address:
+                address_line1: B-91
+                address_line2: Road 14
+                state_name: Riyadh Principality
+                city_name: Riyadh
+                postal_code: '122001'
+                latitude: 28.471653
+                longitude: 77.050965
+                country:
+                  name: India
+                  code: IN
+                national_address_code: RAFC1231
+                additional_number: '1233'
+                building_number: '1234'
+                area: area 14
+                street: 123 Main St
+              services:
+              - wms
+              - pos
+              working_hours:
+                monday:
+                - start_time: 1000
+                  end_time: 2359
+                tuesday:
+                - start_time: 600
+                  end_time: 2359
+                wednesday:
+                - start_time: 800
+                  end_time: 2359
+                thursday:
+                - start_time: 900
+                  end_time: 2359
+                friday:
+                - start_time: 0
+                  end_time: 2359
+                saturday:
+                - start_time: 0
+                  end_time: 2359
+                sunday:
+                - start_time: 0
+                  end_time: 2359
+              configuration:
+                adjust_inventory:
+                  manual_barcode_allowed: false
+                  enter_quantity_manually: false
+                inwarding_configuration:
+                  auto_generate_serialised_barcode: true
+                gate_entry:
+                  enabled: false
+                bulk_ship_configuration:
+                  picker_capacity: 100
+                picking:
+                  enabled: true
+                  cart_capacity: 9
+                  picker_capacity: 1
+                  bin_scan_enabled: true
+                  single_order_tags:
+                  - name: prepaid
+                  - name: test
+                  - name: create tags
+                  location_scan_enabled: false
+                  manual_barcode_allowed: false
+                  enter_quantity_manually: false
+                  multi_order_picking_type: 3
+                  single_order_picking_type: 2
+                  multi_order_picking_allowed: false
+                  single_order_picking_allowed: true
+                  multi_piece_picking_cart_association: false
+                  single_piece_picking_cart_association: false
+                put_away:
+                  manual_barcode_allowed: false
+                  enter_quantity_manually: false
+                expiry_configuration:
+                  include_near_expiry_items: false
+                acceptable_shelf_life_validation:
+                  enabled: false
+                schedule_order:
+                  time:
+                    hour: '2'
+                    minute: '45'
+                  enabled: true
+                cycle_count_configuration:
+                  blind_count: true
+                  update_inventory: true
+                  manual_barcode_allowed: false
+                  enter_quantity_manually: false
+                packing_configuration:
+                  qc_enabled: true
+                  manual_barcode_allowed: true
+                  enter_quantity_manually: false
+                  automatic_shipment_creation: false
+                  auto_print_awb_on_all_items_scanned: false
+                purchase_order:
+                  enabled: true
+                  over_receive_allowed: true
+              is_click_and_collect: false
+              country_calling_code: '+91'
+              country_code: IN
+              phone_number: '9871627354'
+              timezone: Asia/Kolkata
+              currency:
+                name: Indian Rupee
+                code: INR
+                display_name: INR (Indian Rupee)
+              created_by: aryan gupta
+              created_by_id: '21'
+              is_pos_enabled: true
+              is_wms_enabled: true
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/tenants/hubs/{hub_code}:
+    get:
+      summary: Get Hub details by hub_code
+      operationId: getGetHubDetailsByHubCode
+      tags:
+      - Hubs
+      description: Description Retrieves detailed information for a specific hub using its hub code. Use this endpoint to fetch full hub metadata, including its core properties, operational settings, and optionally address details (if supported by backend defaults). Parameters Path Parameters Name Type Required Description hub_code string True Unique identifier of the hub whose details are being retrieved
+      parameters:
+      - name: hub_code
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/tenants/hubs/bulk_update:
+    put:
+      summary: Bulk update tenant hub mapping
+      operationId: putBulkUpdateTenantHubMapping
+      tags:
+      - Hubs
+      description: Description Allows updating specific fields for multiple hubs in a single request. Use this endpoint when you need to activate/deactivate multiple hubs or apply batch updates to hub-level properties without calling individual update APIs. Only the fields included for each hub in the hub_mappings array will be updated. Body Parameters Body is a single object containing an array of hub updates. hub_mappings (Array of Hub Mapping Objects) Field Type Required Description hub_mappings array[object] T
+      requestBody:
+        content:
+          application/json:
+            example:
+              hub_mappings:
+              - hub_code: Example-hub-22
+                is_active: false
+              - hub_code: '00'
+                is_active: false
+              - hub_code: wfrefr
+                is_active: false
+              - hub_code: 0000test1
+                is_active: false
+      responses:
+        '200':
+          description: Successful response
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer

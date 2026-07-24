@@ -1,0 +1,146 @@
+openapi: 3.0.3
+info:
+  title: Omniful Integration APIs Background Jobs Return Orders API
+  version: v1
+  description: Omniful unified supply chain and fulfillment platform integration APIs (Order Management, Warehouse/Inventory, Returns, Purchase Orders, Shipment/TMS, Webhooks). Derived faithfully from the provider-published Postman collection at docs.omniful.tech; paths, methods, parameters, and request examples are as published, response schemas are not enumerated in the source.
+  contact:
+    url: https://docs.omniful.tech
+servers:
+- url: https://prodapi.omniful.com
+security:
+- bearerAuth: []
+tags:
+- name: Return Orders
+paths:
+  /sales-channel/public/v1/tenants/sellers/{seller_id}/return_orders/{return_order_id}/shipment:
+    post:
+      summary: Create Sales Channel Shipment
+      operationId: postCreateSalesChannelShipment
+      tags:
+      - Return Orders
+      description: Add Shipment for Return Order This endpoint allows the user to add a shipment for a specific return order belonging to a seller. Request Body tracking_url (string) - The URL for tracking the shipment. awb_number (string) - The Air Waybill (AWB) number for the shipment. awb_label (string) - The URL to the AWB label for the shipment. package_details (object) - Details of the package including number of boxes, weight, dimensions, and remarks. number_of_boxes (integer) - The number of boxes in the s
+      parameters:
+      - name: seller_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: return_order_id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              tracking_url: https://tracking.fedex.com/123456789
+              awb_number: AWB123452832
+              awb_label: https://omniful-staging-uploads.s3.eu-central-1.amazonaws.com/shipping/tamex/pixicommerce435/14755/55f86b562b59de7e04cc5687_awb_label.pdf
+              package_details:
+                number_of_boxes: 1
+                weight: 1
+                dimensions:
+                  length: 30
+                  breadth: 20
+                  height: 15
+                remarks: Handle with care
+              courier_partner:
+                tag: dhl_express
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/tenants/sellers/{seller_id}/return_orders/{return_order_id}/shipment/status:
+    put:
+      summary: Update Sales Channel Shipment status
+      operationId: putUpdateSalesChannelShipmentStatus
+      tags:
+      - Return Orders
+      description: 'Allowed Shipment Status: [ picked_up, return_to_origin, cancelled]'
+      parameters:
+      - name: seller_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: return_order_id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              shipment_status: picked_up
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/tenants/sellers/{seller_code}/orders/{order_id}/return_orders:
+    post:
+      summary: Create Customer Return Order
+      operationId: postCreateCustomerReturnOrder
+      tags:
+      - Return Orders
+      description: This API endpoint allows you to create a return order for any forward order that has been marked as Delivered. Precondition The order must have the status Delivered to be eligible for a return. Field Descriptions Field Type Mandatory/Optional Description return_order_id string Mandatory Unique identifier for the return order. return_items array of objects Mandatory List of items being returned, including item_id, sku_code, and return_quantity. item_id string Mandatory Original order item ID. sku
+      parameters:
+      - name: seller_code
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: order_id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json: {}
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/tenants/sellers/{seller_code}/orders/{order_id}/return_orders/courier:
+    post:
+      summary: Create Courier Partner Return Order
+      operationId: postCreateCourierPartnerReturnOrder
+      tags:
+      - Return Orders
+      description: This API endpoint allows you to create a return order for any forward order that has been marked as Return To Origin. Precondition The order must have the status Return To Origin to be eligible for a return. Field Descriptions Field Type Mandatory/Optional Description return_order_id string Mandatory Unique identifier for the return order. Notes return_order_id must always be provided.
+      parameters:
+      - name: seller_code
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: order_id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json: {}
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/tenants/sellers/{seller_code}/return_orders/:
+    get:
+      summary: Get Return Orders (To Be Deprecated)
+      operationId: getGetReturnOrdersToBeDeprecated
+      tags:
+      - Return Orders
+      parameters:
+      - name: seller_code
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer

@@ -1,0 +1,234 @@
+openapi: 3.0.3
+info:
+  title: Omniful Integration APIs Background Jobs Purchase Order API
+  version: v1
+  description: Omniful unified supply chain and fulfillment platform integration APIs (Order Management, Warehouse/Inventory, Returns, Purchase Orders, Shipment/TMS, Webhooks). Derived faithfully from the provider-published Postman collection at docs.omniful.tech; paths, methods, parameters, and request examples are as published, response schemas are not enumerated in the source.
+  contact:
+    url: https://docs.omniful.tech
+servers:
+- url: https://prodapi.omniful.com
+security:
+- bearerAuth: []
+tags:
+- name: Purchase Order
+paths:
+  /sales-channel/public/v1/purchase_orders/hubs/{hub_code}:
+    post:
+      summary: Create Purchase Order
+      operationId: postCreatePurchaseOrder
+      tags:
+      - Purchase Order
+      description: 📌 Create Purchase Order API – Overview The Create Purchase Order API allows users to generate new purchase orders for suppliers, enabling streamlined procurement and inventory management. 📌 Key Points to Consider To route the purchase order to a specific hub, provide the hub_code in the path parameter. A purchase order must include at least one valid SKU in purchase_order_items. Currency must be defined using a 3-letter ISO code (e.g., SAR for Saudi Riyal, USD for US Dollar). ✅ Required Fields s
+      parameters:
+      - name: hub_code
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              supplier_email: shubhra@omniful.com
+              supplier_code: At-H
+              over_receive_allowed: true
+              purchase_order_items:
+              - sku_code: samsung190
+                quantity: 10
+                unit_price: 10.4
+              remark: Ritik
+              reference_purchase_order_id: po-ref-01
+              currency: SAR
+      responses:
+        '200':
+          description: Successful response
+    get:
+      summary: Get Purchase Orders
+      operationId: getGetPurchaseOrders
+      tags:
+      - Purchase Order
+      description: '📌 Get Purchase Order API - Overview The Get Purchase Order API allows users to retrieve all purchase orders for a specific hub using various query filters. 📌 Filters Available: Date Range – Fetch purchase orders within a specific time period. Status – Filter purchase orders based on their current processing status. Purchase Order Number – Retrieve details of a specific purchase order. This API helps users track, manage, and analyze purchase orders efficiently within the hub.'
+      parameters:
+      - name: hub_code
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+    put:
+      summary: Update Purchase Order
+      operationId: putUpdatePurchaseOrder
+      tags:
+      - Purchase Order
+      description: 📌 Important Fields for Purchase Order Field Data Type Description Required remark string Additional notes or remarks related to the purchase order ❌ No awb string Air Waybill number – a unique identifier assigned to a shipment for tracking purposes ❌ No purchase_order_id string Unique identifier for the purchase order ✅ Yes sku_code string SKU code of the item included in the purchase order ✅ Yes quantity string Quantity of the item being purchased ❌ No unit_price string Unit price of the item i
+      parameters:
+      - name: hub_code
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              remark: ''
+              awb: ''
+              purchase_order_id: PO-SA1-5
+              over_receive_allowed: true
+              purchase_order_items:
+              - sku_code: '506308'
+                quantity: 270
+                unit_price: 31
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/purchase_orders/hubs/{hub_code}/purchase_order/{purchase_order_id}:
+    get:
+      summary: Get Single Purchase Order
+      operationId: getGetSinglePurchaseOrder
+      tags:
+      - Purchase Order
+      description: 📌 Get Single Purchase Order API - Overview The Get Single Purchase Order API retrieves the details of a specific purchase order using its purchase order ID for the provided hub ID. This API helps users access complete purchase order information. Field Name Type Description purchase_order_id String The unique ID for this purchase order. order_details.quantity Integer The total number of items ordered in this purchase order. order_details.grn_pass_quantity Integer The number of items that passed i
+      parameters:
+      - name: hub_code
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: purchase_order_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/suppliers:
+    post:
+      summary: Create Supplier
+      operationId: postCreateSupplier
+      tags:
+      - Purchase Order
+      description: 📌 Important Fields for Supplier Field Data Type Description Required name string The name of the supplier ✅ Yes contact_person string The contact person associated with the supplier ❌ No email string The supplier’s email address ✅ Yes phone string The supplier’s phone number ✅ Yes code string Supplier code; if left empty, the system will automatically assign a new one ❌ No
+      requestBody:
+        content:
+          application/json:
+            example:
+              name: Rg1
+              contact_person: Shubhra
+              email: shubhra@omniful.com
+              code: At-H
+              phone: '9876543212'
+      responses:
+        '200':
+          description: Successful response
+    get:
+      summary: Get All Suppliers
+      operationId: getGetAllSuppliers
+      tags:
+      - Purchase Order
+      description: Get All the suppilers
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/tenants/hubs/{hub_code}/purchase_orders:
+    get:
+      summary: Get Purchase Orders
+      operationId: getGetPurchaseOrders2
+      tags:
+      - Purchase Order
+      parameters:
+      - name: hub_code
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+    post:
+      summary: Create Purchase Order
+      operationId: postCreatePurchaseOrder2
+      tags:
+      - Purchase Order
+      parameters:
+      - name: hub_code
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              supplier_email: r@14.com
+              seller_code: KO-SE-1
+              supplier_code: UR-716
+              over_receive_allowed: true
+              purchase_order_items:
+              - sku_code: '1108322'
+                quantity: 1
+                unit_price: 10.4
+              remark: Inwarding
+              reference_purchase_order_id: po-ref-45646
+              currency: SAR
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/tenants/hubs/{hub_code}/purchase_orders/{purchase_order_id}:
+    get:
+      summary: Get Single Purchase Order
+      operationId: getGetSinglePurchaseOrder2
+      tags:
+      - Purchase Order
+      parameters:
+      - name: hub_code
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: purchase_order_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+    put:
+      summary: Update Purchase Order
+      operationId: putUpdatePurchaseOrder2
+      tags:
+      - Purchase Order
+      parameters:
+      - name: hub_code
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: purchase_order_id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              remark: ''
+              awb: ''
+              over_receive_allowed: true
+              purchase_order_items:
+              - sku_code: srv-sku-10
+                quantity: 27
+                unit_price: 31
+      responses:
+        '200':
+          description: Successful response
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer

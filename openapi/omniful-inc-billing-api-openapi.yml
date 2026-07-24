@@ -1,0 +1,169 @@
+openapi: 3.0.3
+info:
+  title: Omniful Integration APIs Background Jobs Billing API
+  version: v1
+  description: Omniful unified supply chain and fulfillment platform integration APIs (Order Management, Warehouse/Inventory, Returns, Purchase Orders, Shipment/TMS, Webhooks). Derived faithfully from the provider-published Postman collection at docs.omniful.tech; paths, methods, parameters, and request examples are as published, response schemas are not enumerated in the source.
+  contact:
+    url: https://docs.omniful.tech
+servers:
+- url: https://prodapi.omniful.com
+security:
+- bearerAuth: []
+tags:
+- name: Billing
+paths:
+  /sales-channel/public/v1/tenants/billings/contracts:
+    get:
+      summary: Get Contracts
+      operationId: getGetContracts
+      tags:
+      - Billing
+      responses:
+        '200':
+          description: Successful response
+    post:
+      summary: Create Contract
+      operationId: postCreateContract
+      tags:
+      - Billing
+      requestBody:
+        content:
+          application/json: {}
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/tenants/billings/contracts/{id}:
+    get:
+      summary: Get Single Contract
+      operationId: getGetSingleContract
+      tags:
+      - Billing
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/tenants/billings/contracts/{id}/terminate:
+    put:
+      summary: Terminate Contract
+      operationId: putTerminateContract
+      tags:
+      - Billing
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/tenants/bills:
+    get:
+      summary: Get Bills
+      operationId: getGetBills
+      tags:
+      - Billing
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/tenants/bills/{bill_name}:
+    get:
+      summary: Get Bill
+      operationId: getGetBill
+      tags:
+      - Billing
+      parameters:
+      - name: bill_name
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/tenants/hubs/{bill_name}/bills:
+    get:
+      summary: Get Hub Bills
+      operationId: getGetHubBills
+      tags:
+      - Billing
+      parameters:
+      - name: bill_name
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/tenants/bills/generate:
+    post:
+      summary: Generate Bill
+      operationId: postGenerateBill
+      tags:
+      - Billing
+      requestBody:
+        content:
+          application/json:
+            example:
+              contract_name: mnoor
+              start_date: 04-09-2024
+              end_date: 03-10-2024
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/tenants/bills/{bill_name}/status:
+    put:
+      summary: Update Bill Status
+      operationId: putUpdateBillStatus
+      tags:
+      - Billing
+      parameters:
+      - name: bill_name
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              status: rejected
+              remark: Payment received on time
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/tenants/bills/{bill_name}/finalize:
+    post:
+      summary: Create Finalize Bill
+      operationId: postCreateFinalizeBill
+      tags:
+      - Billing
+      parameters:
+      - name: bill_name
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              total: 100.0
+              remark: Payment for September
+              discount:
+                percentage: 10
+                value: 10.0
+      responses:
+        '200':
+          description: Successful response
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer

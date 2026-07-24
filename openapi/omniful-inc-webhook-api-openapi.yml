@@ -1,0 +1,38 @@
+openapi: 3.0.3
+info:
+  title: Omniful Integration APIs Background Jobs Webhook API
+  version: v1
+  description: Omniful unified supply chain and fulfillment platform integration APIs (Order Management, Warehouse/Inventory, Returns, Purchase Orders, Shipment/TMS, Webhooks). Derived faithfully from the provider-published Postman collection at docs.omniful.tech; paths, methods, parameters, and request examples are as published, response schemas are not enumerated in the source.
+  contact:
+    url: https://docs.omniful.tech
+servers:
+- url: https://prodapi.omniful.com
+security:
+- bearerAuth: []
+tags:
+- name: Webhook
+paths:
+  /sales-channel/public/v1/webhooks:
+    put:
+      summary: Register Webhook
+      operationId: putRegisterWebhook
+      tags:
+      - Webhook
+      requestBody:
+        content:
+          application/json:
+            example:
+            - topic: shipment_webhook
+              webhook_url: https://webhook.site/181a3c04-263d-4032-a8b0-d778ef5698fc
+              is_enable: true
+              custom_headers:
+              - key: X-AUTH-TOKEN
+                value: New_token
+      responses:
+        '200':
+          description: Successful response
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer

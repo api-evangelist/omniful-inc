@@ -1,0 +1,29 @@
+openapi: 3.0.3
+info:
+  title: Omniful Integration APIs Background Jobs Shipping Accounts API
+  version: v1
+  description: Omniful unified supply chain and fulfillment platform integration APIs (Order Management, Warehouse/Inventory, Returns, Purchase Orders, Shipment/TMS, Webhooks). Derived faithfully from the provider-published Postman collection at docs.omniful.tech; paths, methods, parameters, and request examples are as published, response schemas are not enumerated in the source.
+  contact:
+    url: https://docs.omniful.tech
+servers:
+- url: https://prodapi.omniful.com
+security:
+- bearerAuth: []
+tags:
+- name: Shipping Accounts
+paths:
+  /sales-channel/public/v1/tenants/shipping_accounts:
+    get:
+      summary: Get All Shipping Accounts
+      operationId: getGetAllShippingAccounts
+      tags:
+      - Shipping Accounts
+      description: This API is used to fetch all shipping accounts for the Tenant.
+      responses:
+        '200':
+          description: Successful response
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer

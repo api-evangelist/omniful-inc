@@ -1,0 +1,91 @@
+openapi: 3.0.3
+info:
+  title: Omniful Integration APIs Background Jobs Report API
+  version: v1
+  description: Omniful unified supply chain and fulfillment platform integration APIs (Order Management, Warehouse/Inventory, Returns, Purchase Orders, Shipment/TMS, Webhooks). Derived faithfully from the provider-published Postman collection at docs.omniful.tech; paths, methods, parameters, and request examples are as published, response schemas are not enumerated in the source.
+  contact:
+    url: https://docs.omniful.tech
+servers:
+- url: https://prodapi.omniful.com
+security:
+- bearerAuth: []
+tags:
+- name: Report
+paths:
+  /sales-channel/public/v1/reports:
+    get:
+      summary: Fetch Supported Reports
+      operationId: getFetchSupportedReports
+      tags:
+      - Report
+      description: This API returns a list of categories, each containing a list of reports. You can optionally filter to show only archived reports or only active reports.Query Parameters Parameter Type Required Description Example is_archived boolean No Filter reports by archive status. If true, returns only archived reports. If false or not provided, returns only active reports. true or false Each report has a display name, key name, and a list of filters. Each filter has information about whether it is require
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/reports/{category}/{report}/download:
+    post:
+      summary: Download Report
+      operationId: postDownloadReport
+      tags:
+      - Report
+      description: To use this API, you need to send a POST request to the specified endpoint with the category key name and report key name from the Fetch Supported Reports API. The request body should contain the timezone and the filters for the report. Each filter should have a key name and a value. The key names should be according to the key name given in Fetch Supported Reports API. The values for these keys should be replaced with your actual values in the same format as given in sample_values of Fetch Supp
+      parameters:
+      - name: category
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: report
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              timezone: Asia/Riyadh
+              filters:
+              - key_name: hub
+                value: Hub27
+              - key_name: date_range
+                value:
+                - '2023-11-29'
+                - '2023-12-04'
+              - key_name: order_status
+                value: picked
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/reports/archived/{category}/{report}/download:
+    post:
+      summary: Download Archived Report
+      operationId: postDownloadArchivedReport
+      tags:
+      - Report
+      description: Download Archived Reports Overview This API allows you to download archived reports with specific granularity (monthly). Archived reports contain historical data that has been moved to archive status and can be accessed for compliance or historical analysis purposes. Endpoint POST {{base_url}}/sales-channel/public/v1/reports/archived/:category/:report/download Path Parameters Parameter Type Required Description Example category string Yes The category key name of the report fulfilment report str
+      parameters:
+      - name: category
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: report
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              granularity: month
+              month: 12-2024
+      responses:
+        '200':
+          description: Successful response
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
