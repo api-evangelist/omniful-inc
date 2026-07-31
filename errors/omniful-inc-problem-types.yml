@@ -1,0 +1,40 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.omniful.tech
+format: custom-envelope
+envelope:
+  is_success: false
+  status_code: <http status integer>
+  error:
+    code: <machine code, when present>
+    message: <human-readable message>
+notes: >-
+  Omniful does NOT use RFC 9457 problem+json. Errors are returned in a custom
+  JSON envelope. Below are error responses observed verbatim in the provider's
+  published Postman collection saved responses (docs.omniful.tech). Machine
+  `code` is present on some responses (e.g. REQUEST_INVALID) but many validation
+  errors carry only a `message`.
+problems:
+- status: 400
+  code: REQUEST_INVALID
+  title: Request invalid
+  example_message: This order has not been packed yet.
+- status: 400
+  code: null
+  title: Validation error
+  example_messages:
+  - Email cannot be empty
+  - Order Already Exist
+  - Invalid hub code.
+  - Purchase order for this hub is not enabled. Please enable purchase order settings to proceed.
+  - invalid seller hub
+  - phone or email is required
+  - reference id already exists
+  - shipment not found
+  - cancellation reason is required
+  - invalid object id
+  - 'failed to create shipments: bulk write exception (duplicate key on tenant_id/seller_id/reference_id)'
+- status: 403
+  code: null
+  title: Not authorised
+  example_message: You are not authorised to perform this action

@@ -1,0 +1,5001 @@
+openapi: 3.0.3
+info:
+  title: Omniful Integration APIs
+  version: v1
+  description: Omniful unified supply chain and fulfillment platform integration APIs (Order Management, Warehouse/Inventory,
+    Returns, Purchase Orders, Shipment/TMS, Webhooks). Derived faithfully from the provider-published Postman collection at
+    docs.omniful.tech; paths, methods, parameters, and request examples are as published, response schemas are not enumerated
+    in the source.
+  contact:
+    url: https://docs.omniful.tech
+servers:
+- url: https://prodapi.omniful.com
+security:
+- bearerAuth: []
+tags:
+- name: Orders
+- name: Orders (V2)
+- name: Shipment
+- name: SKUs
+- name: SKUs (V2)
+- name: Inventory
+- name: Returns
+- name: Purchase Order
+- name: POS
+- name: Customers
+- name: Return to Sender
+- name: Stock Transfer Request
+- name: Stock Transfer Order
+- name: Webhooks
+- name: Seller Integrations
+- name: Courier Partners
+- name: Shipment Orders
+- name: Pickup Locations
+- name: Packaging Material
+- name: Seller and Sales Channel APIs
+- name: Seller
+- name: Hubs
+- name: Return Requests
+- name: Return To Sender
+- name: Cycle Count
+- name: Billing
+- name: Report
+- name: Return Orders
+- name: Return Orders (V2)
+- name: Shipping Accounts
+- name: Background Jobs
+- name: Packaging Materials
+- name: Tenant APIs
+- name: Shipments
+- name: Webhook
+paths:
+  /sales-channel/public/v1/orders:
+    post:
+      summary: Create Order
+      operationId: postCreateOrder
+      tags:
+      - Orders
+      description: 📌 Create Order API Overview The Create Order API allows users to place new orders in Omniful by providing
+        order details, customer information, shipping and billing addresses, invoice details, and payment information. 📝 Request
+        Body Parameters Key Data Type Description Required order_id string Must be a globally unique identifier for the order
+        (e.g., "order_0008"). Cannot be reused if the order is deleted. ✅ Yes order_alias string Secondary identifier for
+        tracking in external systems (e.g., ERP o
+      requestBody:
+        content:
+          application/json:
+            example:
+              shipment_type: omniful_generated
+              order_id: order_no__1
+              order_alias: order_omniful-alias
+              hub_code: locoff
+              order_items:
+              - sku_code: UT-TSHIRT-WHT-S-17
+                name: iPhone 15 Pro
+                display_price: 799
+                selling_price: 699
+                is_substituted: false
+                quantity: 1
+                tax_percent: 10
+                tax: 69.9
+                unit_price: 699
+                subtotal: 699
+                total: 768.9
+                discount: 100
+                tax_inclusive: true
+              billing_address:
+                address1: 123 Al-Masjid Al-Haram Street
+                address2: Near Al-Faisaliah Tower
+                city: Riyadh
+                country: Saudi Arabia
+                first_name: John
+                last_name: Doe
+                phone: +966-11-234-5678
+                state: Riyadh
+                zip: '11564'
+                area: Al Olaya
+                district: Riyadh
+                street: Kings Road
+                state_code: RIY
+                country_code: SA
+                latitude: 24.7136
+                longitude: 46.6753
+                national_address_code: code
+              shipping_address:
+                address1: 456 King Abdulaziz Road
+                address2: Near Kingdom Centre
+                city: Jeddah
+                country: Saudi Arabia
+                first_name: Jane
+                last_name: Smith
+                phone: +966-12-345-6789
+                state: Makkah
+                zip: '21577'
+                area: Al Olaya
+                district: Riyadh
+                street: Kings Road
+                state_code: MKA
+                country_code: SA
+                latitude: 21.4225
+                longitude: 39.8262
+                national_address_code: code
+              invoice:
+                currency: USD
+                subtotal: 699
+                shipping_price: 0
+                shipping_refund: 0
+                tax: 69.9
+                discount: 100
+                total: 768.9
+                total_paid: 768.9
+                total_due: 0
+                total_refunded: 0
+                payment_mode: Credit Card
+                tax_percent: 10
+                shipping_tax: 0
+                sub_total_tax_inclusive: true
+                sub_total_discount_inclusive: true
+                shipping_tax_inclusive: false
+                shipping_discount_inclusive: false
+              customer:
+                id: 66ced351ffed27dec7c4072a
+                first_name: John
+                last_name: Doe
+                mobile: '1234567890'
+                mobile_code: '+1'
+                email: john.doe@example.com
+                avatar: https://example.com/avatar.jpg
+                gender: male
+              labels:
+              - label1
+              - label2
+              - label3
+              slot:
+                delivery_date: '18122024'
+                start_time: 1100
+                end_time: 1500
+              payment_method: prepaid
+              delivery_type: normal_delivery
+              is_cash_on_delivery: false
+              note: Please deliver during weekdays
+              type: b2b
+              external_fields:
+              - key: order_id
+                value: '12345'
+              - key: customer_name
+                value: John Doe
+              - key: status
+                value: shipped
+              cancel_order_after_seconds: 30
+              attachments:
+              - name: Bill
+                description: Bill description
+                url: http://omniful-local-uploads.s3.eu-central-1.localstack.oceaninfra.localhost/orders/orders/attachments/98bf916bcb364c1656b0aca4a103b5ea71780922501.jpeg
+                mime_type: image/jpeg
+                entity: invoice
+      responses:
+        '200':
+          description: Successful response
+    put:
+      summary: Update Order
+      operationId: putUpdateOrder
+      tags:
+      - Orders
+      description: 📌 Update Order API - Overview The Update Order API allows users to modify the details of an existing order
+        that was previously placed. This API can be used to update various order attributes, such as order items, shipping
+        details, billing information, and customer details. Users can update an order only if it is not in the "packed" state.
+        Once an order reaches the packed stage, further modifications using this API are restricted. This API ensures flexibility
+        in managing orders before final proce
+      requestBody:
+        content:
+          application/json:
+            example:
+              order_id: order_0003
+              hub_code: Shubhra001
+              order_items:
+              - sku_code: iPhone 15 Pro
+                name: iPhone 15 Pro
+                display_price: 799
+                selling_price: 699
+                is_substituted: false
+                quantity: 2
+                tax_percent: 10
+                tax: 69.9
+                unit_price: 699
+                subtotal: 699
+                total: 768.9
+                discount: 100
+                tax_inclusive: true
+              billing_address:
+                address1: 123 Main Street
+                city: New York
+                country: United States
+                first_name: John
+                last_name: Doe
+                phone: 123-456-7890
+                state: NY
+                zip: '10001'
+                state_code: NY
+                country_code: US
+                latitude: 40.7128
+                longitude: -74.006
+                national_address_code: code
+              shipping_address:
+                address1: 456 Elm Street
+                city: Los Angeles
+                country: United States
+                first_name: Jane
+                last_name: Smith
+                phone: 987-654-3210
+                state: CA
+                zip: '90001'
+                state_code: CA
+                country_code: US
+                latitude: 34.0522
+                longitude: -118.2437
+                national_address_code: code
+              order_created_at: '2023-07-28T09:00:00Z'
+              invoice:
+                currency: USD
+                subtotal: 699
+                shipping_price: 0
+                shipping_refund: 0
+                tax: 69.9
+                discount: 100
+                total: 768.9
+                total_paid: 768.9
+                total_due: 0
+                total_refunded: 0
+                payment_method: Credit Card
+                tax_percent: 10
+                shipping_tax: 0
+                sub_total_tax_inclusive: true
+                sub_total_discount_inclusive: true
+                shipping_tax_inclusive: false
+                shipping_discount_inclusive: false
+              customer:
+                first_name: John
+                last_name: Doe
+                mobile: '1234567890'
+                mobile_code: '+1'
+                email: john.doe@example.com
+                avatar: https://example.com/avatar.jpg
+                gender: male
+              shipment:
+                shipping_partner_name: CourierX
+                shipping_partner_tag: courierx123
+                awb_number: AWB-456
+                awb_label: https://example.com/awb-label.jpg
+                tracking_link: https://example.com/tracking/456
+                shipment_method: auto-ship
+              payment_method: prepaid
+              is_cash_on_delivery: false
+              note: Please deliver during weekdays
+              external_fields:
+              - key: order_id_1
+                value: '12347'
+              - key: customer_name
+                value: John Doe
+              cancel_order_after_seconds: 30
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/invoice/{order_id}:
+    put:
+      summary: Update Order Invoice
+      operationId: putUpdateOrderInvoice
+      tags:
+      - Orders
+      description: 📌 Update Order Invoice API - Overview The Update Order Invoice API allows users to modify the invoice details
+        of a previously placed order. This API is useful when adjustments or modifications are required in the invoice amount,
+        tax details, discounts, payment information, or other financial components of an order. Users can use this API to
+        ensure that the invoice reflects the correct pricing and charges before final processing or fulfillment. To successfully
+        update an invoice, all the fields fr
+      parameters:
+      - name: order_id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json: {}
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/orders/{order_id}/attachments:
+    put:
+      summary: Update Order Attachments
+      operationId: putUpdateOrderAttachments2
+      tags:
+      - Orders
+      description: 'Overview Updates attachments for an existing order. Use this request to add or update attachment metadata
+        for the specified order, such as invoice or order. Endpoint PUT {{base_url}}/public/v1/orders/{{order_id}}/attachments
+        Authentication This request uses the configured access token variable: {{access_token}} Validation Notes The attachments
+        array can contain a maximum of 10 items. Path Parameters Parameter Type Required Description order_id string Yes The
+        unique identifier of the order whose '
+      parameters:
+      - name: order_id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              attachments:
+              - name: Bill
+                description: Bill description
+                url: http://omniful-local-uploads.s3.eu-central-1.localstack.oceaninfra.localhost/orders/orders/attachments/98bf916bcb364c1656b0aca4a103b5ea71780922501.jpeg
+                mime_type: image/jpeg
+                entity: order
+              - name: Bill 2
+                description: Bill 2 description
+                url: http://omniful-local-uploads.s3.eu-central-1.localstack.oceaninfra.localhost/orders/orders/attachments/98bf916bcb364c1656b0aca4a103b5ea71780922501.jpeg
+                mime_type: image/jpeg
+                entity: invoice
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/orders/{order_id}/cancel:
+    put:
+      summary: Cancel Order
+      operationId: putCancelOrder
+      tags:
+      - Orders
+      description: 📌 Overview The Cancel Order API allows users to cancel an existing order by providing a cancellation reason.
+        Field Type Required Description cancel_reason string ✅ Yes Reason for canceling the order.
+      parameters:
+      - name: order_id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              cancel_reason: Not needed now.
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/orders/{order_id}/approve:
+    put:
+      summary: Approve Order
+      operationId: putApproveOrder
+      tags:
+      - Orders
+      description: 📌 Approve Order API - Overview The Approve Order API is used to manually approve orders that require user
+        authorization before processing. This API ensures that orders needing validation, review, or confirmation are not
+        automatically processed without approval. Once an order is approved, it can proceed to the next stage in the fulfillment
+        workflow, such as packing and shipping.
+      parameters:
+      - name: order_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/seller/orders:
+    get:
+      summary: Get Seller Orders (⚠️ To be deprecated on 30-07-2026)
+      operationId: getGetSellerOrdersToBeDeprecatedOn30072026
+      tags:
+      - Orders
+      description: 📌 Get Seller Orders API - Overview The Get Seller Orders API allows users to retrieve a list of all orders
+        for a specific seller who has integrated a Custom Integration on their dashboard. This API enables sellers to fetch
+        and manage orders placed within the last three months, providing real-time visibility into their order history. It
+        is useful for tracking order statuses, processing fulfillment, and analyzing order trends over time. 📝 Response Body
+        Parameters Field Data Type Description Always
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/seller/orders/{order_id}:
+    get:
+      summary: Get Seller Order By OrderID
+      operationId: getGetSellerOrderByOrderid
+      tags:
+      - Orders
+      description: 📌 Get Seller Order by Order ID API - Overview The Get Seller Order by Order ID API allows users to fetch
+        details of a single order for a seller using the Omniful-generated Order ID (omniful_order_id). This API is particularly
+        useful for retrieving order details that were not placed through the Custom Sales Channel Integration. It provides
+        complete order information, including order items, customer details, billing and shipping addresses, and invoice details,
+        ensuring sellers have full visibility
+      parameters:
+      - name: order_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+    post:
+      summary: Create Return Request
+      operationId: postCreateReturnRequest
+      tags:
+      - Returns
+      parameters:
+      - name: order_id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              order_id: '10456114397478'
+              return_reason: Damaged and Wrong Items-reject
+              hub_code: '132'
+              order_items:
+              - sku_code: '8904355400626'
+                return_quantity: 1
+                return_reasons:
+                - reason: Damaged
+                  quantity: 1
+              return_request_id: RO12348372969
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/orders/{order_id}/logs:
+    get:
+      summary: Get Order Logs (⚠️ To be deprecated on 30-07-2026)
+      operationId: getGetOrderLogsToBeDeprecatedOn30072026
+      tags:
+      - Orders
+      description: '📌 Get Order Logs API – Overview The Get Order Logs API allows users to retrieve detailed logs for a specific
+        order using its Order ID. It provides real-time insights into the order’s lifecycle within the warehouse, including:
+        Status updates Fulfillment progress Modifications made to the order This API is particularly useful for: Tracking
+        order history Troubleshooting operational issues Ensuring seamless order management Response Body Parameters Field
+        Data Type Description Always Included is_succ'
+      parameters:
+      - name: order_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/seller/orders/{system_order_id}/logs:
+    get:
+      summary: Get Seller Order Logs
+      operationId: getGetSellerOrderLogs
+      tags:
+      - Orders
+      description: '📌 Get Order Logs API – Overview The Get Order Logs API allows users to retrieve detailed logs for a specific
+        order using System Order ID. It provides real-time insights into the order’s lifecycle within the warehouse, including:
+        Status updates Fulfillment progress Modifications made to the order This API is particularly useful for: Tracking
+        order history Troubleshooting operational issues Ensuring seamless order management Response Body Parameters Field
+        Data Type Description Always Included is_s'
+      parameters:
+      - name: system_order_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/orders/{order_id}/shipping_address:
+    put:
+      summary: Update Shipping Address
+      operationId: putUpdateShippingAddress
+      tags:
+      - Orders
+      description: 📌 Update Shipping Address API – Overview The Update Shipping Address API allows users to modify the shipping
+        address details of an order until it reaches the shipped state. This API provides flexibility in updating recipient
+        details, address, and contact information, helping Prevent delivery issues, Ensure accurate fulfillment, Maintain
+        customer satisfaction. Users can only update the shipping address associated with a specific Order ID. Users can only
+        update the shipping address associated with
+      parameters:
+      - name: order_id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              address1: 123 Main St
+              address2: Apt 4B
+              city: New York
+              country: USA
+              first_name: John
+              last_name: Doe
+              phone_number: '7044063694'
+              country_calling_code: '+91'
+              country_code: IN
+              state: NY
+              area: Manhattan
+              district: Downtown
+              street: Broadway
+              zip: '10001'
+              state_code: NY
+              latitude: 40.7128
+              longitude: -74.006
+              national_address_code: nac_1234
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/orders/{order_id}/shipping_details:
+    put:
+      summary: Update Shipping Details
+      operationId: putUpdateShippingDetails
+      tags:
+      - Orders
+      description: 📌 Update Shipping Details API - Overview The Update Shipping Details API allows users to modify the shipping
+        details for an order until it reaches the shipped state. This API ensures flexibility in updating recipient details,
+        address, and contact information for a particular order, preventing delivery issues and ensuring accurate fulfillment.
+        Users can only update the shipping address associated with a specific Order ID. Fields to be updated cannot be empty.
+        No more than two fields can be update
+      parameters:
+      - name: order_id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              fields_to_update:
+              - slot
+              - address
+              address:
+                address1: 129 Main Street
+                address2: Apt 4B
+                city: New York
+                country: United States
+                first_name: John
+                last_name: Doe
+                phone: +1 212-555-1234
+                country_calling_code: '+1'
+                country_code: US
+                state: New York
+                area: Manhattan
+                district: Downtown
+                zip: '10001'
+                state_code: NY
+                latitude: 40.712776
+                longitude: -74.005974
+                email: johndoe@example.com
+                national_address_code: nac_1234
+              slot:
+                delivery_date: '12012026'
+                start_time: 1500
+                end_time: 2059
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v2/seller/orders:
+    get:
+      summary: Get Orders
+      operationId: getGetOrders
+      tags:
+      - Orders (V2)
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v2/seller/orders/search:
+    get:
+      summary: Get Order Search
+      operationId: getGetOrderSearch
+      tags:
+      - Orders (V2)
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/orders/{order_id}/shipment:
+    post:
+      summary: Trigger Shipment
+      operationId: postTriggerShipment
+      tags:
+      - Shipment
+      description: '📌 Create Shipment API – Overview The Create Shipment API is used to generate shipments for orders in Omniful.
+        This API allows users to: Assign a shipping partner Generate tracking numbers (AWB) Set shipment details Note: The
+        API only supports orders with the shipment type set to Omniful Generated. Orders with other shipment types are not
+        eligible for shipment creation through this API. Request Body Parameters Field Data Type Description Required number_of_boxes
+        number Total number of packages to'
+      parameters:
+      - name: order_id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              number_of_boxes: 1
+              weight: 1.2
+              remarks: Please handle shipment carefully,
+      responses:
+        '200':
+          description: Successful response
+    put:
+      summary: Add Shipment Details
+      operationId: putAddShipmentDetails
+      tags:
+      - Shipment
+      description: '📌 Add Shipment Details API – Overview The Add Shipment Details API allows users to add existing shipment
+        details for an order. This API is typically used to update shipment-related information such as: Tracking numbers
+        (AWB) Courier service details Delivery tracking URLs 📌 Key Information This API applies only to orders where the shipment
+        type is either: sales_channel_generated sales_channel_notified If the shipment was created by the sales channel, users
+        can update the shipment details as requi'
+      parameters:
+      - name: order_id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              tracking_url: https://tracking.fedex.com/123456789
+              awb_number: AWB123456787
+              awb_label: https://tracking.fedex.com/123456789.pdf
+              package_details:
+                number_of_boxes: 1
+                weight: 1
+                dimensions:
+                  length: 30
+                  breadth: 20
+                  height: 15
+                remarks: Handle with care
+              courier_partner:
+                tag: dhl_express
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/orders/{order_id}/shipment/status:
+    put:
+      summary: Update Shipment Status
+      operationId: putUpdateShipmentStatus
+      tags:
+      - Shipment
+      description: '📌 Update Shipment Status API - Overview The Update Shipment Status API allows users to update the shipment
+        status of an order, ensuring real-time tracking updates for better shipment visibility. 📌 Supported Shipment Types:
+        Manual Shipment (omniful_generated) – Shipments created manually by users. Sales Channel Generated Shipment (sales_channel_generated)
+        – Shipments generated by the sales channel system. Sales Channel Notified Shipment (sales_channel_notified) – Shipments
+        updated based on notifi'
+      parameters:
+      - name: order_id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              shipment_status: dispatched
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/master/skus:
+    get:
+      summary: Get Master Catalog SKUs (⚠️ To be deprecated on 30-07-2026)
+      operationId: getGetMasterCatalogSkusToBeDeprecatedOn30072026
+      tags:
+      - SKUs
+      description: 📌 Overview The Get Master Catalog SKUs API retrieves all SKU details available in the Master Catalog (Seller
+        Catalog).
+      responses:
+        '200':
+          description: Successful response
+    post:
+      summary: Create Master Catalog SKUs
+      operationId: postCreateMasterCatalogSkus
+      tags:
+      - SKUs
+      description: '📌 Create Master SKU API – Overview The Create Master SKU API allows users to create a new SKU in the Master
+        Catalogue. This API is used to add products to the seller’s catalog with essential details such as SKU code, pricing,
+        attributes, and classification. ✅ Required Fields for Creating a Master SKU sku_code → Unique identifier for the SKU
+        (e.g., "SKU-TV-123") type → SKU type ("simple" or "bundle") status → SKU lifecycle status (must be one of: all, live,
+        ready_to_list, under_review, draft, un_'
+      requestBody:
+        content:
+          application/json: {}
+      responses:
+        '200':
+          description: Successful response
+    put:
+      summary: Update Master Catalog SKUs
+      operationId: putUpdateMasterCatalogSkus
+      tags:
+      - SKUs
+      description: '📌 Overview The Update Master SKU API allows users to update the SKU in the Master Catalog. This API helps
+        in updating products to the seller’s master catalog with essential details such as SKU code, pricing, and attributes.
+        📌 Required fields for Updating a Master SKU: sku_code: A unique code that identifies the SKU, for example, "SKU-TV-123"
+        type: Specifies the type of the SKU, which can be "simple" or "bundle". Here''s the documentation for each field in
+        the provided JSON: Field Data Type Descri'
+      requestBody:
+        content:
+          application/json: {}
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/master/skus/kits:
+    post:
+      summary: Create Master Catalog Kit
+      operationId: postCreateMasterCatalogKit
+      tags:
+      - SKUs
+      requestBody:
+        content:
+          application/json:
+            example:
+            - sku_code: MASTER-KIT-52
+              name: Master Kit 52
+              description: This is a sample product description.
+              retail_price: 49.99
+              selling_price: 39.99
+              currency: SAR
+              child_skus:
+              - seller_sku_code: sku-0016
+                quantity: 5
+              - seller_sku_code: sku-0017
+                quantity: 2
+      responses:
+        '200':
+          description: Successful response
+    put:
+      summary: Update Master Catalog Kit
+      operationId: putUpdateMasterCatalogKit
+      tags:
+      - SKUs
+      requestBody:
+        content:
+          application/json:
+            example:
+            - sku_code: MASTER-KIT-52
+              name: Master Kit 52
+              description: This is a sample product description.
+              retail_price: 48.99
+              selling_price: 38.99
+              currency: SAR
+              child_skus:
+              - seller_sku_code: sku-0016
+                quantity: 5
+              - seller_sku_code: sku-0017
+                quantity: 2
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v2/seller/master/skus:
+    get:
+      summary: Get Master Catalog SKUs
+      operationId: getGetMasterCatalogSkus
+      tags:
+      - SKUs (V2)
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/seller/inventory/hubs/{hub_code}:
+    get:
+      summary: Get Seller Hub Inventory
+      operationId: getGetSellerHubInventory
+      tags:
+      - Inventory
+      description: 📌 Get Seller Hub Inventory API - Overview The Get Seller Hub Inventory API retrieves inventory details
+        for all SKUs stored in a specific warehouse for a seller. This API helps sellers track stock levels, monitor availability,
+        and manage inventory efficiently at a single warehouse location.
+      parameters:
+      - name: hub_code
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/seller/inventory/hubs/{hub_code}/report:
+    get:
+      summary: Get Seller Hub Inventory Report of a Seller
+      operationId: getGetSellerHubInventoryReportOfASeller
+      tags:
+      - Inventory
+      description: '📌 Get Seller Hub Inventory Report API - Overview The Get Seller Hub Inventory Report API provides a detailed
+        inventory report of all SKUs stored at a specific hub for a seller. This report is sent to the webhook URL configured
+        in the Custom Sales Channel settings, allowing automated inventory tracking and real-time stock updates. Sample Webhook:
+        { "event_name": "inventory.report.event", "data": { "inventory_report_url": "https://omniful-production-uploads.s3.amazonaws.com/analytics/reports/downl'
+      parameters:
+      - name: hub_code
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/inventory/hubs/skus/{sku_code}:
+    get:
+      summary: Get Inventory for SKU Across All Hubs
+      operationId: getGetInventoryForSkuAcrossAllHubs
+      tags:
+      - Inventory
+      description: 📌 Get Inventory for SKU Across All Hubs API - Overview The Get All Hubs Inventory API retrieves inventory
+        details of a specific SKU across all mapped hubs. This API helps users track stock availability at multiple locations,
+        ensuring efficient inventory distribution and fulfillment management.Gives the Inventory of a SKU at all mapped hubs
+      parameters:
+      - name: sku_code
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/inventory/hubs/{hub_code}:
+    post:
+      summary: Post Hub Inventory
+      operationId: postPostHubInventory
+      tags:
+      - Inventory
+      description: '📌 Update Hub Inventory API - Overview The Update Hub Inventory API allows users to modify inventory levels
+        for specific SKUs at a given hub. 📌 Key Points to Consider: The hub must have location inventory turned off; otherwise,
+        this API will return a bad request. This API requires hub code and SKU details, including SKU code and quantity. 📌
+        Required Fields: hub_code (string) – Unique identifier of the hub where inventory needs to be updated. sku_detail
+        (array of objects, max length: 200) – List o'
+      parameters:
+      - name: hub_code
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              sku_detail:
+              - sku_code: SKU-TV-123
+                quantity: 100
+              - sku_code: samsung190
+                quantity: 1
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/inventory/hubs/{hub_code}/safety_stock:
+    put:
+      summary: Push Safety Stock
+      operationId: putPushSafetyStock
+      tags:
+      - Inventory
+      parameters:
+      - name: hub_code
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              sku_detail:
+              - sku_code: '67999801331808'
+                quantity: 101
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/return_orders/{id}/shipment:
+    post:
+      summary: Create Return Shipment
+      operationId: postCreateReturnShipment
+      tags:
+      - Returns
+      description: 'Endpoint Description This endpoint allows the user to create a shipment for a specific return order identified
+        by :id. It is used to update the shipment details associated with a return order, including tracking information and
+        package specifications. Request Body The request body must be in JSON format and should include the following parameters:
+        tracking_url (string): A URL that provides tracking information for the shipment. awb_number (string): The Air Waybill
+        number associated with the ship'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              tracking_url: https://tracking.fedex.com/123456789
+              awb_number: 1124ee1231231232123213
+              package_details:
+                number_of_boxes: 1
+                weight: 1
+                dimensions:
+                  length: 30
+                  breadth: 20
+                  height: 15
+                remarks: Handle with care
+              courier_partner:
+                tag: jandt
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/return_orders/{id}/shipment/status:
+    put:
+      summary: Update Return Shipment Status
+      operationId: putUpdateReturnShipmentStatus
+      tags:
+      - Returns
+      description: 'Update Shipment Status for Return Orders This endpoint allows you to update the shipment status of a specific
+        return order identified by its unique id. It is particularly useful for managing the logistics of returned items,
+        enabling the system to track the status of shipments effectively. Request Body The request body must be in JSON format
+        and should include the following parameter: shipment_status (string): The new status of the shipment. Following are
+        the allowed values: "picked_up" "return_t'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              shipment_status: return_to_origin
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/seller/return_orders/{id}/shipment:
+    post:
+      summary: Create Seller Return Shipment
+      operationId: postCreateSellerReturnShipment
+      tags:
+      - Returns
+      description: This API endpoint is used to create shipment for any return order of the seller.
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              tracking_url: https://tracking.fedex.com/123456789
+              awb_number: '1732121312223122'
+              package_details:
+                number_of_boxes: 1
+                weight: 1
+                dimensions:
+                  length: 30
+                  breadth: 20
+                  height: 15
+                remarks: Handle with care
+              courier_partner:
+                tag: jandt
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/seller/return_orders/{id}/shipment/status:
+    put:
+      summary: Update Seller Return Shipment
+      operationId: putUpdateSellerReturnShipment
+      tags:
+      - Returns
+      description: This API endpoint is used to update the status of shipment for any return order of the seller.
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              shipment_status: return_to_origin
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/orders/{order_id}/return_orders:
+    post:
+      summary: Create Return Order
+      operationId: postCreateReturnOrder
+      tags:
+      - Returns
+      description: '📌 Create Return Order API – Overview The Create Return Order API allows users to generate a customer return
+        order against the provided order_id. This API helps sellers and platforms record returned items, capture return reasons,
+        and apply any additional charges related to the return. 📌 Required Fields return_order_id → Unique identifier for
+        the return order. return_items → Must include at least one returned item with: seller_sku_code return_quantity 📌 Request
+        Body Parameters Field Data Type Desc'
+      parameters:
+      - name: order_id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              return_order_id: RO1234561
+              return_items:
+              - sales_channel_item_id: iPhone 15 Pro
+                sales_channel_return_item_id: iPhone 15 Pro
+                seller_sku_code: iPhone 15 Pro
+                return_quantity: 1
+                return_reasons:
+                - reason: Damaged item
+                  quantity: 1
+                unit_price: 50.0
+                discount: 5.0
+                total: 90.0
+              additional_charges:
+              - type: cod_fee
+                cost: 5.0
+                tax_inclusive: true
+                tax_percentage: 10.0
+                is_applied: true
+              - type: return_shipment_fee
+                cost: 8.0
+                tax_inclusive: false
+                tax_percentage: 5.0
+                is_applied: true
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/returns/:
+    post:
+      summary: Create Return Requests
+      operationId: postCreateReturnRequests
+      tags:
+      - Returns
+      description: '📌 Create Return Request API – Overview The Create Return Request API is used to initiate a return request
+        for orders that are in the delivered state. This API ensures efficient tracking and management of returned items by
+        capturing essential details such as order ID, reasons for return, and hub information. 📌 Key Points to Consider The
+        order must be in the delivered state before a return request can be created. Each return request must include: order_id
+        return_reason hub_code (if applicable) ord'
+      requestBody:
+        content:
+          application/json:
+            example:
+              order_id: shubhra-0009
+              return_reason: Damaged and Wrong Item
+              hub_code: Shubhra001
+              order_items:
+              - sku_code: iPhone 15 Pro
+                return_quantity: 1
+                return_reasons:
+                - reason: Damaged
+                  quantity: 1
+                - reason: Wrong Item
+                  quantity: 1
+              return_request_id: omniful-1037
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/returns:
+    get:
+      summary: Get Return Requests
+      operationId: getGetReturnRequests
+      tags:
+      - Returns
+      description: '📌 Get Return Request API - Overview The Get Return Request API allows users to retrieve return requests
+        for orders based on request status, order ID, and return order ID. 📌 Filters Available: order_id – Fetch return requests
+        for a specific order. return_order_id – Retrieve details of a specific return request. status – Filter return requests
+        by status. created_from - Filter return request by date of creation By default, return requests will be returned for
+        the last 3 months only. The supported d'
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/returns/reject:
+    put:
+      summary: Reject Return Requests
+      operationId: putRejectReturnRequests
+      tags:
+      - Returns
+      description: 📌 Reject Return Request API - Overview The Reject Return Request API allows users to decline a return request
+        for a specific return order ID. This API ensures that return requests can be managed efficiently by rejecting invalid
+        or non-eligible returns.
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/returns/test-1026/approve:
+    put:
+      summary: Approve Return Request
+      operationId: putApproveReturnRequest
+      tags:
+      - Returns
+      description: '📌 Approve Return Request API - Overview The Approve Return Request API is used to approve return requests
+        for an order based on its return order ID. This API allows users to approve full or partial returns and process refunds
+        accordingly. 📌 Important Fields: Field Type Description order_id string Unique identifier for the order. order_items
+        array of objects List of items being approved for return. order_items.sku_code string SKU code of the item being returned.
+        order_items.return_quantity number'
+      requestBody:
+        content:
+          application/json:
+            example:
+              order_id: test-1026
+              order_items: []
+              total_refundable_amount: 1
+              approval_mode: full
+              return_request_id: test-1026
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/return_orders/return_orders:
+    get:
+      summary: Get Return Orders
+      operationId: getGetReturnOrders
+      tags:
+      - Returns
+      description: 'Description: Retrieve a list of return orders with support for filtering by individual return order ID,
+        multiple return order IDs, or the original sales channel order ID. Ideal for listing or searching return orders in
+        bulk. Query Parameters Parameter Type Description return_order_id string Fetch return order by single ID return_order_ids
+        array Fetch multiple return orders by ID list seller_sales_channel_order_id string Fetch by the external seller''s
+        order ID'
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/return_orders/{return_order_id}:
+    get:
+      summary: Get Return Order by ID
+      operationId: getGetReturnOrderById
+      tags:
+      - Returns
+      description: 'Endpoint Description: Fetch complete details of a single return order by its unique ID, including customer
+        info, returned items, status, pickup address, QC details, and shipment information. Path Parameters Parameter Type
+        Description return_order_id string The unique return order ID'
+      parameters:
+      - name: return_order_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/seller/orders/{order_id}/{return_} request_id/approve:
+    put:
+      summary: Approve Return Request
+      operationId: putApproveReturnRequest2
+      tags:
+      - Returns
+      parameters:
+      - name: order_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: return_
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              order_id: '10455642964262'
+              order_items:
+              - sku_code: '132'
+                return_quantity: 1
+                return_reasons:
+                - reason: Damaged
+                  quantity: 1
+              total_refundable_amount: 100
+              approval_mode: full
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/seller/orders/{order_id}/reject:
+    put:
+      summary: Reject Return Request
+      operationId: putRejectReturnRequest
+      tags:
+      - Returns
+      parameters:
+      - name: order_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/seller/orders/{order_id}/return_order:
+    post:
+      summary: Create Return Order
+      operationId: postCreateReturnOrder2
+      tags:
+      - Returns
+      parameters:
+      - name: order_id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              return_order_id: RO12345678931
+              return_items:
+              - sales_channel_item_id: '17032658518311'
+                sales_channel_return_item_id: '17032658518311'
+                seller_sku_code: mohi-sku-5-shopify-100-100
+                return_quantity: 1
+                return_reasons:
+                - reason: Damaged item - test
+                  quantity: 1
+                unit_price: 100.0
+                discount: 10.0
+                total: 90.0
+              additional_charges:
+              - type: cod_fee
+                cost: 0.0
+                tax_inclusive: true
+                tax_percentage: 10.0
+                is_applied: true
+              - type: return_shipment_fee
+                cost: 8.0
+                tax_inclusive: false
+                tax_percentage: 5.0
+                is_applied: true
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/seller/return_orders:
+    get:
+      summary: Get Seller Return Order (To Be Deprecated)
+      operationId: getGetSellerReturnOrderToBeDeprecated
+      tags:
+      - Returns
+      description: This API endpoint is used for getting all Return Orders of the seller.
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/seller/return_requests:
+    get:
+      summary: Get Seller Return Requests
+      operationId: getGetSellerReturnRequests
+      tags:
+      - Returns
+      description: '📌 Get Seller Return Request API - Overview The Get Seller Return Request API allows users to retrieve
+        return requests for orders based on request status, order ID, and return order ID. 📌 Filters Available: order_id –
+        Fetch return requests for a specific order. status – Filter return requests by status. created_from - Filter return
+        request by date of creation created_to - Filter return request by date of creation By default, return requests will
+        be returned for the last 3 months only. The support'
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v2/seller/return_orders:
+    get:
+      summary: Get Seller Return Orders
+      operationId: getGetSellerReturnOrders
+      tags:
+      - Returns
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/purchase_orders/hubs/{hub_code}:
+    post:
+      summary: Create Purchase Order
+      operationId: postCreatePurchaseOrder
+      tags:
+      - Purchase Order
+      description: 📌 Create Purchase Order API – Overview The Create Purchase Order API allows users to generate new purchase
+        orders for suppliers, enabling streamlined procurement and inventory management. 📌 Key Points to Consider To route
+        the purchase order to a specific hub, provide the hub_code in the path parameter. A purchase order must include at
+        least one valid SKU in purchase_order_items. Currency must be defined using a 3-letter ISO code (e.g., SAR for Saudi
+        Riyal, USD for US Dollar). ✅ Required Fields s
+      parameters:
+      - name: hub_code
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              supplier_email: shubhra@omniful.com
+              supplier_code: At-H
+              over_receive_allowed: true
+              purchase_order_items:
+              - sku_code: samsung190
+                quantity: 10
+                unit_price: 10.4
+              remark: Ritik
+              reference_purchase_order_id: po-ref-01
+              currency: SAR
+      responses:
+        '200':
+          description: Successful response
+    get:
+      summary: Get Purchase Orders
+      operationId: getGetPurchaseOrders
+      tags:
+      - Purchase Order
+      description: '📌 Get Purchase Order API - Overview The Get Purchase Order API allows users to retrieve all purchase orders
+        for a specific hub using various query filters. 📌 Filters Available: Date Range – Fetch purchase orders within a specific
+        time period. Status – Filter purchase orders based on their current processing status. Purchase Order Number – Retrieve
+        details of a specific purchase order. This API helps users track, manage, and analyze purchase orders efficiently
+        within the hub.'
+      parameters:
+      - name: hub_code
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+    put:
+      summary: Update Purchase Order
+      operationId: putUpdatePurchaseOrder
+      tags:
+      - Purchase Order
+      description: 📌 Important Fields for Purchase Order Field Data Type Description Required remark string Additional notes
+        or remarks related to the purchase order ❌ No awb string Air Waybill number – a unique identifier assigned to a shipment
+        for tracking purposes ❌ No purchase_order_id string Unique identifier for the purchase order ✅ Yes sku_code string
+        SKU code of the item included in the purchase order ✅ Yes quantity string Quantity of the item being purchased ❌ No
+        unit_price string Unit price of the item i
+      parameters:
+      - name: hub_code
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              remark: ''
+              awb: ''
+              purchase_order_id: PO-SA1-5
+              over_receive_allowed: true
+              purchase_order_items:
+              - sku_code: '506308'
+                quantity: 270
+                unit_price: 31
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/purchase_orders/hubs/{hub_code}/purchase_order/{purchase_order_id}:
+    get:
+      summary: Get Single Purchase Order
+      operationId: getGetSinglePurchaseOrder
+      tags:
+      - Purchase Order
+      description: 📌 Get Single Purchase Order API - Overview The Get Single Purchase Order API retrieves the details of a
+        specific purchase order using its purchase order ID for the provided hub ID. This API helps users access complete
+        purchase order information. Field Name Type Description purchase_order_id String The unique ID for this purchase order.
+        order_details.quantity Integer The total number of items ordered in this purchase order. order_details.grn_pass_quantity
+        Integer The number of items that passed i
+      parameters:
+      - name: hub_code
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: purchase_order_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/suppliers:
+    post:
+      summary: Create Supplier
+      operationId: postCreateSupplier
+      tags:
+      - Purchase Order
+      description: 📌 Important Fields for Supplier Field Data Type Description Required name string The name of the supplier
+        ✅ Yes contact_person string The contact person associated with the supplier ❌ No email string The supplier’s email
+        address ✅ Yes phone string The supplier’s phone number ✅ Yes code string Supplier code; if left empty, the system
+        will automatically assign a new one ❌ No
+      requestBody:
+        content:
+          application/json:
+            example:
+              name: Rg1
+              contact_person: Shubhra
+              email: shubhra@omniful.com
+              code: At-H
+              phone: '9876543212'
+      responses:
+        '200':
+          description: Successful response
+    get:
+      summary: Get All Suppliers
+      operationId: getGetAllSuppliers
+      tags:
+      - Purchase Order
+      description: Get All the suppilers
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/pos/order:
+    post:
+      summary: Create POS Order
+      operationId: postCreatePosOrder
+      tags:
+      - POS
+      description: 'Query Params should_not_adjust_inventory (string): Set to true if you do not want to adjust inventory;
+        otherwise, the inventory will always be adjusted. Example: {{base_url}}/sales-channel/public/v1/pos/order?should_not_adjust_inventory=true
+        Order Details order_id (String) Unique identifier for the order. order_alias (String) Alias or alternate identifier
+        for the order. customer (Object) Details of the customer placing the order. first_name (String): First name of the
+        customer. last_name (String'
+      requestBody:
+        content:
+          application/json:
+            example:
+              order_id: pos-test-1
+              order_alias: ORD_ALIAS_123
+              customer:
+                id: CUST123
+                first_name: John
+                last_name: Doe
+                mobile: '9876543210'
+                mobile_code: '+1'
+                country_code: US
+                email: john.doe@example.com
+                avatar: https://example.com/avatar.jpg
+                gender: male
+              hub_code: ONLS
+              order_created_at: '2023-07-28T09:00:00Z'
+              order_items:
+              - sales_channel_sku_id: SKU123
+                seller_sku_code: SELLER123
+                sales_channel_order_item_id: ITEM001
+                display_price: 19.99
+                selling_price: 15.99
+                quantity: 2
+                tax_percent: 5
+                tax: 1.6
+                unit_price: 30.99
+                total: 61.98
+                subtotal: 59.98
+                tax_inclusive: true
+                discount: 5.0
+              invoice:
+                sc_invoice_number: INV123456
+                currency: USD
+                subtotal: 59.98
+                shipping_tax: 1.5
+                sub_total_tax_inclusive: true
+                sub_total_discount_inclusive: true
+                shipping_tax_inclusive: true
+                shipping_discount_inclusive: true
+                shipping_price: 5.0
+                shipping_refund: 0
+                tax: 3.6
+                tax_percent: 6
+                discount: 5.0
+                total: 69.98
+                total_paid: 70.0
+                total_due: 0
+                total_refunded: 0
+                payment_mode: credit_card
+                loyalty_discount: 2.0
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/pos/returns/order:
+    post:
+      summary: Create POS Return Order
+      operationId: postCreatePosReturnOrder
+      tags:
+      - POS
+      description: 'Return Order Details return_order_id (String) Unique identifier for the return order. order_id (String)
+        Original order''s identifier. return_order_alias (String) Alias or alternate identifier for the return order. hub_code
+        (String) Code identifying the hub related to the return order. customer (Object) Details of the customer returning
+        the order. id (String): Unique identifier for the customer. first_name (String): First name of the customer. last_name
+        (String): Last name of the customer. order_i'
+      requestBody:
+        content:
+          application/json:
+            example:
+              return_order_id: Pos-return-test-3
+              order_id: pos-test-3
+              return_order_alias: RO-123
+              hub_code: ONLS
+              customer:
+                id: CUST123
+                first_name: John
+                last_name: Doe
+                mobile: '9876543210'
+                mobile_code: '+91'
+                country_code: IN
+                email: john.doe@example.com
+                avatar: https://example.com/avatar.jpg
+                gender: male
+              order_items:
+              - seller_sku_code: SELLER123
+                return_reason: Defective
+                refunded_quantity: 1
+                returned_quantity: 2
+                uom: ea
+                discount: 10
+                total: 100
+                selling_price: 100
+                unit_price: 90
+              refund_status: pending
+              return_reason: wrong_items
+              invoice:
+                invoice_number: INV-123456
+                currency: USD
+                subtotal: 100.5
+                discount: 10
+                sub_total_tax_inclusive: true
+                sub_total_discount_inclusive: true
+                tax: 5.25
+                tax_percent: 5
+                total: 105.75
+                total_refunded: 20
+                payment_mode: Credit Card
+              order_created_at: '2023-07-28T09:00:00Z'
+              order_url: https://example.com/orders/789012
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/customers:
+    post:
+      summary: Create Customer
+      operationId: postCreateCustomer
+      tags:
+      - Customers
+      description: 'Required fields to create customer: first_name: First name of the customer. address: Nested object representing
+        customer''s address details. a. address1: Address line 1 b. city: City of the address c. country: Country of the address.
+        Optional Field : title : An optional field to specify the title of the individual. If provided, it must be one of
+        the supported titles.Supported Titles: Mr Mrs Ms Dr Prof Rev Hon Sir Lady Optional Field gender : An optional field
+        to specify the gender of the individu'
+      requestBody:
+        content:
+          application/json:
+            example:
+              title: Mr
+              first_name: Shubhra
+              last_name: Ghosh
+              email: shubhra.omniful@example14.com
+              mobile: '7075156612'
+              country_calling_code: '+91'
+              country_code: IN
+              gender: male
+              date_of_birth: '1990-01-01'
+              user_name: shubhra_ghosh
+              preferred_languages:
+              - en
+              - es
+              alternate_contact_number: 09876543211
+              nationality: Indian
+              address:
+                address1: 123 Main St
+                address2: Apt 101
+                city: Riyadh
+                country: SA
+                country_code: SA
+                state: Riyadh
+                zip: '10001'
+                default_address: true
+                national_address_code: ''
+              documents:
+              - type: passport
+                number: 4XEC5R67VT8BY
+                issue_country_code: SA
+                issue_date: '2015-06-19'
+                expiry_date: '2025-06-12'
+                urls:
+                - https://example.com/passport-front.jpg
+                - https://example.com/passport-back.jpg
+      responses:
+        '200':
+          description: Successful response
+    get:
+      summary: Get Customers
+      operationId: getGetCustomers
+      tags:
+      - Customers
+      description: 'InternalCustomer Object Field Data Type Description first_name String First name of the customer. last_name
+        String Last name of the customer. email String Email address of the customer. mobile String Mobile number of the customer.
+        country_calling_code String Country calling code for the mobile number. country_code String Country code of the customer''s
+        address. address Object Nested object representing customer''s address details. CustomerAddress Object (nested within
+        InternalCustomer) Field Data '
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/customers/{customer_id}:
+    get:
+      summary: Get Customer
+      operationId: getGetCustomer
+      tags:
+      - Customers
+      description: 'InternalCustomer Object Field Data Type Description first_name String First name of the customer. last_name
+        String Last name of the customer. email String Email address of the customer. mobile String Mobile number of the customer.
+        country_calling_code String Country calling code for the mobile number. country_code String Country code of the customer''s
+        address. address Object Nested object representing customer''s address details. CustomerAddress Object (nested within
+        InternalCustomer) Field Data '
+      parameters:
+      - name: customer_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+    put:
+      summary: Update Customer
+      operationId: putUpdateCustomer
+      tags:
+      - Customers
+      description: 'InternalCustomer Object Field Data Type Description first_name String First name of the customer. last_name
+        String Last name of the customer. email String Email address of the customer. mobile String Mobile number of the customer.
+        country_calling_code String Country calling code for the mobile number. country_code String Country code of the customer''s
+        address. address Object Nested object representing customer''s address details. CustomerAddress Object (nested within
+        InternalCustomer) Field Data '
+      parameters:
+      - name: customer_id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              first_name: Shubhra
+              last_name: Omniful
+              email: shubhra@omniful.com
+              mobile: '7044063691'
+              country_calling_code: '+91'
+              country_code: IN
+              documents:
+              - type: passport
+                number: 4XEC5R67VT8BY
+                issue_country_code: SA
+                issue_date: '2016-06-19'
+                expiry_date: '2026-06-12'
+                urls:
+                - https://example.com/passport-front.jpg
+                - https://example.com/passport-back.jpg
+              - type: driving_license
+                number: D5R67VT87BY
+                issue_country_code: SA
+                issue_date: '2015-06-19'
+                expiry_date: '2025-06-12'
+                urls:
+                - https://example.com/passport-front.jpg
+                - https://example.com/passport-back.jpg
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/return_to_sender/orders:
+    post:
+      summary: Create Order
+      operationId: postCreateOrder2
+      tags:
+      - Return to Sender
+      description: '⚠️ Important Notice: The "meta_data" field will be deprecated from the response of this API, effective
+        February 15, 2025. Please update your integrations to accommodate this change and ensure a smooth transition. 📌 Return-to-Sender
+        Order API - Overview The Return-to-Sender Order API is used to create return orders for SKUs that need to be sent
+        back due to expiration, quality check failures, or incorrect items received in a purchase order. 📌 Return Type Guidelines:
+        Supplier Returns: Set the type '
+      requestBody:
+        content:
+          application/json:
+            example:
+              order_id: rtv_to_supplier_1
+              hub_code: Shubhra001
+              recipient_details:
+                type: supplier
+                code: At-H
+              order_items:
+              - sku_code: iPhone 15 Pro
+                name: iPhone 15 Pro
+                display_price: 799
+                selling_price: 699
+                is_substituted: false
+                quantity: 1
+                tax_percent: 10
+                tax: 69.9
+                unit_price: 699
+                subtotal: 699
+                total: 768.9
+                discount: 100
+                tax_inclusive: true
+              billing_address:
+                address1: 123 Main Street
+                city: New York
+                country: United States
+                first_name: John
+                last_name: Doe
+                phone: 123-456-7890
+                state: NY
+                zip: '10001'
+                state_code: NY
+                country_code: US
+                latitude: 40.7128
+                longitude: -74.006
+                national_address_code: nac_1234
+              shipping_address:
+                address1: 456 Elm Street
+                city: Los Angeles
+                country: United States
+                first_name: Jane
+                last_name: Smith
+                phone: 987-654-3210
+                state: CA
+                zip: '90001'
+                state_code: CA
+                country_code: US
+                latitude: 34.0522
+                longitude: -118.2437
+                national_address_code: nac_1234
+              order_created_at: '2024-09-19T07:15:25.220Z'
+              invoice:
+                currency: USD
+                subtotal: 699
+                shipping_price: 0
+                shipping_refund: 0
+                tax: 69.9
+                discount: 100
+                total: 768.9
+                total_paid: 768.9
+                total_due: 0
+                total_refunded: 0
+                payment_method: Credit Card
+                tax_percent: 10
+                shipping_tax: 0
+                sub_total_tax_inclusive: true
+                sub_total_discount_inclusive: true
+                shipping_tax_inclusive: false
+                shipping_discount_inclusive: false
+              customer:
+                first_name: John
+                last_name: Doe
+                mobile: '1234567890'
+                mobile_code: '+1'
+                email: john.doe@example.com
+                avatar: https://example.com/avatar.jpg
+                gender: male
+              shipment:
+                shipping_partner_name: CourierX
+                shipping_partner_tag: courierx123
+                awb_number: AWB-456
+                awb_label: https://example.com/awb-label.jpg
+                tracking_link: https://example.com/tracking/456
+              payment_method: prepaid
+              is_cash_on_delivery: false
+              note: Please deliver during weekdays
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/orders/sto/requests:
+    post:
+      summary: Create Stock Transfer Request
+      operationId: postCreateStockTransferRequest
+      tags:
+      - Stock Transfer Request
+      description: 'Required Fields for Creating Stock Transfer Requests: transfer_id (string): The unique identifier for
+        the stock transfer (must be unique always). order_items (array of objects): An array of objects representing the items
+        in the stock transfer. sku_code (string): The stock keeping unit code for the item. quantity (integer): The quantity
+        of the item being transferred. source_hub_code (string): The hub code from which the stock is being transferred. destination_hub_code
+        (string): The hub code to wh'
+      requestBody:
+        content:
+          application/json:
+            example:
+              customer:
+                first_name: John
+                last_name: Doe
+                mobile: '7044063694'
+                country_calling_code: '+91'
+                country_code: IN
+                mobile_code: '91'
+                email: john.doe@example.com
+                avatar: https://example.com/avatar.jpg
+                gender: male
+              order_items:
+              - sku_code: samsung190
+                quantity: 2
+              source_hub_code: Shubhra001
+              destination_hub_code: SHUBHRA
+              sto_request_id: sto_id_27651
+      responses:
+        '200':
+          description: Successful response
+    get:
+      summary: Get Stock Transfer Requests
+      operationId: getGetStockTransferRequests
+      tags:
+      - Stock Transfer Request
+      description: 'Response Fields Explained is_success (boolean): Indicates if the request was successful. status_code (integer):
+        The HTTP status code returned by the API. data (array): Contains the list of stock transfer requests. sto_id (string):
+        Unique identifier for the stock transfer. customer (object): Information about the customer associated with the transfer.
+        first_name (string): Customer''s first name. last_name (string): Customer''s last name. mobile (string): Customer''s
+        mobile number. mobile_code (strin'
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/orders/sto/requests/{sto_request_id}:
+    put:
+      summary: Update Stock Transfer Request
+      operationId: putUpdateStockTransferRequest
+      tags:
+      - Stock Transfer Request
+      description: 'Required Fields for Updating Stock Transfer Requests: action_type (string): Specifies the action to perform.
+        "add_items": To add new items to the stock transfer request. "edit_items": To edit existing items in the stock transfer
+        request. order_items (array of objects): An array of objects representing the items in the stock transfer. sku_code
+        (string): The stock keeping unit code for the item. quantity (integer): The quantity of the item to be added or updated.'
+      parameters:
+      - name: sto_request_id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json: {}
+      responses:
+        '200':
+          description: Successful response
+    get:
+      summary: Get Stock Transfer Request
+      operationId: getGetStockTransferRequest
+      tags:
+      - Stock Transfer Request
+      description: 'Response Fields Explained is_success (boolean): Indicates if the request was successful. status_code (integer):
+        The HTTP status code returned by the API. data (object): Contains details about the stock transfer request. sto_id
+        (string): Unique identifier for the stock transfer. customer (object): Information about the customer associated with
+        the transfer. first_name (string): Customer''s first name. last_name (string): Customer''s last name. mobile (string):
+        Customer''s mobile number. mobile_code '
+      parameters:
+      - name: sto_request_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/orders/sto/requests/{sto_request_id}/approve:
+    put:
+      summary: Approve Stock Transfer Request
+      operationId: putApproveStockTransferRequest
+      tags:
+      - Stock Transfer Request
+      description: 'Required Fields for Approving Stock Transfer Requests: order_items (array of objects): An array of objects
+        representing the items being approved in the stock transfer. sku_code (string): The stock keeping unit code for the
+        item. quantity (integer): The quantity of the item being approved.'
+      parameters:
+      - name: sto_request_id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              order_items:
+              - sku_code: iPhone 15 Pro
+                quantity: 1
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/orders/sto/requests/{sto_request_id}/reject:
+    put:
+      summary: Reject Stock Transfer Request
+      operationId: putRejectStockTransferRequest
+      tags:
+      - Stock Transfer Request
+      description: 'Required Fields for Rejecting Stock Transfer Requests: reason (string): A mandatory field that specifies
+        the reason for rejecting the stock transfer request. This helps provide clarity on the decision.'
+      parameters:
+      - name: sto_request_id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              reason: Product not required
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/orders/sto/{sto_id}:
+    get:
+      summary: GetStockOrder
+      operationId: getGetstockorder
+      tags:
+      - Stock Transfer Order
+      description: STO Order Details Response Payload Root Level Fields Field Name Type Description is_success Boolean Indicates
+        whether the API request was successful status_code Integer HTTP status code returned by the API data Object Contains
+        stock transfer order details meta Object Null data Object Field Name Type Description seller_name String Name of the
+        seller sto_number String Unique Stock Transfer Order number status String Current status of the STO (e.g., Received)
+        total_amount Number Total monetary valu
+      parameters:
+      - name: sto_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/orders/sto/hubs/{hub_code}:
+    get:
+      summary: GetStockOrders
+      operationId: getGetstockorders
+      tags:
+      - Stock Transfer Order
+      description: 'Get Stock Transfer Orders API Documentation Overview This API endpoint retrieves detailed information
+        about stock transfer orders and requires a valid destination hub code—the hub specified in the stock transfer request
+        where receiving will occur—which must be powered through the Omniful system. You can also use filters to narrow down
+        the results. The available filters are: sto_request_id: Filter by a single stock transfer request ID. sto_request_ids:
+        Filter by multiple stock transfer request ID'
+      parameters:
+      - name: hub_code
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/webhooks:
+    get:
+      summary: Get Webhooks
+      operationId: getGetWebhooks
+      tags:
+      - Webhooks
+      responses:
+        '200':
+          description: Successful response
+    put:
+      summary: Register Webhook
+      operationId: putRegisterWebhook
+      tags:
+      - Webhook
+      requestBody:
+        content:
+          application/json:
+            example:
+            - topic: shipment_webhook
+              webhook_url: https://webhook.site/181a3c04-263d-4032-a8b0-d778ef5698fc
+              is_enable: true
+              custom_headers:
+              - key: X-AUTH-TOKEN
+                value: New_token
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/channels/integrations:
+    get:
+      summary: Get Seller Integrations
+      operationId: getGetSellerIntegrations
+      tags:
+      - Seller Integrations
+      description: Fetches all the stores integrated with the seller’s account, including metadata like platform type, store
+        name, and activation status. 📘 Response Object IntegratedStore Object Field Data Type Description integration_id String
+        Unique identifier for the store integration. tag String Type of integration (e.g., shopify, custom). store_entity
+        String Store-specific identifier on the platform (if any). name String Store name given by the seller. is_active Boolean
+        Indicates if the store integration is c
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/channels/integrations/{integration_token}:
+    get:
+      summary: Get Seller Integration by Token
+      operationId: getGetSellerIntegrationByToken
+      tags:
+      - Seller Integrations
+      description: Fetches detailed information of a specific store integration using the integration_id. 🔸 Path Variable
+        Variable Type Description integration_id String Unique identifier of the integrated store 📘 Response Object IntegratedStore
+        Object Field Data Type Description integration_id String Unique identifier for the store integration. tag String Type
+        of integration (e.g., shopify, custom). store_entity String Store-specific identifier on the platform (if any). name
+        String Store name given by the seller.
+      parameters:
+      - name: integration_token
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/courier_partners:
+    get:
+      summary: Get Courier Partners
+      operationId: getGetCourierPartners
+      tags:
+      - Courier Partners
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/seller/shipment_orders/{order_id}/return_orders:
+    post:
+      summary: Create Return Shipment Order
+      operationId: postCreateReturnShipmentOrder
+      tags:
+      - Shipment Orders
+      parameters:
+      - name: order_id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json: {}
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/seller/shipment_orders/return_orders:
+    get:
+      summary: Get Return Shipment Orders
+      operationId: getGetReturnShipmentOrders
+      tags:
+      - Shipment Orders
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/seller/shipment_orders/return_orders/{return_order_id}:
+    get:
+      summary: Get Return Shipment Order By ID
+      operationId: getGetReturnShipmentOrderById
+      tags:
+      - Shipment Orders
+      parameters:
+      - name: return_order_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/seller/shipment_orders/{order_id}/return_requests:
+    post:
+      summary: Create Return Shipment Request
+      operationId: postCreateReturnShipmentRequest
+      tags:
+      - Shipment Orders
+      parameters:
+      - name: order_id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json: {}
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/seller/shipment_orders/return_requests:
+    get:
+      summary: Get Return Shipment Requests
+      operationId: getGetReturnShipmentRequests
+      tags:
+      - Shipment Orders
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/seller/shipment_orders/return_requests/{order_id}/approve:
+    put:
+      summary: Approve Return Shipment Request
+      operationId: putApproveReturnShipmentRequest
+      tags:
+      - Shipment Orders
+      parameters:
+      - name: order_id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json: {}
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/seller/shipment_orders/return_requests/{return_request_id}/reject:
+    put:
+      summary: Reject Return Shipment Request
+      operationId: putRejectReturnShipmentRequest
+      tags:
+      - Shipment Orders
+      parameters:
+      - name: return_request_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/seller/shipment_orders:
+    get:
+      summary: Get Shipment Orders
+      operationId: getGetShipmentOrders
+      tags:
+      - Shipment Orders
+      responses:
+        '200':
+          description: Successful response
+    post:
+      summary: Create Shipment Order
+      operationId: postCreateShipmentOrder
+      tags:
+      - Shipment Orders
+      requestBody:
+        content:
+          application/json: {}
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/seller/shipment_orders/{id}:
+    get:
+      summary: Get Shipment Orders By ID
+      operationId: getGetShipmentOrdersById
+      tags:
+      - Shipment Orders
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/seller/pickup_locations:
+    post:
+      summary: Upsert Pickup Locations
+      operationId: postUpsertPickupLocations
+      tags:
+      - Pickup Locations
+      requestBody:
+        content:
+          application/json:
+            example:
+              name: Axis Logsitcs
+              email: warehouse@example.com
+              phone_number:
+                number: '1234567890'
+                country_calling_code: '+91'
+                country_code: IN
+              external_hub_identifier: '2128915624'
+              address:
+                address_1: Flat 803, Marina Pinnacle Tower
+                address_2: ''
+                postal_code: '00000'
+                city_name: Dubai
+                country_name: United Arab Emirates
+                state_name: Dubai
+                country_code: UAE
+                state_code: DU
+                latitude: 25.0865
+                longitude: 55.1483
+                national_address_code: '00000'
+              virtual_hub_type: virtual
+      responses:
+        '200':
+          description: Successful response
+    get:
+      summary: Get Pickup Locations
+      operationId: getGetPickupLocations
+      tags:
+      - Pickup Locations
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/seller/pickup_locations/{pickup_location_code}:
+    get:
+      summary: Get Pickup Location By Code
+      operationId: getGetPickupLocationByCode
+      tags:
+      - Pickup Locations
+      parameters:
+      - name: pickup_location_code
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/seller/hubs/{hub_code}/orders/{order_id}/packaging_materials:
+    get:
+      summary: Get Packaging Material
+      operationId: getGetPackagingMaterial
+      tags:
+      - Packaging Material
+      parameters:
+      - name: hub_code
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: order_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/token:
+    post:
+      summary: Retrieve Access Token
+      operationId: postRetrieveAccessToken
+      tags:
+      - Seller and Sales Channel APIs
+      description: 'This API allows you to obtain a new access token and refresh token using a refresh token grant type. Access
+        tokens are short-lived tokens that grant access to specific resources or actions within an API, while refresh tokens
+        are used to request new access tokens without requiring the user to re-authenticate. Upon sending this request to
+        the Omniful API, you will receive a response containing the new access token and refresh token, which you can then
+        use to access protected resources and perform '
+      requestBody:
+        content:
+          application/json: {}
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/tenants/sellers:
+    get:
+      summary: Get Sellers
+      operationId: getGetSellers
+      tags:
+      - Seller
+      description: Description Retrieves a paginated list of sellers belonging to the tenant. Use this endpoint when you need
+        to fetch sellers by filters such as seller code, name, or email. Parameters Query Parameters Name Type Required Example
+        page integer True 1 per_page integer True 10 email string False store@saudielectronics.com seller_codes array[string]
+        False seller_codes=GP-803&amp;seller_codes=SG-333 name string False Saudi is_active boolean False true include_all_sellers
+        boolean False true Filters &amp;
+      responses:
+        '200':
+          description: Successful response
+    post:
+      summary: Create Seller
+      operationId: postCreateSeller
+      tags:
+      - Seller
+      description: Description Creates a new seller under the authenticated Omniful tenant. Use this endpoint when onboarding
+        a new seller.The endpoint returns the created Seller ID on success. Parameters Body Parameters Name Type Required
+        Example name string True "Omniful Electronics Store" phone string True "501234567" code string True "Test-123" country_code
+        string True "SA" country_calling_code string True "+966" email string True "omniful@saudielectronics.com" address
+        object True {...} address object Field Ty
+      requestBody:
+        content:
+          application/json:
+            example:
+              name: Omniful Electronics Store
+              phone: '501234565'
+              code: Test-hj
+              country_code: SA
+              country_calling_code: '+966'
+              email: 23ewdew4@saudielectronics.com
+              address:
+                address_line1: King Fahd Road
+                address_line2: Al Olaya District
+                city_name: Riyadh
+                country_name: Saudi Arabia
+                national_address_code: nac_1234
+                postal_code: '12214'
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/tenants/sellers/{seller_code}:
+    get:
+      summary: Get Single Seller
+      operationId: getGetSingleSeller
+      tags:
+      - Seller
+      description: Description Retrieves details of a single seller belonging to the tenant. Use this endpoint when you need
+        to fetch a seller using their seller_code. Parameters Query Parameters Name Type Required Example seller_code string
+        True seller_codes=GP-803
+      parameters:
+      - name: seller_code
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+    put:
+      summary: Update Seller
+      operationId: putUpdateSeller
+      tags:
+      - Seller
+      description: Description Updates an existing seller under the authenticated Omniful tenant. Use this endpoint when modifying
+        seller details such as name, phone number, address or status (active/inactive). The endpoint returns the updated Seller
+        ID on success. Parameters Body Parameters Name Type Required Example name string True "Saudi Electronics Store" phone
+        string True "501234567" country_code string True "SA" country_calling_code string True "+966" email string True "omniful@saudielectronics.com"
+        address
+      parameters:
+      - name: seller_code
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              name: Saudi Electronics Store
+              phone: '501234567'
+              country_code: SA
+              country_calling_code: '+966'
+              email: wew@saudielectronics.com
+              address:
+                address_line1: King Fahd Road
+                address_line2: Al Olaya District
+                city_name: Riyadh
+                country_name: Saudi Arabia
+                postal_code: '12214'
+                national_address_code: code
+              is_active: true
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/tenants/sellers/{seller_code}/skus:
+    get:
+      summary: Get SKUs (⚠️ To be deprecated on 30-07-2026)
+      operationId: getGetSkusToBeDeprecatedOn30072026
+      tags:
+      - SKUs
+      description: 'Description Retrieves a paginated list of SKUs associated with a specific seller in the Seller Master
+        Catalog. Parameters Path Parameters Name Type Required Example seller_code string True "KO-SE-1" Query Parameters
+        Name Type Required Example page integer False 1 per_page integer False 10 Filters &amp; pagination Filters supported:
+        Query Parameter Type sku_code string sku_codes []string updated_at_start_date string updated_at_end_date string query
+        string include_inventory bool hub_code string So'
+      parameters:
+      - name: seller_code
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+    post:
+      summary: Create SKUs
+      operationId: postCreateSkus
+      tags:
+      - SKUs
+      description: 'Description Creates one or more SKUs for a specific seller in the Seller Master Catalog. Use this endpoint
+        when onboarding new SKUs into the seller’s Master Catalog. The endpoint returns the created SKU IDs on success. 📌
+        Required fields for Creating a Master SKU: name: Name of the SKU, for example, "42 inch LED TV". sku_code: A unique
+        code that identifies the SKU, for example, "SKU-TV-123" type: Specifies the type of the SKU, which can be "simple"
+        or "bundle". currency → 3 letter ISO 4217 code e'
+      parameters:
+      - name: seller_code
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json: {}
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/tenants/sellers/{seller_code}/skus/{sku_code}:
+    get:
+      summary: Get Single SKU
+      operationId: getGetSingleSku
+      tags:
+      - SKUs
+      description: 'Description Retrieves detailed information for a specific SKU belonging to a seller in the Seller Master
+        Catalog. Parameters Path Parameters Name Type Required Example seller_code string True "KO-SE-1" sku_code string True
+        "srv-sku-12" Filters &amp; pagination Filters supported: Query Parameter Type include_inventory bool hub_code string
+        Sorting: Not supported Pagination behavior: page + per_page , Where page represents the page number of response and
+        per_page represents number of response items'
+      parameters:
+      - name: seller_code
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: sku_code
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+    put:
+      summary: Update SKU
+      operationId: putUpdateSku
+      tags:
+      - SKUs
+      description: 'Description Updates an existing SKU for a specific seller in the Seller Master Catalog. Use this endpoint
+        when modifying SKU attributes such as name, description, barcode, pricing, status, dimensions, or perishable settings.
+        The endpoint returns the updated SKU ID on success. 📌 Required fields for Updating a Master SKU: sku_code: A unique
+        code that identifies the SKU, for example, "SKU-TV-123" type: Specifies the type of the SKU, which can be "simple"
+        or "bundle". Parameters Path Parameters Name'
+      parameters:
+      - name: seller_code
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: sku_code
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json: {}
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v2/tenants/sellers/{seller_code}/skus:
+    get:
+      summary: Get SKUs
+      operationId: getGetSkus
+      tags:
+      - SKUs (V2)
+      parameters:
+      - name: seller_code
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/tenants/hubs:
+    post:
+      summary: Create Hub
+      operationId: postCreateHub
+      tags:
+      - Hubs
+      description: 'Description Creates a new hub within a tenant. Use this endpoint to register a warehouse, dark store,
+        or fulfillment location with full configuration for inventory, picking, packing, cycle count, schedule order, and
+        other operational behaviors. On success, the endpoint returns the newly created Hub object. 📌 Required fields for
+        creating a Hub: name — Hub name code — Unique hub code type — Hub type (e.g., "warehouse", "dark_store") email — Valid
+        email address phone_number, country_code, country_c'
+      requestBody:
+        content:
+          application/json:
+            example:
+              name: Dark_str_1
+              code: Dark_sst
+              type: dark_store
+              email: hub-location-off@gmail.com
+              address:
+                address_line1: 19 ش النهضة  النهضة  النهضة 1  مركز صحارى
+                address_line2: 19 ش النهضة  النهضة  النهضة 1  مركز صحارى
+                state_name: ''
+                city_name: Riyadh
+                postal_code: '00000'
+                latitude: 25.2709141
+                longitude: 55.300312
+                country:
+                  name: Saudi Arabia
+                  code: SA
+                additional_number: '1233'
+                area: mera area
+                national_address_code: RAFC1231
+                building_number: '1234'
+                street: 123 Main St
+              working_hours:
+                monday:
+                - start_time: 900
+                  end_time: 2359
+                tuesday:
+                - start_time: 900
+                  end_time: 2359
+                wednesday:
+                - start_time: 800
+                  end_time: 2359
+                thursday:
+                - start_time: 800
+                  end_time: 2359
+                friday:
+                - start_time: 600
+                  end_time: 2359
+                saturday:
+                - start_time: 700
+                  end_time: 2359
+                sunday:
+                - start_time: 500
+                  end_time: 2359
+              configuration:
+                location_inventory:
+                  enabled: true
+                inwarding_configuration:
+                  auto_generate_serialised_barcode: true
+                stock_transfer_order:
+                  enabled: false
+                hub_location_mapping:
+                  bins_enabled: false
+                  rack_enabled: false
+                  zone_enabled: false
+                  aisle_enabled: false
+                  floor_enabled: false
+                  shelf_enabled: false
+                adjust_inventory:
+                  manual_barcode_allowed: true
+                  enter_quantity_manually: true
+                gate_entry:
+                  enabled: true
+                bulk_ship_configuration:
+                  picker_capacity: 5
+                picking:
+                  enabled: true
+                  cart_capacity: 10
+                  picker_capacity: 10
+                  bin_scan_enabled: true
+                  single_order_tags:
+                  - name: create tags
+                  - name: test
+                  - name: prepaid
+                  location_scan_enabled: true
+                  manual_barcode_allowed: true
+                  enter_quantity_manually: true
+                  multi_order_picking_type: 3
+                  single_order_picking_type: 1
+                  multi_order_picking_allowed: true
+                  single_order_picking_allowed: true
+                  multi_piece_picking_cart_association: false
+                  single_piece_picking_cart_association: true
+                bin:
+                  enabled: true
+                location_configuration:
+                  layout:
+                    bin:
+                      exist: false
+                      order: 8
+                      prefix: B
+                      display_name: Bin
+                    hall:
+                      exist: false
+                      order: 3
+                      prefix: H
+                      display_name: Hall
+                    rack:
+                      exist: false
+                      order: 5
+                      prefix: R
+                      display_name: Rack
+                    aisle:
+                      exist: false
+                      order: 4
+                      prefix: A
+                      display_name: Aisle
+                    floor:
+                      exist: false
+                      order: 2
+                      prefix: F
+                      display_name: Floor
+                    shelf:
+                      exist: false
+                      order: 6
+                      prefix: S
+                      display_name: Shelf
+                    location:
+                      exist: false
+                      order: 7
+                      prefix: L
+                      display_name: Location
+                    custom_prefix:
+                      exist: true
+                      order: 1
+                      prefix: P
+                      display_name: Prefix
+                  enabled: false
+                put_away:
+                  manual_barcode_allowed: true
+                  enter_quantity_manually: true
+                expiry_configuration:
+                  include_near_expiry_items: false
+                acceptable_shelf_life_validation:
+                  enabled: false
+                schedule_order:
+                  time:
+                    hour: '0'
+                    minute: '0'
+                  enabled: false
+                cycle_count_configuration:
+                  blind_count: false
+                  update_inventory: false
+                  manual_barcode_allowed: true
+                  enter_quantity_manually: true
+                packing_configuration:
+                  qc_enabled: true
+                  manual_barcode_allowed: true
+                  enter_quantity_manually: true
+                  automatic_shipment_creation: false
+                  auto_print_awb_on_all_items_scanned: true
+                purchase_order:
+                  enabled: true
+                  over_receive_allowed: true
+              is_click_and_collect: false
+              country_calling_code: '+91'
+              country_code: IN
+              phone_number: '9871627354'
+              timezone: Asia/Kolkata
+              currency:
+                name: Indian Rupee
+                code: INR
+                display_name: INR (Indian Rupee)
+              is_pos_enabled: false
+              is_wms_enabled: true
+      responses:
+        '200':
+          description: Successful response
+    get:
+      summary: Get Tenant Hubs
+      operationId: getGetTenantHubs
+      tags:
+      - Hubs
+      description: Description Retrieves a paginated list of hubs for a tenant. Use this endpoint to search hubs using filters
+        such as name, code, and to optionally include address details in the response. This endpoint supports filters + pagination,
+        and returns a structured list of hub objects. Parameters Query Parameters Name Type Required Default Example Description
+        include_address boolean False false true If true, hub address details are included in the response code string False
+        - "sc-2321" Filter hubs by exa
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/tenants/hubs/Dark_store_1k:
+    put:
+      summary: Update Hub
+      operationId: putUpdateHub
+      tags:
+      - Hubs
+      description: 'Description Updates an existing tenant hub’s details and configuration. Use this endpoint when you need
+        to change a hub’s address, services (e.g., WMS/POS), working hours, or operational configurations (picking, packing,
+        cycle count, etc.). The endpoint performs a partial update: most fields are optional, but when an object is provided
+        (like address, configuration.picking, etc.), the required fields inside that object must be present. 📌 Key things
+        to know: hub_code (in path) identifies which hub'
+      requestBody:
+        content:
+          application/json:
+            example:
+              type: dark_store
+              address:
+                address_line1: B-91
+                address_line2: Road 14
+                state_name: Riyadh Principality
+                city_name: Riyadh
+                postal_code: '122001'
+                latitude: 28.471653
+                longitude: 77.050965
+                country:
+                  name: India
+                  code: IN
+                national_address_code: RAFC1231
+                additional_number: '1233'
+                building_number: '1234'
+                area: area 14
+                street: 123 Main St
+              services:
+              - wms
+              - pos
+              working_hours:
+                monday:
+                - start_time: 1000
+                  end_time: 2359
+                tuesday:
+                - start_time: 600
+                  end_time: 2359
+                wednesday:
+                - start_time: 800
+                  end_time: 2359
+                thursday:
+                - start_time: 900
+                  end_time: 2359
+                friday:
+                - start_time: 0
+                  end_time: 2359
+                saturday:
+                - start_time: 0
+                  end_time: 2359
+                sunday:
+                - start_time: 0
+                  end_time: 2359
+              configuration:
+                adjust_inventory:
+                  manual_barcode_allowed: false
+                  enter_quantity_manually: false
+                inwarding_configuration:
+                  auto_generate_serialised_barcode: true
+                gate_entry:
+                  enabled: false
+                bulk_ship_configuration:
+                  picker_capacity: 100
+                picking:
+                  enabled: true
+                  cart_capacity: 9
+                  picker_capacity: 1
+                  bin_scan_enabled: true
+                  single_order_tags:
+                  - name: prepaid
+                  - name: test
+                  - name: create tags
+                  location_scan_enabled: false
+                  manual_barcode_allowed: false
+                  enter_quantity_manually: false
+                  multi_order_picking_type: 3
+                  single_order_picking_type: 2
+                  multi_order_picking_allowed: false
+                  single_order_picking_allowed: true
+                  multi_piece_picking_cart_association: false
+                  single_piece_picking_cart_association: false
+                put_away:
+                  manual_barcode_allowed: false
+                  enter_quantity_manually: false
+                expiry_configuration:
+                  include_near_expiry_items: false
+                acceptable_shelf_life_validation:
+                  enabled: false
+                schedule_order:
+                  time:
+                    hour: '2'
+                    minute: '45'
+                  enabled: true
+                cycle_count_configuration:
+                  blind_count: true
+                  update_inventory: true
+                  manual_barcode_allowed: false
+                  enter_quantity_manually: false
+                packing_configuration:
+                  qc_enabled: true
+                  manual_barcode_allowed: true
+                  enter_quantity_manually: false
+                  automatic_shipment_creation: false
+                  auto_print_awb_on_all_items_scanned: false
+                purchase_order:
+                  enabled: true
+                  over_receive_allowed: true
+              is_click_and_collect: false
+              country_calling_code: '+91'
+              country_code: IN
+              phone_number: '9871627354'
+              timezone: Asia/Kolkata
+              currency:
+                name: Indian Rupee
+                code: INR
+                display_name: INR (Indian Rupee)
+              created_by: aryan gupta
+              created_by_id: '21'
+              is_pos_enabled: true
+              is_wms_enabled: true
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/tenants/hubs/{hub_code}:
+    get:
+      summary: Get Hub details by hub_code
+      operationId: getGetHubDetailsByHubCode
+      tags:
+      - Hubs
+      description: Description Retrieves detailed information for a specific hub using its hub code. Use this endpoint to
+        fetch full hub metadata, including its core properties, operational settings, and optionally address details (if supported
+        by backend defaults). Parameters Path Parameters Name Type Required Description hub_code string True Unique identifier
+        of the hub whose details are being retrieved
+      parameters:
+      - name: hub_code
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/tenants/hubs/bulk_update:
+    put:
+      summary: Bulk update tenant hub mapping
+      operationId: putBulkUpdateTenantHubMapping
+      tags:
+      - Hubs
+      description: Description Allows updating specific fields for multiple hubs in a single request. Use this endpoint when
+        you need to activate/deactivate multiple hubs or apply batch updates to hub-level properties without calling individual
+        update APIs. Only the fields included for each hub in the hub_mappings array will be updated. Body Parameters Body
+        is a single object containing an array of hub updates. hub_mappings (Array of Hub Mapping Objects) Field Type Required
+        Description hub_mappings array[object] T
+      requestBody:
+        content:
+          application/json:
+            example:
+              hub_mappings:
+              - hub_code: Example-hub-22
+                is_active: false
+              - hub_code: '00'
+                is_active: false
+              - hub_code: wfrefr
+                is_active: false
+              - hub_code: 0000test1
+                is_active: false
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/tenants/sellers/{seller_code}/orders:
+    get:
+      summary: Get Orders (⚠️ To be deprecated on 30-07-2026))
+      operationId: getGetOrdersToBeDeprecatedOn30072026
+      tags:
+      - Orders
+      description: 'Description Retrieve a paginated list of orders for a specific seller. You can filter results using multiple
+        optional query parameters such as order ID, customer details, AWB number, SKU code, status, types, and date range.
+        Path Parameters Name Type Required Description seller_code string Yes Unique seller identifier in Omniful. Query Parameters
+        Name Type Required Description page integer No Page number for pagination (default: 1). per_page integer No Number
+        of records per page (default: 20). or'
+      parameters:
+      - name: seller_code
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+    post:
+      summary: Create Order
+      operationId: postCreateOrder3
+      tags:
+      - Orders
+      description: 📌 Create Order API Overview The Create Order API allows users to place new orders in Omniful by providing
+        order details, customer information, shipping and billing addresses, invoice details, and payment information. 📝 Request
+        Body Parameters Key Data Type Description Required order_id string Must be a globally unique identifier for the order
+        (e.g., "order_0008"). Cannot be reused if the order is deleted. ✅ Yes order_alias string Secondary identifier for
+        tracking in external systems (e.g., ERP o
+      parameters:
+      - name: seller_code
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              order_id: order-128
+              order_alias: order-alias-128
+              hub_code: locoff
+              shipment_type: sales_channel_generated
+              order_items:
+              - sku_code: UT-TSHIRT-WHT-S-17
+                name: iPhone 200
+                display_price: 799
+                selling_price: 699
+                is_substituted: false
+                quantity: 1
+                tax_percent: 10
+                tax: 69.9
+                unit_price: 699
+                subtotal: 699
+                total: 768.9
+                discount: 100
+                tax_inclusive: true
+              billing_address:
+                address1: 123 Al-Masjid Al-Haram Street
+                address2: Near Al-Faisaliah Tower
+                city: Riyadh
+                country: Saudi Arabia
+                first_name: John
+                last_name: Doe
+                phone: +966-11-234-5678
+                state: Riyadh
+                zip: '11564'
+                area: Al Olaya
+                district: Riyadh
+                street: Kings Road
+                state_code: RIY
+                country_code: SA
+                latitude: 24.7136
+                longitude: 46.6753
+                national_address_code: ''
+              shipping_address:
+                address1: 456 King Abdulaziz Road
+                address2: Near Kingdom Centre
+                city: Jeddah
+                country: Saudi Arabia
+                first_name: Jane
+                last_name: Smith
+                phone: +966-12-345-6789
+                state: Makkah
+                zip: '21577'
+                area: Al Olaya
+                district: Riyadh
+                street: Kings Road
+                state_code: MKA
+                country_code: SA
+                latitude: 21.4225
+                longitude: 39.8262
+                national_address_code: ''
+              invoice:
+                currency: SAR
+                subtotal: 699
+                shipping_price: 0
+                shipping_refund: 0
+                tax: 69.9
+                discount: 100
+                total: 768.9
+                total_paid: 768.9
+                total_due: 0
+                total_refunded: 0
+                payment_method: Credit Card
+                tax_percent: 10
+                shipping_tax: 0
+                sub_total_tax_inclusive: true
+                sub_total_discount_inclusive: true
+                shipping_tax_inclusive: false
+                shipping_discount_inclusive: false
+              customer:
+                id: 66ced351ffed27dec7c4072a
+                first_name: John
+                last_name: Doe
+                mobile: '1234567890'
+                mobile_code: '+1'
+                email: john.doe@example.com
+                avatar: https://example.com/avatar.jpg
+                gender: male
+              labels:
+              - label1
+              - label2
+              - label3
+              slot:
+                delivery_date: '18122024'
+                start_time: 1100
+                end_time: 1500
+              payment_method: prepaid
+              delivery_type: normal_delivery
+              is_cash_on_delivery: false
+              note: Please deliver during weekdays
+              type: b2b
+              meta_data:
+                name: Metadata
+                has_options: true
+              external_fields:
+              - key: order_id
+                value: '12345'
+              - key: customer_name
+                value: John Doe
+              - key: status
+                value: shipped
+              attachments:
+              - name: Bill
+                description: Bill description
+                url: http://omniful-local-uploads.s3.eu-central-1.localstack.oceaninfra.localhost/orders/orders/attachments/98bf916bcb364c1656b0aca4a103b5ea71780922501.jpeg
+                mime_type: image/jpeg
+                entity: order
+              - name: Bill 2
+                description: Bill 2 description
+                url: http://omniful-local-uploads.s3.eu-central-1.localstack.oceaninfra.localhost/orders/orders/attachments/98bf916bcb364c1656b0aca4a103b5ea71780922501.jpeg
+                mime_type: image/jpeg
+                entity: invoice
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/tenants/sellers/{seller_code}/orders/{id}:
+    get:
+      summary: Get Single Order
+      operationId: getGetSingleOrder
+      tags:
+      - Orders
+      description: Description Retrieve full details of a specific order for a seller using the id which is the omniful order
+        id. Path Parameters Name Type Required Description seller_code string Yes Unique identifier for the seller (e.g.,
+        KO-SE-1). id string Yes Unique internal Omniful order identifier used to fetch a specific order.
+      parameters:
+      - name: seller_code
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+    put:
+      summary: Update Order
+      operationId: putUpdateOrder2
+      tags:
+      - Orders
+      description: 📌 Update Order API - Overview The Update Order API allows users to modify the details of an existing order
+        that was previously placed. This API can be used to update various order attributes, such as order items, shipping
+        details, billing information, and customer details. Users can update an order only if it is not in the "packed" state.
+        Once an order reaches the packed stage, further modifications using this API are restricted. This API ensures flexibility
+        in managing orders before final proce
+      parameters:
+      - name: seller_code
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              order_id: order_000081
+              hub_code: ONLS
+              shipment_type: sales_channel_generated
+              order_items:
+              - sku_code: iPhone 15 Pro
+                name: iPhone 15 Pro
+                display_price: 799
+                selling_price: 699
+                is_substituted: false
+                quantity: 2
+                tax_percent: 10
+                tax: 69.9
+                unit_price: 699
+                subtotal: 699
+                total: 768.9
+                discount: 100
+                tax_inclusive: true
+              billing_address:
+                address1: 123 Main Street
+                city: New York
+                country: United States
+                first_name: John
+                last_name: Doe
+                phone: 123-456-7890
+                state: NY
+                zip: '10001'
+                state_code: NY
+                country_code: US
+                latitude: 40.7128
+                longitude: -74.006
+                national_address_code: ''
+              shipping_address:
+                address1: 456 Elm Street
+                city: Los Angeles
+                country: United States
+                first_name: Jane
+                last_name: Smith
+                phone: 987-654-3210
+                state: CA
+                zip: '90001'
+                state_code: CA
+                country_code: US
+                latitude: 34.0522
+                longitude: -118.2437
+                national_address_code: ''
+              order_created_at: '2023-07-28T09:00:00Z'
+              invoice:
+                currency: USD
+                subtotal: 699
+                shipping_price: 0
+                shipping_refund: 0
+                tax: 69.9
+                discount: 100
+                total: 768.9
+                total_paid: 768.9
+                total_due: 0
+                total_refunded: 0
+                payment_method: Credit Card
+                tax_percent: 10
+                shipping_tax: 0
+                sub_total_tax_inclusive: true
+                sub_total_discount_inclusive: true
+                shipping_tax_inclusive: false
+                shipping_discount_inclusive: false
+              customer:
+                first_name: John
+                last_name: Doe
+                mobile: '1234567890'
+                mobile_code: '+1'
+                email: john.doe@example.com
+                avatar: https://example.com/avatar.jpg
+                gender: male
+              shipment:
+                shipping_partner_name: CourierX
+                shipping_partner_tag: courierx123
+                awb_number: AWB-456
+                awb_label: https://example.com/awb-label.jpg
+                tracking_link: https://example.com/tracking/456
+              labels:
+              - label4
+              - label5
+              - label6
+              payment_method: prepaid
+              is_cash_on_delivery: false
+              note: Please deliver during weekdays
+              meta_data:
+                name: detadata
+                has_options: true
+              external_fields:
+              - key: order_id_1
+                value: '12347'
+              - key: customer_name
+                value: John Doe
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/tenants/sellers/{seller_code}/orders/{id}/cancel:
+    post:
+      summary: Cancel Order
+      operationId: postCancelOrder
+      tags:
+      - Orders
+      description: 'Description Cancel an existing order for a specific seller in Omniful. This endpoint is used when an order
+        needs to be cancelled due to customer request, incorrect product selection, or operational reasons. Only orders in
+        a cancellable state (e.g., not yet shipped or delivered) can be cancelled. Path Parameters Name Type Required Description
+        seller_code string Yes Unique identifier for the seller (e.g., KO-SE-2). id string Yes Internal Omniful order ID of
+        the order to be cancelled. Request Body '
+      parameters:
+      - name: seller_code
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              cancel_reason: The customer selected the wrong product.
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/tenants/sellers/{seller_code}/orders/bulk:
+    post:
+      summary: Bulk Create Orders
+      operationId: postBulkCreateOrders
+      tags:
+      - Orders
+      parameters:
+      - name: seller_code
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              orders:
+              - order_id: order-127823523676
+                order_alias: order-alias-127
+                hub_code: ONLS
+                shipment_type: sales_channel_generated
+                order_items:
+                - sku_code: '11083224'
+                  name: iPhone 200
+                  display_price: 799
+                  selling_price: 699
+                  is_substituted: false
+                  quantity: 1
+                  tax_percent: 10
+                  tax: 69.9
+                  unit_price: 699
+                  subtotal: 699
+                  total: 768.9
+                  discount: 100
+                  tax_inclusive: true
+                billing_address:
+                  address1: 123 Al-Masjid Al-Haram Street
+                  address2: Near Al-Faisaliah Tower
+                  city: Riyadh
+                  country: Saudi Arabia
+                  first_name: John
+                  last_name: Doe
+                  phone: +966-11-234-5678
+                  state: Riyadh
+                  zip: '11564'
+                  state_code: RIY
+                  country_code: SA
+                  latitude: 24.7136
+                  longitude: 46.6753
+                  national_address_code: ''
+                shipping_address:
+                  address1: 456 King Abdulaziz Road
+                  address2: Near Kingdom Centre
+                  city: Jeddah
+                  country: Saudi Arabia
+                  first_name: Jane
+                  last_name: Smith
+                  phone: +966-12-345-6789
+                  state: Makkah
+                  zip: '21577'
+                  state_code: MKA
+                  country_code: SA
+                  latitude: 21.4225
+                  longitude: 39.8262
+                  national_address_code: ''
+                invoice:
+                  currency: SAR
+                  subtotal: 699
+                  shipping_price: 0
+                  shipping_refund: 0
+                  tax: 69.9
+                  discount: 100
+                  total: 768.9
+                  total_paid: 768.9
+                  total_due: 0
+                  total_refunded: 0
+                  payment_method: Credit Card
+                  tax_percent: 10
+                  shipping_tax: 0
+                  sub_total_tax_inclusive: true
+                  sub_total_discount_inclusive: true
+                  shipping_tax_inclusive: false
+                  shipping_discount_inclusive: false
+                  attachments:
+                  - url: https:://example.com/avatar1.jpg
+                    type: image1
+                  - url: https:://example.com/avatar2.jpg
+                    type: image2
+                  - url: https:://example.com/avatar3.jpg
+                    type: image3
+                customer:
+                  id: 66ced351ffed27dec7c4072a
+                  first_name: John
+                  last_name: Doe
+                  mobile: '1234567890'
+                  mobile_code: '+1'
+                  email: john.doe@example.com
+                  avatar: https://example.com/avatar.jpg
+                  gender: male
+                labels:
+                - label1
+                - label2
+                - label3
+                slot:
+                  delivery_date: '18122024'
+                  start_time: 1100
+                  end_time: 1500
+                payment_method: prepaid
+                transactions:
+                - transaction_id: '123456'
+                  amount: 100.5
+                  type: 1
+                  card_number: '4111111111111111'
+                  source_account: source_account_123
+                  destination_account: destination_account_456
+                  status: 1
+                  description: 'Payment for order #12345'
+                is_cash_on_delivery: false
+                note: Please deliver during weekdays
+                type: b2b
+                meta_data:
+                  name: Metadata
+                  has_options: true
+                external_fields:
+                - key: order_id
+                  value: '12345'
+                - key: customer_name
+                  value: John Doe
+                - key: status
+                  value: shipped
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/tenants/sellers/{seller_code}/orders/{id}/logs:
+    get:
+      summary: Get Order Logs
+      operationId: getGetOrderLogs
+      tags:
+      - Orders
+      description: Description Retrieve full logs of a specific order for a seller using the id which is the omniful order
+        id.
+      parameters:
+      - name: seller_code
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v2/tenants/sellers/{seller}-code/orders:
+    get:
+      summary: Get Orders
+      operationId: getGetOrders2
+      tags:
+      - Orders (V2)
+      parameters:
+      - name: seller
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v2/tenants/orders/search:
+    get:
+      summary: Get Order Search
+      operationId: getGetOrderSearch2
+      tags:
+      - Orders (V2)
+      description: 'Searches tenant orders using optional filters and can return a maximum of 100 orders per request. Method:
+        GETEndpoint: {{base_url}}/sales-channel/public/v2/tenants/orders/search This request is used to retrieve orders that
+        match the supplied search criteria. Authentication appears to be required because the request uses the available {{access_token}}
+        variable. This API can send a maximum of 100 orders only. All query parameters are optional unless otherwise indicated.
+        Available query parameters '
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/tenants/sellers/{seller_code}/orders/{id}/shipment:
+    post:
+      summary: Trigger Automatic Shipment Creation
+      operationId: postTriggerAutomaticShipmentCreation
+      tags:
+      - Shipment
+      description: This API endpoint is used to trigger the automatic creation of a shipment for a specific order within the
+        Omniful platform. The shipment is generated when the details for a given order are provided, such as the number of
+        boxes, weight, and any special remarks. This is used when the shipments are to be generated automatically by Omniful.
+      parameters:
+      - name: seller_code
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              number_of_boxes: 1
+              weight: 1.2
+              remarks: Please handle shipment carefully,
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/tenants/sellers/{seller_code}/orders/{order_id}/shipment:
+    put:
+      summary: Update Shipment Details
+      operationId: putUpdateShipmentDetails
+      tags:
+      - Shipment
+      description: This API endpoint is used to update an existing shipment for a specific order within the Omniful platform.
+        It allows you to modify shipment details such as shipping partner information, tracking URL, package details (e.g.,
+        dimensions, weight), and courier partner information. This is typically used to update shipment details after the
+        initial creation by Sales Channel only.
+      parameters:
+      - name: seller_code
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: order_id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              tracking_url: https://tracking.fedex.com/123456789
+              awb_number: AWB123456787
+              awb_label: https://omniful-staging-uploads.s3.eu-central-1.amazonaws.com/shipping/tamex/pixicommerce435/14755/55f86b562b59de7e04cc5687_awb_label.pdf
+              package_details:
+                number_of_boxes: 1
+                weight: 1
+                dimensions:
+                  length: 30
+                  breadth: 20
+                  height: 15
+                remarks: Handle with care
+              courier_partner:
+                tag: dhl_express
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/tenants/sellers/{seller_code}/orders/{order_id}/shipment/status:
+    put:
+      summary: Update Shipment Status
+      operationId: putUpdateShipmentStatus2
+      tags:
+      - Shipment
+      description: 'This API is used to update shipment status when shipment type of the order is sales_channel_generated
+        &amp; omniful_generated. Allowed Shipment Status: [ dispatched, out_for_delivery, in_transit, delivered, return_to_origin]'
+      parameters:
+      - name: seller_code
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: order_id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              shipment_status: delivered
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/tenants/sellers/{seller_code}/orders/{oms_order_id}/shipment/manual:
+    post:
+      summary: Create Manual Shipment
+      operationId: postCreateManualShipment
+      tags:
+      - Shipment
+      description: 'Creates a manual shipment for an existing order by attaching tracking, AWB, and package details.Can be
+        created only for order with the shipment type: omniful_generated'
+      parameters:
+      - name: seller_code
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: oms_order_id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              tracking_url: https://tracking.example.com/123456789
+              awb_number: AWBMANUAL1234511618882661132
+              awb_label: https://example.link.com/shipping/b59de7e04cc5687_awb_label.pdf
+              package_details:
+                number_of_boxes: 1
+                weight: 1
+                dimensions:
+                  length: 30
+                  breadth: 20
+                  height: 15
+                remarks: Handle with care
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/tenants/sellers/{seller_code}/return_requests:
+    get:
+      summary: Get Return Requests
+      operationId: getGetReturnRequests2
+      tags:
+      - Return Requests
+      description: '📌 Get Return Request API - Overview The Get Return Request API allows users to retrieve return requests
+        for orders based on request status, order ID, and return order ID. 📌 Filters Available: order_id – Fetch return requests
+        for a specific order. status – Filter return requests by status. created_from - Filter return request by date of creation
+        created_to - Filter return request by date of creation By default, return requests will be returned for the last 3
+        months only. The supported date format'
+      parameters:
+      - name: seller_code
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/tenants/sellers/{seller_code}/orders/{id}/return_requests:
+    post:
+      summary: Create Return Request
+      operationId: postCreateReturnRequest2
+      tags:
+      - Return Requests
+      parameters:
+      - name: seller_code
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              hub_code: ONLS
+              return_items:
+              - seller_sku_code: '1108322'
+                quantity: 1
+                return_reason: Damaged product
+                refund_amount: 49.99
+                return_reasons:
+                - reason: Damaged product
+                  quantity: 1
+              return_reason: Customer dissatisfaction
+              return_request_number: RET-2024-001
+              additional_charges:
+              - type: shipping
+                cost_with_tax: 5.99
+                tax_percentage: 10.0
+              - type: restocking_fee
+                cost_with_tax: 2.5
+                tax_percentage: 5.0
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/tenants/sellers/{seller_code}/return_requests/{return_request_id}/reject:
+    put:
+      summary: Reject Return Request
+      operationId: putRejectReturnRequest2
+      tags:
+      - Return Requests
+      parameters:
+      - name: seller_code
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: return_request_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/tenants/sellers/{seller_code}/return_requests/{return_request_id}/approve:
+    put:
+      summary: Approve Return Request
+      operationId: putApproveReturnRequest3
+      tags:
+      - Return Requests
+      parameters:
+      - name: seller_code
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: return_request_id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              return_reason: Product damaged during shipping
+              order_items:
+              - sku_code: srv-sku-10
+                return_quantity: 1
+                return_reason: Damaged item
+              total_refundable_amount: 159.99
+              approval_mode: full
+              return_request_id: RR-2024-123456
+              additional_charges:
+              - type: restocking_fee
+                cost_with_tax: 10.5
+                tax_percentage: 5.0
+              - type: return_shipping
+                cost_with_tax: 15.99
+                tax_percentage: 8.0
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/tenants/sellers/{seller_code}/return_to_sender:
+    post:
+      summary: Create Return To Sender Order
+      operationId: postCreateReturnToSenderOrder
+      tags:
+      - Return To Sender
+      parameters:
+      - name: seller_code
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              order_id: rtv_to_supplier_4
+              hub_code: ONLS
+              recipient_details:
+                type: supplier
+                code: SA-659
+              order_items:
+              - sku_code: srv-sku-12323
+                name: iPhone 15 Pro
+                display_price: 799
+                selling_price: 699
+                is_substituted: false
+                quantity: 1
+                tax_percent: 10
+                tax: 69.9
+                unit_price: 699
+                subtotal: 699
+                total: 768.9
+                discount: 100
+                tax_inclusive: true
+              billing_address:
+                address1: 123 Main Street
+                city: New York
+                country: United States
+                first_name: John
+                last_name: Doe
+                phone: 123-456-7890
+                state: NY
+                zip: '10001'
+                state_code: NY
+                country_code: US
+                latitude: 40.7128
+                longitude: -74.006
+                national_address_code: nac_1234
+              shipping_address:
+                address1: 456 Elm Street
+                city: Los Angeles
+                country: United States
+                first_name: Jane
+                last_name: Smith
+                phone: 987-654-3210
+                state: CA
+                zip: '90001'
+                state_code: CA
+                country_code: US
+                latitude: 34.0522
+                longitude: -118.2437
+                national_address_code: nac_1234
+              order_created_at: '2024-09-19T07:15:25.220Z'
+              invoice:
+                currency: USD
+                subtotal: 699
+                shipping_price: 0
+                shipping_refund: 0
+                tax: 69.9
+                discount: 100
+                total: 768.9
+                total_paid: 768.9
+                total_due: 0
+                total_refunded: 0
+                payment_method: Credit Card
+                tax_percent: 10
+                shipping_tax: 0
+                sub_total_tax_inclusive: true
+                sub_total_discount_inclusive: true
+                shipping_tax_inclusive: false
+                shipping_discount_inclusive: false
+              customer:
+                first_name: John
+                last_name: Doe
+                mobile: '1234567890'
+                mobile_code: '+1'
+                email: john.doe@example.com
+                avatar: https://example.com/avatar.jpg
+                gender: male
+              shipment:
+                shipping_partner_name: CourierX
+                shipping_partner_tag: courierx123
+                awb_number: AWB-456
+                awb_label: https://example.com/awb-label.jpg
+                tracking_link: https://example.com/tracking/456
+              payment_method: prepaid
+              is_cash_on_delivery: false
+              note: Please deliver during weekdays
+              meta_data:
+                name: Metadata
+                has_options: true
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/tenants/hubs/{hub_code}/purchase_orders:
+    get:
+      summary: Get Purchase Orders
+      operationId: getGetPurchaseOrders2
+      tags:
+      - Purchase Order
+      parameters:
+      - name: hub_code
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+    post:
+      summary: Create Purchase Order
+      operationId: postCreatePurchaseOrder2
+      tags:
+      - Purchase Order
+      parameters:
+      - name: hub_code
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              supplier_email: r@14.com
+              seller_code: KO-SE-1
+              supplier_code: UR-716
+              over_receive_allowed: true
+              purchase_order_items:
+              - sku_code: '1108322'
+                quantity: 1
+                unit_price: 10.4
+              remark: Inwarding
+              reference_purchase_order_id: po-ref-45646
+              currency: SAR
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/tenants/hubs/{hub_code}/purchase_orders/{purchase_order_id}:
+    get:
+      summary: Get Single Purchase Order
+      operationId: getGetSinglePurchaseOrder2
+      tags:
+      - Purchase Order
+      parameters:
+      - name: hub_code
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: purchase_order_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+    put:
+      summary: Update Purchase Order
+      operationId: putUpdatePurchaseOrder2
+      tags:
+      - Purchase Order
+      parameters:
+      - name: hub_code
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: purchase_order_id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              remark: ''
+              awb: ''
+              over_receive_allowed: true
+              purchase_order_items:
+              - sku_code: srv-sku-10
+                quantity: 27
+                unit_price: 31
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/hubs/{hub_code}/cycle_counts:
+    get:
+      summary: Get Cycle Counts
+      operationId: getGetCycleCounts
+      tags:
+      - Cycle Count
+      parameters:
+      - name: hub_code
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/hubs/{hub_code}/cycle_counts/{cycle_count_id}/skus:
+    get:
+      summary: Get Cycle Counts SKUs
+      operationId: getGetCycleCountsSkus
+      tags:
+      - Cycle Count
+      parameters:
+      - name: hub_code
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: cycle_count_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/tenants/billings/contracts:
+    get:
+      summary: Get Contracts
+      operationId: getGetContracts
+      tags:
+      - Billing
+      responses:
+        '200':
+          description: Successful response
+    post:
+      summary: Create Contract
+      operationId: postCreateContract
+      tags:
+      - Billing
+      requestBody:
+        content:
+          application/json: {}
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/tenants/billings/contracts/{id}:
+    get:
+      summary: Get Single Contract
+      operationId: getGetSingleContract
+      tags:
+      - Billing
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/tenants/billings/contracts/{id}/terminate:
+    put:
+      summary: Terminate Contract
+      operationId: putTerminateContract
+      tags:
+      - Billing
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/tenants/bills:
+    get:
+      summary: Get Bills
+      operationId: getGetBills
+      tags:
+      - Billing
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/tenants/bills/{bill_name}:
+    get:
+      summary: Get Bill
+      operationId: getGetBill
+      tags:
+      - Billing
+      parameters:
+      - name: bill_name
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/tenants/hubs/{bill_name}/bills:
+    get:
+      summary: Get Hub Bills
+      operationId: getGetHubBills
+      tags:
+      - Billing
+      parameters:
+      - name: bill_name
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/tenants/bills/generate:
+    post:
+      summary: Generate Bill
+      operationId: postGenerateBill
+      tags:
+      - Billing
+      requestBody:
+        content:
+          application/json:
+            example:
+              contract_name: mnoor
+              start_date: 04-09-2024
+              end_date: 03-10-2024
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/tenants/bills/{bill_name}/status:
+    put:
+      summary: Update Bill Status
+      operationId: putUpdateBillStatus
+      tags:
+      - Billing
+      parameters:
+      - name: bill_name
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              status: rejected
+              remark: Payment received on time
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/tenants/bills/{bill_name}/finalize:
+    post:
+      summary: Create Finalize Bill
+      operationId: postCreateFinalizeBill
+      tags:
+      - Billing
+      parameters:
+      - name: bill_name
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              total: 100.0
+              remark: Payment for September
+              discount:
+                percentage: 10
+                value: 10.0
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/reports:
+    get:
+      summary: Fetch Supported Reports
+      operationId: getFetchSupportedReports
+      tags:
+      - Report
+      description: This API returns a list of categories, each containing a list of reports. You can optionally filter to
+        show only archived reports or only active reports.Query Parameters Parameter Type Required Description Example is_archived
+        boolean No Filter reports by archive status. If true, returns only archived reports. If false or not provided, returns
+        only active reports. true or false Each report has a display name, key name, and a list of filters. Each filter has
+        information about whether it is require
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/reports/{category}/{report}/download:
+    post:
+      summary: Download Report
+      operationId: postDownloadReport
+      tags:
+      - Report
+      description: To use this API, you need to send a POST request to the specified endpoint with the category key name and
+        report key name from the Fetch Supported Reports API. The request body should contain the timezone and the filters
+        for the report. Each filter should have a key name and a value. The key names should be according to the key name
+        given in Fetch Supported Reports API. The values for these keys should be replaced with your actual values in the
+        same format as given in sample_values of Fetch Supp
+      parameters:
+      - name: category
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: report
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              timezone: Asia/Riyadh
+              filters:
+              - key_name: hub
+                value: Hub27
+              - key_name: date_range
+                value:
+                - '2023-11-29'
+                - '2023-12-04'
+              - key_name: order_status
+                value: picked
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/reports/archived/{category}/{report}/download:
+    post:
+      summary: Download Archived Report
+      operationId: postDownloadArchivedReport
+      tags:
+      - Report
+      description: Download Archived Reports Overview This API allows you to download archived reports with specific granularity
+        (monthly). Archived reports contain historical data that has been moved to archive status and can be accessed for
+        compliance or historical analysis purposes. Endpoint POST {{base_url}}/sales-channel/public/v1/reports/archived/:category/:report/download
+        Path Parameters Parameter Type Required Description Example category string Yes The category key name of the report
+        fulfilment report str
+      parameters:
+      - name: category
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: report
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              granularity: month
+              month: 12-2024
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/tenants/sellers/{seller_id}/return_orders/{return_order_id}/shipment:
+    post:
+      summary: Create Sales Channel Shipment
+      operationId: postCreateSalesChannelShipment
+      tags:
+      - Return Orders
+      description: Add Shipment for Return Order This endpoint allows the user to add a shipment for a specific return order
+        belonging to a seller. Request Body tracking_url (string) - The URL for tracking the shipment. awb_number (string)
+        - The Air Waybill (AWB) number for the shipment. awb_label (string) - The URL to the AWB label for the shipment. package_details
+        (object) - Details of the package including number of boxes, weight, dimensions, and remarks. number_of_boxes (integer)
+        - The number of boxes in the s
+      parameters:
+      - name: seller_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: return_order_id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              tracking_url: https://tracking.fedex.com/123456789
+              awb_number: AWB123452832
+              awb_label: https://omniful-staging-uploads.s3.eu-central-1.amazonaws.com/shipping/tamex/pixicommerce435/14755/55f86b562b59de7e04cc5687_awb_label.pdf
+              package_details:
+                number_of_boxes: 1
+                weight: 1
+                dimensions:
+                  length: 30
+                  breadth: 20
+                  height: 15
+                remarks: Handle with care
+              courier_partner:
+                tag: dhl_express
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/tenants/sellers/{seller_id}/return_orders/{return_order_id}/shipment/status:
+    put:
+      summary: Update Sales Channel Shipment status
+      operationId: putUpdateSalesChannelShipmentStatus
+      tags:
+      - Return Orders
+      description: 'Allowed Shipment Status: [ picked_up, return_to_origin, cancelled]'
+      parameters:
+      - name: seller_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: return_order_id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              shipment_status: picked_up
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/tenants/sellers/{seller_code}/orders/{order_id}/return_orders:
+    post:
+      summary: Create Customer Return Order
+      operationId: postCreateCustomerReturnOrder
+      tags:
+      - Return Orders
+      description: This API endpoint allows you to create a return order for any forward order that has been marked as Delivered.
+        Precondition The order must have the status Delivered to be eligible for a return. Field Descriptions Field Type Mandatory/Optional
+        Description return_order_id string Mandatory Unique identifier for the return order. return_items array of objects
+        Mandatory List of items being returned, including item_id, sku_code, and return_quantity. item_id string Mandatory
+        Original order item ID. sku
+      parameters:
+      - name: seller_code
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: order_id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json: {}
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/tenants/sellers/{seller_code}/orders/{order_id}/return_orders/courier:
+    post:
+      summary: Create Courier Partner Return Order
+      operationId: postCreateCourierPartnerReturnOrder
+      tags:
+      - Return Orders
+      description: This API endpoint allows you to create a return order for any forward order that has been marked as Return
+        To Origin. Precondition The order must have the status Return To Origin to be eligible for a return. Field Descriptions
+        Field Type Mandatory/Optional Description return_order_id string Mandatory Unique identifier for the return order.
+        Notes return_order_id must always be provided.
+      parameters:
+      - name: seller_code
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: order_id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json: {}
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/tenants/sellers/{seller_code}/return_orders/:
+    get:
+      summary: Get Return Orders (To Be Deprecated)
+      operationId: getGetReturnOrdersToBeDeprecated
+      tags:
+      - Return Orders
+      parameters:
+      - name: seller_code
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v2/tenants/sellers/{seller_code}/return_orders:
+    get:
+      summary: Get Return Orders
+      operationId: getGetReturnOrders2
+      tags:
+      - Return Orders (V2)
+      parameters:
+      - name: seller_code
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/tenants/hubs/{hub_code}/sellers/{seller_code}/inventory:
+    put:
+      summary: Push Inventory
+      operationId: putPushInventory
+      tags:
+      - Inventory
+      description: 'Push Hub Inventory This endpoint allows you to update the inventory corresponding to a specific seller
+        and hub. By providing the seller''s unique code and the hub''s unique code, you can modify the available quantities
+        of skus of that seller in that hub. This route can only be used for hubs which are location-inventory off. Request
+        Method: PUT Endpoint: {{base_url}}/sales-channel/public/v1/tenants/hubs/:hub_code/sellers/:seller_code/inventory Request
+        Body The request body must be in JSON format an'
+      parameters:
+      - name: hub_code
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: seller_code
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              sku_detail:
+              - sku_code: sku-srv
+                quantity: 10
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/tenants/hubs/{hub_code}/inventory:
+    get:
+      summary: Get Hub Inventory
+      operationId: getGetHubInventory
+      tags:
+      - Inventory
+      parameters:
+      - name: hub_code
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/tenants/sellers/{seller_code}/skus/{sku_code}/inventory:
+    get:
+      summary: Get Inventory for SKU Across All Hubs
+      operationId: getGetInventoryForSkuAcrossAllHubs2
+      tags:
+      - Inventory
+      parameters:
+      - name: seller_code
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: sku_code
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/tenants/hubs/{hub_code}/sellers/{seller_code}/safety_stock:
+    put:
+      summary: Push Safety Stock
+      operationId: putPushSafetyStock2
+      tags:
+      - Inventory
+      parameters:
+      - name: hub_code
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: seller_code
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              sku_detail:
+              - sku_code: '65525900136597'
+                quantity: 1001
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/tenants/shipping_accounts:
+    get:
+      summary: Get All Shipping Accounts
+      operationId: getGetAllShippingAccounts
+      tags:
+      - Shipping Accounts
+      description: This API is used to fetch all shipping accounts for the Tenant.
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/tenants/jobs/{job_id}:
+    get:
+      summary: Get Job by ID
+      operationId: getGetJobById
+      tags:
+      - Background Jobs
+      parameters:
+      - name: job_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/tenants/sellers/EX-637/channels/integrations:
+    get:
+      summary: Seller Integrations
+      operationId: getSellerIntegrations
+      tags:
+      - Seller Integrations
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/tenants/sellers/{seller_code}/pickup_locations:
+    post:
+      summary: Upsert Pickup Locations
+      operationId: postUpsertPickupLocations2
+      tags:
+      - Pickup Locations
+      description: Create Pickup Location API Description Creates a new pickup (hub) location for a seller. A pickup location
+        can be physical or virtual and is used for fulfilling orders and assigning shipments. 📋 Field Descriptions Top-Level
+        Fields Field Type Required Description name string ✅ Name of the pickup location (e.g., “Main Warehouse”). email string
+        ✅ Contact email for the pickup location. phone_number object ✅ Contact phone details (number, code, country). external_hub_identifier
+        string ✅ External syst
+      parameters:
+      - name: seller_code
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              name: Main Warehouse
+              email: warehouse@example.com
+              phone_number:
+                number: '1234567890'
+                country_calling_code: '+91'
+                country_code: IN
+              external_hub_identifier: HUB123456
+              address:
+                address_1: 123 Street Name
+                address_2: Suite 400
+                postal_code: '560001'
+                city_name: Riyadh
+                country_name: Saudi Arabia
+                state_name: Riyadh
+                country_code: SA
+                state_code: '01'
+                latitude: 24.8506269
+                longitude: 46.8180723
+                national_address_code: ''
+              virtual_hub_type: virtual
+      responses:
+        '200':
+          description: Successful response
+    get:
+      summary: Get Pickup Locations
+      operationId: getGetPickupLocations2
+      tags:
+      - Pickup Locations
+      description: Description Retrieves all pickup locations configured for a specific seller under a tenant. Useful for
+        fetching active hubs/warehouses and their details.
+      parameters:
+      - name: seller_code
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/tenants/sellers/{seller_code}/pickup_locations/{pickup_location_code}:
+    get:
+      summary: Get Pickup Location By Code
+      operationId: getGetPickupLocationByCode2
+      tags:
+      - Pickup Locations
+      description: Description Fetches details of a specific pickup location (hub) for a given seller, using the hub’s external_hub_identifier.
+        🔗 Path Parameters Parameter Type Required Description seller_code string ✅ Unique seller code (e.g., 0099). external_hub_identifier
+        string ✅ External identifier of the hub/pickup location (e.g., HUB123456).
+      parameters:
+      - name: seller_code
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: pickup_location_code
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/tenants/sellers/{seller_code}/shipment_orders/{order_id}/return_orders:
+    post:
+      summary: Create Return Order
+      operationId: postCreateReturnOrder3
+      tags:
+      - Shipment Orders
+      parameters:
+      - name: seller_code
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: order_id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              return_order_id: RO-106213
+              return_items:
+              - item_id: JOUFURH05082036
+                return_item_id: Rqueen_bed
+                sku_code: JOUFURH05082036
+                return_quantity: 1
+                return_reasons:
+                - reason: Damaged item
+                  quantity: 1
+                  comment: Product arrived with broken packaging
+                unit_price: 50.0
+                discount: 0
+                total: 100.0
+              additional_charges:
+              - type: cod_fee
+                cost: 50.0
+                tax_inclusive: true
+                tax_percentage: 5.0
+                is_applied: true
+              - type: platform_fee
+                cost: 30.0
+                tax_inclusive: false
+                tax_percentage: 0.0
+                is_applied: false
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/tenants/sellers/{seller_code}/shipment_orders/return_orders:
+    get:
+      summary: Get Return Orders
+      operationId: getGetReturnOrders3
+      tags:
+      - Shipment Orders
+      parameters:
+      - name: seller_code
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/tenants/sellers/{seller_code}/shipment_orders/return_orders/{return_order_id}:
+    get:
+      summary: Get Return Order by Id
+      operationId: getGetReturnOrderById2
+      tags:
+      - Shipment Orders
+      parameters:
+      - name: seller_code
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: return_order_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/tenants/sellers/{seller_code}/shipment_orders/{order_id}/return_requests:
+    post:
+      summary: Create Return Request
+      operationId: postCreateReturnRequest3
+      tags:
+      - Shipment Orders
+      parameters:
+      - name: seller_code
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: order_id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              return_request_number: RRN-108
+              return_reason: Customer dissatisfaction with product quality
+              return_items:
+              - seller_sku_code: JOUFURH528052406
+                quantity: 1
+                return_reason: Item defective
+                refund_amount: 950.0
+                return_reasons:
+                - reason: Damaged packaging
+                  quantity: 1
+                  comment: Outer box torn on arrival
+              additional_charges:
+              - type: platform_fee
+                cost_with_tax: 30.0
+                tax_percentage: 0.0
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/tenants/sellers/{seller_code}/shipment_orders/return_requests:
+    get:
+      summary: Get Return Request
+      operationId: getGetReturnRequest
+      tags:
+      - Shipment Orders
+      parameters:
+      - name: seller_code
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/tenants/sellers/{seller_code}/shipment_orders/return_requests/{return_request_id}/approve:
+    put:
+      summary: Approve Return Request
+      operationId: putApproveReturnRequest4
+      tags:
+      - Shipment Orders
+      parameters:
+      - name: seller_code
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: return_request_id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json: {}
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/tenants/sellers/{seller_code}/shipment_orders/return_requests/{return_request_id}/reject:
+    put:
+      summary: Reject Return Request
+      operationId: putRejectReturnRequest3
+      tags:
+      - Shipment Orders
+      parameters:
+      - name: seller_code
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: return_request_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/tenants/sellers/{seller_code}/shipment_orders:
+    get:
+      summary: Get Shipment Orders
+      operationId: getGetShipmentOrders2
+      tags:
+      - Shipment Orders
+      parameters:
+      - name: seller_code
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+    post:
+      summary: Create Shipment Order
+      operationId: postCreateShipmentOrder2
+      tags:
+      - Shipment Orders
+      description: Description 📦 Create Shipment Order API 📥 Request Body 1. Order Information Field Type Required Description
+        display_order_id string ✅ Unique human-readable order ID shown in Omniful. client_reference_id string ❌ Client-provided
+        reference ID for internal tracking. automatic_shipment_order_shipment_enabled boolean ❌ If true, shipment order will
+        auto-generate a shipment. order_created_at string (ISO 8601) ❌ Date-time when the order was originally created. slot.delivery_date
+        string (YYYY-MM-DD) ❌ Re
+      parameters:
+      - name: seller_code
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              id: SO-81211
+              display_order_id: SO-ORDER-302
+              client_reference_id: SO-REF-8123
+              installation_required: true
+              order_items:
+              - item_id: item-001
+                sku_code: SKU-123
+                hs_code: HS999
+                sku_id: SKU-ID-456
+                name: Sample Product
+                display_price: 100.0
+                selling_price: 90.0
+                is_substituted: false
+                item_barcodes:
+                - BAR123
+                quantity: 2
+                tax_percent: 5.0
+                tax: 9.0
+                unit_price: 45.5
+                subtotal: 91.0
+                total: 100.0
+                discount: 0.0
+                tax_inclusive: true
+                installation_required: true
+              slot:
+                delivery_date: '2025-07-20'
+                start_time: 1000
+                end_time: 1200
+              order_created_at: '2025-07-15T10:00:00Z'
+              customer:
+                id: CUST-001
+                first_name: John
+                last_name: Doe
+                mobile: '1234567890'
+                mobile_code: '+91'
+                country_code: IN
+                email: john.doe@example.com
+                gender: male
+                country: India
+                country_calling_code: '+91'
+              shipment:
+                number_of_boxes: 2
+                weight: 4.5
+              payment_method: postpaid
+              is_cash_on_delivery: true
+              shipment_type: omniful_generated
+              delivery_type: click_and_collect
+              note: Handle with care
+              no_of_boxes: 2
+              labels:
+              - fragile
+              - priority
+              fulfillment_type: shipment_only
+              receiver_address:
+                address1: 456 Customer Lane
+                address2: Apt 202
+                city: Delhi
+                country: India
+                first_name: Receiver
+                last_name: Name
+                phone: '9988776655'
+                state: Delhi
+                zip: '110001'
+                state_code: DL
+                country_code: IN
+                latitude: 28.6139
+                longitude: 77.209
+                email: receiver@example.com
+                country_calling_code: '+91'
+                national_address_code: code
+              product_description: Pack of electronics
+              hub_detail:
+                code: H211125-3261-HXMJV
+                hub_type: virtual
+                virtual_hub_type: pickup_loction
+              payment_info:
+                currency: INR
+                payment_type: cash
+                payment_mode: cod
+                total: 100.0
+                subtotal: 95.0
+                total_paid: 100.0
+                total_due: 0.0
+                tax_percent: 5.0
+                tax: 5.0
+                discount: 0.0
+                shipping_price: 10.0
+                additional_charges:
+                - type: platform_fee
+                  cost: 5.0
+                  tax_amount: 0.5
+                  tax_inclusive: true
+                  tax_percentage: 10.0
+                  is_applied: true
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/tenants/sellers/{seller_code}/shipment_orders/{id}:
+    get:
+      summary: Get Shipment Order By ID
+      operationId: getGetShipmentOrderById
+      tags:
+      - Shipment Orders
+      parameters:
+      - name: seller_code
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/tenants/courier_partners:
+    get:
+      summary: Get Courier Partners
+      operationId: getGetCourierPartners2
+      tags:
+      - Courier Partners
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/tenants/hubs/{hub_code}/orders/{id}/packaging_materials:
+    get:
+      summary: Order Packaging Materials
+      operationId: getOrderPackagingMaterials
+      tags:
+      - Packaging Materials
+      parameters:
+      - name: hub_code
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v1/tenants/token:
+    post:
+      summary: Retrieve Access Token
+      operationId: postRetrieveAccessToken2
+      tags:
+      - Tenant APIs
+      description: 'This API allows you to obtain a new access token and refresh token using a refresh token grant type. Access
+        tokens are short-lived tokens that grant access to specific resources or actions within an API, while refresh tokens
+        are used to request new access tokens without requiring the user to re-authenticate. Upon sending this request to
+        the Omniful API, you will receive a response containing the new access token and refresh token, which you can then
+        use to access protected resources and perform '
+      requestBody:
+        content:
+          application/json:
+            example:
+              refresh_token: '{{refresh_token}}'
+              grant_type: refresh_token
+              client_id: '{{client_id}}'
+              client_secret: '{{client_secret}}'
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v2/tms/shipments:
+    post:
+      summary: Create Shipment
+      operationId: postCreateShipment
+      tags:
+      - Shipments
+      description: '📦 Shipment API Documentation 📌 Create Shipment– Overview The Create Shipment API allows users to initiate
+        and register a new shipment for an order or set of packages. This API enables sellers, logistics partners, and system
+        integrators to define shipment details such as pickup location, delivery destination, package dimensions, product
+        information, and service type. It is useful for automating the shipping process, ensuring accurate order fulfillment,
+        and integrating with logistics partners for '
+      requestBody:
+        content:
+          application/json:
+            example:
+              reference_id: ORD-2024-101
+              seller_reference_id: Display-Order-ID
+              seller_hub_code: seamlessretail
+              customer_info:
+                name: John Doe
+                code: CUST001
+                email: john.doe@example.com
+                country_code: SA
+                phone: '501234567'
+                address:
+                  code: ADDR001
+                  address_line_1: 123 Business Street
+                  address_line_2: Suite 100
+                  city: Dubai
+                  state: Dubai
+                  country: United Arab Emirates
+                  country_code: AE
+                  city_id: city_001
+                  state_id: state_001
+                  country_id: country_001
+                  postal_code: '12345'
+                  latitude: 25.2048
+                  longitude: 55.2708
+                  national_address_code: new_code
+              payment_info:
+                currency: AED
+                payment_type: prepaid
+                declared_value: 150.0
+                total_due: 0.0
+                total_paid: 150.0
+              product_type: physical_product
+              service_type: standard
+              pickup_type: pickup_by_logistics
+              delivery_type: delivery_by_logistics
+              handling_granularity: package
+              shipment_type: forward
+              delivery_preference:
+                delivery_date: '2025-12-30T00:00:00Z'
+                start_time: '2025-12-30T09:00:00Z'
+                end_time: '2025-12-30T18:00:00Z'
+                delivery_instruction: Please deliver to reception desk
+              sales_channel_info:
+                seller_sales_channel_id: channel_001
+                sales_channel:
+                  id: amazon_ae
+                  tag: amazon
+                  name: Amazon UAE
+                  category: marketplace
+                  logo_url: https://example.com/amazon-logo.png
+                  link: https://amazon.ae
+                  store_name: Amazon UAE Store
+              packages:
+              - reference_id: PKG-001
+                payment_info:
+                  currency: AED
+                  payment_type: prepaid
+                  declared_value: 150.0
+                  total_due: 0.0
+                  total_paid: 150.0
+                packaging_info:
+                  length: 30.0
+                  height: 20.0
+                  width: 25.0
+                  weight: 2.5
+                  volume: 15000.0
+                items:
+                - item_id: item_001
+                  sku:
+                    id: sku_001
+                    name: Wireless Bluetooth Headphones
+                    code: WH-001
+                    description: High-quality wireless headphones with noise cancellation
+                    image_urls:
+                    - https://example.com/headphones-1.jpg
+                    - https://example.com/headphones-2.jpg
+                    barcodes:
+                    - '1234567890123'
+                    - '9876543210987'
+                    weight: 0.5
+                    currency: AED
+                    selling_price: 150.0
+                  quantity: 1
+                  return_reason: ''
+                  note: ''
+                  image_urls:
+                  - https://example.com/headphones-1.jpg
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v2/tms/shipments/{shipment_id}:
+    get:
+      summary: Get Shipment
+      operationId: getGetShipment
+      tags:
+      - Shipments
+      description: 📌 Fetch Shipment by Shipment ID– Overview The Fetch Shipment by Shipment ID API delivers complete shipment
+        details using the system-generated Shipment ID. This API ensures accurate retrieval of shipment records directly tied
+        to the internal database. Response Body Format Field Data Type Description is_success boolean Indicates if the request
+        was successful. status_code number HTTP status code of the response. data.shipment.id string Unique shipment identifier.
+        data.shipment.awb_number string The
+      parameters:
+      - name: shipment_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v2/tms/shipments/reference/{reference_id}:
+    get:
+      summary: Get Shipment by Reference
+      operationId: getGetShipmentByReference
+      tags:
+      - Shipments
+      description: 📌 Fetch Shipment by Reference ID – Overview The Fetch Shipment by Reference ID API allows users to retrieve
+        shipment details based on a custom Reference ID assigned during order creation. This method is useful when shipments
+        need to be linked to internal business processes or third-party systems.
+      parameters:
+      - name: reference_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v2/tms/shipments/awb/{awb}:
+    get:
+      summary: Get Shipment by Awb
+      operationId: getGetShipmentByAwb
+      tags:
+      - Shipments
+      description: 📌 Fetch Shipment by AWB– Overview The Fetch Shipment by AWB API provides detailed information about a shipment
+        using its unique Air Waybill (AWB) number. This method allows users to directly track the journey of a specific parcel
+        without needing order-level references.
+      parameters:
+      - name: awb
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+  /sales-channel/public/v2/tms/shipments/{shipment_id}/cancel:
+    put:
+      summary: Cancel Shipment
+      operationId: putCancelShipment
+      tags:
+      - Shipments
+      description: 📌 Cancel Shipment – Overview The Cancel Shipment by Shipment ID API lets users cancel a shipment using
+        the system-assigned Shipment ID. This approach ensures accuracy by targeting shipments uniquely identified within
+        the system, reducing the risk of errors in cancellation. Field Data Type Required Description reason string Yes The
+        reason for cancelling the shipment.
+      parameters:
+      - name: shipment_id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              reason: not required now
+      responses:
+        '200':
+          description: Successful response
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer

@@ -1,0 +1,32 @@
+# Omniful, Inc.
+
+> Omniful is an AI-powered unified supply chain and fulfillment platform (OMS, WMS, TMS, inventory, POS, returns) with public Integration APIs. Bearer-token authenticated, webhook-driven, base host prodapi.omniful.com. A 500 Global portfolio company operating primarily across the MENA region.
+
+## APIs
+
+- [Omniful Integration APIs (docs)](https://docs.omniful.tech): Orders, SKUs/catalog, inventory, hubs, returns, purchase orders, POS, customers, stock transfers, shipments/TMS, billing, reports, and webhooks. Base URL https://prodapi.omniful.com.
+
+## Specs
+
+- [OpenAPI (derived from Postman collection)](https://raw.githubusercontent.com/api-evangelist/omniful-inc/refs/heads/main/openapi/omniful-inc-openapi.yml)
+- [Postman collection (published)](https://docs.omniful.tech)
+
+## Artifacts
+
+- [Authentication](https://raw.githubusercontent.com/api-evangelist/omniful-inc/refs/heads/main/authentication/omniful-inc-authentication.yml): HTTP bearer token.
+- [Conventions](https://raw.githubusercontent.com/api-evangelist/omniful-inc/refs/heads/main/conventions/omniful-inc-conventions.yml): page/per_page pagination, custom success/error envelope, uri-path versioning (v1/v2).
+- [Error catalog](https://raw.githubusercontent.com/api-evangelist/omniful-inc/refs/heads/main/errors/omniful-inc-problem-types.yml): custom {is_success,status_code,error{code,message}} envelope.
+- [Webhooks](https://raw.githubusercontent.com/api-evangelist/omniful-inc/refs/heads/main/asyncapi/omniful-inc-webhooks.yml): seller/tenant/TMS event catalog.
+- [Lifecycle](https://raw.githubusercontent.com/api-evangelist/omniful-inc/refs/heads/main/lifecycle/omniful-inc-lifecycle.yml): versioning + dated deprecations.
+- [Data model](https://raw.githubusercontent.com/api-evangelist/omniful-inc/refs/heads/main/data-model/omniful-inc-data-model.yml): entities + relationships.
+
+## Docs
+
+- [Developer docs / API reference](https://docs.omniful.tech)
+- [Knowledge base](https://www.omniful.ai/knowledge-base)
+- [Blog](https://www.omniful.ai/blog)
+- [Pricing](https://www.omniful.ai/pricing)
+- [Status page](https://status.omniful.ai)
+- [GitHub organization](https://github.com/omniful)
+- [Terms of Service](https://www.omniful.ai/terms-of-service)
+- [Privacy Policy](https://www.omniful.ai/privacy-policy)

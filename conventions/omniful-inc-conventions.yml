@@ -1,0 +1,44 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.omniful.tech
+summary: Cross-cutting request/response conventions for the Omniful Integration APIs, captured from the published Postman collection and derived from the OpenAPI.
+authentication:
+  style: bearer
+  header: 'Authorization: Bearer {access_token}'
+  detail: authentication/omniful-inc-authentication.yml
+versioning:
+  scheme: uri-path
+  versions: [v1, v2]
+  pattern: /sales-channel/public/{version}/...
+  note: v2 endpoints coexist with v1; several v1 operations carry deprecation notices (see lifecycle/).
+pagination:
+  style: page-number
+  params:
+    page: 1-based page index
+    per_page: page size
+  example: '?page=1&per_page=10'
+response_envelope:
+  success:
+    shape:
+      is_success: true
+      status_code: 200
+      data: {}
+  error:
+    shape:
+      is_success: false
+      status_code: 4xx/5xx
+      error:
+        code: MACHINE_CODE
+        message: human readable message
+    detail: errors/omniful-inc-problem-types.yml
+filtering:
+  common_params:
+  - updated_from / updated_to (with timezone) for time-window queries
+  - status filters (e.g. order_status)
+idempotency:
+  supported: false
+  note: No idempotency-key mechanism is documented; duplicate creates are rejected server-side via unique reference_id constraints (e.g. "reference id already exists", "Order Already Exist").
+rate_limiting:
+  documented: false
+webhooks:
+  detail: asyncapi/omniful-inc-webhooks.yml

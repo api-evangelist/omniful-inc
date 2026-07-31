@@ -1,0 +1,21 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.omniful.tech
+versioning:
+  scheme: uri-path
+  versions: [v1, v2]
+  current: v2
+  note: v1 remains available; v2 endpoints introduced for orders, SKUs, and return orders.
+deprecation:
+  policy: field- and endpoint-level deprecation announced in the API docs with a dated sunset.
+  sunset_header: false
+  announced:
+  - item: '"order_items" field in Get Seller Orders response (include=order_items)'
+    sunset: '2025-09-30T23:59:00Z'
+  - item: Get Seller Orders (v1), Get Order Logs (v1), Get Master Catalog SKUs (v1), Get Seller Return Order
+    sunset: '2026-07-30'
+status_page: https://status.omniful.ai
+sla:
+  documented: false
+deprecated_operations:
+- openapi/omniful-inc-openapi.yml (see operations whose summary contains "To be deprecated")

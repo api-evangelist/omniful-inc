@@ -1,0 +1,23 @@
+generated: '2026-07-20'
+method: searched
+source: https://github.com/omniful
+note: >-
+  No first-party language client SDK (npm/PyPI/Maven/etc.) was found. Omniful
+  publishes first-party e-commerce platform integration plugins on its GitHub
+  organization. These are connectors, not API client libraries, so no `SDKs`
+  rating pointer is emitted.
+packages:
+- kind: plugin
+  platform: Magento 2
+  language: php
+  registry: github
+  name: omniful-magento2-plugin
+  url: https://github.com/omniful/omniful-magento2-plugin
+  official: true
+- kind: plugin
+  platform: WooCommerce
+  language: php
+  registry: github
+  name: woocommerce-plugin
+  url: https://github.com/omniful/woocommerce-plugin
+  official: true

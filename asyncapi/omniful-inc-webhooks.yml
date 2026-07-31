@@ -1,0 +1,54 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.omniful.tech
+spec_type: Webhooks
+summary: >-
+  Omniful delivers outbound webhook events to a seller/tenant-registered callback
+  URL over HTTP POST. Webhooks are registered and listed via the public API
+  (GET/PUT /sales-channel/public/v1/webhooks; TMS Register Webhook). Events span
+  order, shipment, inventory, catalog (SKU), purchase order, return, stock
+  transfer, delivery zone, GRN QC, and background-job lifecycle.
+registration:
+  list_operation: getWebhooks            # GET /sales-channel/public/v1/webhooks
+  register_operation: registerWebhooks   # PUT /sales-channel/public/v1/webhooks
+  delivery: HTTP POST to subscriber-provided callback URL
+event_groups:
+- group: Seller / Sales Channel events
+  events:
+  - order.create
+  - order.update
+  - order.shipment.create
+  - stock_transfer_order.request.approve
+  - stock_transfer_order.request.received
+  - delivery_zone.upsert
+  - grn.qc
+  - master_sku.create
+  - master_sku.update
+  - purchase_order.create
+  - purchase_order.update
+  - inventory.update
+  - return_order.create
+  - return_order.update
+  - return_order.qc
+  - return_request.create
+  - return_request.approve
+  - return_shipment.create
+- group: Tenant events
+  events:
+  - order
+  - sku
+  - inventory
+  - inwarding
+  - return_order
+  - stock_transfer_request
+  - job.completed
+  - job.failed
+  - shipment_order
+  - purchase_order
+- group: TMS events
+  events:
+  - shipment (via TMS Register Webhook)
+notes: >-
+  Event payload schemas are documented per-event in the provider Postman
+  collection (docs.omniful.tech). Labels above are normalized from the published
+  event names; consult the collection for exact JSON payload shapes.

@@ -1,0 +1,526 @@
+generated: '2026-07-20'
+method: derived
+status: candidate
+source: openapi/omniful-inc-openapi.yml
+server:
+  name: omniful
+  transport: http
+note: No official hosted MCP server was found. Tools below are candidates derived one-per-operation from the OpenAPI harvested
+  from the provider Postman collection.
+tools:
+- name: postCreateOrder
+  description: Create Order
+  source_operation: openapi/omniful-inc-openapi.yml#postCreateOrder
+- name: putUpdateOrder
+  description: Update Order
+  source_operation: openapi/omniful-inc-openapi.yml#putUpdateOrder
+- name: putUpdateOrderInvoice
+  description: Update Order Invoice
+  source_operation: openapi/omniful-inc-openapi.yml#putUpdateOrderInvoice
+- name: putUpdateOrderAttachments2
+  description: Update Order Attachments
+  source_operation: openapi/omniful-inc-openapi.yml#putUpdateOrderAttachments2
+- name: putCancelOrder
+  description: Cancel Order
+  source_operation: openapi/omniful-inc-openapi.yml#putCancelOrder
+- name: putApproveOrder
+  description: Approve Order
+  source_operation: openapi/omniful-inc-openapi.yml#putApproveOrder
+- name: getGetSellerOrdersToBeDeprecatedOn30072026
+  description: Get Seller Orders (⚠️ To be deprecated on 30-07-2026)
+  source_operation: openapi/omniful-inc-openapi.yml#getGetSellerOrdersToBeDeprecatedOn30072026
+- name: getGetSellerOrderByOrderid
+  description: Get Seller Order By OrderID
+  source_operation: openapi/omniful-inc-openapi.yml#getGetSellerOrderByOrderid
+- name: postCreateReturnRequest
+  description: Create Return Request
+  source_operation: openapi/omniful-inc-openapi.yml#postCreateReturnRequest
+- name: getGetOrderLogsToBeDeprecatedOn30072026
+  description: Get Order Logs (⚠️ To be deprecated on 30-07-2026)
+  source_operation: openapi/omniful-inc-openapi.yml#getGetOrderLogsToBeDeprecatedOn30072026
+- name: getGetSellerOrderLogs
+  description: Get Seller Order Logs
+  source_operation: openapi/omniful-inc-openapi.yml#getGetSellerOrderLogs
+- name: putUpdateShippingAddress
+  description: Update Shipping Address
+  source_operation: openapi/omniful-inc-openapi.yml#putUpdateShippingAddress
+- name: putUpdateShippingDetails
+  description: Update Shipping Details
+  source_operation: openapi/omniful-inc-openapi.yml#putUpdateShippingDetails
+- name: getGetOrders
+  description: Get Orders
+  source_operation: openapi/omniful-inc-openapi.yml#getGetOrders
+- name: getGetOrderSearch
+  description: Get Order Search
+  source_operation: openapi/omniful-inc-openapi.yml#getGetOrderSearch
+- name: postTriggerShipment
+  description: Trigger Shipment
+  source_operation: openapi/omniful-inc-openapi.yml#postTriggerShipment
+- name: putAddShipmentDetails
+  description: Add Shipment Details
+  source_operation: openapi/omniful-inc-openapi.yml#putAddShipmentDetails
+- name: putUpdateShipmentStatus
+  description: Update Shipment Status
+  source_operation: openapi/omniful-inc-openapi.yml#putUpdateShipmentStatus
+- name: getGetMasterCatalogSkusToBeDeprecatedOn30072026
+  description: Get Master Catalog SKUs (⚠️ To be deprecated on 30-07-2026)
+  source_operation: openapi/omniful-inc-openapi.yml#getGetMasterCatalogSkusToBeDeprecatedOn30072026
+- name: postCreateMasterCatalogSkus
+  description: Create Master Catalog SKUs
+  source_operation: openapi/omniful-inc-openapi.yml#postCreateMasterCatalogSkus
+- name: putUpdateMasterCatalogSkus
+  description: Update Master Catalog SKUs
+  source_operation: openapi/omniful-inc-openapi.yml#putUpdateMasterCatalogSkus
+- name: postCreateMasterCatalogKit
+  description: Create Master Catalog Kit
+  source_operation: openapi/omniful-inc-openapi.yml#postCreateMasterCatalogKit
+- name: putUpdateMasterCatalogKit
+  description: Update Master Catalog Kit
+  source_operation: openapi/omniful-inc-openapi.yml#putUpdateMasterCatalogKit
+- name: getGetMasterCatalogSkus
+  description: Get Master Catalog SKUs
+  source_operation: openapi/omniful-inc-openapi.yml#getGetMasterCatalogSkus
+- name: getGetSellerHubInventory
+  description: Get Seller Hub Inventory
+  source_operation: openapi/omniful-inc-openapi.yml#getGetSellerHubInventory
+- name: getGetSellerHubInventoryReportOfASeller
+  description: Get Seller Hub Inventory Report of a Seller
+  source_operation: openapi/omniful-inc-openapi.yml#getGetSellerHubInventoryReportOfASeller
+- name: getGetInventoryForSkuAcrossAllHubs
+  description: Get Inventory for SKU Across All Hubs
+  source_operation: openapi/omniful-inc-openapi.yml#getGetInventoryForSkuAcrossAllHubs
+- name: postPostHubInventory
+  description: Post Hub Inventory
+  source_operation: openapi/omniful-inc-openapi.yml#postPostHubInventory
+- name: putPushSafetyStock
+  description: Push Safety Stock
+  source_operation: openapi/omniful-inc-openapi.yml#putPushSafetyStock
+- name: postCreateReturnShipment
+  description: Create Return Shipment
+  source_operation: openapi/omniful-inc-openapi.yml#postCreateReturnShipment
+- name: putUpdateReturnShipmentStatus
+  description: Update Return Shipment Status
+  source_operation: openapi/omniful-inc-openapi.yml#putUpdateReturnShipmentStatus
+- name: postCreateSellerReturnShipment
+  description: Create Seller Return Shipment
+  source_operation: openapi/omniful-inc-openapi.yml#postCreateSellerReturnShipment
+- name: putUpdateSellerReturnShipment
+  description: Update Seller Return Shipment
+  source_operation: openapi/omniful-inc-openapi.yml#putUpdateSellerReturnShipment
+- name: postCreateReturnOrder
+  description: Create Return Order
+  source_operation: openapi/omniful-inc-openapi.yml#postCreateReturnOrder
+- name: postCreateReturnRequests
+  description: Create Return Requests
+  source_operation: openapi/omniful-inc-openapi.yml#postCreateReturnRequests
+- name: getGetReturnRequests
+  description: Get Return Requests
+  source_operation: openapi/omniful-inc-openapi.yml#getGetReturnRequests
+- name: putRejectReturnRequests
+  description: Reject Return Requests
+  source_operation: openapi/omniful-inc-openapi.yml#putRejectReturnRequests
+- name: putApproveReturnRequest
+  description: Approve Return Request
+  source_operation: openapi/omniful-inc-openapi.yml#putApproveReturnRequest
+- name: getGetReturnOrders
+  description: Get Return Orders
+  source_operation: openapi/omniful-inc-openapi.yml#getGetReturnOrders
+- name: getGetReturnOrderById
+  description: Get Return Order by ID
+  source_operation: openapi/omniful-inc-openapi.yml#getGetReturnOrderById
+- name: putApproveReturnRequest2
+  description: Approve Return Request
+  source_operation: openapi/omniful-inc-openapi.yml#putApproveReturnRequest2
+- name: putRejectReturnRequest
+  description: Reject Return Request
+  source_operation: openapi/omniful-inc-openapi.yml#putRejectReturnRequest
+- name: postCreateReturnOrder2
+  description: Create Return Order
+  source_operation: openapi/omniful-inc-openapi.yml#postCreateReturnOrder2
+- name: getGetSellerReturnOrderToBeDeprecated
+  description: Get Seller Return Order (To Be Deprecated)
+  source_operation: openapi/omniful-inc-openapi.yml#getGetSellerReturnOrderToBeDeprecated
+- name: getGetSellerReturnRequests
+  description: Get Seller Return Requests
+  source_operation: openapi/omniful-inc-openapi.yml#getGetSellerReturnRequests
+- name: getGetSellerReturnOrders
+  description: Get Seller Return Orders
+  source_operation: openapi/omniful-inc-openapi.yml#getGetSellerReturnOrders
+- name: postCreatePurchaseOrder
+  description: Create Purchase Order
+  source_operation: openapi/omniful-inc-openapi.yml#postCreatePurchaseOrder
+- name: getGetPurchaseOrders
+  description: Get Purchase Orders
+  source_operation: openapi/omniful-inc-openapi.yml#getGetPurchaseOrders
+- name: putUpdatePurchaseOrder
+  description: Update Purchase Order
+  source_operation: openapi/omniful-inc-openapi.yml#putUpdatePurchaseOrder
+- name: getGetSinglePurchaseOrder
+  description: Get Single Purchase Order
+  source_operation: openapi/omniful-inc-openapi.yml#getGetSinglePurchaseOrder
+- name: postCreateSupplier
+  description: Create Supplier
+  source_operation: openapi/omniful-inc-openapi.yml#postCreateSupplier
+- name: getGetAllSuppliers
+  description: Get All Suppliers
+  source_operation: openapi/omniful-inc-openapi.yml#getGetAllSuppliers
+- name: postCreatePosOrder
+  description: Create POS Order
+  source_operation: openapi/omniful-inc-openapi.yml#postCreatePosOrder
+- name: postCreatePosReturnOrder
+  description: Create POS Return Order
+  source_operation: openapi/omniful-inc-openapi.yml#postCreatePosReturnOrder
+- name: postCreateCustomer
+  description: Create Customer
+  source_operation: openapi/omniful-inc-openapi.yml#postCreateCustomer
+- name: getGetCustomers
+  description: Get Customers
+  source_operation: openapi/omniful-inc-openapi.yml#getGetCustomers
+- name: getGetCustomer
+  description: Get Customer
+  source_operation: openapi/omniful-inc-openapi.yml#getGetCustomer
+- name: putUpdateCustomer
+  description: Update Customer
+  source_operation: openapi/omniful-inc-openapi.yml#putUpdateCustomer
+- name: postCreateOrder2
+  description: Create Order
+  source_operation: openapi/omniful-inc-openapi.yml#postCreateOrder2
+- name: postCreateStockTransferRequest
+  description: Create Stock Transfer Request
+  source_operation: openapi/omniful-inc-openapi.yml#postCreateStockTransferRequest
+- name: getGetStockTransferRequests
+  description: Get Stock Transfer Requests
+  source_operation: openapi/omniful-inc-openapi.yml#getGetStockTransferRequests
+- name: putUpdateStockTransferRequest
+  description: Update Stock Transfer Request
+  source_operation: openapi/omniful-inc-openapi.yml#putUpdateStockTransferRequest
+- name: getGetStockTransferRequest
+  description: Get Stock Transfer Request
+  source_operation: openapi/omniful-inc-openapi.yml#getGetStockTransferRequest
+- name: putApproveStockTransferRequest
+  description: Approve Stock Transfer Request
+  source_operation: openapi/omniful-inc-openapi.yml#putApproveStockTransferRequest
+- name: putRejectStockTransferRequest
+  description: Reject Stock Transfer Request
+  source_operation: openapi/omniful-inc-openapi.yml#putRejectStockTransferRequest
+- name: getGetstockorder
+  description: GetStockOrder
+  source_operation: openapi/omniful-inc-openapi.yml#getGetstockorder
+- name: getGetstockorders
+  description: GetStockOrders
+  source_operation: openapi/omniful-inc-openapi.yml#getGetstockorders
+- name: getGetWebhooks
+  description: Get Webhooks
+  source_operation: openapi/omniful-inc-openapi.yml#getGetWebhooks
+- name: putRegisterWebhook
+  description: Register Webhook
+  source_operation: openapi/omniful-inc-openapi.yml#putRegisterWebhook
+- name: getGetSellerIntegrations
+  description: Get Seller Integrations
+  source_operation: openapi/omniful-inc-openapi.yml#getGetSellerIntegrations
+- name: getGetSellerIntegrationByToken
+  description: Get Seller Integration by Token
+  source_operation: openapi/omniful-inc-openapi.yml#getGetSellerIntegrationByToken
+- name: getGetCourierPartners
+  description: Get Courier Partners
+  source_operation: openapi/omniful-inc-openapi.yml#getGetCourierPartners
+- name: postCreateReturnShipmentOrder
+  description: Create Return Shipment Order
+  source_operation: openapi/omniful-inc-openapi.yml#postCreateReturnShipmentOrder
+- name: getGetReturnShipmentOrders
+  description: Get Return Shipment Orders
+  source_operation: openapi/omniful-inc-openapi.yml#getGetReturnShipmentOrders
+- name: getGetReturnShipmentOrderById
+  description: Get Return Shipment Order By ID
+  source_operation: openapi/omniful-inc-openapi.yml#getGetReturnShipmentOrderById
+- name: postCreateReturnShipmentRequest
+  description: Create Return Shipment Request
+  source_operation: openapi/omniful-inc-openapi.yml#postCreateReturnShipmentRequest
+- name: getGetReturnShipmentRequests
+  description: Get Return Shipment Requests
+  source_operation: openapi/omniful-inc-openapi.yml#getGetReturnShipmentRequests
+- name: putApproveReturnShipmentRequest
+  description: Approve Return Shipment Request
+  source_operation: openapi/omniful-inc-openapi.yml#putApproveReturnShipmentRequest
+- name: putRejectReturnShipmentRequest
+  description: Reject Return Shipment Request
+  source_operation: openapi/omniful-inc-openapi.yml#putRejectReturnShipmentRequest
+- name: getGetShipmentOrders
+  description: Get Shipment Orders
+  source_operation: openapi/omniful-inc-openapi.yml#getGetShipmentOrders
+- name: postCreateShipmentOrder
+  description: Create Shipment Order
+  source_operation: openapi/omniful-inc-openapi.yml#postCreateShipmentOrder
+- name: getGetShipmentOrdersById
+  description: Get Shipment Orders By ID
+  source_operation: openapi/omniful-inc-openapi.yml#getGetShipmentOrdersById
+- name: postUpsertPickupLocations
+  description: Upsert Pickup Locations
+  source_operation: openapi/omniful-inc-openapi.yml#postUpsertPickupLocations
+- name: getGetPickupLocations
+  description: Get Pickup Locations
+  source_operation: openapi/omniful-inc-openapi.yml#getGetPickupLocations
+- name: getGetPickupLocationByCode
+  description: Get Pickup Location By Code
+  source_operation: openapi/omniful-inc-openapi.yml#getGetPickupLocationByCode
+- name: getGetPackagingMaterial
+  description: Get Packaging Material
+  source_operation: openapi/omniful-inc-openapi.yml#getGetPackagingMaterial
+- name: postRetrieveAccessToken
+  description: Retrieve Access Token
+  source_operation: openapi/omniful-inc-openapi.yml#postRetrieveAccessToken
+- name: getGetSellers
+  description: Get Sellers
+  source_operation: openapi/omniful-inc-openapi.yml#getGetSellers
+- name: postCreateSeller
+  description: Create Seller
+  source_operation: openapi/omniful-inc-openapi.yml#postCreateSeller
+- name: getGetSingleSeller
+  description: Get Single Seller
+  source_operation: openapi/omniful-inc-openapi.yml#getGetSingleSeller
+- name: putUpdateSeller
+  description: Update Seller
+  source_operation: openapi/omniful-inc-openapi.yml#putUpdateSeller
+- name: getGetSkusToBeDeprecatedOn30072026
+  description: Get SKUs (⚠️ To be deprecated on 30-07-2026)
+  source_operation: openapi/omniful-inc-openapi.yml#getGetSkusToBeDeprecatedOn30072026
+- name: postCreateSkus
+  description: Create SKUs
+  source_operation: openapi/omniful-inc-openapi.yml#postCreateSkus
+- name: getGetSingleSku
+  description: Get Single SKU
+  source_operation: openapi/omniful-inc-openapi.yml#getGetSingleSku
+- name: putUpdateSku
+  description: Update SKU
+  source_operation: openapi/omniful-inc-openapi.yml#putUpdateSku
+- name: getGetSkus
+  description: Get SKUs
+  source_operation: openapi/omniful-inc-openapi.yml#getGetSkus
+- name: postCreateHub
+  description: Create Hub
+  source_operation: openapi/omniful-inc-openapi.yml#postCreateHub
+- name: getGetTenantHubs
+  description: Get Tenant Hubs
+  source_operation: openapi/omniful-inc-openapi.yml#getGetTenantHubs
+- name: putUpdateHub
+  description: Update Hub
+  source_operation: openapi/omniful-inc-openapi.yml#putUpdateHub
+- name: getGetHubDetailsByHubCode
+  description: Get Hub details by hub_code
+  source_operation: openapi/omniful-inc-openapi.yml#getGetHubDetailsByHubCode
+- name: putBulkUpdateTenantHubMapping
+  description: Bulk update tenant hub mapping
+  source_operation: openapi/omniful-inc-openapi.yml#putBulkUpdateTenantHubMapping
+- name: getGetOrdersToBeDeprecatedOn30072026
+  description: Get Orders (⚠️ To be deprecated on 30-07-2026))
+  source_operation: openapi/omniful-inc-openapi.yml#getGetOrdersToBeDeprecatedOn30072026
+- name: postCreateOrder3
+  description: Create Order
+  source_operation: openapi/omniful-inc-openapi.yml#postCreateOrder3
+- name: getGetSingleOrder
+  description: Get Single Order
+  source_operation: openapi/omniful-inc-openapi.yml#getGetSingleOrder
+- name: putUpdateOrder2
+  description: Update Order
+  source_operation: openapi/omniful-inc-openapi.yml#putUpdateOrder2
+- name: postCancelOrder
+  description: Cancel Order
+  source_operation: openapi/omniful-inc-openapi.yml#postCancelOrder
+- name: postBulkCreateOrders
+  description: Bulk Create Orders
+  source_operation: openapi/omniful-inc-openapi.yml#postBulkCreateOrders
+- name: getGetOrderLogs
+  description: Get Order Logs
+  source_operation: openapi/omniful-inc-openapi.yml#getGetOrderLogs
+- name: getGetOrders2
+  description: Get Orders
+  source_operation: openapi/omniful-inc-openapi.yml#getGetOrders2
+- name: getGetOrderSearch2
+  description: Get Order Search
+  source_operation: openapi/omniful-inc-openapi.yml#getGetOrderSearch2
+- name: postTriggerAutomaticShipmentCreation
+  description: Trigger Automatic Shipment Creation
+  source_operation: openapi/omniful-inc-openapi.yml#postTriggerAutomaticShipmentCreation
+- name: putUpdateShipmentDetails
+  description: Update Shipment Details
+  source_operation: openapi/omniful-inc-openapi.yml#putUpdateShipmentDetails
+- name: putUpdateShipmentStatus2
+  description: Update Shipment Status
+  source_operation: openapi/omniful-inc-openapi.yml#putUpdateShipmentStatus2
+- name: postCreateManualShipment
+  description: Create Manual Shipment
+  source_operation: openapi/omniful-inc-openapi.yml#postCreateManualShipment
+- name: getGetReturnRequests2
+  description: Get Return Requests
+  source_operation: openapi/omniful-inc-openapi.yml#getGetReturnRequests2
+- name: postCreateReturnRequest2
+  description: Create Return Request
+  source_operation: openapi/omniful-inc-openapi.yml#postCreateReturnRequest2
+- name: putRejectReturnRequest2
+  description: Reject Return Request
+  source_operation: openapi/omniful-inc-openapi.yml#putRejectReturnRequest2
+- name: putApproveReturnRequest3
+  description: Approve Return Request
+  source_operation: openapi/omniful-inc-openapi.yml#putApproveReturnRequest3
+- name: postCreateReturnToSenderOrder
+  description: Create Return To Sender Order
+  source_operation: openapi/omniful-inc-openapi.yml#postCreateReturnToSenderOrder
+- name: getGetPurchaseOrders2
+  description: Get Purchase Orders
+  source_operation: openapi/omniful-inc-openapi.yml#getGetPurchaseOrders2
+- name: postCreatePurchaseOrder2
+  description: Create Purchase Order
+  source_operation: openapi/omniful-inc-openapi.yml#postCreatePurchaseOrder2
+- name: getGetSinglePurchaseOrder2
+  description: Get Single Purchase Order
+  source_operation: openapi/omniful-inc-openapi.yml#getGetSinglePurchaseOrder2
+- name: putUpdatePurchaseOrder2
+  description: Update Purchase Order
+  source_operation: openapi/omniful-inc-openapi.yml#putUpdatePurchaseOrder2
+- name: getGetCycleCounts
+  description: Get Cycle Counts
+  source_operation: openapi/omniful-inc-openapi.yml#getGetCycleCounts
+- name: getGetCycleCountsSkus
+  description: Get Cycle Counts SKUs
+  source_operation: openapi/omniful-inc-openapi.yml#getGetCycleCountsSkus
+- name: getGetContracts
+  description: Get Contracts
+  source_operation: openapi/omniful-inc-openapi.yml#getGetContracts
+- name: postCreateContract
+  description: Create Contract
+  source_operation: openapi/omniful-inc-openapi.yml#postCreateContract
+- name: getGetSingleContract
+  description: Get Single Contract
+  source_operation: openapi/omniful-inc-openapi.yml#getGetSingleContract
+- name: putTerminateContract
+  description: Terminate Contract
+  source_operation: openapi/omniful-inc-openapi.yml#putTerminateContract
+- name: getGetBills
+  description: Get Bills
+  source_operation: openapi/omniful-inc-openapi.yml#getGetBills
+- name: getGetBill
+  description: Get Bill
+  source_operation: openapi/omniful-inc-openapi.yml#getGetBill
+- name: getGetHubBills
+  description: Get Hub Bills
+  source_operation: openapi/omniful-inc-openapi.yml#getGetHubBills
+- name: postGenerateBill
+  description: Generate Bill
+  source_operation: openapi/omniful-inc-openapi.yml#postGenerateBill
+- name: putUpdateBillStatus
+  description: Update Bill Status
+  source_operation: openapi/omniful-inc-openapi.yml#putUpdateBillStatus
+- name: postCreateFinalizeBill
+  description: Create Finalize Bill
+  source_operation: openapi/omniful-inc-openapi.yml#postCreateFinalizeBill
+- name: getFetchSupportedReports
+  description: Fetch Supported Reports
+  source_operation: openapi/omniful-inc-openapi.yml#getFetchSupportedReports
+- name: postDownloadReport
+  description: Download Report
+  source_operation: openapi/omniful-inc-openapi.yml#postDownloadReport
+- name: postDownloadArchivedReport
+  description: Download Archived Report
+  source_operation: openapi/omniful-inc-openapi.yml#postDownloadArchivedReport
+- name: postCreateSalesChannelShipment
+  description: Create Sales Channel Shipment
+  source_operation: openapi/omniful-inc-openapi.yml#postCreateSalesChannelShipment
+- name: putUpdateSalesChannelShipmentStatus
+  description: Update Sales Channel Shipment status
+  source_operation: openapi/omniful-inc-openapi.yml#putUpdateSalesChannelShipmentStatus
+- name: postCreateCustomerReturnOrder
+  description: Create Customer Return Order
+  source_operation: openapi/omniful-inc-openapi.yml#postCreateCustomerReturnOrder
+- name: postCreateCourierPartnerReturnOrder
+  description: Create Courier Partner Return Order
+  source_operation: openapi/omniful-inc-openapi.yml#postCreateCourierPartnerReturnOrder
+- name: getGetReturnOrdersToBeDeprecated
+  description: Get Return Orders (To Be Deprecated)
+  source_operation: openapi/omniful-inc-openapi.yml#getGetReturnOrdersToBeDeprecated
+- name: getGetReturnOrders2
+  description: Get Return Orders
+  source_operation: openapi/omniful-inc-openapi.yml#getGetReturnOrders2
+- name: putPushInventory
+  description: Push Inventory
+  source_operation: openapi/omniful-inc-openapi.yml#putPushInventory
+- name: getGetHubInventory
+  description: Get Hub Inventory
+  source_operation: openapi/omniful-inc-openapi.yml#getGetHubInventory
+- name: getGetInventoryForSkuAcrossAllHubs2
+  description: Get Inventory for SKU Across All Hubs
+  source_operation: openapi/omniful-inc-openapi.yml#getGetInventoryForSkuAcrossAllHubs2
+- name: putPushSafetyStock2
+  description: Push Safety Stock
+  source_operation: openapi/omniful-inc-openapi.yml#putPushSafetyStock2
+- name: getGetAllShippingAccounts
+  description: Get All Shipping Accounts
+  source_operation: openapi/omniful-inc-openapi.yml#getGetAllShippingAccounts
+- name: getGetJobById
+  description: Get Job by ID
+  source_operation: openapi/omniful-inc-openapi.yml#getGetJobById
+- name: getSellerIntegrations
+  description: Seller Integrations
+  source_operation: openapi/omniful-inc-openapi.yml#getSellerIntegrations
+- name: postUpsertPickupLocations2
+  description: Upsert Pickup Locations
+  source_operation: openapi/omniful-inc-openapi.yml#postUpsertPickupLocations2
+- name: getGetPickupLocations2
+  description: Get Pickup Locations
+  source_operation: openapi/omniful-inc-openapi.yml#getGetPickupLocations2
+- name: getGetPickupLocationByCode2
+  description: Get Pickup Location By Code
+  source_operation: openapi/omniful-inc-openapi.yml#getGetPickupLocationByCode2
+- name: postCreateReturnOrder3
+  description: Create Return Order
+  source_operation: openapi/omniful-inc-openapi.yml#postCreateReturnOrder3
+- name: getGetReturnOrders3
+  description: Get Return Orders
+  source_operation: openapi/omniful-inc-openapi.yml#getGetReturnOrders3
+- name: getGetReturnOrderById2
+  description: Get Return Order by Id
+  source_operation: openapi/omniful-inc-openapi.yml#getGetReturnOrderById2
+- name: postCreateReturnRequest3
+  description: Create Return Request
+  source_operation: openapi/omniful-inc-openapi.yml#postCreateReturnRequest3
+- name: getGetReturnRequest
+  description: Get Return Request
+  source_operation: openapi/omniful-inc-openapi.yml#getGetReturnRequest
+- name: putApproveReturnRequest4
+  description: Approve Return Request
+  source_operation: openapi/omniful-inc-openapi.yml#putApproveReturnRequest4
+- name: putRejectReturnRequest3
+  description: Reject Return Request
+  source_operation: openapi/omniful-inc-openapi.yml#putRejectReturnRequest3
+- name: getGetShipmentOrders2
+  description: Get Shipment Orders
+  source_operation: openapi/omniful-inc-openapi.yml#getGetShipmentOrders2
+- name: postCreateShipmentOrder2
+  description: Create Shipment Order
+  source_operation: openapi/omniful-inc-openapi.yml#postCreateShipmentOrder2
+- name: getGetShipmentOrderById
+  description: Get Shipment Order By ID
+  source_operation: openapi/omniful-inc-openapi.yml#getGetShipmentOrderById
+- name: getGetCourierPartners2
+  description: Get Courier Partners
+  source_operation: openapi/omniful-inc-openapi.yml#getGetCourierPartners2
+- name: getOrderPackagingMaterials
+  description: Order Packaging Materials
+  source_operation: openapi/omniful-inc-openapi.yml#getOrderPackagingMaterials
+- name: postRetrieveAccessToken2
+  description: Retrieve Access Token
+  source_operation: openapi/omniful-inc-openapi.yml#postRetrieveAccessToken2
+- name: postCreateShipment
+  description: Create Shipment
+  source_operation: openapi/omniful-inc-openapi.yml#postCreateShipment
+- name: getGetShipment
+  description: Get Shipment
+  source_operation: openapi/omniful-inc-openapi.yml#getGetShipment
+- name: getGetShipmentByReference
+  description: Get Shipment by Reference
+  source_operation: openapi/omniful-inc-openapi.yml#getGetShipmentByReference
+- name: getGetShipmentByAwb
+  description: Get Shipment by Awb
+  source_operation: openapi/omniful-inc-openapi.yml#getGetShipmentByAwb
+- name: putCancelShipment
+  description: Cancel Shipment
+  source_operation: openapi/omniful-inc-openapi.yml#putCancelShipment
