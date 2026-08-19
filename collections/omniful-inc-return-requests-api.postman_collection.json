@@ -1,0 +1,516 @@
+{
+  "item": [
+    {
+      "id": "aecbaab5-1984-448e-ba01-f4f40b0c51d4",
+      "name": "Return Requests",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "82e34142-222a-4d4e-8b7e-f3d6516588cc",
+          "name": "Get Return Requests",
+          "request": {
+            "name": "Get Return Requests",
+            "description": {
+              "content": "📌 Get Return Request API - Overview The Get Return Request API allows users to retrieve return requests for orders based on request status, order ID, and return order ID. 📌 Filters Available: order_id – Fetch return requests for a specific order. status – Filter return requests by status. created_from - Filter return request by date of creation created_to - Filter return request by date of creation By default, return requests will be returned for the last 3 months only. The supported date format",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sales-channel",
+                "public",
+                "v1",
+                "tenants",
+                "sellers",
+                ":seller_code",
+                "return_requests"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "seller_code",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7d76fd2f-5b1a-46fb-a2c0-1def984b11b7",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sales-channel",
+                    "public",
+                    "v1",
+                    "tenants",
+                    "sellers",
+                    ":seller_code",
+                    "return_requests"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "seller_code",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bd7f3cd8-8f51-4697-bbdb-ddacd8965a3e",
+          "name": "Create Return Request",
+          "request": {
+            "name": "Create Return Request",
+            "description": {},
+            "url": {
+              "path": [
+                "sales-channel",
+                "public",
+                "v1",
+                "tenants",
+                "sellers",
+                ":seller_code",
+                "orders",
+                ":id",
+                "return_requests"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "seller_code",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"hub_code\": \"ONLS\",\n  \"return_items\": [\n    {\n      \"seller_sku_code\": \"1108322\",\n      \"quantity\": 1,\n      \"return_reason\": \"Damaged product\",\n      \"refund_amount\": 49.99,\n      \"return_reasons\": [\n        {\n          \"reason\": \"Damaged product\",\n          \"quantity\": 1\n        }\n      ]\n    }\n  ],\n  \"return_reason\": \"Customer dissatisfaction\",\n  \"return_request_number\": \"RET-2024-001\",\n  \"additional_charges\": [\n    {\n      \"type\": \"shipping\",\n      \"cost_with_tax\": 5.99,\n      \"tax_percentage\": 10\n    },\n    {\n      \"type\": \"restocking_fee\",\n      \"cost_with_tax\": 2.5,\n      \"tax_percentage\": 5\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5d79253f-a007-47b8-a022-795e00f9328b",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sales-channel",
+                    "public",
+                    "v1",
+                    "tenants",
+                    "sellers",
+                    ":seller_code",
+                    "orders",
+                    ":id",
+                    "return_requests"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "seller_code",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"hub_code\": \"ONLS\",\n  \"return_items\": [\n    {\n      \"seller_sku_code\": \"1108322\",\n      \"quantity\": 1,\n      \"return_reason\": \"Damaged product\",\n      \"refund_amount\": 49.99,\n      \"return_reasons\": [\n        {\n          \"reason\": \"Damaged product\",\n          \"quantity\": 1\n        }\n      ]\n    }\n  ],\n  \"return_reason\": \"Customer dissatisfaction\",\n  \"return_request_number\": \"RET-2024-001\",\n  \"additional_charges\": [\n    {\n      \"type\": \"shipping\",\n      \"cost_with_tax\": 5.99,\n      \"tax_percentage\": 10\n    },\n    {\n      \"type\": \"restocking_fee\",\n      \"cost_with_tax\": 2.5,\n      \"tax_percentage\": 5\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a56c0171-cf34-4c7a-8250-e99bb77e1539",
+          "name": "Reject Return Request",
+          "request": {
+            "name": "Reject Return Request",
+            "description": {},
+            "url": {
+              "path": [
+                "sales-channel",
+                "public",
+                "v1",
+                "tenants",
+                "sellers",
+                ":seller_code",
+                "return_requests",
+                ":return_request_id",
+                "reject"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "seller_code",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "return_request_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "PUT",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "506f8567-8f47-4db1-b2d0-6b02f377bc69",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sales-channel",
+                    "public",
+                    "v1",
+                    "tenants",
+                    "sellers",
+                    ":seller_code",
+                    "return_requests",
+                    ":return_request_id",
+                    "reject"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "seller_code",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "return_request_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "32d0e247-1032-40b5-8010-97d330955054",
+          "name": "Approve Return Request",
+          "request": {
+            "name": "Approve Return Request",
+            "description": {},
+            "url": {
+              "path": [
+                "sales-channel",
+                "public",
+                "v1",
+                "tenants",
+                "sellers",
+                ":seller_code",
+                "return_requests",
+                ":return_request_id",
+                "approve"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "seller_code",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "return_request_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"return_reason\": \"Product damaged during shipping\",\n  \"order_items\": [\n    {\n      \"sku_code\": \"srv-sku-10\",\n      \"return_quantity\": 1,\n      \"return_reason\": \"Damaged item\"\n    }\n  ],\n  \"total_refundable_amount\": 159.99,\n  \"approval_mode\": \"full\",\n  \"return_request_id\": \"RR-2024-123456\",\n  \"additional_charges\": [\n    {\n      \"type\": \"restocking_fee\",\n      \"cost_with_tax\": 10.5,\n      \"tax_percentage\": 5\n    },\n    {\n      \"type\": \"return_shipping\",\n      \"cost_with_tax\": 15.99,\n      \"tax_percentage\": 8\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1e9ec06e-5d7c-4ceb-88b1-faa4968be055",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sales-channel",
+                    "public",
+                    "v1",
+                    "tenants",
+                    "sellers",
+                    ":seller_code",
+                    "return_requests",
+                    ":return_request_id",
+                    "approve"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "seller_code",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "return_request_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"return_reason\": \"Product damaged during shipping\",\n  \"order_items\": [\n    {\n      \"sku_code\": \"srv-sku-10\",\n      \"return_quantity\": 1,\n      \"return_reason\": \"Damaged item\"\n    }\n  ],\n  \"total_refundable_amount\": 159.99,\n  \"approval_mode\": \"full\",\n  \"return_request_id\": \"RR-2024-123456\",\n  \"additional_charges\": [\n    {\n      \"type\": \"restocking_fee\",\n      \"cost_with_tax\": 10.5,\n      \"tax_percentage\": 5\n    },\n    {\n      \"type\": \"return_shipping\",\n      \"cost_with_tax\": 15.99,\n      \"tax_percentage\": 8\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://prodapi.omniful.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "f13cc847-e45a-48d3-ab9e-0a36206ece02",
+    "name": "Omniful Integration APIs Background Jobs Return Requests API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Omniful unified supply chain and fulfillment platform integration APIs (Order Management, Warehouse/Inventory, Returns, Purchase Orders, Shipment/TMS, Webhooks). Derived faithfully from the provider-published Postman collection at docs.omniful.tech; paths, methods, parameters, and request examples are as published, response schemas are not enumerated in the source.",
+      "type": "text/plain"
+    }
+  }
+}

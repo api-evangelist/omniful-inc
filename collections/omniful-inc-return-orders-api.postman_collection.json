@@ -1,0 +1,688 @@
+{
+  "item": [
+    {
+      "id": "12a61ee4-99c6-4121-a9aa-592e382672a2",
+      "name": "Return Orders",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ff4f8749-7f55-4ee2-8d2c-e720b471fef5",
+          "name": "Create Sales Channel Shipment",
+          "request": {
+            "name": "Create Sales Channel Shipment",
+            "description": {
+              "content": "Add Shipment for Return Order This endpoint allows the user to add a shipment for a specific return order belonging to a seller. Request Body tracking_url (string) - The URL for tracking the shipment. awb_number (string) - The Air Waybill (AWB) number for the shipment. awb_label (string) - The URL to the AWB label for the shipment. package_details (object) - Details of the package including number of boxes, weight, dimensions, and remarks. number_of_boxes (integer) - The number of boxes in the s",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sales-channel",
+                "public",
+                "v1",
+                "tenants",
+                "sellers",
+                ":seller_id",
+                "return_orders",
+                ":return_order_id",
+                "shipment"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "seller_id",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "return_order_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"tracking_url\": \"https://tracking.fedex.com/123456789\",\n  \"awb_number\": \"AWB123452832\",\n  \"awb_label\": \"https://omniful-staging-uploads.s3.eu-central-1.amazonaws.com/shipping/tamex/pixicommerce435/14755/55f86b562b59de7e04cc5687_awb_label.pdf\",\n  \"package_details\": {\n    \"number_of_boxes\": 1,\n    \"weight\": 1,\n    \"dimensions\": {\n      \"length\": 30,\n      \"breadth\": 20,\n      \"height\": 15\n    },\n    \"remarks\": \"Handle with care\"\n  },\n  \"courier_partner\": {\n    \"tag\": \"dhl_express\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ff4241b3-e356-438f-b35b-8d00d3d3dd0e",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sales-channel",
+                    "public",
+                    "v1",
+                    "tenants",
+                    "sellers",
+                    ":seller_id",
+                    "return_orders",
+                    ":return_order_id",
+                    "shipment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "seller_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "return_order_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"tracking_url\": \"https://tracking.fedex.com/123456789\",\n  \"awb_number\": \"AWB123452832\",\n  \"awb_label\": \"https://omniful-staging-uploads.s3.eu-central-1.amazonaws.com/shipping/tamex/pixicommerce435/14755/55f86b562b59de7e04cc5687_awb_label.pdf\",\n  \"package_details\": {\n    \"number_of_boxes\": 1,\n    \"weight\": 1,\n    \"dimensions\": {\n      \"length\": 30,\n      \"breadth\": 20,\n      \"height\": 15\n    },\n    \"remarks\": \"Handle with care\"\n  },\n  \"courier_partner\": {\n    \"tag\": \"dhl_express\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5b6dd396-8abf-46b2-82c8-824a95089120",
+          "name": "Update Sales Channel Shipment status",
+          "request": {
+            "name": "Update Sales Channel Shipment status",
+            "description": {
+              "content": "Allowed Shipment Status: [ picked_up, return_to_origin, cancelled]",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sales-channel",
+                "public",
+                "v1",
+                "tenants",
+                "sellers",
+                ":seller_id",
+                "return_orders",
+                ":return_order_id",
+                "shipment",
+                "status"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "seller_id",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "return_order_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"shipment_status\": \"picked_up\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "652bffcd-fb6c-4742-baa8-39711a988bf9",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sales-channel",
+                    "public",
+                    "v1",
+                    "tenants",
+                    "sellers",
+                    ":seller_id",
+                    "return_orders",
+                    ":return_order_id",
+                    "shipment",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "seller_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "return_order_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"shipment_status\": \"picked_up\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a199d7d0-957b-4422-9302-94fc7dfd2d15",
+          "name": "Create Customer Return Order",
+          "request": {
+            "name": "Create Customer Return Order",
+            "description": {
+              "content": "This API endpoint allows you to create a return order for any forward order that has been marked as Delivered. Precondition The order must have the status Delivered to be eligible for a return. Field Descriptions Field Type Mandatory/Optional Description return_order_id string Mandatory Unique identifier for the return order. return_items array of objects Mandatory List of items being returned, including item_id, sku_code, and return_quantity. item_id string Mandatory Original order item ID. sku",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sales-channel",
+                "public",
+                "v1",
+                "tenants",
+                "sellers",
+                ":seller_code",
+                "orders",
+                ":order_id",
+                "return_orders"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "seller_code",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "order_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "218cd3ec-ec7f-4816-9f6a-4780f4433cd8",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sales-channel",
+                    "public",
+                    "v1",
+                    "tenants",
+                    "sellers",
+                    ":seller_code",
+                    "orders",
+                    ":order_id",
+                    "return_orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "seller_code",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "order_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "dc76e58e-afae-490b-afea-af3efe44e8a5",
+          "name": "Create Courier Partner Return Order",
+          "request": {
+            "name": "Create Courier Partner Return Order",
+            "description": {
+              "content": "This API endpoint allows you to create a return order for any forward order that has been marked as Return To Origin. Precondition The order must have the status Return To Origin to be eligible for a return. Field Descriptions Field Type Mandatory/Optional Description return_order_id string Mandatory Unique identifier for the return order. Notes return_order_id must always be provided.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sales-channel",
+                "public",
+                "v1",
+                "tenants",
+                "sellers",
+                ":seller_code",
+                "orders",
+                ":order_id",
+                "return_orders",
+                "courier"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "seller_code",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "order_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "010f51ea-5ac8-44d9-a57a-a80430e15a60",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sales-channel",
+                    "public",
+                    "v1",
+                    "tenants",
+                    "sellers",
+                    ":seller_code",
+                    "orders",
+                    ":order_id",
+                    "return_orders",
+                    "courier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "seller_code",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "order_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "90c95ce4-47c8-4da7-bad7-8cf0bbc20d90",
+          "name": "Get Return Orders (To Be Deprecated)",
+          "request": {
+            "name": "Get Return Orders (To Be Deprecated)",
+            "description": {},
+            "url": {
+              "path": [
+                "sales-channel",
+                "public",
+                "v1",
+                "tenants",
+                "sellers",
+                ":seller_code",
+                "return_orders",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "seller_code",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ac504d6b-8891-42ec-a69c-0a846c2be429",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sales-channel",
+                    "public",
+                    "v1",
+                    "tenants",
+                    "sellers",
+                    ":seller_code",
+                    "return_orders",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "seller_code",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://prodapi.omniful.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "e638183d-51c2-45af-813c-e5c73c5e3505",
+    "name": "Omniful Integration APIs Background Jobs Return Orders API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Omniful unified supply chain and fulfillment platform integration APIs (Order Management, Warehouse/Inventory, Returns, Purchase Orders, Shipment/TMS, Webhooks). Derived faithfully from the provider-published Postman collection at docs.omniful.tech; paths, methods, parameters, and request examples are as published, response schemas are not enumerated in the source.",
+      "type": "text/plain"
+    }
+  }
+}

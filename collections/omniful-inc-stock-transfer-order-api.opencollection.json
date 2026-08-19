@@ -1,0 +1,60 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Omniful Integration APIs Background Jobs Stock Transfer Order API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Stock Transfer Order",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GetStockOrder",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v1/orders/sto/:sto_id",
+            "params": [
+              {
+                "name": "sto_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "STO Order Details Response Payload Root Level Fields Field Name Type Description is_success Boolean Indicates whether the API request was successful status_code Integer HTTP status code returned by the API data Object Contains stock transfer order details meta Object Null data Object Field Name Type Description seller_name String Name of the seller sto_number String Unique Stock Transfer Order number status String Current status of the STO (e.g., Received) total_amount Number Total monetary valu"
+        },
+        {
+          "info": {
+            "name": "GetStockOrders",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v1/orders/sto/hubs/:hub_code",
+            "params": [
+              {
+                "name": "hub_code",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Stock Transfer Orders API Documentation Overview This API endpoint retrieves detailed information about stock transfer orders and requires a valid destination hub code—the hub specified in the stock transfer request where receiving will occur—which must be powered through the Omniful system. You can also use filters to narrow down the results. The available filters are: sto_request_id: Filter by a single stock transfer request ID. sto_request_ids: Filter by multiple stock transfer request ID"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

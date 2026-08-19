@@ -1,0 +1,61 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Omniful Integration APIs Background Jobs Return To Sender API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Return To Sender",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create Return To Sender Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v1/tenants/sellers/:seller_code/return_to_sender",
+            "params": [
+              {
+                "name": "seller_code",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Return To Sender Order"
+        },
+        {
+          "info": {
+            "name": "Create Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v1/return_to_sender/orders",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "⚠️ Important Notice: The \"meta_data\" field will be deprecated from the response of this API, effective February 15, 2025. Please update your integrations to accommodate this change and ensure a smooth transition. 📌 Return-to-Sender Order API - Overview The Return-to-Sender Order API is used to create return orders for SKUs that need to be sent back due to expiration, quality check failures, or incorrect items received in a purchase order. 📌 Return Type Guidelines: Supplier Returns: Set the typ"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,946 @@
+{
+  "item": [
+    {
+      "id": "9c8990f9-685a-4609-87bd-4720c3f04175",
+      "name": "Shipment",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a0d7ee5b-f445-4ef8-87c2-1576b94f7cd6",
+          "name": "Trigger Shipment",
+          "request": {
+            "name": "Trigger Shipment",
+            "description": {
+              "content": "📌 Create Shipment API – Overview The Create Shipment API is used to generate shipments for orders in Omniful. This API allows users to: Assign a shipping partner Generate tracking numbers (AWB) Set shipment details Note: The API only supports orders with the shipment type set to Omniful Generated. Orders with other shipment types are not eligible for shipment creation through this API. Request Body Parameters Field Data Type Description Required number_of_boxes number Total number of packages to",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sales-channel",
+                "public",
+                "v1",
+                "orders",
+                ":order_id",
+                "shipment"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "order_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"number_of_boxes\": 1,\n  \"weight\": 1.2,\n  \"remarks\": \"Please handle shipment carefully,\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6e5201e6-933f-4c3b-8b84-43e9faebab6b",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sales-channel",
+                    "public",
+                    "v1",
+                    "orders",
+                    ":order_id",
+                    "shipment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "order_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"number_of_boxes\": 1,\n  \"weight\": 1.2,\n  \"remarks\": \"Please handle shipment carefully,\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2055f87d-2f3f-4339-a29d-ffc3a2afdd10",
+          "name": "Add Shipment Details",
+          "request": {
+            "name": "Add Shipment Details",
+            "description": {
+              "content": "📌 Add Shipment Details API – Overview The Add Shipment Details API allows users to add existing shipment details for an order. This API is typically used to update shipment-related information such as: Tracking numbers (AWB) Courier service details Delivery tracking URLs 📌 Key Information This API applies only to orders where the shipment type is either: sales_channel_generated sales_channel_notified If the shipment was created by the sales channel, users can update the shipment details as requi",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sales-channel",
+                "public",
+                "v1",
+                "orders",
+                ":order_id",
+                "shipment"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "order_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"tracking_url\": \"https://tracking.fedex.com/123456789\",\n  \"awb_number\": \"AWB123456787\",\n  \"awb_label\": \"https://tracking.fedex.com/123456789.pdf\",\n  \"package_details\": {\n    \"number_of_boxes\": 1,\n    \"weight\": 1,\n    \"dimensions\": {\n      \"length\": 30,\n      \"breadth\": 20,\n      \"height\": 15\n    },\n    \"remarks\": \"Handle with care\"\n  },\n  \"courier_partner\": {\n    \"tag\": \"dhl_express\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a37a4020-78fd-4eef-9a45-b6053f11fe88",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sales-channel",
+                    "public",
+                    "v1",
+                    "orders",
+                    ":order_id",
+                    "shipment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "order_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"tracking_url\": \"https://tracking.fedex.com/123456789\",\n  \"awb_number\": \"AWB123456787\",\n  \"awb_label\": \"https://tracking.fedex.com/123456789.pdf\",\n  \"package_details\": {\n    \"number_of_boxes\": 1,\n    \"weight\": 1,\n    \"dimensions\": {\n      \"length\": 30,\n      \"breadth\": 20,\n      \"height\": 15\n    },\n    \"remarks\": \"Handle with care\"\n  },\n  \"courier_partner\": {\n    \"tag\": \"dhl_express\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8e151d7b-34b1-480a-a3be-033dc6d3e873",
+          "name": "Update Shipment Status",
+          "request": {
+            "name": "Update Shipment Status",
+            "description": {
+              "content": "📌 Update Shipment Status API - Overview The Update Shipment Status API allows users to update the shipment status of an order, ensuring real-time tracking updates for better shipment visibility. 📌 Supported Shipment Types: Manual Shipment (omniful_generated) – Shipments created manually by users. Sales Channel Generated Shipment (sales_channel_generated) – Shipments generated by the sales channel system. Sales Channel Notified Shipment (sales_channel_notified) – Shipments updated based on notifi",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sales-channel",
+                "public",
+                "v1",
+                "orders",
+                ":order_id",
+                "shipment",
+                "status"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "order_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"shipment_status\": \"dispatched\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "14eb96fb-8d83-4be8-9a06-9cc590480e85",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sales-channel",
+                    "public",
+                    "v1",
+                    "orders",
+                    ":order_id",
+                    "shipment",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "order_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"shipment_status\": \"dispatched\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b1ce6e2c-31d6-49e7-8d09-315c816c0a30",
+          "name": "Trigger Automatic Shipment Creation",
+          "request": {
+            "name": "Trigger Automatic Shipment Creation",
+            "description": {
+              "content": "This API endpoint is used to trigger the automatic creation of a shipment for a specific order within the Omniful platform. The shipment is generated when the details for a given order are provided, such as the number of boxes, weight, and any special remarks. This is used when the shipments are to be generated automatically by Omniful.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sales-channel",
+                "public",
+                "v1",
+                "tenants",
+                "sellers",
+                ":seller_code",
+                "orders",
+                ":id",
+                "shipment"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "seller_code",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"number_of_boxes\": 1,\n  \"weight\": 1.2,\n  \"remarks\": \"Please handle shipment carefully,\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9619e63e-a778-46d8-940d-9e6c39196735",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sales-channel",
+                    "public",
+                    "v1",
+                    "tenants",
+                    "sellers",
+                    ":seller_code",
+                    "orders",
+                    ":id",
+                    "shipment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "seller_code",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"number_of_boxes\": 1,\n  \"weight\": 1.2,\n  \"remarks\": \"Please handle shipment carefully,\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "52efbbb5-4d85-46bb-b37a-3ef0a219adda",
+          "name": "Update Shipment Details",
+          "request": {
+            "name": "Update Shipment Details",
+            "description": {
+              "content": "This API endpoint is used to update an existing shipment for a specific order within the Omniful platform. It allows you to modify shipment details such as shipping partner information, tracking URL, package details (e.g., dimensions, weight), and courier partner information. This is typically used to update shipment details after the initial creation by Sales Channel only.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sales-channel",
+                "public",
+                "v1",
+                "tenants",
+                "sellers",
+                ":seller_code",
+                "orders",
+                ":order_id",
+                "shipment"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "seller_code",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "order_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"tracking_url\": \"https://tracking.fedex.com/123456789\",\n  \"awb_number\": \"AWB123456787\",\n  \"awb_label\": \"https://omniful-staging-uploads.s3.eu-central-1.amazonaws.com/shipping/tamex/pixicommerce435/14755/55f86b562b59de7e04cc5687_awb_label.pdf\",\n  \"package_details\": {\n    \"number_of_boxes\": 1,\n    \"weight\": 1,\n    \"dimensions\": {\n      \"length\": 30,\n      \"breadth\": 20,\n      \"height\": 15\n    },\n    \"remarks\": \"Handle with care\"\n  },\n  \"courier_partner\": {\n    \"tag\": \"dhl_express\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4408b245-39d0-471f-87b9-1db1e60622e2",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sales-channel",
+                    "public",
+                    "v1",
+                    "tenants",
+                    "sellers",
+                    ":seller_code",
+                    "orders",
+                    ":order_id",
+                    "shipment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "seller_code",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "order_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"tracking_url\": \"https://tracking.fedex.com/123456789\",\n  \"awb_number\": \"AWB123456787\",\n  \"awb_label\": \"https://omniful-staging-uploads.s3.eu-central-1.amazonaws.com/shipping/tamex/pixicommerce435/14755/55f86b562b59de7e04cc5687_awb_label.pdf\",\n  \"package_details\": {\n    \"number_of_boxes\": 1,\n    \"weight\": 1,\n    \"dimensions\": {\n      \"length\": 30,\n      \"breadth\": 20,\n      \"height\": 15\n    },\n    \"remarks\": \"Handle with care\"\n  },\n  \"courier_partner\": {\n    \"tag\": \"dhl_express\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c7843f2c-9483-4266-8a92-1fe00d01579d",
+          "name": "Update Shipment Status",
+          "request": {
+            "name": "Update Shipment Status",
+            "description": {
+              "content": "This API is used to update shipment status when shipment type of the order is sales_channel_generated &amp; omniful_generated. Allowed Shipment Status: [ dispatched, out_for_delivery, in_transit, delivered, return_to_origin]",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sales-channel",
+                "public",
+                "v1",
+                "tenants",
+                "sellers",
+                ":seller_code",
+                "orders",
+                ":order_id",
+                "shipment",
+                "status"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "seller_code",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "order_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"shipment_status\": \"delivered\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5c1c39ed-c582-4e0c-b36d-374073a15d47",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sales-channel",
+                    "public",
+                    "v1",
+                    "tenants",
+                    "sellers",
+                    ":seller_code",
+                    "orders",
+                    ":order_id",
+                    "shipment",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "seller_code",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "order_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"shipment_status\": \"delivered\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "12d06e98-6d00-4849-9e64-e070535517e3",
+          "name": "Create Manual Shipment",
+          "request": {
+            "name": "Create Manual Shipment",
+            "description": {
+              "content": "Creates a manual shipment for an existing order by attaching tracking, AWB, and package details.Can be created only for order with the shipment type: omniful_generated",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sales-channel",
+                "public",
+                "v1",
+                "tenants",
+                "sellers",
+                ":seller_code",
+                "orders",
+                ":oms_order_id",
+                "shipment",
+                "manual"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "seller_code",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "oms_order_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"tracking_url\": \"https://tracking.example.com/123456789\",\n  \"awb_number\": \"AWBMANUAL1234511618882661132\",\n  \"awb_label\": \"https://example.link.com/shipping/b59de7e04cc5687_awb_label.pdf\",\n  \"package_details\": {\n    \"number_of_boxes\": 1,\n    \"weight\": 1,\n    \"dimensions\": {\n      \"length\": 30,\n      \"breadth\": 20,\n      \"height\": 15\n    },\n    \"remarks\": \"Handle with care\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8478fe2f-4ff1-466c-af3d-57222b9444b3",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sales-channel",
+                    "public",
+                    "v1",
+                    "tenants",
+                    "sellers",
+                    ":seller_code",
+                    "orders",
+                    ":oms_order_id",
+                    "shipment",
+                    "manual"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "seller_code",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "oms_order_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"tracking_url\": \"https://tracking.example.com/123456789\",\n  \"awb_number\": \"AWBMANUAL1234511618882661132\",\n  \"awb_label\": \"https://example.link.com/shipping/b59de7e04cc5687_awb_label.pdf\",\n  \"package_details\": {\n    \"number_of_boxes\": 1,\n    \"weight\": 1,\n    \"dimensions\": {\n      \"length\": 30,\n      \"breadth\": 20,\n      \"height\": 15\n    },\n    \"remarks\": \"Handle with care\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://prodapi.omniful.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "747b5755-d8e2-47d6-b66f-6208c827b043",
+    "name": "Omniful Integration APIs Background Jobs Shipment API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Omniful unified supply chain and fulfillment platform integration APIs (Order Management, Warehouse/Inventory, Returns, Purchase Orders, Shipment/TMS, Webhooks). Derived faithfully from the provider-published Postman collection at docs.omniful.tech; paths, methods, parameters, and request examples are as published, response schemas are not enumerated in the source.",
+      "type": "text/plain"
+    }
+  }
+}

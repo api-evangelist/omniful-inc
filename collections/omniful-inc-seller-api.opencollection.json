@@ -1,0 +1,90 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Omniful Integration APIs Background Jobs Seller API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Seller",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Sellers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v1/tenants/sellers"
+          },
+          "docs": "Description Retrieves a paginated list of sellers belonging to the tenant. Use this endpoint when you need to fetch sellers by filters such as seller code, name, or email. Parameters Query Parameters Name Type Required Example page integer True 1 per_page integer True 10 email string False store@saudielectronics.com seller_codes array[string] False seller_codes=GP-803&amp;seller_codes=SG-333 name string False Saudi is_active boolean False true include_all_sellers boolean False true Filters &amp;"
+        },
+        {
+          "info": {
+            "name": "Create Seller",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v1/tenants/sellers",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Description Creates a new seller under the authenticated Omniful tenant. Use this endpoint when onboarding a new seller.The endpoint returns the created Seller ID on success. Parameters Body Parameters Name Type Required Example name string True \"Omniful Electronics Store\" phone string True \"501234567\" code string True \"Test-123\" country_code string True \"SA\" country_calling_code string True \"+966\" email string True \"omniful@saudielectronics.com\" address object True {...} address object Field Ty"
+        },
+        {
+          "info": {
+            "name": "Get Single Seller",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v1/tenants/sellers/:seller_code",
+            "params": [
+              {
+                "name": "seller_code",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Description Retrieves details of a single seller belonging to the tenant. Use this endpoint when you need to fetch a seller using their seller_code. Parameters Query Parameters Name Type Required Example seller_code string True seller_codes=GP-803"
+        },
+        {
+          "info": {
+            "name": "Update Seller",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v1/tenants/sellers/:seller_code",
+            "params": [
+              {
+                "name": "seller_code",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Description Updates an existing seller under the authenticated Omniful tenant. Use this endpoint when modifying seller details such as name, phone number, address or status (active/inactive). The endpoint returns the updated Seller ID on success. Parameters Body Parameters Name Type Required Example name string True \"Saudi Electronics Store\" phone string True \"501234567\" country_code string True \"SA\" country_calling_code string True \"+966\" email string True \"omniful@saudielectronics.com\" address"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

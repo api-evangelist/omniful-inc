@@ -1,0 +1,2128 @@
+{
+  "item": [
+    {
+      "id": "6cfe183f-b9b8-4047-aa74-3b9b616e8272",
+      "name": "Shipment Orders",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "da5ecdcd-1840-4f1d-ac73-0991ba0f78c6",
+          "name": "Create Return Shipment Order",
+          "request": {
+            "name": "Create Return Shipment Order",
+            "description": {},
+            "url": {
+              "path": [
+                "sales-channel",
+                "public",
+                "v1",
+                "seller",
+                "shipment_orders",
+                ":order_id",
+                "return_orders"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "order_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "08cad37f-1a6f-4f97-bfd5-54c1dd9b5987",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sales-channel",
+                    "public",
+                    "v1",
+                    "seller",
+                    "shipment_orders",
+                    ":order_id",
+                    "return_orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "order_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d5d536f0-ae2f-4c70-af50-f875445d160c",
+          "name": "Get Return Shipment Orders",
+          "request": {
+            "name": "Get Return Shipment Orders",
+            "description": {},
+            "url": {
+              "path": [
+                "sales-channel",
+                "public",
+                "v1",
+                "seller",
+                "shipment_orders",
+                "return_orders"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7397ac6c-9cc0-4ab5-90a9-ceb5deb32f8d",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sales-channel",
+                    "public",
+                    "v1",
+                    "seller",
+                    "shipment_orders",
+                    "return_orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8ea416a7-2eb0-4336-85d3-5e6b021aae3f",
+          "name": "Get Return Shipment Order By ID",
+          "request": {
+            "name": "Get Return Shipment Order By ID",
+            "description": {},
+            "url": {
+              "path": [
+                "sales-channel",
+                "public",
+                "v1",
+                "seller",
+                "shipment_orders",
+                "return_orders",
+                ":return_order_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "return_order_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3d7b561d-eb5f-40f4-a33e-22f3f856789c",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sales-channel",
+                    "public",
+                    "v1",
+                    "seller",
+                    "shipment_orders",
+                    "return_orders",
+                    ":return_order_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "return_order_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "be37365e-5aec-41cb-9101-4921bce55b5c",
+          "name": "Create Return Shipment Request",
+          "request": {
+            "name": "Create Return Shipment Request",
+            "description": {},
+            "url": {
+              "path": [
+                "sales-channel",
+                "public",
+                "v1",
+                "seller",
+                "shipment_orders",
+                ":order_id",
+                "return_requests"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "order_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "580a443f-ca35-4560-93d3-4b05be616bba",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sales-channel",
+                    "public",
+                    "v1",
+                    "seller",
+                    "shipment_orders",
+                    ":order_id",
+                    "return_requests"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "order_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e996d4da-a132-4d5b-a335-58413b8806fc",
+          "name": "Get Return Shipment Requests",
+          "request": {
+            "name": "Get Return Shipment Requests",
+            "description": {},
+            "url": {
+              "path": [
+                "sales-channel",
+                "public",
+                "v1",
+                "seller",
+                "shipment_orders",
+                "return_requests"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3dc2372d-2616-437f-8c3b-11b06ff8eb36",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sales-channel",
+                    "public",
+                    "v1",
+                    "seller",
+                    "shipment_orders",
+                    "return_requests"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5b216e13-1b87-4e02-b5f2-5a36f3a78283",
+          "name": "Approve Return Shipment Request",
+          "request": {
+            "name": "Approve Return Shipment Request",
+            "description": {},
+            "url": {
+              "path": [
+                "sales-channel",
+                "public",
+                "v1",
+                "seller",
+                "shipment_orders",
+                "return_requests",
+                ":order_id",
+                "approve"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "order_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "256aa886-06a9-4551-bef5-f5b0ad7764ae",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sales-channel",
+                    "public",
+                    "v1",
+                    "seller",
+                    "shipment_orders",
+                    "return_requests",
+                    ":order_id",
+                    "approve"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "order_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f0a5dc9d-79b2-491e-856c-cdb4979e6237",
+          "name": "Reject Return Shipment Request",
+          "request": {
+            "name": "Reject Return Shipment Request",
+            "description": {},
+            "url": {
+              "path": [
+                "sales-channel",
+                "public",
+                "v1",
+                "seller",
+                "shipment_orders",
+                "return_requests",
+                ":return_request_id",
+                "reject"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "return_request_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "PUT",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f6016ad6-5426-48cc-852f-bac73b5e13e4",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sales-channel",
+                    "public",
+                    "v1",
+                    "seller",
+                    "shipment_orders",
+                    "return_requests",
+                    ":return_request_id",
+                    "reject"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "return_request_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0ef5a2e2-b2d1-4d50-b6ba-2c29ba701c29",
+          "name": "Get Shipment Orders",
+          "request": {
+            "name": "Get Shipment Orders",
+            "description": {},
+            "url": {
+              "path": [
+                "sales-channel",
+                "public",
+                "v1",
+                "seller",
+                "shipment_orders"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1c917fd4-89f9-4b80-a44a-11f10507cf94",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sales-channel",
+                    "public",
+                    "v1",
+                    "seller",
+                    "shipment_orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3f8ea08e-46b6-4801-80ad-f199a0417510",
+          "name": "Create Shipment Order",
+          "request": {
+            "name": "Create Shipment Order",
+            "description": {},
+            "url": {
+              "path": [
+                "sales-channel",
+                "public",
+                "v1",
+                "seller",
+                "shipment_orders"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a1dac56e-d371-40e4-bd2d-17958ed69248",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sales-channel",
+                    "public",
+                    "v1",
+                    "seller",
+                    "shipment_orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "226fbeed-0848-405b-b5a5-928008992295",
+          "name": "Get Shipment Orders By ID",
+          "request": {
+            "name": "Get Shipment Orders By ID",
+            "description": {},
+            "url": {
+              "path": [
+                "sales-channel",
+                "public",
+                "v1",
+                "seller",
+                "shipment_orders",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "363b1d37-7d4a-4995-89b6-afc25073b4ea",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sales-channel",
+                    "public",
+                    "v1",
+                    "seller",
+                    "shipment_orders",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "dbc9c4ad-9866-42ff-a23a-aad824352943",
+          "name": "Create Return Order",
+          "request": {
+            "name": "Create Return Order",
+            "description": {},
+            "url": {
+              "path": [
+                "sales-channel",
+                "public",
+                "v1",
+                "tenants",
+                "sellers",
+                ":seller_code",
+                "shipment_orders",
+                ":order_id",
+                "return_orders"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "seller_code",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "order_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"return_order_id\": \"RO-106213\",\n  \"return_items\": [\n    {\n      \"item_id\": \"JOUFURH05082036\",\n      \"return_item_id\": \"Rqueen_bed\",\n      \"sku_code\": \"JOUFURH05082036\",\n      \"return_quantity\": 1,\n      \"return_reasons\": [\n        {\n          \"reason\": \"Damaged item\",\n          \"quantity\": 1,\n          \"comment\": \"Product arrived with broken packaging\"\n        }\n      ],\n      \"unit_price\": 50,\n      \"discount\": 0,\n      \"total\": 100\n    }\n  ],\n  \"additional_charges\": [\n    {\n      \"type\": \"cod_fee\",\n      \"cost\": 50,\n      \"tax_inclusive\": true,\n      \"tax_percentage\": 5,\n      \"is_applied\": true\n    },\n    {\n      \"type\": \"platform_fee\",\n      \"cost\": 30,\n      \"tax_inclusive\": false,\n      \"tax_percentage\": 0,\n      \"is_applied\": false\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e971c5a7-42fc-4444-b9a0-e4bc470cfeed",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sales-channel",
+                    "public",
+                    "v1",
+                    "tenants",
+                    "sellers",
+                    ":seller_code",
+                    "shipment_orders",
+                    ":order_id",
+                    "return_orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "seller_code",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "order_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"return_order_id\": \"RO-106213\",\n  \"return_items\": [\n    {\n      \"item_id\": \"JOUFURH05082036\",\n      \"return_item_id\": \"Rqueen_bed\",\n      \"sku_code\": \"JOUFURH05082036\",\n      \"return_quantity\": 1,\n      \"return_reasons\": [\n        {\n          \"reason\": \"Damaged item\",\n          \"quantity\": 1,\n          \"comment\": \"Product arrived with broken packaging\"\n        }\n      ],\n      \"unit_price\": 50,\n      \"discount\": 0,\n      \"total\": 100\n    }\n  ],\n  \"additional_charges\": [\n    {\n      \"type\": \"cod_fee\",\n      \"cost\": 50,\n      \"tax_inclusive\": true,\n      \"tax_percentage\": 5,\n      \"is_applied\": true\n    },\n    {\n      \"type\": \"platform_fee\",\n      \"cost\": 30,\n      \"tax_inclusive\": false,\n      \"tax_percentage\": 0,\n      \"is_applied\": false\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c699d5fe-3cbf-47cc-94bb-f7950c291374",
+          "name": "Get Return Orders",
+          "request": {
+            "name": "Get Return Orders",
+            "description": {},
+            "url": {
+              "path": [
+                "sales-channel",
+                "public",
+                "v1",
+                "tenants",
+                "sellers",
+                ":seller_code",
+                "shipment_orders",
+                "return_orders"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "seller_code",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "531ab163-8790-46f6-8352-c303ebbd3313",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sales-channel",
+                    "public",
+                    "v1",
+                    "tenants",
+                    "sellers",
+                    ":seller_code",
+                    "shipment_orders",
+                    "return_orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "seller_code",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1e7eb626-b31f-40d2-b72b-6f65cd1ac673",
+          "name": "Get Return Order by Id",
+          "request": {
+            "name": "Get Return Order by Id",
+            "description": {},
+            "url": {
+              "path": [
+                "sales-channel",
+                "public",
+                "v1",
+                "tenants",
+                "sellers",
+                ":seller_code",
+                "shipment_orders",
+                "return_orders",
+                ":return_order_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "seller_code",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "return_order_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "70d93069-1bc8-43ee-b341-9522d605d5c0",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sales-channel",
+                    "public",
+                    "v1",
+                    "tenants",
+                    "sellers",
+                    ":seller_code",
+                    "shipment_orders",
+                    "return_orders",
+                    ":return_order_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "seller_code",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "return_order_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5825c1cb-9b4f-4877-810e-62906004424d",
+          "name": "Create Return Request",
+          "request": {
+            "name": "Create Return Request",
+            "description": {},
+            "url": {
+              "path": [
+                "sales-channel",
+                "public",
+                "v1",
+                "tenants",
+                "sellers",
+                ":seller_code",
+                "shipment_orders",
+                ":order_id",
+                "return_requests"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "seller_code",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "order_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"return_request_number\": \"RRN-108\",\n  \"return_reason\": \"Customer dissatisfaction with product quality\",\n  \"return_items\": [\n    {\n      \"seller_sku_code\": \"JOUFURH528052406\",\n      \"quantity\": 1,\n      \"return_reason\": \"Item defective\",\n      \"refund_amount\": 950,\n      \"return_reasons\": [\n        {\n          \"reason\": \"Damaged packaging\",\n          \"quantity\": 1,\n          \"comment\": \"Outer box torn on arrival\"\n        }\n      ]\n    }\n  ],\n  \"additional_charges\": [\n    {\n      \"type\": \"platform_fee\",\n      \"cost_with_tax\": 30,\n      \"tax_percentage\": 0\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1eea6606-30d5-4edc-a392-cdcf8dab7a62",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sales-channel",
+                    "public",
+                    "v1",
+                    "tenants",
+                    "sellers",
+                    ":seller_code",
+                    "shipment_orders",
+                    ":order_id",
+                    "return_requests"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "seller_code",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "order_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"return_request_number\": \"RRN-108\",\n  \"return_reason\": \"Customer dissatisfaction with product quality\",\n  \"return_items\": [\n    {\n      \"seller_sku_code\": \"JOUFURH528052406\",\n      \"quantity\": 1,\n      \"return_reason\": \"Item defective\",\n      \"refund_amount\": 950,\n      \"return_reasons\": [\n        {\n          \"reason\": \"Damaged packaging\",\n          \"quantity\": 1,\n          \"comment\": \"Outer box torn on arrival\"\n        }\n      ]\n    }\n  ],\n  \"additional_charges\": [\n    {\n      \"type\": \"platform_fee\",\n      \"cost_with_tax\": 30,\n      \"tax_percentage\": 0\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "73e360d3-a547-466f-b8a4-4ecee6f949b1",
+          "name": "Get Return Request",
+          "request": {
+            "name": "Get Return Request",
+            "description": {},
+            "url": {
+              "path": [
+                "sales-channel",
+                "public",
+                "v1",
+                "tenants",
+                "sellers",
+                ":seller_code",
+                "shipment_orders",
+                "return_requests"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "seller_code",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "bc159d55-339f-439e-844a-214ab93d423b",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sales-channel",
+                    "public",
+                    "v1",
+                    "tenants",
+                    "sellers",
+                    ":seller_code",
+                    "shipment_orders",
+                    "return_requests"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "seller_code",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7ed85558-80e4-4c79-aeb5-bf40772ff4ce",
+          "name": "Approve Return Request",
+          "request": {
+            "name": "Approve Return Request",
+            "description": {},
+            "url": {
+              "path": [
+                "sales-channel",
+                "public",
+                "v1",
+                "tenants",
+                "sellers",
+                ":seller_code",
+                "shipment_orders",
+                "return_requests",
+                ":return_request_id",
+                "approve"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "seller_code",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "return_request_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "02855f5a-cac8-4bc5-91e6-80a15f6fd998",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sales-channel",
+                    "public",
+                    "v1",
+                    "tenants",
+                    "sellers",
+                    ":seller_code",
+                    "shipment_orders",
+                    "return_requests",
+                    ":return_request_id",
+                    "approve"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "seller_code",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "return_request_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b6ea8b1b-8e7a-42d7-ae5e-e0ac71a0e099",
+          "name": "Reject Return Request",
+          "request": {
+            "name": "Reject Return Request",
+            "description": {},
+            "url": {
+              "path": [
+                "sales-channel",
+                "public",
+                "v1",
+                "tenants",
+                "sellers",
+                ":seller_code",
+                "shipment_orders",
+                "return_requests",
+                ":return_request_id",
+                "reject"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "seller_code",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "return_request_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "PUT",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "57aad52f-fae2-4a01-8789-0e23e4582b54",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sales-channel",
+                    "public",
+                    "v1",
+                    "tenants",
+                    "sellers",
+                    ":seller_code",
+                    "shipment_orders",
+                    "return_requests",
+                    ":return_request_id",
+                    "reject"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "seller_code",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "return_request_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "25284643-1726-4720-bd23-66ef54ec6d8f",
+          "name": "Get Shipment Orders",
+          "request": {
+            "name": "Get Shipment Orders",
+            "description": {},
+            "url": {
+              "path": [
+                "sales-channel",
+                "public",
+                "v1",
+                "tenants",
+                "sellers",
+                ":seller_code",
+                "shipment_orders"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "seller_code",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d30fb059-7a71-402c-aae4-eaf3df42890a",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sales-channel",
+                    "public",
+                    "v1",
+                    "tenants",
+                    "sellers",
+                    ":seller_code",
+                    "shipment_orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "seller_code",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "25468c87-f407-4e27-974f-0747ae63d0ee",
+          "name": "Create Shipment Order",
+          "request": {
+            "name": "Create Shipment Order",
+            "description": {
+              "content": "Description 📦 Create Shipment Order API 📥 Request Body 1. Order Information Field Type Required Description display_order_id string ✅ Unique human-readable order ID shown in Omniful. client_reference_id string ❌ Client-provided reference ID for internal tracking. automatic_shipment_order_shipment_enabled boolean ❌ If true, shipment order will auto-generate a shipment. order_created_at string (ISO 8601) ❌ Date-time when the order was originally created. slot.delivery_date string (YYYY-MM-DD) ❌ Re",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sales-channel",
+                "public",
+                "v1",
+                "tenants",
+                "sellers",
+                ":seller_code",
+                "shipment_orders"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "seller_code",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"SO-81211\",\n  \"display_order_id\": \"SO-ORDER-302\",\n  \"client_reference_id\": \"SO-REF-8123\",\n  \"installation_required\": true,\n  \"order_items\": [\n    {\n      \"item_id\": \"item-001\",\n      \"sku_code\": \"SKU-123\",\n      \"hs_code\": \"HS999\",\n      \"sku_id\": \"SKU-ID-456\",\n      \"name\": \"Sample Product\",\n      \"display_price\": 100,\n      \"selling_price\": 90,\n      \"is_substituted\": false,\n      \"item_barcodes\": [\n        \"BAR123\"\n      ],\n      \"quantity\": 2,\n      \"tax_percent\": 5,\n      \"tax\": 9,\n      \"unit_price\": 45.5,\n      \"subtotal\": 91,\n      \"total\": 100,\n      \"discount\": 0,\n      \"tax_inclusive\": true,\n      \"installation_required\": true\n    }\n  ],\n  \"slot\": {\n    \"delivery_date\": \"2025-07-20\",\n    \"start_time\": 1000,\n    \"end_time\": 1200\n  },\n  \"order_created_at\": \"2025-07-15T10:00:00Z\",\n  \"customer\": {\n    \"id\": \"CUST-001\",\n    \"first_name\": \"John\",\n    \"last_name\": \"Doe\",\n    \"mobile\": \"1234567890\",\n    \"mobile_code\": \"+91\",\n    \"country_code\": \"IN\",\n    \"email\": \"john.doe@example.com\",\n    \"gender\": \"male\",\n    \"country\": \"India\",\n    \"country_calling_code\": \"+91\"\n  },\n  \"shipment\": {\n    \"number_of_boxes\": 2,\n    \"weight\": 4.5\n  },\n  \"payment_method\": \"postpaid\",\n  \"is_cash_on_delivery\": true,\n  \"shipment_type\": \"omniful_generated\",\n  \"delivery_type\": \"click_and_collect\",\n  \"note\": \"Handle with care\",\n  \"no_of_boxes\": 2,\n  \"labels\": [\n    \"fragile\",\n    \"priority\"\n  ],\n  \"fulfillment_type\": \"shipment_only\",\n  \"receiver_address\": {\n    \"address1\": \"456 Customer Lane\",\n    \"address2\": \"Apt 202\",\n    \"city\": \"Delhi\",\n    \"country\": \"India\",\n    \"first_name\": \"Receiver\",\n    \"last_name\": \"Name\",\n    \"phone\": \"9988776655\",\n    \"state\": \"Delhi\",\n    \"zip\": \"110001\",\n    \"state_code\": \"DL\",\n    \"country_code\": \"IN\",\n    \"latitude\": 28.6139,\n    \"longitude\": 77.209,\n    \"email\": \"receiver@example.com\",\n    \"country_calling_code\": \"+91\",\n    \"national_address_code\": \"code\"\n  },\n  \"product_description\": \"Pack of electronics\",\n  \"hub_detail\": {\n    \"code\": \"H211125-3261-HXMJV\",\n    \"hub_type\": \"virtual\",\n    \"virtual_hub_type\": \"pickup_loction\"\n  },\n  \"payment_info\": {\n    \"currency\": \"INR\",\n    \"payment_type\": \"cash\",\n    \"payment_mode\": \"cod\",\n    \"total\": 100,\n    \"subtotal\": 95,\n    \"total_paid\": 100,\n    \"total_due\": 0,\n    \"tax_percent\": 5,\n    \"tax\": 5,\n    \"discount\": 0,\n    \"shipping_price\": 10,\n    \"additional_charges\": [\n      {\n        \"type\": \"platform_fee\",\n        \"cost\": 5,\n        \"tax_amount\": 0.5,\n        \"tax_inclusive\": true,\n        \"tax_percentage\": 10,\n        \"is_applied\": true\n      }\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "cb77a49d-e35d-4309-812a-6a27dfa5c426",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sales-channel",
+                    "public",
+                    "v1",
+                    "tenants",
+                    "sellers",
+                    ":seller_code",
+                    "shipment_orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "seller_code",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"SO-81211\",\n  \"display_order_id\": \"SO-ORDER-302\",\n  \"client_reference_id\": \"SO-REF-8123\",\n  \"installation_required\": true,\n  \"order_items\": [\n    {\n      \"item_id\": \"item-001\",\n      \"sku_code\": \"SKU-123\",\n      \"hs_code\": \"HS999\",\n      \"sku_id\": \"SKU-ID-456\",\n      \"name\": \"Sample Product\",\n      \"display_price\": 100,\n      \"selling_price\": 90,\n      \"is_substituted\": false,\n      \"item_barcodes\": [\n        \"BAR123\"\n      ],\n      \"quantity\": 2,\n      \"tax_percent\": 5,\n      \"tax\": 9,\n      \"unit_price\": 45.5,\n      \"subtotal\": 91,\n      \"total\": 100,\n      \"discount\": 0,\n      \"tax_inclusive\": true,\n      \"installation_required\": true\n    }\n  ],\n  \"slot\": {\n    \"delivery_date\": \"2025-07-20\",\n    \"start_time\": 1000,\n    \"end_time\": 1200\n  },\n  \"order_created_at\": \"2025-07-15T10:00:00Z\",\n  \"customer\": {\n    \"id\": \"CUST-001\",\n    \"first_name\": \"John\",\n    \"last_name\": \"Doe\",\n    \"mobile\": \"1234567890\",\n    \"mobile_code\": \"+91\",\n    \"country_code\": \"IN\",\n    \"email\": \"john.doe@example.com\",\n    \"gender\": \"male\",\n    \"country\": \"India\",\n    \"country_calling_code\": \"+91\"\n  },\n  \"shipment\": {\n    \"number_of_boxes\": 2,\n    \"weight\": 4.5\n  },\n  \"payment_method\": \"postpaid\",\n  \"is_cash_on_delivery\": true,\n  \"shipment_type\": \"omniful_generated\",\n  \"delivery_type\": \"click_and_collect\",\n  \"note\": \"Handle with care\",\n  \"no_of_boxes\": 2,\n  \"labels\": [\n    \"fragile\",\n    \"priority\"\n  ],\n  \"fulfillment_type\": \"shipment_only\",\n  \"receiver_address\": {\n    \"address1\": \"456 Customer Lane\",\n    \"address2\": \"Apt 202\",\n    \"city\": \"Delhi\",\n    \"country\": \"India\",\n    \"first_name\": \"Receiver\",\n    \"last_name\": \"Name\",\n    \"phone\": \"9988776655\",\n    \"state\": \"Delhi\",\n    \"zip\": \"110001\",\n    \"state_code\": \"DL\",\n    \"country_code\": \"IN\",\n    \"latitude\": 28.6139,\n    \"longitude\": 77.209,\n    \"email\": \"receiver@example.com\",\n    \"country_calling_code\": \"+91\",\n    \"national_address_code\": \"code\"\n  },\n  \"product_description\": \"Pack of electronics\",\n  \"hub_detail\": {\n    \"code\": \"H211125-3261-HXMJV\",\n    \"hub_type\": \"virtual\",\n    \"virtual_hub_type\": \"pickup_loction\"\n  },\n  \"payment_info\": {\n    \"currency\": \"INR\",\n    \"payment_type\": \"cash\",\n    \"payment_mode\": \"cod\",\n    \"total\": 100,\n    \"subtotal\": 95,\n    \"total_paid\": 100,\n    \"total_due\": 0,\n    \"tax_percent\": 5,\n    \"tax\": 5,\n    \"discount\": 0,\n    \"shipping_price\": 10,\n    \"additional_charges\": [\n      {\n        \"type\": \"platform_fee\",\n        \"cost\": 5,\n        \"tax_amount\": 0.5,\n        \"tax_inclusive\": true,\n        \"tax_percentage\": 10,\n        \"is_applied\": true\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "44fd7acc-311e-45ba-a674-51e18530b84b",
+          "name": "Get Shipment Order By ID",
+          "request": {
+            "name": "Get Shipment Order By ID",
+            "description": {},
+            "url": {
+              "path": [
+                "sales-channel",
+                "public",
+                "v1",
+                "tenants",
+                "sellers",
+                ":seller_code",
+                "shipment_orders",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "seller_code",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9b1962ed-a805-4c4f-8ba8-33815b1954dd",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sales-channel",
+                    "public",
+                    "v1",
+                    "tenants",
+                    "sellers",
+                    ":seller_code",
+                    "shipment_orders",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "seller_code",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://prodapi.omniful.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "d557b59b-c4d0-4c9e-b032-c218244fe4f8",
+    "name": "Omniful Integration APIs Background Jobs Shipment Orders API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Omniful unified supply chain and fulfillment platform integration APIs (Order Management, Warehouse/Inventory, Returns, Purchase Orders, Shipment/TMS, Webhooks). Derived faithfully from the provider-published Postman collection at docs.omniful.tech; paths, methods, parameters, and request examples are as published, response schemas are not enumerated in the source.",
+      "type": "text/plain"
+    }
+  }
+}

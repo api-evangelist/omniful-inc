@@ -1,0 +1,419 @@
+{
+  "item": [
+    {
+      "id": "96e7126e-266d-4d79-8937-f51eec09fbaa",
+      "name": "Customers",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e3e3c197-fbd8-4f7b-bcd3-b8f2e5b5ca5b",
+          "name": "Create Customer",
+          "request": {
+            "name": "Create Customer",
+            "description": {
+              "content": "Required fields to create customer: first_name: First name of the customer. address: Nested object representing customer's address details. a. address1: Address line 1 b. city: City of the address c. country: Country of the address. Optional Field : title : An optional field to specify the title of the individual. If provided, it must be one of the supported titles.Supported Titles: Mr Mrs Ms Dr Prof Rev Hon Sir Lady Optional Field gender : An optional field to specify the gender of the individu",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sales-channel",
+                "public",
+                "v1",
+                "customers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Mr\",\n  \"first_name\": \"Shubhra\",\n  \"last_name\": \"Ghosh\",\n  \"email\": \"shubhra.omniful@example14.com\",\n  \"mobile\": \"7075156612\",\n  \"country_calling_code\": \"+91\",\n  \"country_code\": \"IN\",\n  \"gender\": \"male\",\n  \"date_of_birth\": \"1990-01-01\",\n  \"user_name\": \"shubhra_ghosh\",\n  \"preferred_languages\": [\n    \"en\",\n    \"es\"\n  ],\n  \"alternate_contact_number\": 9876543211,\n  \"nationality\": \"Indian\",\n  \"address\": {\n    \"address1\": \"123 Main St\",\n    \"address2\": \"Apt 101\",\n    \"city\": \"Riyadh\",\n    \"country\": \"SA\",\n    \"country_code\": \"SA\",\n    \"state\": \"Riyadh\",\n    \"zip\": \"10001\",\n    \"default_address\": true,\n    \"national_address_code\": \"\"\n  },\n  \"documents\": [\n    {\n      \"type\": \"passport\",\n      \"number\": \"4XEC5R67VT8BY\",\n      \"issue_country_code\": \"SA\",\n      \"issue_date\": \"2015-06-19\",\n      \"expiry_date\": \"2025-06-12\",\n      \"urls\": [\n        \"https://example.com/passport-front.jpg\",\n        \"https://example.com/passport-back.jpg\"\n      ]\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d575007f-fd7e-48df-8994-7051c5c522bc",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sales-channel",
+                    "public",
+                    "v1",
+                    "customers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"title\": \"Mr\",\n  \"first_name\": \"Shubhra\",\n  \"last_name\": \"Ghosh\",\n  \"email\": \"shubhra.omniful@example14.com\",\n  \"mobile\": \"7075156612\",\n  \"country_calling_code\": \"+91\",\n  \"country_code\": \"IN\",\n  \"gender\": \"male\",\n  \"date_of_birth\": \"1990-01-01\",\n  \"user_name\": \"shubhra_ghosh\",\n  \"preferred_languages\": [\n    \"en\",\n    \"es\"\n  ],\n  \"alternate_contact_number\": 9876543211,\n  \"nationality\": \"Indian\",\n  \"address\": {\n    \"address1\": \"123 Main St\",\n    \"address2\": \"Apt 101\",\n    \"city\": \"Riyadh\",\n    \"country\": \"SA\",\n    \"country_code\": \"SA\",\n    \"state\": \"Riyadh\",\n    \"zip\": \"10001\",\n    \"default_address\": true,\n    \"national_address_code\": \"\"\n  },\n  \"documents\": [\n    {\n      \"type\": \"passport\",\n      \"number\": \"4XEC5R67VT8BY\",\n      \"issue_country_code\": \"SA\",\n      \"issue_date\": \"2015-06-19\",\n      \"expiry_date\": \"2025-06-12\",\n      \"urls\": [\n        \"https://example.com/passport-front.jpg\",\n        \"https://example.com/passport-back.jpg\"\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c05cb63b-b250-40cc-b34d-a77eb1f3eb0b",
+          "name": "Get Customers",
+          "request": {
+            "name": "Get Customers",
+            "description": {
+              "content": "InternalCustomer Object Field Data Type Description first_name String First name of the customer. last_name String Last name of the customer. email String Email address of the customer. mobile String Mobile number of the customer. country_calling_code String Country calling code for the mobile number. country_code String Country code of the customer's address. address Object Nested object representing customer's address details. CustomerAddress Object (nested within InternalCustomer) Field Data ",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sales-channel",
+                "public",
+                "v1",
+                "customers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5dabb359-ab3d-4e43-be8b-88109a1cfdb6",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sales-channel",
+                    "public",
+                    "v1",
+                    "customers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0d63a03a-1daf-40ed-b625-75c0d7e65471",
+          "name": "Get Customer",
+          "request": {
+            "name": "Get Customer",
+            "description": {
+              "content": "InternalCustomer Object Field Data Type Description first_name String First name of the customer. last_name String Last name of the customer. email String Email address of the customer. mobile String Mobile number of the customer. country_calling_code String Country calling code for the mobile number. country_code String Country code of the customer's address. address Object Nested object representing customer's address details. CustomerAddress Object (nested within InternalCustomer) Field Data ",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sales-channel",
+                "public",
+                "v1",
+                "customers",
+                ":customer_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customer_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "19e0942e-ba77-4e25-95df-2bc9a9c48a25",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sales-channel",
+                    "public",
+                    "v1",
+                    "customers",
+                    ":customer_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customer_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "af82c2fa-4089-4b9b-93cd-6b622c64c535",
+          "name": "Update Customer",
+          "request": {
+            "name": "Update Customer",
+            "description": {
+              "content": "InternalCustomer Object Field Data Type Description first_name String First name of the customer. last_name String Last name of the customer. email String Email address of the customer. mobile String Mobile number of the customer. country_calling_code String Country calling code for the mobile number. country_code String Country code of the customer's address. address Object Nested object representing customer's address details. CustomerAddress Object (nested within InternalCustomer) Field Data ",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sales-channel",
+                "public",
+                "v1",
+                "customers",
+                ":customer_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customer_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"first_name\": \"Shubhra\",\n  \"last_name\": \"Omniful\",\n  \"email\": \"shubhra@omniful.com\",\n  \"mobile\": \"7044063691\",\n  \"country_calling_code\": \"+91\",\n  \"country_code\": \"IN\",\n  \"documents\": [\n    {\n      \"type\": \"passport\",\n      \"number\": \"4XEC5R67VT8BY\",\n      \"issue_country_code\": \"SA\",\n      \"issue_date\": \"2016-06-19\",\n      \"expiry_date\": \"2026-06-12\",\n      \"urls\": [\n        \"https://example.com/passport-front.jpg\",\n        \"https://example.com/passport-back.jpg\"\n      ]\n    },\n    {\n      \"type\": \"driving_license\",\n      \"number\": \"D5R67VT87BY\",\n      \"issue_country_code\": \"SA\",\n      \"issue_date\": \"2015-06-19\",\n      \"expiry_date\": \"2025-06-12\",\n      \"urls\": [\n        \"https://example.com/passport-front.jpg\",\n        \"https://example.com/passport-back.jpg\"\n      ]\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2d62b591-ec4c-48be-a348-62f6ed346219",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sales-channel",
+                    "public",
+                    "v1",
+                    "customers",
+                    ":customer_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customer_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"first_name\": \"Shubhra\",\n  \"last_name\": \"Omniful\",\n  \"email\": \"shubhra@omniful.com\",\n  \"mobile\": \"7044063691\",\n  \"country_calling_code\": \"+91\",\n  \"country_code\": \"IN\",\n  \"documents\": [\n    {\n      \"type\": \"passport\",\n      \"number\": \"4XEC5R67VT8BY\",\n      \"issue_country_code\": \"SA\",\n      \"issue_date\": \"2016-06-19\",\n      \"expiry_date\": \"2026-06-12\",\n      \"urls\": [\n        \"https://example.com/passport-front.jpg\",\n        \"https://example.com/passport-back.jpg\"\n      ]\n    },\n    {\n      \"type\": \"driving_license\",\n      \"number\": \"D5R67VT87BY\",\n      \"issue_country_code\": \"SA\",\n      \"issue_date\": \"2015-06-19\",\n      \"expiry_date\": \"2025-06-12\",\n      \"urls\": [\n        \"https://example.com/passport-front.jpg\",\n        \"https://example.com/passport-back.jpg\"\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://prodapi.omniful.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "054473a2-1c76-4da5-bc26-8a2241ab2f3d",
+    "name": "Omniful Integration APIs Background Jobs Customers API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Omniful unified supply chain and fulfillment platform integration APIs (Order Management, Warehouse/Inventory, Returns, Purchase Orders, Shipment/TMS, Webhooks). Derived faithfully from the provider-published Postman collection at docs.omniful.tech; paths, methods, parameters, and request examples are as published, response schemas are not enumerated in the source.",
+      "type": "text/plain"
+    }
+  }
+}

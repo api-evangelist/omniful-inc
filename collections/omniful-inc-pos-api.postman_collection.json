@@ -1,0 +1,241 @@
+{
+  "item": [
+    {
+      "id": "641cd85b-cff1-4dd9-a85f-ef817f00b5c6",
+      "name": "POS",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "eca4fcb4-1660-449a-8a87-f978d7ac737f",
+          "name": "Create POS Order",
+          "request": {
+            "name": "Create POS Order",
+            "description": {
+              "content": "Query Params should_not_adjust_inventory (string): Set to true if you do not want to adjust inventory; otherwise, the inventory will always be adjusted. Example: {{base_url}}/sales-channel/public/v1/pos/order?should_not_adjust_inventory=true Order Details order_id (String) Unique identifier for the order. order_alias (String) Alias or alternate identifier for the order. customer (Object) Details of the customer placing the order. first_name (String): First name of the customer. last_name (String",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sales-channel",
+                "public",
+                "v1",
+                "pos",
+                "order"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"order_id\": \"pos-test-1\",\n  \"order_alias\": \"ORD_ALIAS_123\",\n  \"customer\": {\n    \"id\": \"CUST123\",\n    \"first_name\": \"John\",\n    \"last_name\": \"Doe\",\n    \"mobile\": \"9876543210\",\n    \"mobile_code\": \"+1\",\n    \"country_code\": \"US\",\n    \"email\": \"john.doe@example.com\",\n    \"avatar\": \"https://example.com/avatar.jpg\",\n    \"gender\": \"male\"\n  },\n  \"hub_code\": \"ONLS\",\n  \"order_created_at\": \"2023-07-28T09:00:00Z\",\n  \"order_items\": [\n    {\n      \"sales_channel_sku_id\": \"SKU123\",\n      \"seller_sku_code\": \"SELLER123\",\n      \"sales_channel_order_item_id\": \"ITEM001\",\n      \"display_price\": 19.99,\n      \"selling_price\": 15.99,\n      \"quantity\": 2,\n      \"tax_percent\": 5,\n      \"tax\": 1.6,\n      \"unit_price\": 30.99,\n      \"total\": 61.98,\n      \"subtotal\": 59.98,\n      \"tax_inclusive\": true,\n      \"discount\": 5\n    }\n  ],\n  \"invoice\": {\n    \"sc_invoice_number\": \"INV123456\",\n    \"currency\": \"USD\",\n    \"subtotal\": 59.98,\n    \"shipping_tax\": 1.5,\n    \"sub_total_tax_inclusive\": true,\n    \"sub_total_discount_inclusive\": true,\n    \"shipping_tax_inclusive\": true,\n    \"shipping_discount_inclusive\": true,\n    \"shipping_price\": 5,\n    \"shipping_refund\": 0,\n    \"tax\": 3.6,\n    \"tax_percent\": 6,\n    \"discount\": 5,\n    \"total\": 69.98,\n    \"total_paid\": 70,\n    \"total_due\": 0,\n    \"total_refunded\": 0,\n    \"payment_mode\": \"credit_card\",\n    \"loyalty_discount\": 2\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "fc809f83-e359-45e6-b24d-d8aa45d4f51b",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sales-channel",
+                    "public",
+                    "v1",
+                    "pos",
+                    "order"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"order_id\": \"pos-test-1\",\n  \"order_alias\": \"ORD_ALIAS_123\",\n  \"customer\": {\n    \"id\": \"CUST123\",\n    \"first_name\": \"John\",\n    \"last_name\": \"Doe\",\n    \"mobile\": \"9876543210\",\n    \"mobile_code\": \"+1\",\n    \"country_code\": \"US\",\n    \"email\": \"john.doe@example.com\",\n    \"avatar\": \"https://example.com/avatar.jpg\",\n    \"gender\": \"male\"\n  },\n  \"hub_code\": \"ONLS\",\n  \"order_created_at\": \"2023-07-28T09:00:00Z\",\n  \"order_items\": [\n    {\n      \"sales_channel_sku_id\": \"SKU123\",\n      \"seller_sku_code\": \"SELLER123\",\n      \"sales_channel_order_item_id\": \"ITEM001\",\n      \"display_price\": 19.99,\n      \"selling_price\": 15.99,\n      \"quantity\": 2,\n      \"tax_percent\": 5,\n      \"tax\": 1.6,\n      \"unit_price\": 30.99,\n      \"total\": 61.98,\n      \"subtotal\": 59.98,\n      \"tax_inclusive\": true,\n      \"discount\": 5\n    }\n  ],\n  \"invoice\": {\n    \"sc_invoice_number\": \"INV123456\",\n    \"currency\": \"USD\",\n    \"subtotal\": 59.98,\n    \"shipping_tax\": 1.5,\n    \"sub_total_tax_inclusive\": true,\n    \"sub_total_discount_inclusive\": true,\n    \"shipping_tax_inclusive\": true,\n    \"shipping_discount_inclusive\": true,\n    \"shipping_price\": 5,\n    \"shipping_refund\": 0,\n    \"tax\": 3.6,\n    \"tax_percent\": 6,\n    \"discount\": 5,\n    \"total\": 69.98,\n    \"total_paid\": 70,\n    \"total_due\": 0,\n    \"total_refunded\": 0,\n    \"payment_mode\": \"credit_card\",\n    \"loyalty_discount\": 2\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4085d9f8-b038-4216-8c91-7cf80ac61f5d",
+          "name": "Create POS Return Order",
+          "request": {
+            "name": "Create POS Return Order",
+            "description": {
+              "content": "Return Order Details return_order_id (String) Unique identifier for the return order. order_id (String) Original order's identifier. return_order_alias (String) Alias or alternate identifier for the return order. hub_code (String) Code identifying the hub related to the return order. customer (Object) Details of the customer returning the order. id (String): Unique identifier for the customer. first_name (String): First name of the customer. last_name (String): Last name of the customer. order_i",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sales-channel",
+                "public",
+                "v1",
+                "pos",
+                "returns",
+                "order"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"return_order_id\": \"Pos-return-test-3\",\n  \"order_id\": \"pos-test-3\",\n  \"return_order_alias\": \"RO-123\",\n  \"hub_code\": \"ONLS\",\n  \"customer\": {\n    \"id\": \"CUST123\",\n    \"first_name\": \"John\",\n    \"last_name\": \"Doe\",\n    \"mobile\": \"9876543210\",\n    \"mobile_code\": \"+91\",\n    \"country_code\": \"IN\",\n    \"email\": \"john.doe@example.com\",\n    \"avatar\": \"https://example.com/avatar.jpg\",\n    \"gender\": \"male\"\n  },\n  \"order_items\": [\n    {\n      \"seller_sku_code\": \"SELLER123\",\n      \"return_reason\": \"Defective\",\n      \"refunded_quantity\": 1,\n      \"returned_quantity\": 2,\n      \"uom\": \"ea\",\n      \"discount\": 10,\n      \"total\": 100,\n      \"selling_price\": 100,\n      \"unit_price\": 90\n    }\n  ],\n  \"refund_status\": \"pending\",\n  \"return_reason\": \"wrong_items\",\n  \"invoice\": {\n    \"invoice_number\": \"INV-123456\",\n    \"currency\": \"USD\",\n    \"subtotal\": 100.5,\n    \"discount\": 10,\n    \"sub_total_tax_inclusive\": true,\n    \"sub_total_discount_inclusive\": true,\n    \"tax\": 5.25,\n    \"tax_percent\": 5,\n    \"total\": 105.75,\n    \"total_refunded\": 20,\n    \"payment_mode\": \"Credit Card\"\n  },\n  \"order_created_at\": \"2023-07-28T09:00:00Z\",\n  \"order_url\": \"https://example.com/orders/789012\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "22fca98d-38d5-4a7d-b8c0-7605162fbaca",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sales-channel",
+                    "public",
+                    "v1",
+                    "pos",
+                    "returns",
+                    "order"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"return_order_id\": \"Pos-return-test-3\",\n  \"order_id\": \"pos-test-3\",\n  \"return_order_alias\": \"RO-123\",\n  \"hub_code\": \"ONLS\",\n  \"customer\": {\n    \"id\": \"CUST123\",\n    \"first_name\": \"John\",\n    \"last_name\": \"Doe\",\n    \"mobile\": \"9876543210\",\n    \"mobile_code\": \"+91\",\n    \"country_code\": \"IN\",\n    \"email\": \"john.doe@example.com\",\n    \"avatar\": \"https://example.com/avatar.jpg\",\n    \"gender\": \"male\"\n  },\n  \"order_items\": [\n    {\n      \"seller_sku_code\": \"SELLER123\",\n      \"return_reason\": \"Defective\",\n      \"refunded_quantity\": 1,\n      \"returned_quantity\": 2,\n      \"uom\": \"ea\",\n      \"discount\": 10,\n      \"total\": 100,\n      \"selling_price\": 100,\n      \"unit_price\": 90\n    }\n  ],\n  \"refund_status\": \"pending\",\n  \"return_reason\": \"wrong_items\",\n  \"invoice\": {\n    \"invoice_number\": \"INV-123456\",\n    \"currency\": \"USD\",\n    \"subtotal\": 100.5,\n    \"discount\": 10,\n    \"sub_total_tax_inclusive\": true,\n    \"sub_total_discount_inclusive\": true,\n    \"tax\": 5.25,\n    \"tax_percent\": 5,\n    \"total\": 105.75,\n    \"total_refunded\": 20,\n    \"payment_mode\": \"Credit Card\"\n  },\n  \"order_created_at\": \"2023-07-28T09:00:00Z\",\n  \"order_url\": \"https://example.com/orders/789012\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://prodapi.omniful.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "1e46edfe-3af9-4644-a204-f586fe438a23",
+    "name": "Omniful Integration APIs Background Jobs POS API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Omniful unified supply chain and fulfillment platform integration APIs (Order Management, Warehouse/Inventory, Returns, Purchase Orders, Shipment/TMS, Webhooks). Derived faithfully from the provider-published Postman collection at docs.omniful.tech; paths, methods, parameters, and request examples are as published, response schemas are not enumerated in the source.",
+      "type": "text/plain"
+    }
+  }
+}

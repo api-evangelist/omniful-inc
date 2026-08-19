@@ -1,0 +1,409 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Omniful Integration APIs Background Jobs Orders API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Orders",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v1/orders",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "📌 Create Order API Overview The Create Order API allows users to place new orders in Omniful by providing order details, customer information, shipping and billing addresses, invoice details, and payment information. 📝 Request Body Parameters Key Data Type Description Required order_id string Must be a globally unique identifier for the order (e.g., \"order_0008\"). Cannot be reused if the order is deleted. ✅ Yes order_alias string Secondary identifier for tracking in external systems (e.g., ERP"
+        },
+        {
+          "info": {
+            "name": "Update Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v1/orders",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "📌 Update Order API - Overview The Update Order API allows users to modify the details of an existing order that was previously placed. This API can be used to update various order attributes, such as order items, shipping details, billing information, and customer details. Users can update an order only if it is not in the \"packed\" state. Once an order reaches the packed stage, further modifications using this API are restricted. This API ensures flexibility in managing orders before final proc"
+        },
+        {
+          "info": {
+            "name": "Update Order Invoice",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v1/invoice/:order_id",
+            "params": [
+              {
+                "name": "order_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "📌 Update Order Invoice API - Overview The Update Order Invoice API allows users to modify the invoice details of a previously placed order. This API is useful when adjustments or modifications are required in the invoice amount, tax details, discounts, payment information, or other financial components of an order. Users can use this API to ensure that the invoice reflects the correct pricing and charges before final processing or fulfillment. To successfully update an invoice, all the fields f"
+        },
+        {
+          "info": {
+            "name": "Update Order Attachments",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v1/orders/:order_id/attachments",
+            "params": [
+              {
+                "name": "order_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Overview Updates attachments for an existing order. Use this request to add or update attachment metadata for the specified order, such as invoice or order. Endpoint PUT {{base_url}}/public/v1/orders/{{order_id}}/attachments Authentication This request uses the configured access token variable: {{access_token}} Validation Notes The attachments array can contain a maximum of 10 items. Path Parameters Parameter Type Required Description order_id string Yes The unique identifier of the order whose "
+        },
+        {
+          "info": {
+            "name": "Cancel Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v1/orders/:order_id/cancel",
+            "params": [
+              {
+                "name": "order_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "📌 Overview The Cancel Order API allows users to cancel an existing order by providing a cancellation reason. Field Type Required Description cancel_reason string ✅ Yes Reason for canceling the order."
+        },
+        {
+          "info": {
+            "name": "Approve Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v1/orders/:order_id/approve",
+            "params": [
+              {
+                "name": "order_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "📌 Approve Order API - Overview The Approve Order API is used to manually approve orders that require user authorization before processing. This API ensures that orders needing validation, review, or confirmation are not automatically processed without approval. Once an order is approved, it can proceed to the next stage in the fulfillment workflow, such as packing and shipping."
+        },
+        {
+          "info": {
+            "name": "Get Seller Orders (⚠️ To be deprecated on 30-07-2026)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v1/seller/orders"
+          },
+          "docs": "📌 Get Seller Orders API - Overview The Get Seller Orders API allows users to retrieve a list of all orders for a specific seller who has integrated a Custom Integration on their dashboard. This API enables sellers to fetch and manage orders placed within the last three months, providing real-time visibility into their order history. It is useful for tracking order statuses, processing fulfillment, and analyzing order trends over time. 📝 Response Body Parameters Field Data Type Description Alwa"
+        },
+        {
+          "info": {
+            "name": "Get Seller Order By OrderID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v1/seller/orders/:order_id",
+            "params": [
+              {
+                "name": "order_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "📌 Get Seller Order by Order ID API - Overview The Get Seller Order by Order ID API allows users to fetch details of a single order for a seller using the Omniful-generated Order ID (omniful_order_id). This API is particularly useful for retrieving order details that were not placed through the Custom Sales Channel Integration. It provides complete order information, including order items, customer details, billing and shipping addresses, and invoice details, ensuring sellers have full visibilit"
+        },
+        {
+          "info": {
+            "name": "Get Order Logs (⚠️ To be deprecated on 30-07-2026)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v1/orders/:order_id/logs",
+            "params": [
+              {
+                "name": "order_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "📌 Get Order Logs API – Overview The Get Order Logs API allows users to retrieve detailed logs for a specific order using its Order ID. It provides real-time insights into the order’s lifecycle within the warehouse, including: Status updates Fulfillment progress Modifications made to the order This API is particularly useful for: Tracking order history Troubleshooting operational issues Ensuring seamless order management Response Body Parameters Field Data Type Description Always Included is_suc"
+        },
+        {
+          "info": {
+            "name": "Get Seller Order Logs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v1/seller/orders/:system_order_id/logs",
+            "params": [
+              {
+                "name": "system_order_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "📌 Get Order Logs API – Overview The Get Order Logs API allows users to retrieve detailed logs for a specific order using System Order ID. It provides real-time insights into the order’s lifecycle within the warehouse, including: Status updates Fulfillment progress Modifications made to the order This API is particularly useful for: Tracking order history Troubleshooting operational issues Ensuring seamless order management Response Body Parameters Field Data Type Description Always Included is_"
+        },
+        {
+          "info": {
+            "name": "Update Shipping Address",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v1/orders/:order_id/shipping_address",
+            "params": [
+              {
+                "name": "order_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "📌 Update Shipping Address API – Overview The Update Shipping Address API allows users to modify the shipping address details of an order until it reaches the shipped state. This API provides flexibility in updating recipient details, address, and contact information, helping Prevent delivery issues, Ensure accurate fulfillment, Maintain customer satisfaction. Users can only update the shipping address associated with a specific Order ID. Users can only update the shipping address associated wit"
+        },
+        {
+          "info": {
+            "name": "Update Shipping Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v1/orders/:order_id/shipping_details",
+            "params": [
+              {
+                "name": "order_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "📌 Update Shipping Details API - Overview The Update Shipping Details API allows users to modify the shipping details for an order until it reaches the shipped state. This API ensures flexibility in updating recipient details, address, and contact information for a particular order, preventing delivery issues and ensuring accurate fulfillment. Users can only update the shipping address associated with a specific Order ID. Fields to be updated cannot be empty. No more than two fields can be updat"
+        },
+        {
+          "info": {
+            "name": "Get Orders (⚠️ To be deprecated on 30-07-2026))",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v1/tenants/sellers/:seller_code/orders",
+            "params": [
+              {
+                "name": "seller_code",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Description Retrieve a paginated list of orders for a specific seller. You can filter results using multiple optional query parameters such as order ID, customer details, AWB number, SKU code, status, types, and date range. Path Parameters Name Type Required Description seller_code string Yes Unique seller identifier in Omniful. Query Parameters Name Type Required Description page integer No Page number for pagination (default: 1). per_page integer No Number of records per page (default: 20). or"
+        },
+        {
+          "info": {
+            "name": "Create Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v1/tenants/sellers/:seller_code/orders",
+            "params": [
+              {
+                "name": "seller_code",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "📌 Create Order API Overview The Create Order API allows users to place new orders in Omniful by providing order details, customer information, shipping and billing addresses, invoice details, and payment information. 📝 Request Body Parameters Key Data Type Description Required order_id string Must be a globally unique identifier for the order (e.g., \"order_0008\"). Cannot be reused if the order is deleted. ✅ Yes order_alias string Secondary identifier for tracking in external systems (e.g., ERP"
+        },
+        {
+          "info": {
+            "name": "Get Single Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v1/tenants/sellers/:seller_code/orders/:id",
+            "params": [
+              {
+                "name": "seller_code",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Description Retrieve full details of a specific order for a seller using the id which is the omniful order id. Path Parameters Name Type Required Description seller_code string Yes Unique identifier for the seller (e.g., KO-SE-1). id string Yes Unique internal Omniful order identifier used to fetch a specific order."
+        },
+        {
+          "info": {
+            "name": "Update Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v1/tenants/sellers/:seller_code/orders/:id",
+            "params": [
+              {
+                "name": "seller_code",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "📌 Update Order API - Overview The Update Order API allows users to modify the details of an existing order that was previously placed. This API can be used to update various order attributes, such as order items, shipping details, billing information, and customer details. Users can update an order only if it is not in the \"packed\" state. Once an order reaches the packed stage, further modifications using this API are restricted. This API ensures flexibility in managing orders before final proc"
+        },
+        {
+          "info": {
+            "name": "Cancel Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v1/tenants/sellers/:seller_code/orders/:id/cancel",
+            "params": [
+              {
+                "name": "seller_code",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Description Cancel an existing order for a specific seller in Omniful. This endpoint is used when an order needs to be cancelled due to customer request, incorrect product selection, or operational reasons. Only orders in a cancellable state (e.g., not yet shipped or delivered) can be cancelled. Path Parameters Name Type Required Description seller_code string Yes Unique identifier for the seller (e.g., KO-SE-2). id string Yes Internal Omniful order ID of the order to be cancelled. Request Body "
+        },
+        {
+          "info": {
+            "name": "Bulk Create Orders",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v1/tenants/sellers/:seller_code/orders/bulk",
+            "params": [
+              {
+                "name": "seller_code",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Bulk Create Orders"
+        },
+        {
+          "info": {
+            "name": "Get Order Logs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v1/tenants/sellers/:seller_code/orders/:id/logs",
+            "params": [
+              {
+                "name": "seller_code",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Description Retrieve full logs of a specific order for a seller using the id which is the omniful order id."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

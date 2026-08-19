@@ -1,0 +1,90 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Omniful Integration APIs Background Jobs Customers API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Customers",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Customers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v1/customers"
+          },
+          "docs": "InternalCustomer Object Field Data Type Description first_name String First name of the customer. last_name String Last name of the customer. email String Email address of the customer. mobile String Mobile number of the customer. country_calling_code String Country calling code for the mobile number. country_code String Country code of the customer's address. address Object Nested object representing customer's address details. CustomerAddress Object (nested within InternalCustomer) Field Data "
+        },
+        {
+          "info": {
+            "name": "Create Customer",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v1/customers",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Required fields to create customer: first_name: First name of the customer. address: Nested object representing customer's address details. a. address1: Address line 1 b. city: City of the address c. country: Country of the address. Optional Field : title : An optional field to specify the title of the individual. If provided, it must be one of the supported titles.Supported Titles: Mr Mrs Ms Dr Prof Rev Hon Sir Lady Optional Field gender : An optional field to specify the gender of the individu"
+        },
+        {
+          "info": {
+            "name": "Get Customer",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v1/customers/:customer_id",
+            "params": [
+              {
+                "name": "customer_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "InternalCustomer Object Field Data Type Description first_name String First name of the customer. last_name String Last name of the customer. email String Email address of the customer. mobile String Mobile number of the customer. country_calling_code String Country calling code for the mobile number. country_code String Country code of the customer's address. address Object Nested object representing customer's address details. CustomerAddress Object (nested within InternalCustomer) Field Data "
+        },
+        {
+          "info": {
+            "name": "Update Customer",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v1/customers/:customer_id",
+            "params": [
+              {
+                "name": "customer_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "InternalCustomer Object Field Data Type Description first_name String First name of the customer. last_name String Last name of the customer. email String Email address of the customer. mobile String Mobile number of the customer. country_calling_code String Country calling code for the mobile number. country_code String Country code of the customer's address. address Object Nested object representing customer's address details. CustomerAddress Object (nested within InternalCustomer) Field Data "
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

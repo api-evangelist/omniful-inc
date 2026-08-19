@@ -1,0 +1,35 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Omniful Integration APIs Background Jobs Shipping Accounts API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Shipping Accounts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get All Shipping Accounts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v1/tenants/shipping_accounts"
+          },
+          "docs": "This API is used to fetch all shipping accounts for the Tenant."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,119 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Omniful Integration APIs Background Jobs Return Requests API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Return Requests",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Return Requests",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v1/tenants/sellers/:seller_code/return_requests",
+            "params": [
+              {
+                "name": "seller_code",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "📌 Get Return Request API - Overview The Get Return Request API allows users to retrieve return requests for orders based on request status, order ID, and return order ID. 📌 Filters Available: order_id – Fetch return requests for a specific order. status – Filter return requests by status. created_from - Filter return request by date of creation created_to - Filter return request by date of creation By default, return requests will be returned for the last 3 months only. The supported date form"
+        },
+        {
+          "info": {
+            "name": "Create Return Request",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v1/tenants/sellers/:seller_code/orders/:id/return_requests",
+            "params": [
+              {
+                "name": "seller_code",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Return Request"
+        },
+        {
+          "info": {
+            "name": "Reject Return Request",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v1/tenants/sellers/:seller_code/return_requests/:return_request_id/reject",
+            "params": [
+              {
+                "name": "seller_code",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "return_request_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Reject Return Request"
+        },
+        {
+          "info": {
+            "name": "Approve Return Request",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v1/tenants/sellers/:seller_code/return_requests/:return_request_id/approve",
+            "params": [
+              {
+                "name": "seller_code",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "return_request_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Approve Return Request"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

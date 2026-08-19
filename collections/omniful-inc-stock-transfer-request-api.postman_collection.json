@@ -1,0 +1,677 @@
+{
+  "item": [
+    {
+      "id": "3adf3c9a-842a-4855-bc12-f64736f8d1a0",
+      "name": "Stock Transfer Request",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "83f04eba-4b8d-4b0f-993b-5f4cc8549756",
+          "name": "Create Stock Transfer Request",
+          "request": {
+            "name": "Create Stock Transfer Request",
+            "description": {
+              "content": "Required Fields for Creating Stock Transfer Requests: transfer_id (string): The unique identifier for the stock transfer (must be unique always). order_items (array of objects): An array of objects representing the items in the stock transfer. sku_code (string): The stock keeping unit code for the item. quantity (integer): The quantity of the item being transferred. source_hub_code (string): The hub code from which the stock is being transferred. destination_hub_code (string): The hub code to wh",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sales-channel",
+                "public",
+                "v1",
+                "orders",
+                "sto",
+                "requests"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"customer\": {\n    \"first_name\": \"John\",\n    \"last_name\": \"Doe\",\n    \"mobile\": \"7044063694\",\n    \"country_calling_code\": \"+91\",\n    \"country_code\": \"IN\",\n    \"mobile_code\": \"91\",\n    \"email\": \"john.doe@example.com\",\n    \"avatar\": \"https://example.com/avatar.jpg\",\n    \"gender\": \"male\"\n  },\n  \"order_items\": [\n    {\n      \"sku_code\": \"samsung190\",\n      \"quantity\": 2\n    }\n  ],\n  \"source_hub_code\": \"Shubhra001\",\n  \"destination_hub_code\": \"SHUBHRA\",\n  \"sto_request_id\": \"sto_id_27651\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "45375ace-f2ee-4fde-84ae-9a85a9f8cd69",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sales-channel",
+                    "public",
+                    "v1",
+                    "orders",
+                    "sto",
+                    "requests"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"customer\": {\n    \"first_name\": \"John\",\n    \"last_name\": \"Doe\",\n    \"mobile\": \"7044063694\",\n    \"country_calling_code\": \"+91\",\n    \"country_code\": \"IN\",\n    \"mobile_code\": \"91\",\n    \"email\": \"john.doe@example.com\",\n    \"avatar\": \"https://example.com/avatar.jpg\",\n    \"gender\": \"male\"\n  },\n  \"order_items\": [\n    {\n      \"sku_code\": \"samsung190\",\n      \"quantity\": 2\n    }\n  ],\n  \"source_hub_code\": \"Shubhra001\",\n  \"destination_hub_code\": \"SHUBHRA\",\n  \"sto_request_id\": \"sto_id_27651\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "de307549-7303-4c94-b08b-ccc899e7d930",
+          "name": "Get Stock Transfer Requests",
+          "request": {
+            "name": "Get Stock Transfer Requests",
+            "description": {
+              "content": "Response Fields Explained is_success (boolean): Indicates if the request was successful. status_code (integer): The HTTP status code returned by the API. data (array): Contains the list of stock transfer requests. sto_id (string): Unique identifier for the stock transfer. customer (object): Information about the customer associated with the transfer. first_name (string): Customer's first name. last_name (string): Customer's last name. mobile (string): Customer's mobile number. mobile_code (strin",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sales-channel",
+                "public",
+                "v1",
+                "orders",
+                "sto",
+                "requests"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b4107707-aeb7-4bf1-91ed-b6597c01feb0",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sales-channel",
+                    "public",
+                    "v1",
+                    "orders",
+                    "sto",
+                    "requests"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "647cc393-a2f9-4d53-9365-e612860d2cc6",
+          "name": "Update Stock Transfer Request",
+          "request": {
+            "name": "Update Stock Transfer Request",
+            "description": {
+              "content": "Required Fields for Updating Stock Transfer Requests: action_type (string): Specifies the action to perform. \"add_items\": To add new items to the stock transfer request. \"edit_items\": To edit existing items in the stock transfer request. order_items (array of objects): An array of objects representing the items in the stock transfer. sku_code (string): The stock keeping unit code for the item. quantity (integer): The quantity of the item to be added or updated.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sales-channel",
+                "public",
+                "v1",
+                "orders",
+                "sto",
+                "requests",
+                ":sto_request_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "sto_request_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "67ee3dd8-d838-4ae2-b7a9-aa279a5bd011",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sales-channel",
+                    "public",
+                    "v1",
+                    "orders",
+                    "sto",
+                    "requests",
+                    ":sto_request_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sto_request_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "df452bb2-cbe3-4748-adc8-2f293787803d",
+          "name": "Get Stock Transfer Request",
+          "request": {
+            "name": "Get Stock Transfer Request",
+            "description": {
+              "content": "Response Fields Explained is_success (boolean): Indicates if the request was successful. status_code (integer): The HTTP status code returned by the API. data (object): Contains details about the stock transfer request. sto_id (string): Unique identifier for the stock transfer. customer (object): Information about the customer associated with the transfer. first_name (string): Customer's first name. last_name (string): Customer's last name. mobile (string): Customer's mobile number. mobile_code ",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sales-channel",
+                "public",
+                "v1",
+                "orders",
+                "sto",
+                "requests",
+                ":sto_request_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "sto_request_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4d8ef76c-26b1-4c6d-b2f7-b057e981ed80",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sales-channel",
+                    "public",
+                    "v1",
+                    "orders",
+                    "sto",
+                    "requests",
+                    ":sto_request_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sto_request_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "19a5664f-684e-4655-8324-bf72ed759842",
+          "name": "Approve Stock Transfer Request",
+          "request": {
+            "name": "Approve Stock Transfer Request",
+            "description": {
+              "content": "Required Fields for Approving Stock Transfer Requests: order_items (array of objects): An array of objects representing the items being approved in the stock transfer. sku_code (string): The stock keeping unit code for the item. quantity (integer): The quantity of the item being approved.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sales-channel",
+                "public",
+                "v1",
+                "orders",
+                "sto",
+                "requests",
+                ":sto_request_id",
+                "approve"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "sto_request_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"order_items\": [\n    {\n      \"sku_code\": \"iPhone 15 Pro\",\n      \"quantity\": 1\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3789967e-7114-484e-bd5f-7e4d6cf2ee61",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sales-channel",
+                    "public",
+                    "v1",
+                    "orders",
+                    "sto",
+                    "requests",
+                    ":sto_request_id",
+                    "approve"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sto_request_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"order_items\": [\n    {\n      \"sku_code\": \"iPhone 15 Pro\",\n      \"quantity\": 1\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1699b2a6-9369-4ab0-8baa-3195e22be630",
+          "name": "Reject Stock Transfer Request",
+          "request": {
+            "name": "Reject Stock Transfer Request",
+            "description": {
+              "content": "Required Fields for Rejecting Stock Transfer Requests: reason (string): A mandatory field that specifies the reason for rejecting the stock transfer request. This helps provide clarity on the decision.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sales-channel",
+                "public",
+                "v1",
+                "orders",
+                "sto",
+                "requests",
+                ":sto_request_id",
+                "reject"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "sto_request_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"reason\": \"Product not required\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "43d4aa26-3d3e-4a9d-885a-85bd4769f053",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sales-channel",
+                    "public",
+                    "v1",
+                    "orders",
+                    "sto",
+                    "requests",
+                    ":sto_request_id",
+                    "reject"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sto_request_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"reason\": \"Product not required\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://prodapi.omniful.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "45ab9510-2901-4c26-bdf9-2bc326c4e691",
+    "name": "Omniful Integration APIs Background Jobs Stock Transfer Request API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Omniful unified supply chain and fulfillment platform integration APIs (Order Management, Warehouse/Inventory, Returns, Purchase Orders, Shipment/TMS, Webhooks). Derived faithfully from the provider-published Postman collection at docs.omniful.tech; paths, methods, parameters, and request examples are as published, response schemas are not enumerated in the source.",
+      "type": "text/plain"
+    }
+  }
+}

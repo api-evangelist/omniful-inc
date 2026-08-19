@@ -1,0 +1,512 @@
+{
+  "item": [
+    {
+      "id": "68689897-c1c5-46f3-8adb-a45a48b14ef7",
+      "name": "Hubs",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "3ec9d7c1-8fc4-4d36-ab4e-534395b6b277",
+          "name": "Create Hub",
+          "request": {
+            "name": "Create Hub",
+            "description": {
+              "content": "Description Creates a new hub within a tenant. Use this endpoint to register a warehouse, dark store, or fulfillment location with full configuration for inventory, picking, packing, cycle count, schedule order, and other operational behaviors. On success, the endpoint returns the newly created Hub object. 📌 Required fields for creating a Hub: name — Hub name code — Unique hub code type — Hub type (e.g., \"warehouse\", \"dark_store\") email — Valid email address phone_number, country_code, country_c",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sales-channel",
+                "public",
+                "v1",
+                "tenants",
+                "hubs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Dark_str_1\",\n  \"code\": \"Dark_sst\",\n  \"type\": \"dark_store\",\n  \"email\": \"hub-location-off@gmail.com\",\n  \"address\": {\n    \"address_line1\": \"19 ش النهضة  النهضة  النهضة 1  مركز صحارى\",\n    \"address_line2\": \"19 ش النهضة  النهضة  النهضة 1  مركز صحارى\",\n    \"state_name\": \"\",\n    \"city_name\": \"Riyadh\",\n    \"postal_code\": \"00000\",\n    \"latitude\": 25.2709141,\n    \"longitude\": 55.300312,\n    \"country\": {\n      \"name\": \"Saudi Arabia\",\n      \"code\": \"SA\"\n    },\n    \"additional_number\": \"1233\",\n    \"area\": \"mera area\",\n    \"national_address_code\": \"RAFC1231\",\n    \"building_number\": \"1234\",\n    \"street\": \"123 Main St\"\n  },\n  \"working_hours\": {\n    \"monday\": [\n      {\n        \"start_time\": 900,\n        \"end_time\": 2359\n      }\n    ],\n    \"tuesday\": [\n      {\n        \"start_time\": 900,\n        \"end_time\": 2359\n      }\n    ],\n    \"wednesday\": [\n      {\n        \"start_time\": 800,\n        \"end_time\": 2359\n      }\n    ],\n    \"thursday\": [\n      {\n        \"start_time\": 800,\n        \"end_time\": 2359\n      }\n    ],\n    \"friday\": [\n      {\n        \"start_time\": 600,\n        \"end_time\": 2359\n      }\n    ],\n    \"saturday\": [\n      {\n        \"start_time\": 700,\n        \"end_time\": 2359\n      }\n    ],\n    \"sunday\": [\n      {\n        \"start_time\": 500,\n        \"end_time\": 2359\n      }\n    ]\n  },\n  \"configuration\": {\n    \"location_inventory\": {\n      \"enabled\": true\n    },\n    \"inwarding_configuration\": {\n      \"auto_generate_serialised_barcode\": true\n    },\n    \"stock_transfer_order\": {\n      \"enabled\": false\n    },\n    \"hub_location_mapping\": {\n      \"bins_enabled\": false,\n      \"rack_enabled\": false,\n      \"zone_enabled\": false,\n      \"aisle_enabled\": false,\n      \"floor_enabled\": false,\n      \"shelf_enabled\": false\n    },\n    \"adjust_inventory\": {\n      \"manual_barcode_allowed\": true,\n      \"enter_quantity_manually\": true\n    },\n    \"gate_entry\": {\n      \"enabled\": true\n    },\n    \"bulk_ship_configuration\": {\n      \"picker_capacity\": 5\n    },\n    \"picking\": {\n      \"enabled\": true,\n      \"cart_capacity\": 10,\n      \"picker_capacity\": 10,\n      \"bin_scan_enabled\": true,\n      \"single_order_tags\": [\n        {\n          \"name\": \"create tags\"\n        },\n        {\n          \"name\": \"test\"\n        },\n        {\n          \"name\": \"prepaid\"\n        }\n      ],\n      \"location_scan_enabled\": true,\n      \"manual_barcode_allowed\": true,\n      \"enter_quantity_manually\": true,\n      \"multi_order_picking_type\": 3,\n      \"single_order_picking_type\": 1,\n      \"multi_order_picking_allowed\": true,\n      \"single_order_picking_allowed\": true,\n      \"multi_piece_picking_cart_association\": false,\n      \"single_piece_picking_cart_association\": true\n    },\n    \"bin\": {\n      \"enabled\": true\n    },\n    \"location_configuration\": {\n      \"layout\": {\n        \"bin\": {\n          \"exist\": false,\n          \"order\": 8,\n          \"prefix\": \"B\",\n          \"display_name\": \"Bin\"\n        },\n        \"hall\": {\n          \"exist\": false,\n          \"order\": 3,\n          \"prefix\": \"H\",\n          \"display_name\": \"Hall\"\n        },\n        \"rack\": {\n          \"exist\": false,\n          \"order\": 5,\n          \"prefix\": \"R\",\n          \"display_name\": \"Rack\"\n        },\n        \"aisle\": {\n          \"exist\": false,\n          \"order\": 4,\n          \"prefix\": \"A\",\n          \"display_name\": \"Aisle\"\n        },\n        \"floor\": {\n          \"exist\": false,\n          \"order\": 2,\n          \"prefix\": \"F\",\n          \"display_name\": \"Floor\"\n        },\n        \"shelf\": {\n          \"exist\": false,\n          \"order\": 6,\n          \"prefix\": \"S\",\n          \"display_name\": \"Shelf\"\n        },\n        \"location\": {\n          \"exist\": false,\n          \"order\": 7,\n          \"prefix\": \"L\",\n          \"display_name\": \"Location\"\n        },\n        \"custom_prefix\": {\n          \"exist\": true,\n          \"order\": 1,\n          \"prefix\": \"P\",\n          \"display_name\": \"Prefix\"\n        }\n      },\n      \"enabled\": false\n    },\n    \"put_away\": {\n      \"manual_barcode_allowed\": true,\n      \"enter_quantity_manually\": true\n    },\n    \"expiry_configuration\": {\n      \"include_near_expiry_items\": false\n    },\n    \"acceptable_shelf_life_validation\": {\n      \"enabled\": false\n    },\n    \"schedule_order\": {\n      \"time\": {\n        \"hour\": \"0\",\n        \"minute\": \"0\"\n      },\n      \"enabled\": false\n    },\n    \"cycle_count_configuration\": {\n      \"blind_count\": false,\n      \"update_inventory\": false,\n      \"manual_barcode_allowed\": true,\n      \"enter_quantity_manually\": true\n    },\n    \"packing_configuration\": {\n      \"qc_enabled\": true,\n      \"manual_barcode_allowed\": true,\n      \"enter_quantity_manually\": true,\n      \"automatic_shipment_creation\": false,\n      \"auto_print_awb_on_all_items_scanned\": true\n    },\n    \"purchase_order\": {\n      \"enabled\": true,\n      \"over_receive_allowed\": true\n    }\n  },\n  \"is_click_and_collect\": false,\n  \"country_calling_code\": \"+91\",\n  \"country_code\": \"IN\",\n  \"phone_number\": \"9871627354\",\n  \"timezone\": \"Asia/Kolkata\",\n  \"currency\": {\n    \"name\": \"Indian Rupee\",\n    \"code\": \"INR\",\n    \"display_name\": \"INR (Indian Rupee)\"\n  },\n  \"is_pos_enabled\": false,\n  \"is_wms_enabled\": true\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e94d7f65-5fa7-4275-a699-702f28e572c7",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sales-channel",
+                    "public",
+                    "v1",
+                    "tenants",
+                    "hubs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Dark_str_1\",\n  \"code\": \"Dark_sst\",\n  \"type\": \"dark_store\",\n  \"email\": \"hub-location-off@gmail.com\",\n  \"address\": {\n    \"address_line1\": \"19 ش النهضة  النهضة  النهضة 1  مركز صحارى\",\n    \"address_line2\": \"19 ش النهضة  النهضة  النهضة 1  مركز صحارى\",\n    \"state_name\": \"\",\n    \"city_name\": \"Riyadh\",\n    \"postal_code\": \"00000\",\n    \"latitude\": 25.2709141,\n    \"longitude\": 55.300312,\n    \"country\": {\n      \"name\": \"Saudi Arabia\",\n      \"code\": \"SA\"\n    },\n    \"additional_number\": \"1233\",\n    \"area\": \"mera area\",\n    \"national_address_code\": \"RAFC1231\",\n    \"building_number\": \"1234\",\n    \"street\": \"123 Main St\"\n  },\n  \"working_hours\": {\n    \"monday\": [\n      {\n        \"start_time\": 900,\n        \"end_time\": 2359\n      }\n    ],\n    \"tuesday\": [\n      {\n        \"start_time\": 900,\n        \"end_time\": 2359\n      }\n    ],\n    \"wednesday\": [\n      {\n        \"start_time\": 800,\n        \"end_time\": 2359\n      }\n    ],\n    \"thursday\": [\n      {\n        \"start_time\": 800,\n        \"end_time\": 2359\n      }\n    ],\n    \"friday\": [\n      {\n        \"start_time\": 600,\n        \"end_time\": 2359\n      }\n    ],\n    \"saturday\": [\n      {\n        \"start_time\": 700,\n        \"end_time\": 2359\n      }\n    ],\n    \"sunday\": [\n      {\n        \"start_time\": 500,\n        \"end_time\": 2359\n      }\n    ]\n  },\n  \"configuration\": {\n    \"location_inventory\": {\n      \"enabled\": true\n    },\n    \"inwarding_configuration\": {\n      \"auto_generate_serialised_barcode\": true\n    },\n    \"stock_transfer_order\": {\n      \"enabled\": false\n    },\n    \"hub_location_mapping\": {\n      \"bins_enabled\": false,\n      \"rack_enabled\": false,\n      \"zone_enabled\": false,\n      \"aisle_enabled\": false,\n      \"floor_enabled\": false,\n      \"shelf_enabled\": false\n    },\n    \"adjust_inventory\": {\n      \"manual_barcode_allowed\": true,\n      \"enter_quantity_manually\": true\n    },\n    \"gate_entry\": {\n      \"enabled\": true\n    },\n    \"bulk_ship_configuration\": {\n      \"picker_capacity\": 5\n    },\n    \"picking\": {\n      \"enabled\": true,\n      \"cart_capacity\": 10,\n      \"picker_capacity\": 10,\n      \"bin_scan_enabled\": true,\n      \"single_order_tags\": [\n        {\n          \"name\": \"create tags\"\n        },\n        {\n          \"name\": \"test\"\n        },\n        {\n          \"name\": \"prepaid\"\n        }\n      ],\n      \"location_scan_enabled\": true,\n      \"manual_barcode_allowed\": true,\n      \"enter_quantity_manually\": true,\n      \"multi_order_picking_type\": 3,\n      \"single_order_picking_type\": 1,\n      \"multi_order_picking_allowed\": true,\n      \"single_order_picking_allowed\": true,\n      \"multi_piece_picking_cart_association\": false,\n      \"single_piece_picking_cart_association\": true\n    },\n    \"bin\": {\n      \"enabled\": true\n    },\n    \"location_configuration\": {\n      \"layout\": {\n        \"bin\": {\n          \"exist\": false,\n          \"order\": 8,\n          \"prefix\": \"B\",\n          \"display_name\": \"Bin\"\n        },\n        \"hall\": {\n          \"exist\": false,\n          \"order\": 3,\n          \"prefix\": \"H\",\n          \"display_name\": \"Hall\"\n        },\n        \"rack\": {\n          \"exist\": false,\n          \"order\": 5,\n          \"prefix\": \"R\",\n          \"display_name\": \"Rack\"\n        },\n        \"aisle\": {\n          \"exist\": false,\n          \"order\": 4,\n          \"prefix\": \"A\",\n          \"display_name\": \"Aisle\"\n        },\n        \"floor\": {\n          \"exist\": false,\n          \"order\": 2,\n          \"prefix\": \"F\",\n          \"display_name\": \"Floor\"\n        },\n        \"shelf\": {\n          \"exist\": false,\n          \"order\": 6,\n          \"prefix\": \"S\",\n          \"display_name\": \"Shelf\"\n        },\n        \"location\": {\n          \"exist\": false,\n          \"order\": 7,\n          \"prefix\": \"L\",\n          \"display_name\": \"Location\"\n        },\n        \"custom_prefix\": {\n          \"exist\": true,\n          \"order\": 1,\n          \"prefix\": \"P\",\n          \"display_name\": \"Prefix\"\n        }\n      },\n      \"enabled\": false\n    },\n    \"put_away\": {\n      \"manual_barcode_allowed\": true,\n      \"enter_quantity_manually\": true\n    },\n    \"expiry_configuration\": {\n      \"include_near_expiry_items\": false\n    },\n    \"acceptable_shelf_life_validation\": {\n      \"enabled\": false\n    },\n    \"schedule_order\": {\n      \"time\": {\n        \"hour\": \"0\",\n        \"minute\": \"0\"\n      },\n      \"enabled\": false\n    },\n    \"cycle_count_configuration\": {\n      \"blind_count\": false,\n      \"update_inventory\": false,\n      \"manual_barcode_allowed\": true,\n      \"enter_quantity_manually\": true\n    },\n    \"packing_configuration\": {\n      \"qc_enabled\": true,\n      \"manual_barcode_allowed\": true,\n      \"enter_quantity_manually\": true,\n      \"automatic_shipment_creation\": false,\n      \"auto_print_awb_on_all_items_scanned\": true\n    },\n    \"purchase_order\": {\n      \"enabled\": true,\n      \"over_receive_allowed\": true\n    }\n  },\n  \"is_click_and_collect\": false,\n  \"country_calling_code\": \"+91\",\n  \"country_code\": \"IN\",\n  \"phone_number\": \"9871627354\",\n  \"timezone\": \"Asia/Kolkata\",\n  \"currency\": {\n    \"name\": \"Indian Rupee\",\n    \"code\": \"INR\",\n    \"display_name\": \"INR (Indian Rupee)\"\n  },\n  \"is_pos_enabled\": false,\n  \"is_wms_enabled\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "992590eb-c95e-4de2-8ca9-a85f23c53ab9",
+          "name": "Get Tenant Hubs",
+          "request": {
+            "name": "Get Tenant Hubs",
+            "description": {
+              "content": "Description Retrieves a paginated list of hubs for a tenant. Use this endpoint to search hubs using filters such as name, code, and to optionally include address details in the response. This endpoint supports filters + pagination, and returns a structured list of hub objects. Parameters Query Parameters Name Type Required Default Example Description include_address boolean False false true If true, hub address details are included in the response code string False - \"sc-2321\" Filter hubs by exa",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sales-channel",
+                "public",
+                "v1",
+                "tenants",
+                "hubs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "51dc3dc6-c20c-4cd4-8d3c-3e1749a6c5af",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sales-channel",
+                    "public",
+                    "v1",
+                    "tenants",
+                    "hubs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b54ef38b-86b5-4ea3-933e-3fb35cc1940b",
+          "name": "Update Hub",
+          "request": {
+            "name": "Update Hub",
+            "description": {
+              "content": "Description Updates an existing tenant hub’s details and configuration. Use this endpoint when you need to change a hub’s address, services (e.g., WMS/POS), working hours, or operational configurations (picking, packing, cycle count, etc.). The endpoint performs a partial update: most fields are optional, but when an object is provided (like address, configuration.picking, etc.), the required fields inside that object must be present. 📌 Key things to know: hub_code (in path) identifies which hub",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sales-channel",
+                "public",
+                "v1",
+                "tenants",
+                "hubs",
+                "Dark_store_1k"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"type\": \"dark_store\",\n  \"address\": {\n    \"address_line1\": \"B-91\",\n    \"address_line2\": \"Road 14\",\n    \"state_name\": \"Riyadh Principality\",\n    \"city_name\": \"Riyadh\",\n    \"postal_code\": \"122001\",\n    \"latitude\": 28.471653,\n    \"longitude\": 77.050965,\n    \"country\": {\n      \"name\": \"India\",\n      \"code\": \"IN\"\n    },\n    \"national_address_code\": \"RAFC1231\",\n    \"additional_number\": \"1233\",\n    \"building_number\": \"1234\",\n    \"area\": \"area 14\",\n    \"street\": \"123 Main St\"\n  },\n  \"services\": [\n    \"wms\",\n    \"pos\"\n  ],\n  \"working_hours\": {\n    \"monday\": [\n      {\n        \"start_time\": 1000,\n        \"end_time\": 2359\n      }\n    ],\n    \"tuesday\": [\n      {\n        \"start_time\": 600,\n        \"end_time\": 2359\n      }\n    ],\n    \"wednesday\": [\n      {\n        \"start_time\": 800,\n        \"end_time\": 2359\n      }\n    ],\n    \"thursday\": [\n      {\n        \"start_time\": 900,\n        \"end_time\": 2359\n      }\n    ],\n    \"friday\": [\n      {\n        \"start_time\": 0,\n        \"end_time\": 2359\n      }\n    ],\n    \"saturday\": [\n      {\n        \"start_time\": 0,\n        \"end_time\": 2359\n      }\n    ],\n    \"sunday\": [\n      {\n        \"start_time\": 0,\n        \"end_time\": 2359\n      }\n    ]\n  },\n  \"configuration\": {\n    \"adjust_inventory\": {\n      \"manual_barcode_allowed\": false,\n      \"enter_quantity_manually\": false\n    },\n    \"inwarding_configuration\": {\n      \"auto_generate_serialised_barcode\": true\n    },\n    \"gate_entry\": {\n      \"enabled\": false\n    },\n    \"bulk_ship_configuration\": {\n      \"picker_capacity\": 100\n    },\n    \"picking\": {\n      \"enabled\": true,\n      \"cart_capacity\": 9,\n      \"picker_capacity\": 1,\n      \"bin_scan_enabled\": true,\n      \"single_order_tags\": [\n        {\n          \"name\": \"prepaid\"\n        },\n        {\n          \"name\": \"test\"\n        },\n        {\n          \"name\": \"create tags\"\n        }\n      ],\n      \"location_scan_enabled\": false,\n      \"manual_barcode_allowed\": false,\n      \"enter_quantity_manually\": false,\n      \"multi_order_picking_type\": 3,\n      \"single_order_picking_type\": 2,\n      \"multi_order_picking_allowed\": false,\n      \"single_order_picking_allowed\": true,\n      \"multi_piece_picking_cart_association\": false,\n      \"single_piece_picking_cart_association\": false\n    },\n    \"put_away\": {\n      \"manual_barcode_allowed\": false,\n      \"enter_quantity_manually\": false\n    },\n    \"expiry_configuration\": {\n      \"include_near_expiry_items\": false\n    },\n    \"acceptable_shelf_life_validation\": {\n      \"enabled\": false\n    },\n    \"schedule_order\": {\n      \"time\": {\n        \"hour\": \"2\",\n        \"minute\": \"45\"\n      },\n      \"enabled\": true\n    },\n    \"cycle_count_configuration\": {\n      \"blind_count\": true,\n      \"update_inventory\": true,\n      \"manual_barcode_allowed\": false,\n      \"enter_quantity_manually\": false\n    },\n    \"packing_configuration\": {\n      \"qc_enabled\": true,\n      \"manual_barcode_allowed\": true,\n      \"enter_quantity_manually\": false,\n      \"automatic_shipment_creation\": false,\n      \"auto_print_awb_on_all_items_scanned\": false\n    },\n    \"purchase_order\": {\n      \"enabled\": true,\n      \"over_receive_allowed\": true\n    }\n  },\n  \"is_click_and_collect\": false,\n  \"country_calling_code\": \"+91\",\n  \"country_code\": \"IN\",\n  \"phone_number\": \"9871627354\",\n  \"timezone\": \"Asia/Kolkata\",\n  \"currency\": {\n    \"name\": \"Indian Rupee\",\n    \"code\": \"INR\",\n    \"display_name\": \"INR (Indian Rupee)\"\n  },\n  \"created_by\": \"aryan gupta\",\n  \"created_by_id\": \"21\",\n  \"is_pos_enabled\": true,\n  \"is_wms_enabled\": true\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "eb7b731a-6fcc-4d46-8dc4-c87f4b3dfd3c",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sales-channel",
+                    "public",
+                    "v1",
+                    "tenants",
+                    "hubs",
+                    "Dark_store_1k"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"dark_store\",\n  \"address\": {\n    \"address_line1\": \"B-91\",\n    \"address_line2\": \"Road 14\",\n    \"state_name\": \"Riyadh Principality\",\n    \"city_name\": \"Riyadh\",\n    \"postal_code\": \"122001\",\n    \"latitude\": 28.471653,\n    \"longitude\": 77.050965,\n    \"country\": {\n      \"name\": \"India\",\n      \"code\": \"IN\"\n    },\n    \"national_address_code\": \"RAFC1231\",\n    \"additional_number\": \"1233\",\n    \"building_number\": \"1234\",\n    \"area\": \"area 14\",\n    \"street\": \"123 Main St\"\n  },\n  \"services\": [\n    \"wms\",\n    \"pos\"\n  ],\n  \"working_hours\": {\n    \"monday\": [\n      {\n        \"start_time\": 1000,\n        \"end_time\": 2359\n      }\n    ],\n    \"tuesday\": [\n      {\n        \"start_time\": 600,\n        \"end_time\": 2359\n      }\n    ],\n    \"wednesday\": [\n      {\n        \"start_time\": 800,\n        \"end_time\": 2359\n      }\n    ],\n    \"thursday\": [\n      {\n        \"start_time\": 900,\n        \"end_time\": 2359\n      }\n    ],\n    \"friday\": [\n      {\n        \"start_time\": 0,\n        \"end_time\": 2359\n      }\n    ],\n    \"saturday\": [\n      {\n        \"start_time\": 0,\n        \"end_time\": 2359\n      }\n    ],\n    \"sunday\": [\n      {\n        \"start_time\": 0,\n        \"end_time\": 2359\n      }\n    ]\n  },\n  \"configuration\": {\n    \"adjust_inventory\": {\n      \"manual_barcode_allowed\": false,\n      \"enter_quantity_manually\": false\n    },\n    \"inwarding_configuration\": {\n      \"auto_generate_serialised_barcode\": true\n    },\n    \"gate_entry\": {\n      \"enabled\": false\n    },\n    \"bulk_ship_configuration\": {\n      \"picker_capacity\": 100\n    },\n    \"picking\": {\n      \"enabled\": true,\n      \"cart_capacity\": 9,\n      \"picker_capacity\": 1,\n      \"bin_scan_enabled\": true,\n      \"single_order_tags\": [\n        {\n          \"name\": \"prepaid\"\n        },\n        {\n          \"name\": \"test\"\n        },\n        {\n          \"name\": \"create tags\"\n        }\n      ],\n      \"location_scan_enabled\": false,\n      \"manual_barcode_allowed\": false,\n      \"enter_quantity_manually\": false,\n      \"multi_order_picking_type\": 3,\n      \"single_order_picking_type\": 2,\n      \"multi_order_picking_allowed\": false,\n      \"single_order_picking_allowed\": true,\n      \"multi_piece_picking_cart_association\": false,\n      \"single_piece_picking_cart_association\": false\n    },\n    \"put_away\": {\n      \"manual_barcode_allowed\": false,\n      \"enter_quantity_manually\": false\n    },\n    \"expiry_configuration\": {\n      \"include_near_expiry_items\": false\n    },\n    \"acceptable_shelf_life_validation\": {\n      \"enabled\": false\n    },\n    \"schedule_order\": {\n      \"time\": {\n        \"hour\": \"2\",\n        \"minute\": \"45\"\n      },\n      \"enabled\": true\n    },\n    \"cycle_count_configuration\": {\n      \"blind_count\": true,\n      \"update_inventory\": true,\n      \"manual_barcode_allowed\": false,\n      \"enter_quantity_manually\": false\n    },\n    \"packing_configuration\": {\n      \"qc_enabled\": true,\n      \"manual_barcode_allowed\": true,\n      \"enter_quantity_manually\": false,\n      \"automatic_shipment_creation\": false,\n      \"auto_print_awb_on_all_items_scanned\": false\n    },\n    \"purchase_order\": {\n      \"enabled\": true,\n      \"over_receive_allowed\": true\n    }\n  },\n  \"is_click_and_collect\": false,\n  \"country_calling_code\": \"+91\",\n  \"country_code\": \"IN\",\n  \"phone_number\": \"9871627354\",\n  \"timezone\": \"Asia/Kolkata\",\n  \"currency\": {\n    \"name\": \"Indian Rupee\",\n    \"code\": \"INR\",\n    \"display_name\": \"INR (Indian Rupee)\"\n  },\n  \"created_by\": \"aryan gupta\",\n  \"created_by_id\": \"21\",\n  \"is_pos_enabled\": true,\n  \"is_wms_enabled\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "41896de3-0aaf-48fb-89e9-0b87f78be39b",
+          "name": "Get Hub details by hub_code",
+          "request": {
+            "name": "Get Hub details by hub_code",
+            "description": {
+              "content": "Description Retrieves detailed information for a specific hub using its hub code. Use this endpoint to fetch full hub metadata, including its core properties, operational settings, and optionally address details (if supported by backend defaults). Parameters Path Parameters Name Type Required Description hub_code string True Unique identifier of the hub whose details are being retrieved",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sales-channel",
+                "public",
+                "v1",
+                "tenants",
+                "hubs",
+                ":hub_code"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "hub_code",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e1a32d0c-9d9c-4de3-a596-473e9f3db884",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sales-channel",
+                    "public",
+                    "v1",
+                    "tenants",
+                    "hubs",
+                    ":hub_code"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "hub_code",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4a8f8ae2-c5e8-43bc-887c-7911daf134f6",
+          "name": "Bulk update tenant hub mapping",
+          "request": {
+            "name": "Bulk update tenant hub mapping",
+            "description": {
+              "content": "Description Allows updating specific fields for multiple hubs in a single request. Use this endpoint when you need to activate/deactivate multiple hubs or apply batch updates to hub-level properties without calling individual update APIs. Only the fields included for each hub in the hub_mappings array will be updated. Body Parameters Body is a single object containing an array of hub updates. hub_mappings (Array of Hub Mapping Objects) Field Type Required Description hub_mappings array[object] T",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sales-channel",
+                "public",
+                "v1",
+                "tenants",
+                "hubs",
+                "bulk_update"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"hub_mappings\": [\n    {\n      \"hub_code\": \"Example-hub-22\",\n      \"is_active\": false\n    },\n    {\n      \"hub_code\": \"00\",\n      \"is_active\": false\n    },\n    {\n      \"hub_code\": \"wfrefr\",\n      \"is_active\": false\n    },\n    {\n      \"hub_code\": \"0000test1\",\n      \"is_active\": false\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "810da181-cd5d-4f7e-88f1-b7ac17530fdf",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sales-channel",
+                    "public",
+                    "v1",
+                    "tenants",
+                    "hubs",
+                    "bulk_update"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"hub_mappings\": [\n    {\n      \"hub_code\": \"Example-hub-22\",\n      \"is_active\": false\n    },\n    {\n      \"hub_code\": \"00\",\n      \"is_active\": false\n    },\n    {\n      \"hub_code\": \"wfrefr\",\n      \"is_active\": false\n    },\n    {\n      \"hub_code\": \"0000test1\",\n      \"is_active\": false\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://prodapi.omniful.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "d1eb0989-8577-4b72-bb37-9f4f5cd89bf3",
+    "name": "Omniful Integration APIs Background Jobs Hubs API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Omniful unified supply chain and fulfillment platform integration APIs (Order Management, Warehouse/Inventory, Returns, Purchase Orders, Shipment/TMS, Webhooks). Derived faithfully from the provider-published Postman collection at docs.omniful.tech; paths, methods, parameters, and request examples are as published, response schemas are not enumerated in the source.",
+      "type": "text/plain"
+    }
+  }
+}

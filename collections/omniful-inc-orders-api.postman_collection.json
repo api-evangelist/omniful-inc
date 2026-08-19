@@ -1,0 +1,2103 @@
+{
+  "item": [
+    {
+      "id": "5d8b74e8-2ea5-4930-aa95-a69908bd1038",
+      "name": "Orders",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "6e68d283-17e7-4aa0-a72f-a0b17376097d",
+          "name": "Create Order",
+          "request": {
+            "name": "Create Order",
+            "description": {
+              "content": "📌 Create Order API Overview The Create Order API allows users to place new orders in Omniful by providing order details, customer information, shipping and billing addresses, invoice details, and payment information. 📝 Request Body Parameters Key Data Type Description Required order_id string Must be a globally unique identifier for the order (e.g., \"order_0008\"). Cannot be reused if the order is deleted. ✅ Yes order_alias string Secondary identifier for tracking in external systems (e.g., ERP o",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sales-channel",
+                "public",
+                "v1",
+                "orders"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"shipment_type\": \"omniful_generated\",\n  \"order_id\": \"order_no__1\",\n  \"order_alias\": \"order_omniful-alias\",\n  \"hub_code\": \"locoff\",\n  \"order_items\": [\n    {\n      \"sku_code\": \"UT-TSHIRT-WHT-S-17\",\n      \"name\": \"iPhone 15 Pro\",\n      \"display_price\": 799,\n      \"selling_price\": 699,\n      \"is_substituted\": false,\n      \"quantity\": 1,\n      \"tax_percent\": 10,\n      \"tax\": 69.9,\n      \"unit_price\": 699,\n      \"subtotal\": 699,\n      \"total\": 768.9,\n      \"discount\": 100,\n      \"tax_inclusive\": true\n    }\n  ],\n  \"billing_address\": {\n    \"address1\": \"123 Al-Masjid Al-Haram Street\",\n    \"address2\": \"Near Al-Faisaliah Tower\",\n    \"city\": \"Riyadh\",\n    \"country\": \"Saudi Arabia\",\n    \"first_name\": \"John\",\n    \"last_name\": \"Doe\",\n    \"phone\": \"+966-11-234-5678\",\n    \"state\": \"Riyadh\",\n    \"zip\": \"11564\",\n    \"area\": \"Al Olaya\",\n    \"district\": \"Riyadh\",\n    \"street\": \"Kings Road\",\n    \"state_code\": \"RIY\",\n    \"country_code\": \"SA\",\n    \"latitude\": 24.7136,\n    \"longitude\": 46.6753,\n    \"national_address_code\": \"code\"\n  },\n  \"shipping_address\": {\n    \"address1\": \"456 King Abdulaziz Road\",\n    \"address2\": \"Near Kingdom Centre\",\n    \"city\": \"Jeddah\",\n    \"country\": \"Saudi Arabia\",\n    \"first_name\": \"Jane\",\n    \"last_name\": \"Smith\",\n    \"phone\": \"+966-12-345-6789\",\n    \"state\": \"Makkah\",\n    \"zip\": \"21577\",\n    \"area\": \"Al Olaya\",\n    \"district\": \"Riyadh\",\n    \"street\": \"Kings Road\",\n    \"state_code\": \"MKA\",\n    \"country_code\": \"SA\",\n    \"latitude\": 21.4225,\n    \"longitude\": 39.8262,\n    \"national_address_code\": \"code\"\n  },\n  \"invoice\": {\n    \"currency\": \"USD\",\n    \"subtotal\": 699,\n    \"shipping_price\": 0,\n    \"shipping_refund\": 0,\n    \"tax\": 69.9,\n    \"discount\": 100,\n    \"total\": 768.9,\n    \"total_paid\": 768.9,\n    \"total_due\": 0,\n    \"total_refunded\": 0,\n    \"payment_mode\": \"Credit Card\",\n    \"tax_percent\": 10,\n    \"shipping_tax\": 0,\n    \"sub_total_tax_inclusive\": true,\n    \"sub_total_discount_inclusive\": true,\n    \"shipping_tax_inclusive\": false,\n    \"shipping_discount_inclusive\": false\n  },\n  \"customer\": {\n    \"id\": \"66ced351ffed27dec7c4072a\",\n    \"first_name\": \"John\",\n    \"last_name\": \"Doe\",\n    \"mobile\": \"1234567890\",\n    \"mobile_code\": \"+1\",\n    \"email\": \"john.doe@example.com\",\n    \"avatar\": \"https://example.com/avatar.jpg\",\n    \"gender\": \"male\"\n  },\n  \"labels\": [\n    \"label1\",\n    \"label2\",\n    \"label3\"\n  ],\n  \"slot\": {\n    \"delivery_date\": \"18122024\",\n    \"start_time\": 1100,\n    \"end_time\": 1500\n  },\n  \"payment_method\": \"prepaid\",\n  \"delivery_type\": \"normal_delivery\",\n  \"is_cash_on_delivery\": false,\n  \"note\": \"Please deliver during weekdays\",\n  \"type\": \"b2b\",\n  \"external_fields\": [\n    {\n      \"key\": \"order_id\",\n      \"value\": \"12345\"\n    },\n    {\n      \"key\": \"customer_name\",\n      \"value\": \"John Doe\"\n    },\n    {\n      \"key\": \"status\",\n      \"value\": \"shipped\"\n    }\n  ],\n  \"cancel_order_after_seconds\": 30,\n  \"attachments\": [\n    {\n      \"name\": \"Bill\",\n      \"description\": \"Bill description\",\n      \"url\": \"http://omniful-local-uploads.s3.eu-central-1.localstack.oceaninfra.localhost/orders/orders/attachments/98bf916bcb364c1656b0aca4a103b5ea71780922501.jpeg\",\n      \"mime_type\": \"image/jpeg\",\n      \"entity\": \"invoice\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a157d74d-0f1b-485a-b622-3e982d736b0c",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sales-channel",
+                    "public",
+                    "v1",
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"shipment_type\": \"omniful_generated\",\n  \"order_id\": \"order_no__1\",\n  \"order_alias\": \"order_omniful-alias\",\n  \"hub_code\": \"locoff\",\n  \"order_items\": [\n    {\n      \"sku_code\": \"UT-TSHIRT-WHT-S-17\",\n      \"name\": \"iPhone 15 Pro\",\n      \"display_price\": 799,\n      \"selling_price\": 699,\n      \"is_substituted\": false,\n      \"quantity\": 1,\n      \"tax_percent\": 10,\n      \"tax\": 69.9,\n      \"unit_price\": 699,\n      \"subtotal\": 699,\n      \"total\": 768.9,\n      \"discount\": 100,\n      \"tax_inclusive\": true\n    }\n  ],\n  \"billing_address\": {\n    \"address1\": \"123 Al-Masjid Al-Haram Street\",\n    \"address2\": \"Near Al-Faisaliah Tower\",\n    \"city\": \"Riyadh\",\n    \"country\": \"Saudi Arabia\",\n    \"first_name\": \"John\",\n    \"last_name\": \"Doe\",\n    \"phone\": \"+966-11-234-5678\",\n    \"state\": \"Riyadh\",\n    \"zip\": \"11564\",\n    \"area\": \"Al Olaya\",\n    \"district\": \"Riyadh\",\n    \"street\": \"Kings Road\",\n    \"state_code\": \"RIY\",\n    \"country_code\": \"SA\",\n    \"latitude\": 24.7136,\n    \"longitude\": 46.6753,\n    \"national_address_code\": \"code\"\n  },\n  \"shipping_address\": {\n    \"address1\": \"456 King Abdulaziz Road\",\n    \"address2\": \"Near Kingdom Centre\",\n    \"city\": \"Jeddah\",\n    \"country\": \"Saudi Arabia\",\n    \"first_name\": \"Jane\",\n    \"last_name\": \"Smith\",\n    \"phone\": \"+966-12-345-6789\",\n    \"state\": \"Makkah\",\n    \"zip\": \"21577\",\n    \"area\": \"Al Olaya\",\n    \"district\": \"Riyadh\",\n    \"street\": \"Kings Road\",\n    \"state_code\": \"MKA\",\n    \"country_code\": \"SA\",\n    \"latitude\": 21.4225,\n    \"longitude\": 39.8262,\n    \"national_address_code\": \"code\"\n  },\n  \"invoice\": {\n    \"currency\": \"USD\",\n    \"subtotal\": 699,\n    \"shipping_price\": 0,\n    \"shipping_refund\": 0,\n    \"tax\": 69.9,\n    \"discount\": 100,\n    \"total\": 768.9,\n    \"total_paid\": 768.9,\n    \"total_due\": 0,\n    \"total_refunded\": 0,\n    \"payment_mode\": \"Credit Card\",\n    \"tax_percent\": 10,\n    \"shipping_tax\": 0,\n    \"sub_total_tax_inclusive\": true,\n    \"sub_total_discount_inclusive\": true,\n    \"shipping_tax_inclusive\": false,\n    \"shipping_discount_inclusive\": false\n  },\n  \"customer\": {\n    \"id\": \"66ced351ffed27dec7c4072a\",\n    \"first_name\": \"John\",\n    \"last_name\": \"Doe\",\n    \"mobile\": \"1234567890\",\n    \"mobile_code\": \"+1\",\n    \"email\": \"john.doe@example.com\",\n    \"avatar\": \"https://example.com/avatar.jpg\",\n    \"gender\": \"male\"\n  },\n  \"labels\": [\n    \"label1\",\n    \"label2\",\n    \"label3\"\n  ],\n  \"slot\": {\n    \"delivery_date\": \"18122024\",\n    \"start_time\": 1100,\n    \"end_time\": 1500\n  },\n  \"payment_method\": \"prepaid\",\n  \"delivery_type\": \"normal_delivery\",\n  \"is_cash_on_delivery\": false,\n  \"note\": \"Please deliver during weekdays\",\n  \"type\": \"b2b\",\n  \"external_fields\": [\n    {\n      \"key\": \"order_id\",\n      \"value\": \"12345\"\n    },\n    {\n      \"key\": \"customer_name\",\n      \"value\": \"John Doe\"\n    },\n    {\n      \"key\": \"status\",\n      \"value\": \"shipped\"\n    }\n  ],\n  \"cancel_order_after_seconds\": 30,\n  \"attachments\": [\n    {\n      \"name\": \"Bill\",\n      \"description\": \"Bill description\",\n      \"url\": \"http://omniful-local-uploads.s3.eu-central-1.localstack.oceaninfra.localhost/orders/orders/attachments/98bf916bcb364c1656b0aca4a103b5ea71780922501.jpeg\",\n      \"mime_type\": \"image/jpeg\",\n      \"entity\": \"invoice\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d9521827-1ad8-4c15-b937-a291bf89f112",
+          "name": "Update Order",
+          "request": {
+            "name": "Update Order",
+            "description": {
+              "content": "📌 Update Order API - Overview The Update Order API allows users to modify the details of an existing order that was previously placed. This API can be used to update various order attributes, such as order items, shipping details, billing information, and customer details. Users can update an order only if it is not in the \"packed\" state. Once an order reaches the packed stage, further modifications using this API are restricted. This API ensures flexibility in managing orders before final proce",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sales-channel",
+                "public",
+                "v1",
+                "orders"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"order_id\": \"order_0003\",\n  \"hub_code\": \"Shubhra001\",\n  \"order_items\": [\n    {\n      \"sku_code\": \"iPhone 15 Pro\",\n      \"name\": \"iPhone 15 Pro\",\n      \"display_price\": 799,\n      \"selling_price\": 699,\n      \"is_substituted\": false,\n      \"quantity\": 2,\n      \"tax_percent\": 10,\n      \"tax\": 69.9,\n      \"unit_price\": 699,\n      \"subtotal\": 699,\n      \"total\": 768.9,\n      \"discount\": 100,\n      \"tax_inclusive\": true\n    }\n  ],\n  \"billing_address\": {\n    \"address1\": \"123 Main Street\",\n    \"city\": \"New York\",\n    \"country\": \"United States\",\n    \"first_name\": \"John\",\n    \"last_name\": \"Doe\",\n    \"phone\": \"123-456-7890\",\n    \"state\": \"NY\",\n    \"zip\": \"10001\",\n    \"state_code\": \"NY\",\n    \"country_code\": \"US\",\n    \"latitude\": 40.7128,\n    \"longitude\": -74.006,\n    \"national_address_code\": \"code\"\n  },\n  \"shipping_address\": {\n    \"address1\": \"456 Elm Street\",\n    \"city\": \"Los Angeles\",\n    \"country\": \"United States\",\n    \"first_name\": \"Jane\",\n    \"last_name\": \"Smith\",\n    \"phone\": \"987-654-3210\",\n    \"state\": \"CA\",\n    \"zip\": \"90001\",\n    \"state_code\": \"CA\",\n    \"country_code\": \"US\",\n    \"latitude\": 34.0522,\n    \"longitude\": -118.2437,\n    \"national_address_code\": \"code\"\n  },\n  \"order_created_at\": \"2023-07-28T09:00:00Z\",\n  \"invoice\": {\n    \"currency\": \"USD\",\n    \"subtotal\": 699,\n    \"shipping_price\": 0,\n    \"shipping_refund\": 0,\n    \"tax\": 69.9,\n    \"discount\": 100,\n    \"total\": 768.9,\n    \"total_paid\": 768.9,\n    \"total_due\": 0,\n    \"total_refunded\": 0,\n    \"payment_method\": \"Credit Card\",\n    \"tax_percent\": 10,\n    \"shipping_tax\": 0,\n    \"sub_total_tax_inclusive\": true,\n    \"sub_total_discount_inclusive\": true,\n    \"shipping_tax_inclusive\": false,\n    \"shipping_discount_inclusive\": false\n  },\n  \"customer\": {\n    \"first_name\": \"John\",\n    \"last_name\": \"Doe\",\n    \"mobile\": \"1234567890\",\n    \"mobile_code\": \"+1\",\n    \"email\": \"john.doe@example.com\",\n    \"avatar\": \"https://example.com/avatar.jpg\",\n    \"gender\": \"male\"\n  },\n  \"shipment\": {\n    \"shipping_partner_name\": \"CourierX\",\n    \"shipping_partner_tag\": \"courierx123\",\n    \"awb_number\": \"AWB-456\",\n    \"awb_label\": \"https://example.com/awb-label.jpg\",\n    \"tracking_link\": \"https://example.com/tracking/456\",\n    \"shipment_method\": \"auto-ship\"\n  },\n  \"payment_method\": \"prepaid\",\n  \"is_cash_on_delivery\": false,\n  \"note\": \"Please deliver during weekdays\",\n  \"external_fields\": [\n    {\n      \"key\": \"order_id_1\",\n      \"value\": \"12347\"\n    },\n    {\n      \"key\": \"customer_name\",\n      \"value\": \"John Doe\"\n    }\n  ],\n  \"cancel_order_after_seconds\": 30\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6248a424-e835-4986-92f0-160b9e683695",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sales-channel",
+                    "public",
+                    "v1",
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"order_id\": \"order_0003\",\n  \"hub_code\": \"Shubhra001\",\n  \"order_items\": [\n    {\n      \"sku_code\": \"iPhone 15 Pro\",\n      \"name\": \"iPhone 15 Pro\",\n      \"display_price\": 799,\n      \"selling_price\": 699,\n      \"is_substituted\": false,\n      \"quantity\": 2,\n      \"tax_percent\": 10,\n      \"tax\": 69.9,\n      \"unit_price\": 699,\n      \"subtotal\": 699,\n      \"total\": 768.9,\n      \"discount\": 100,\n      \"tax_inclusive\": true\n    }\n  ],\n  \"billing_address\": {\n    \"address1\": \"123 Main Street\",\n    \"city\": \"New York\",\n    \"country\": \"United States\",\n    \"first_name\": \"John\",\n    \"last_name\": \"Doe\",\n    \"phone\": \"123-456-7890\",\n    \"state\": \"NY\",\n    \"zip\": \"10001\",\n    \"state_code\": \"NY\",\n    \"country_code\": \"US\",\n    \"latitude\": 40.7128,\n    \"longitude\": -74.006,\n    \"national_address_code\": \"code\"\n  },\n  \"shipping_address\": {\n    \"address1\": \"456 Elm Street\",\n    \"city\": \"Los Angeles\",\n    \"country\": \"United States\",\n    \"first_name\": \"Jane\",\n    \"last_name\": \"Smith\",\n    \"phone\": \"987-654-3210\",\n    \"state\": \"CA\",\n    \"zip\": \"90001\",\n    \"state_code\": \"CA\",\n    \"country_code\": \"US\",\n    \"latitude\": 34.0522,\n    \"longitude\": -118.2437,\n    \"national_address_code\": \"code\"\n  },\n  \"order_created_at\": \"2023-07-28T09:00:00Z\",\n  \"invoice\": {\n    \"currency\": \"USD\",\n    \"subtotal\": 699,\n    \"shipping_price\": 0,\n    \"shipping_refund\": 0,\n    \"tax\": 69.9,\n    \"discount\": 100,\n    \"total\": 768.9,\n    \"total_paid\": 768.9,\n    \"total_due\": 0,\n    \"total_refunded\": 0,\n    \"payment_method\": \"Credit Card\",\n    \"tax_percent\": 10,\n    \"shipping_tax\": 0,\n    \"sub_total_tax_inclusive\": true,\n    \"sub_total_discount_inclusive\": true,\n    \"shipping_tax_inclusive\": false,\n    \"shipping_discount_inclusive\": false\n  },\n  \"customer\": {\n    \"first_name\": \"John\",\n    \"last_name\": \"Doe\",\n    \"mobile\": \"1234567890\",\n    \"mobile_code\": \"+1\",\n    \"email\": \"john.doe@example.com\",\n    \"avatar\": \"https://example.com/avatar.jpg\",\n    \"gender\": \"male\"\n  },\n  \"shipment\": {\n    \"shipping_partner_name\": \"CourierX\",\n    \"shipping_partner_tag\": \"courierx123\",\n    \"awb_number\": \"AWB-456\",\n    \"awb_label\": \"https://example.com/awb-label.jpg\",\n    \"tracking_link\": \"https://example.com/tracking/456\",\n    \"shipment_method\": \"auto-ship\"\n  },\n  \"payment_method\": \"prepaid\",\n  \"is_cash_on_delivery\": false,\n  \"note\": \"Please deliver during weekdays\",\n  \"external_fields\": [\n    {\n      \"key\": \"order_id_1\",\n      \"value\": \"12347\"\n    },\n    {\n      \"key\": \"customer_name\",\n      \"value\": \"John Doe\"\n    }\n  ],\n  \"cancel_order_after_seconds\": 30\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7b3a7d81-030f-4cdc-964d-c3cada6c7625",
+          "name": "Update Order Invoice",
+          "request": {
+            "name": "Update Order Invoice",
+            "description": {
+              "content": "📌 Update Order Invoice API - Overview The Update Order Invoice API allows users to modify the invoice details of a previously placed order. This API is useful when adjustments or modifications are required in the invoice amount, tax details, discounts, payment information, or other financial components of an order. Users can use this API to ensure that the invoice reflects the correct pricing and charges before final processing or fulfillment. To successfully update an invoice, all the fields fr",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sales-channel",
+                "public",
+                "v1",
+                "invoice",
+                ":order_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "order_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "95915280-8b7c-43b0-b506-5e2f107c15df",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sales-channel",
+                    "public",
+                    "v1",
+                    "invoice",
+                    ":order_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "order_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3706074b-77ff-4152-a29c-0399262a291b",
+          "name": "Update Order Attachments",
+          "request": {
+            "name": "Update Order Attachments",
+            "description": {
+              "content": "Overview Updates attachments for an existing order. Use this request to add or update attachment metadata for the specified order, such as invoice or order. Endpoint PUT {{base_url}}/public/v1/orders/{{order_id}}/attachments Authentication This request uses the configured access token variable: {{access_token}} Validation Notes The attachments array can contain a maximum of 10 items. Path Parameters Parameter Type Required Description order_id string Yes The unique identifier of the order whose ",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sales-channel",
+                "public",
+                "v1",
+                "orders",
+                ":order_id",
+                "attachments"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "order_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"attachments\": [\n    {\n      \"name\": \"Bill\",\n      \"description\": \"Bill description\",\n      \"url\": \"http://omniful-local-uploads.s3.eu-central-1.localstack.oceaninfra.localhost/orders/orders/attachments/98bf916bcb364c1656b0aca4a103b5ea71780922501.jpeg\",\n      \"mime_type\": \"image/jpeg\",\n      \"entity\": \"order\"\n    },\n    {\n      \"name\": \"Bill 2\",\n      \"description\": \"Bill 2 description\",\n      \"url\": \"http://omniful-local-uploads.s3.eu-central-1.localstack.oceaninfra.localhost/orders/orders/attachments/98bf916bcb364c1656b0aca4a103b5ea71780922501.jpeg\",\n      \"mime_type\": \"image/jpeg\",\n      \"entity\": \"invoice\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e1a25bb5-715e-43c4-94e2-700571086fe0",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sales-channel",
+                    "public",
+                    "v1",
+                    "orders",
+                    ":order_id",
+                    "attachments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "order_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"attachments\": [\n    {\n      \"name\": \"Bill\",\n      \"description\": \"Bill description\",\n      \"url\": \"http://omniful-local-uploads.s3.eu-central-1.localstack.oceaninfra.localhost/orders/orders/attachments/98bf916bcb364c1656b0aca4a103b5ea71780922501.jpeg\",\n      \"mime_type\": \"image/jpeg\",\n      \"entity\": \"order\"\n    },\n    {\n      \"name\": \"Bill 2\",\n      \"description\": \"Bill 2 description\",\n      \"url\": \"http://omniful-local-uploads.s3.eu-central-1.localstack.oceaninfra.localhost/orders/orders/attachments/98bf916bcb364c1656b0aca4a103b5ea71780922501.jpeg\",\n      \"mime_type\": \"image/jpeg\",\n      \"entity\": \"invoice\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d82f9a5d-4174-4ad8-8a68-e89c2253d905",
+          "name": "Cancel Order",
+          "request": {
+            "name": "Cancel Order",
+            "description": {
+              "content": "📌 Overview The Cancel Order API allows users to cancel an existing order by providing a cancellation reason. Field Type Required Description cancel_reason string ✅ Yes Reason for canceling the order.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sales-channel",
+                "public",
+                "v1",
+                "orders",
+                ":order_id",
+                "cancel"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "order_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"cancel_reason\": \"Not needed now.\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "06c5425a-af2f-40ed-a3c4-fc95e68b3517",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sales-channel",
+                    "public",
+                    "v1",
+                    "orders",
+                    ":order_id",
+                    "cancel"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "order_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cancel_reason\": \"Not needed now.\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "09f6054d-97b5-4350-9d21-70a08c5f3583",
+          "name": "Approve Order",
+          "request": {
+            "name": "Approve Order",
+            "description": {
+              "content": "📌 Approve Order API - Overview The Approve Order API is used to manually approve orders that require user authorization before processing. This API ensures that orders needing validation, review, or confirmation are not automatically processed without approval. Once an order is approved, it can proceed to the next stage in the fulfillment workflow, such as packing and shipping.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sales-channel",
+                "public",
+                "v1",
+                "orders",
+                ":order_id",
+                "approve"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "order_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "PUT",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "40838ba9-3a5e-4dee-8186-9348b924246b",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sales-channel",
+                    "public",
+                    "v1",
+                    "orders",
+                    ":order_id",
+                    "approve"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "order_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7b841655-620a-42cb-acd0-c7e1f40f13e8",
+          "name": "Get Seller Orders (⚠️ To be deprecated on 30-07-2026)",
+          "request": {
+            "name": "Get Seller Orders (⚠️ To be deprecated on 30-07-2026)",
+            "description": {
+              "content": "📌 Get Seller Orders API - Overview The Get Seller Orders API allows users to retrieve a list of all orders for a specific seller who has integrated a Custom Integration on their dashboard. This API enables sellers to fetch and manage orders placed within the last three months, providing real-time visibility into their order history. It is useful for tracking order statuses, processing fulfillment, and analyzing order trends over time. 📝 Response Body Parameters Field Data Type Description Always",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sales-channel",
+                "public",
+                "v1",
+                "seller",
+                "orders"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "85b3148c-0a05-4f7d-8c4c-d86f0de1bbb8",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sales-channel",
+                    "public",
+                    "v1",
+                    "seller",
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "67a61567-0ad9-4ce8-a80a-fcf0c44025f2",
+          "name": "Get Seller Order By OrderID",
+          "request": {
+            "name": "Get Seller Order By OrderID",
+            "description": {
+              "content": "📌 Get Seller Order by Order ID API - Overview The Get Seller Order by Order ID API allows users to fetch details of a single order for a seller using the Omniful-generated Order ID (omniful_order_id). This API is particularly useful for retrieving order details that were not placed through the Custom Sales Channel Integration. It provides complete order information, including order items, customer details, billing and shipping addresses, and invoice details, ensuring sellers have full visibility",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sales-channel",
+                "public",
+                "v1",
+                "seller",
+                "orders",
+                ":order_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "order_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ea1bd8c7-2c52-4464-9e01-3f72055c2c98",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sales-channel",
+                    "public",
+                    "v1",
+                    "seller",
+                    "orders",
+                    ":order_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "order_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6b23a2f9-ab52-4b1c-80d9-05a09beb13e8",
+          "name": "Get Order Logs (⚠️ To be deprecated on 30-07-2026)",
+          "request": {
+            "name": "Get Order Logs (⚠️ To be deprecated on 30-07-2026)",
+            "description": {
+              "content": "📌 Get Order Logs API – Overview The Get Order Logs API allows users to retrieve detailed logs for a specific order using its Order ID. It provides real-time insights into the order’s lifecycle within the warehouse, including: Status updates Fulfillment progress Modifications made to the order This API is particularly useful for: Tracking order history Troubleshooting operational issues Ensuring seamless order management Response Body Parameters Field Data Type Description Always Included is_succ",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sales-channel",
+                "public",
+                "v1",
+                "orders",
+                ":order_id",
+                "logs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "order_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f1439726-08a8-40e4-9863-8187988d9e7f",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sales-channel",
+                    "public",
+                    "v1",
+                    "orders",
+                    ":order_id",
+                    "logs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "order_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "150de952-acf2-43b0-8b43-f40e2a8e6847",
+          "name": "Get Seller Order Logs",
+          "request": {
+            "name": "Get Seller Order Logs",
+            "description": {
+              "content": "📌 Get Order Logs API – Overview The Get Order Logs API allows users to retrieve detailed logs for a specific order using System Order ID. It provides real-time insights into the order’s lifecycle within the warehouse, including: Status updates Fulfillment progress Modifications made to the order This API is particularly useful for: Tracking order history Troubleshooting operational issues Ensuring seamless order management Response Body Parameters Field Data Type Description Always Included is_s",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sales-channel",
+                "public",
+                "v1",
+                "seller",
+                "orders",
+                ":system_order_id",
+                "logs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "system_order_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d0c7d91e-8bcf-4c72-8343-2ce658873af3",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sales-channel",
+                    "public",
+                    "v1",
+                    "seller",
+                    "orders",
+                    ":system_order_id",
+                    "logs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "system_order_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ffc5354d-b34a-4b33-9b34-9d93900c4bf1",
+          "name": "Update Shipping Address",
+          "request": {
+            "name": "Update Shipping Address",
+            "description": {
+              "content": "📌 Update Shipping Address API – Overview The Update Shipping Address API allows users to modify the shipping address details of an order until it reaches the shipped state. This API provides flexibility in updating recipient details, address, and contact information, helping Prevent delivery issues, Ensure accurate fulfillment, Maintain customer satisfaction. Users can only update the shipping address associated with a specific Order ID. Users can only update the shipping address associated with",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sales-channel",
+                "public",
+                "v1",
+                "orders",
+                ":order_id",
+                "shipping_address"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "order_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"address1\": \"123 Main St\",\n  \"address2\": \"Apt 4B\",\n  \"city\": \"New York\",\n  \"country\": \"USA\",\n  \"first_name\": \"John\",\n  \"last_name\": \"Doe\",\n  \"phone_number\": \"7044063694\",\n  \"country_calling_code\": \"+91\",\n  \"country_code\": \"IN\",\n  \"state\": \"NY\",\n  \"area\": \"Manhattan\",\n  \"district\": \"Downtown\",\n  \"street\": \"Broadway\",\n  \"zip\": \"10001\",\n  \"state_code\": \"NY\",\n  \"latitude\": 40.7128,\n  \"longitude\": -74.006,\n  \"national_address_code\": \"nac_1234\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b08acf3a-4396-494d-86a8-2c35b65b9a73",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sales-channel",
+                    "public",
+                    "v1",
+                    "orders",
+                    ":order_id",
+                    "shipping_address"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "order_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"address1\": \"123 Main St\",\n  \"address2\": \"Apt 4B\",\n  \"city\": \"New York\",\n  \"country\": \"USA\",\n  \"first_name\": \"John\",\n  \"last_name\": \"Doe\",\n  \"phone_number\": \"7044063694\",\n  \"country_calling_code\": \"+91\",\n  \"country_code\": \"IN\",\n  \"state\": \"NY\",\n  \"area\": \"Manhattan\",\n  \"district\": \"Downtown\",\n  \"street\": \"Broadway\",\n  \"zip\": \"10001\",\n  \"state_code\": \"NY\",\n  \"latitude\": 40.7128,\n  \"longitude\": -74.006,\n  \"national_address_code\": \"nac_1234\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a3c12e2e-0769-4116-adcc-745366464c10",
+          "name": "Update Shipping Details",
+          "request": {
+            "name": "Update Shipping Details",
+            "description": {
+              "content": "📌 Update Shipping Details API - Overview The Update Shipping Details API allows users to modify the shipping details for an order until it reaches the shipped state. This API ensures flexibility in updating recipient details, address, and contact information for a particular order, preventing delivery issues and ensuring accurate fulfillment. Users can only update the shipping address associated with a specific Order ID. Fields to be updated cannot be empty. No more than two fields can be update",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sales-channel",
+                "public",
+                "v1",
+                "orders",
+                ":order_id",
+                "shipping_details"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "order_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"fields_to_update\": [\n    \"slot\",\n    \"address\"\n  ],\n  \"address\": {\n    \"address1\": \"129 Main Street\",\n    \"address2\": \"Apt 4B\",\n    \"city\": \"New York\",\n    \"country\": \"United States\",\n    \"first_name\": \"John\",\n    \"last_name\": \"Doe\",\n    \"phone\": \"+1 212-555-1234\",\n    \"country_calling_code\": \"+1\",\n    \"country_code\": \"US\",\n    \"state\": \"New York\",\n    \"area\": \"Manhattan\",\n    \"district\": \"Downtown\",\n    \"zip\": \"10001\",\n    \"state_code\": \"NY\",\n    \"latitude\": 40.712776,\n    \"longitude\": -74.005974,\n    \"email\": \"johndoe@example.com\",\n    \"national_address_code\": \"nac_1234\"\n  },\n  \"slot\": {\n    \"delivery_date\": \"12012026\",\n    \"start_time\": 1500,\n    \"end_time\": 2059\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ed7818df-0e2f-46d2-a5db-cf8ffcfc9c51",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sales-channel",
+                    "public",
+                    "v1",
+                    "orders",
+                    ":order_id",
+                    "shipping_details"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "order_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fields_to_update\": [\n    \"slot\",\n    \"address\"\n  ],\n  \"address\": {\n    \"address1\": \"129 Main Street\",\n    \"address2\": \"Apt 4B\",\n    \"city\": \"New York\",\n    \"country\": \"United States\",\n    \"first_name\": \"John\",\n    \"last_name\": \"Doe\",\n    \"phone\": \"+1 212-555-1234\",\n    \"country_calling_code\": \"+1\",\n    \"country_code\": \"US\",\n    \"state\": \"New York\",\n    \"area\": \"Manhattan\",\n    \"district\": \"Downtown\",\n    \"zip\": \"10001\",\n    \"state_code\": \"NY\",\n    \"latitude\": 40.712776,\n    \"longitude\": -74.005974,\n    \"email\": \"johndoe@example.com\",\n    \"national_address_code\": \"nac_1234\"\n  },\n  \"slot\": {\n    \"delivery_date\": \"12012026\",\n    \"start_time\": 1500,\n    \"end_time\": 2059\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "46398733-39c2-40eb-8af0-32bcb5c43c93",
+          "name": "Get Orders (⚠️ To be deprecated on 30-07-2026))",
+          "request": {
+            "name": "Get Orders (⚠️ To be deprecated on 30-07-2026))",
+            "description": {
+              "content": "Description Retrieve a paginated list of orders for a specific seller. You can filter results using multiple optional query parameters such as order ID, customer details, AWB number, SKU code, status, types, and date range. Path Parameters Name Type Required Description seller_code string Yes Unique seller identifier in Omniful. Query Parameters Name Type Required Description page integer No Page number for pagination (default: 1). per_page integer No Number of records per page (default: 20). or",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sales-channel",
+                "public",
+                "v1",
+                "tenants",
+                "sellers",
+                ":seller_code",
+                "orders"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "seller_code",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "78f0f78f-7d3f-49da-b0de-675512a4c48e",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sales-channel",
+                    "public",
+                    "v1",
+                    "tenants",
+                    "sellers",
+                    ":seller_code",
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "seller_code",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9332b20b-0d9e-4c30-a6e2-a877e3ae98b1",
+          "name": "Create Order",
+          "request": {
+            "name": "Create Order",
+            "description": {
+              "content": "📌 Create Order API Overview The Create Order API allows users to place new orders in Omniful by providing order details, customer information, shipping and billing addresses, invoice details, and payment information. 📝 Request Body Parameters Key Data Type Description Required order_id string Must be a globally unique identifier for the order (e.g., \"order_0008\"). Cannot be reused if the order is deleted. ✅ Yes order_alias string Secondary identifier for tracking in external systems (e.g., ERP o",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sales-channel",
+                "public",
+                "v1",
+                "tenants",
+                "sellers",
+                ":seller_code",
+                "orders"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "seller_code",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"order_id\": \"order-128\",\n  \"order_alias\": \"order-alias-128\",\n  \"hub_code\": \"locoff\",\n  \"shipment_type\": \"sales_channel_generated\",\n  \"order_items\": [\n    {\n      \"sku_code\": \"UT-TSHIRT-WHT-S-17\",\n      \"name\": \"iPhone 200\",\n      \"display_price\": 799,\n      \"selling_price\": 699,\n      \"is_substituted\": false,\n      \"quantity\": 1,\n      \"tax_percent\": 10,\n      \"tax\": 69.9,\n      \"unit_price\": 699,\n      \"subtotal\": 699,\n      \"total\": 768.9,\n      \"discount\": 100,\n      \"tax_inclusive\": true\n    }\n  ],\n  \"billing_address\": {\n    \"address1\": \"123 Al-Masjid Al-Haram Street\",\n    \"address2\": \"Near Al-Faisaliah Tower\",\n    \"city\": \"Riyadh\",\n    \"country\": \"Saudi Arabia\",\n    \"first_name\": \"John\",\n    \"last_name\": \"Doe\",\n    \"phone\": \"+966-11-234-5678\",\n    \"state\": \"Riyadh\",\n    \"zip\": \"11564\",\n    \"area\": \"Al Olaya\",\n    \"district\": \"Riyadh\",\n    \"street\": \"Kings Road\",\n    \"state_code\": \"RIY\",\n    \"country_code\": \"SA\",\n    \"latitude\": 24.7136,\n    \"longitude\": 46.6753,\n    \"national_address_code\": \"\"\n  },\n  \"shipping_address\": {\n    \"address1\": \"456 King Abdulaziz Road\",\n    \"address2\": \"Near Kingdom Centre\",\n    \"city\": \"Jeddah\",\n    \"country\": \"Saudi Arabia\",\n    \"first_name\": \"Jane\",\n    \"last_name\": \"Smith\",\n    \"phone\": \"+966-12-345-6789\",\n    \"state\": \"Makkah\",\n    \"zip\": \"21577\",\n    \"area\": \"Al Olaya\",\n    \"district\": \"Riyadh\",\n    \"street\": \"Kings Road\",\n    \"state_code\": \"MKA\",\n    \"country_code\": \"SA\",\n    \"latitude\": 21.4225,\n    \"longitude\": 39.8262,\n    \"national_address_code\": \"\"\n  },\n  \"invoice\": {\n    \"currency\": \"SAR\",\n    \"subtotal\": 699,\n    \"shipping_price\": 0,\n    \"shipping_refund\": 0,\n    \"tax\": 69.9,\n    \"discount\": 100,\n    \"total\": 768.9,\n    \"total_paid\": 768.9,\n    \"total_due\": 0,\n    \"total_refunded\": 0,\n    \"payment_method\": \"Credit Card\",\n    \"tax_percent\": 10,\n    \"shipping_tax\": 0,\n    \"sub_total_tax_inclusive\": true,\n    \"sub_total_discount_inclusive\": true,\n    \"shipping_tax_inclusive\": false,\n    \"shipping_discount_inclusive\": false\n  },\n  \"customer\": {\n    \"id\": \"66ced351ffed27dec7c4072a\",\n    \"first_name\": \"John\",\n    \"last_name\": \"Doe\",\n    \"mobile\": \"1234567890\",\n    \"mobile_code\": \"+1\",\n    \"email\": \"john.doe@example.com\",\n    \"avatar\": \"https://example.com/avatar.jpg\",\n    \"gender\": \"male\"\n  },\n  \"labels\": [\n    \"label1\",\n    \"label2\",\n    \"label3\"\n  ],\n  \"slot\": {\n    \"delivery_date\": \"18122024\",\n    \"start_time\": 1100,\n    \"end_time\": 1500\n  },\n  \"payment_method\": \"prepaid\",\n  \"delivery_type\": \"normal_delivery\",\n  \"is_cash_on_delivery\": false,\n  \"note\": \"Please deliver during weekdays\",\n  \"type\": \"b2b\",\n  \"meta_data\": {\n    \"name\": \"Metadata\",\n    \"has_options\": true\n  },\n  \"external_fields\": [\n    {\n      \"key\": \"order_id\",\n      \"value\": \"12345\"\n    },\n    {\n      \"key\": \"customer_name\",\n      \"value\": \"John Doe\"\n    },\n    {\n      \"key\": \"status\",\n      \"value\": \"shipped\"\n    }\n  ],\n  \"attachments\": [\n    {\n      \"name\": \"Bill\",\n      \"description\": \"Bill description\",\n      \"url\": \"http://omniful-local-uploads.s3.eu-central-1.localstack.oceaninfra.localhost/orders/orders/attachments/98bf916bcb364c1656b0aca4a103b5ea71780922501.jpeg\",\n      \"mime_type\": \"image/jpeg\",\n      \"entity\": \"order\"\n    },\n    {\n      \"name\": \"Bill 2\",\n      \"description\": \"Bill 2 description\",\n      \"url\": \"http://omniful-local-uploads.s3.eu-central-1.localstack.oceaninfra.localhost/orders/orders/attachments/98bf916bcb364c1656b0aca4a103b5ea71780922501.jpeg\",\n      \"mime_type\": \"image/jpeg\",\n      \"entity\": \"invoice\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8b3924ae-82b9-444b-85df-604276a62afc",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sales-channel",
+                    "public",
+                    "v1",
+                    "tenants",
+                    "sellers",
+                    ":seller_code",
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "seller_code",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"order_id\": \"order-128\",\n  \"order_alias\": \"order-alias-128\",\n  \"hub_code\": \"locoff\",\n  \"shipment_type\": \"sales_channel_generated\",\n  \"order_items\": [\n    {\n      \"sku_code\": \"UT-TSHIRT-WHT-S-17\",\n      \"name\": \"iPhone 200\",\n      \"display_price\": 799,\n      \"selling_price\": 699,\n      \"is_substituted\": false,\n      \"quantity\": 1,\n      \"tax_percent\": 10,\n      \"tax\": 69.9,\n      \"unit_price\": 699,\n      \"subtotal\": 699,\n      \"total\": 768.9,\n      \"discount\": 100,\n      \"tax_inclusive\": true\n    }\n  ],\n  \"billing_address\": {\n    \"address1\": \"123 Al-Masjid Al-Haram Street\",\n    \"address2\": \"Near Al-Faisaliah Tower\",\n    \"city\": \"Riyadh\",\n    \"country\": \"Saudi Arabia\",\n    \"first_name\": \"John\",\n    \"last_name\": \"Doe\",\n    \"phone\": \"+966-11-234-5678\",\n    \"state\": \"Riyadh\",\n    \"zip\": \"11564\",\n    \"area\": \"Al Olaya\",\n    \"district\": \"Riyadh\",\n    \"street\": \"Kings Road\",\n    \"state_code\": \"RIY\",\n    \"country_code\": \"SA\",\n    \"latitude\": 24.7136,\n    \"longitude\": 46.6753,\n    \"national_address_code\": \"\"\n  },\n  \"shipping_address\": {\n    \"address1\": \"456 King Abdulaziz Road\",\n    \"address2\": \"Near Kingdom Centre\",\n    \"city\": \"Jeddah\",\n    \"country\": \"Saudi Arabia\",\n    \"first_name\": \"Jane\",\n    \"last_name\": \"Smith\",\n    \"phone\": \"+966-12-345-6789\",\n    \"state\": \"Makkah\",\n    \"zip\": \"21577\",\n    \"area\": \"Al Olaya\",\n    \"district\": \"Riyadh\",\n    \"street\": \"Kings Road\",\n    \"state_code\": \"MKA\",\n    \"country_code\": \"SA\",\n    \"latitude\": 21.4225,\n    \"longitude\": 39.8262,\n    \"national_address_code\": \"\"\n  },\n  \"invoice\": {\n    \"currency\": \"SAR\",\n    \"subtotal\": 699,\n    \"shipping_price\": 0,\n    \"shipping_refund\": 0,\n    \"tax\": 69.9,\n    \"discount\": 100,\n    \"total\": 768.9,\n    \"total_paid\": 768.9,\n    \"total_due\": 0,\n    \"total_refunded\": 0,\n    \"payment_method\": \"Credit Card\",\n    \"tax_percent\": 10,\n    \"shipping_tax\": 0,\n    \"sub_total_tax_inclusive\": true,\n    \"sub_total_discount_inclusive\": true,\n    \"shipping_tax_inclusive\": false,\n    \"shipping_discount_inclusive\": false\n  },\n  \"customer\": {\n    \"id\": \"66ced351ffed27dec7c4072a\",\n    \"first_name\": \"John\",\n    \"last_name\": \"Doe\",\n    \"mobile\": \"1234567890\",\n    \"mobile_code\": \"+1\",\n    \"email\": \"john.doe@example.com\",\n    \"avatar\": \"https://example.com/avatar.jpg\",\n    \"gender\": \"male\"\n  },\n  \"labels\": [\n    \"label1\",\n    \"label2\",\n    \"label3\"\n  ],\n  \"slot\": {\n    \"delivery_date\": \"18122024\",\n    \"start_time\": 1100,\n    \"end_time\": 1500\n  },\n  \"payment_method\": \"prepaid\",\n  \"delivery_type\": \"normal_delivery\",\n  \"is_cash_on_delivery\": false,\n  \"note\": \"Please deliver during weekdays\",\n  \"type\": \"b2b\",\n  \"meta_data\": {\n    \"name\": \"Metadata\",\n    \"has_options\": true\n  },\n  \"external_fields\": [\n    {\n      \"key\": \"order_id\",\n      \"value\": \"12345\"\n    },\n    {\n      \"key\": \"customer_name\",\n      \"value\": \"John Doe\"\n    },\n    {\n      \"key\": \"status\",\n      \"value\": \"shipped\"\n    }\n  ],\n  \"attachments\": [\n    {\n      \"name\": \"Bill\",\n      \"description\": \"Bill description\",\n      \"url\": \"http://omniful-local-uploads.s3.eu-central-1.localstack.oceaninfra.localhost/orders/orders/attachments/98bf916bcb364c1656b0aca4a103b5ea71780922501.jpeg\",\n      \"mime_type\": \"image/jpeg\",\n      \"entity\": \"order\"\n    },\n    {\n      \"name\": \"Bill 2\",\n      \"description\": \"Bill 2 description\",\n      \"url\": \"http://omniful-local-uploads.s3.eu-central-1.localstack.oceaninfra.localhost/orders/orders/attachments/98bf916bcb364c1656b0aca4a103b5ea71780922501.jpeg\",\n      \"mime_type\": \"image/jpeg\",\n      \"entity\": \"invoice\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "787d8512-9cb2-4cec-b2f9-c49a44a84f3b",
+          "name": "Get Single Order",
+          "request": {
+            "name": "Get Single Order",
+            "description": {
+              "content": "Description Retrieve full details of a specific order for a seller using the id which is the omniful order id. Path Parameters Name Type Required Description seller_code string Yes Unique identifier for the seller (e.g., KO-SE-1). id string Yes Unique internal Omniful order identifier used to fetch a specific order.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sales-channel",
+                "public",
+                "v1",
+                "tenants",
+                "sellers",
+                ":seller_code",
+                "orders",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "seller_code",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "88d31a3c-036b-4278-916e-8cb16ddf8ded",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sales-channel",
+                    "public",
+                    "v1",
+                    "tenants",
+                    "sellers",
+                    ":seller_code",
+                    "orders",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "seller_code",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9dbde430-61e4-4d35-8ddd-27188e743584",
+          "name": "Update Order",
+          "request": {
+            "name": "Update Order",
+            "description": {
+              "content": "📌 Update Order API - Overview The Update Order API allows users to modify the details of an existing order that was previously placed. This API can be used to update various order attributes, such as order items, shipping details, billing information, and customer details. Users can update an order only if it is not in the \"packed\" state. Once an order reaches the packed stage, further modifications using this API are restricted. This API ensures flexibility in managing orders before final proce",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sales-channel",
+                "public",
+                "v1",
+                "tenants",
+                "sellers",
+                ":seller_code",
+                "orders",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "seller_code",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"order_id\": \"order_000081\",\n  \"hub_code\": \"ONLS\",\n  \"shipment_type\": \"sales_channel_generated\",\n  \"order_items\": [\n    {\n      \"sku_code\": \"iPhone 15 Pro\",\n      \"name\": \"iPhone 15 Pro\",\n      \"display_price\": 799,\n      \"selling_price\": 699,\n      \"is_substituted\": false,\n      \"quantity\": 2,\n      \"tax_percent\": 10,\n      \"tax\": 69.9,\n      \"unit_price\": 699,\n      \"subtotal\": 699,\n      \"total\": 768.9,\n      \"discount\": 100,\n      \"tax_inclusive\": true\n    }\n  ],\n  \"billing_address\": {\n    \"address1\": \"123 Main Street\",\n    \"city\": \"New York\",\n    \"country\": \"United States\",\n    \"first_name\": \"John\",\n    \"last_name\": \"Doe\",\n    \"phone\": \"123-456-7890\",\n    \"state\": \"NY\",\n    \"zip\": \"10001\",\n    \"state_code\": \"NY\",\n    \"country_code\": \"US\",\n    \"latitude\": 40.7128,\n    \"longitude\": -74.006,\n    \"national_address_code\": \"\"\n  },\n  \"shipping_address\": {\n    \"address1\": \"456 Elm Street\",\n    \"city\": \"Los Angeles\",\n    \"country\": \"United States\",\n    \"first_name\": \"Jane\",\n    \"last_name\": \"Smith\",\n    \"phone\": \"987-654-3210\",\n    \"state\": \"CA\",\n    \"zip\": \"90001\",\n    \"state_code\": \"CA\",\n    \"country_code\": \"US\",\n    \"latitude\": 34.0522,\n    \"longitude\": -118.2437,\n    \"national_address_code\": \"\"\n  },\n  \"order_created_at\": \"2023-07-28T09:00:00Z\",\n  \"invoice\": {\n    \"currency\": \"USD\",\n    \"subtotal\": 699,\n    \"shipping_price\": 0,\n    \"shipping_refund\": 0,\n    \"tax\": 69.9,\n    \"discount\": 100,\n    \"total\": 768.9,\n    \"total_paid\": 768.9,\n    \"total_due\": 0,\n    \"total_refunded\": 0,\n    \"payment_method\": \"Credit Card\",\n    \"tax_percent\": 10,\n    \"shipping_tax\": 0,\n    \"sub_total_tax_inclusive\": true,\n    \"sub_total_discount_inclusive\": true,\n    \"shipping_tax_inclusive\": false,\n    \"shipping_discount_inclusive\": false\n  },\n  \"customer\": {\n    \"first_name\": \"John\",\n    \"last_name\": \"Doe\",\n    \"mobile\": \"1234567890\",\n    \"mobile_code\": \"+1\",\n    \"email\": \"john.doe@example.com\",\n    \"avatar\": \"https://example.com/avatar.jpg\",\n    \"gender\": \"male\"\n  },\n  \"shipment\": {\n    \"shipping_partner_name\": \"CourierX\",\n    \"shipping_partner_tag\": \"courierx123\",\n    \"awb_number\": \"AWB-456\",\n    \"awb_label\": \"https://example.com/awb-label.jpg\",\n    \"tracking_link\": \"https://example.com/tracking/456\"\n  },\n  \"labels\": [\n    \"label4\",\n    \"label5\",\n    \"label6\"\n  ],\n  \"payment_method\": \"prepaid\",\n  \"is_cash_on_delivery\": false,\n  \"note\": \"Please deliver during weekdays\",\n  \"meta_data\": {\n    \"name\": \"detadata\",\n    \"has_options\": true\n  },\n  \"external_fields\": [\n    {\n      \"key\": \"order_id_1\",\n      \"value\": \"12347\"\n    },\n    {\n      \"key\": \"customer_name\",\n      \"value\": \"John Doe\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "229d37a3-75f7-46c0-9e4d-80caa39b66d2",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sales-channel",
+                    "public",
+                    "v1",
+                    "tenants",
+                    "sellers",
+                    ":seller_code",
+                    "orders",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "seller_code",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"order_id\": \"order_000081\",\n  \"hub_code\": \"ONLS\",\n  \"shipment_type\": \"sales_channel_generated\",\n  \"order_items\": [\n    {\n      \"sku_code\": \"iPhone 15 Pro\",\n      \"name\": \"iPhone 15 Pro\",\n      \"display_price\": 799,\n      \"selling_price\": 699,\n      \"is_substituted\": false,\n      \"quantity\": 2,\n      \"tax_percent\": 10,\n      \"tax\": 69.9,\n      \"unit_price\": 699,\n      \"subtotal\": 699,\n      \"total\": 768.9,\n      \"discount\": 100,\n      \"tax_inclusive\": true\n    }\n  ],\n  \"billing_address\": {\n    \"address1\": \"123 Main Street\",\n    \"city\": \"New York\",\n    \"country\": \"United States\",\n    \"first_name\": \"John\",\n    \"last_name\": \"Doe\",\n    \"phone\": \"123-456-7890\",\n    \"state\": \"NY\",\n    \"zip\": \"10001\",\n    \"state_code\": \"NY\",\n    \"country_code\": \"US\",\n    \"latitude\": 40.7128,\n    \"longitude\": -74.006,\n    \"national_address_code\": \"\"\n  },\n  \"shipping_address\": {\n    \"address1\": \"456 Elm Street\",\n    \"city\": \"Los Angeles\",\n    \"country\": \"United States\",\n    \"first_name\": \"Jane\",\n    \"last_name\": \"Smith\",\n    \"phone\": \"987-654-3210\",\n    \"state\": \"CA\",\n    \"zip\": \"90001\",\n    \"state_code\": \"CA\",\n    \"country_code\": \"US\",\n    \"latitude\": 34.0522,\n    \"longitude\": -118.2437,\n    \"national_address_code\": \"\"\n  },\n  \"order_created_at\": \"2023-07-28T09:00:00Z\",\n  \"invoice\": {\n    \"currency\": \"USD\",\n    \"subtotal\": 699,\n    \"shipping_price\": 0,\n    \"shipping_refund\": 0,\n    \"tax\": 69.9,\n    \"discount\": 100,\n    \"total\": 768.9,\n    \"total_paid\": 768.9,\n    \"total_due\": 0,\n    \"total_refunded\": 0,\n    \"payment_method\": \"Credit Card\",\n    \"tax_percent\": 10,\n    \"shipping_tax\": 0,\n    \"sub_total_tax_inclusive\": true,\n    \"sub_total_discount_inclusive\": true,\n    \"shipping_tax_inclusive\": false,\n    \"shipping_discount_inclusive\": false\n  },\n  \"customer\": {\n    \"first_name\": \"John\",\n    \"last_name\": \"Doe\",\n    \"mobile\": \"1234567890\",\n    \"mobile_code\": \"+1\",\n    \"email\": \"john.doe@example.com\",\n    \"avatar\": \"https://example.com/avatar.jpg\",\n    \"gender\": \"male\"\n  },\n  \"shipment\": {\n    \"shipping_partner_name\": \"CourierX\",\n    \"shipping_partner_tag\": \"courierx123\",\n    \"awb_number\": \"AWB-456\",\n    \"awb_label\": \"https://example.com/awb-label.jpg\",\n    \"tracking_link\": \"https://example.com/tracking/456\"\n  },\n  \"labels\": [\n    \"label4\",\n    \"label5\",\n    \"label6\"\n  ],\n  \"payment_method\": \"prepaid\",\n  \"is_cash_on_delivery\": false,\n  \"note\": \"Please deliver during weekdays\",\n  \"meta_data\": {\n    \"name\": \"detadata\",\n    \"has_options\": true\n  },\n  \"external_fields\": [\n    {\n      \"key\": \"order_id_1\",\n      \"value\": \"12347\"\n    },\n    {\n      \"key\": \"customer_name\",\n      \"value\": \"John Doe\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4204fa14-3433-436c-93b3-21cf33025e78",
+          "name": "Cancel Order",
+          "request": {
+            "name": "Cancel Order",
+            "description": {
+              "content": "Description Cancel an existing order for a specific seller in Omniful. This endpoint is used when an order needs to be cancelled due to customer request, incorrect product selection, or operational reasons. Only orders in a cancellable state (e.g., not yet shipped or delivered) can be cancelled. Path Parameters Name Type Required Description seller_code string Yes Unique identifier for the seller (e.g., KO-SE-2). id string Yes Internal Omniful order ID of the order to be cancelled. Request Body ",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sales-channel",
+                "public",
+                "v1",
+                "tenants",
+                "sellers",
+                ":seller_code",
+                "orders",
+                ":id",
+                "cancel"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "seller_code",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"cancel_reason\": \"The customer selected the wrong product.\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d9eec8f1-15c9-496d-9b37-a5ddbc7a199b",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sales-channel",
+                    "public",
+                    "v1",
+                    "tenants",
+                    "sellers",
+                    ":seller_code",
+                    "orders",
+                    ":id",
+                    "cancel"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "seller_code",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cancel_reason\": \"The customer selected the wrong product.\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4e529b9a-4e1c-4581-80ca-bdbd5c073f6d",
+          "name": "Bulk Create Orders",
+          "request": {
+            "name": "Bulk Create Orders",
+            "description": {},
+            "url": {
+              "path": [
+                "sales-channel",
+                "public",
+                "v1",
+                "tenants",
+                "sellers",
+                ":seller_code",
+                "orders",
+                "bulk"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "seller_code",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"orders\": [\n    {\n      \"order_id\": \"order-127823523676\",\n      \"order_alias\": \"order-alias-127\",\n      \"hub_code\": \"ONLS\",\n      \"shipment_type\": \"sales_channel_generated\",\n      \"order_items\": [\n        {\n          \"sku_code\": \"11083224\",\n          \"name\": \"iPhone 200\",\n          \"display_price\": 799,\n          \"selling_price\": 699,\n          \"is_substituted\": false,\n          \"quantity\": 1,\n          \"tax_percent\": 10,\n          \"tax\": 69.9,\n          \"unit_price\": 699,\n          \"subtotal\": 699,\n          \"total\": 768.9,\n          \"discount\": 100,\n          \"tax_inclusive\": true\n        }\n      ],\n      \"billing_address\": {\n        \"address1\": \"123 Al-Masjid Al-Haram Street\",\n        \"address2\": \"Near Al-Faisaliah Tower\",\n        \"city\": \"Riyadh\",\n        \"country\": \"Saudi Arabia\",\n        \"first_name\": \"John\",\n        \"last_name\": \"Doe\",\n        \"phone\": \"+966-11-234-5678\",\n        \"state\": \"Riyadh\",\n        \"zip\": \"11564\",\n        \"state_code\": \"RIY\",\n        \"country_code\": \"SA\",\n        \"latitude\": 24.7136,\n        \"longitude\": 46.6753,\n        \"national_address_code\": \"\"\n      },\n      \"shipping_address\": {\n        \"address1\": \"456 King Abdulaziz Road\",\n        \"address2\": \"Near Kingdom Centre\",\n        \"city\": \"Jeddah\",\n        \"country\": \"Saudi Arabia\",\n        \"first_name\": \"Jane\",\n        \"last_name\": \"Smith\",\n        \"phone\": \"+966-12-345-6789\",\n        \"state\": \"Makkah\",\n        \"zip\": \"21577\",\n        \"state_code\": \"MKA\",\n        \"country_code\": \"SA\",\n        \"latitude\": 21.4225,\n        \"longitude\": 39.8262,\n        \"national_address_code\": \"\"\n      },\n      \"invoice\": {\n        \"currency\": \"SAR\",\n        \"subtotal\": 699,\n        \"shipping_price\": 0,\n        \"shipping_refund\": 0,\n        \"tax\": 69.9,\n        \"discount\": 100,\n        \"total\": 768.9,\n        \"total_paid\": 768.9,\n        \"total_due\": 0,\n        \"total_refunded\": 0,\n        \"payment_method\": \"Credit Card\",\n        \"tax_percent\": 10,\n        \"shipping_tax\": 0,\n        \"sub_total_tax_inclusive\": true,\n        \"sub_total_discount_inclusive\": true,\n        \"shipping_tax_inclusive\": false,\n        \"shipping_discount_inclusive\": false,\n        \"attachments\": [\n          {\n            \"url\": \"https:://example.com/avatar1.jpg\",\n            \"type\": \"image1\"\n          },\n          {\n            \"url\": \"https:://example.com/avatar2.jpg\",\n            \"type\": \"image2\"\n          },\n          {\n            \"url\": \"https:://example.com/avatar3.jpg\",\n            \"type\": \"image3\"\n          }\n        ]\n      },\n      \"customer\": {\n        \"id\": \"66ced351ffed27dec7c4072a\",\n        \"first_name\": \"John\",\n        \"last_name\": \"Doe\",\n        \"mobile\": \"1234567890\",\n        \"mobile_code\": \"+1\",\n        \"email\": \"john.doe@example.com\",\n        \"avatar\": \"https://example.com/avatar.jpg\",\n        \"gender\": \"male\"\n      },\n      \"labels\": [\n        \"label1\",\n        \"label2\",\n        \"label3\"\n      ],\n      \"slot\": {\n        \"delivery_date\": \"18122024\",\n        \"start_time\": 1100,\n        \"end_time\": 1500\n      },\n      \"payment_method\": \"prepaid\",\n      \"transactions\": [\n        {\n          \"transaction_id\": \"123456\",\n          \"amount\": 100.5,\n          \"type\": 1,\n          \"card_number\": \"4111111111111111\",\n          \"source_account\": \"source_account_123\",\n          \"destination_account\": \"destination_account_456\",\n          \"status\": 1,\n          \"description\": \"Payment for order #12345\"\n        }\n      ],\n      \"is_cash_on_delivery\": false,\n      \"note\": \"Please deliver during weekdays\",\n      \"type\": \"b2b\",\n      \"meta_data\": {\n        \"name\": \"Metadata\",\n        \"has_options\": true\n      },\n      \"external_fields\": [\n        {\n          \"key\": \"order_id\",\n          \"value\": \"12345\"\n        },\n        {\n          \"key\": \"customer_name\",\n          \"value\": \"John Doe\"\n        },\n        {\n          \"key\": \"status\",\n          \"value\": \"shipped\"\n        }\n      ]\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "12f9dea4-13a8-4a02-853e-a5d1c7c151f6",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sales-channel",
+                    "public",
+                    "v1",
+                    "tenants",
+                    "sellers",
+                    ":seller_code",
+                    "orders",
+                    "bulk"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "seller_code",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"orders\": [\n    {\n      \"order_id\": \"order-127823523676\",\n      \"order_alias\": \"order-alias-127\",\n      \"hub_code\": \"ONLS\",\n      \"shipment_type\": \"sales_channel_generated\",\n      \"order_items\": [\n        {\n          \"sku_code\": \"11083224\",\n          \"name\": \"iPhone 200\",\n          \"display_price\": 799,\n          \"selling_price\": 699,\n          \"is_substituted\": false,\n          \"quantity\": 1,\n          \"tax_percent\": 10,\n          \"tax\": 69.9,\n          \"unit_price\": 699,\n          \"subtotal\": 699,\n          \"total\": 768.9,\n          \"discount\": 100,\n          \"tax_inclusive\": true\n        }\n      ],\n      \"billing_address\": {\n        \"address1\": \"123 Al-Masjid Al-Haram Street\",\n        \"address2\": \"Near Al-Faisaliah Tower\",\n        \"city\": \"Riyadh\",\n        \"country\": \"Saudi Arabia\",\n        \"first_name\": \"John\",\n        \"last_name\": \"Doe\",\n        \"phone\": \"+966-11-234-5678\",\n        \"state\": \"Riyadh\",\n        \"zip\": \"11564\",\n        \"state_code\": \"RIY\",\n        \"country_code\": \"SA\",\n        \"latitude\": 24.7136,\n        \"longitude\": 46.6753,\n        \"national_address_code\": \"\"\n      },\n      \"shipping_address\": {\n        \"address1\": \"456 King Abdulaziz Road\",\n        \"address2\": \"Near Kingdom Centre\",\n        \"city\": \"Jeddah\",\n        \"country\": \"Saudi Arabia\",\n        \"first_name\": \"Jane\",\n        \"last_name\": \"Smith\",\n        \"phone\": \"+966-12-345-6789\",\n        \"state\": \"Makkah\",\n        \"zip\": \"21577\",\n        \"state_code\": \"MKA\",\n        \"country_code\": \"SA\",\n        \"latitude\": 21.4225,\n        \"longitude\": 39.8262,\n        \"national_address_code\": \"\"\n      },\n      \"invoice\": {\n        \"currency\": \"SAR\",\n        \"subtotal\": 699,\n        \"shipping_price\": 0,\n        \"shipping_refund\": 0,\n        \"tax\": 69.9,\n        \"discount\": 100,\n        \"total\": 768.9,\n        \"total_paid\": 768.9,\n        \"total_due\": 0,\n        \"total_refunded\": 0,\n        \"payment_method\": \"Credit Card\",\n        \"tax_percent\": 10,\n        \"shipping_tax\": 0,\n        \"sub_total_tax_inclusive\": true,\n        \"sub_total_discount_inclusive\": true,\n        \"shipping_tax_inclusive\": false,\n        \"shipping_discount_inclusive\": false,\n        \"attachments\": [\n          {\n            \"url\": \"https:://example.com/avatar1.jpg\",\n            \"type\": \"image1\"\n          },\n          {\n            \"url\": \"https:://example.com/avatar2.jpg\",\n            \"type\": \"image2\"\n          },\n          {\n            \"url\": \"https:://example.com/avatar3.jpg\",\n            \"type\": \"image3\"\n          }\n        ]\n      },\n      \"customer\": {\n        \"id\": \"66ced351ffed27dec7c4072a\",\n        \"first_name\": \"John\",\n        \"last_name\": \"Doe\",\n        \"mobile\": \"1234567890\",\n        \"mobile_code\": \"+1\",\n        \"email\": \"john.doe@example.com\",\n        \"avatar\": \"https://example.com/avatar.jpg\",\n        \"gender\": \"male\"\n      },\n      \"labels\": [\n        \"label1\",\n        \"label2\",\n        \"label3\"\n      ],\n      \"slot\": {\n        \"delivery_date\": \"18122024\",\n        \"start_time\": 1100,\n        \"end_time\": 1500\n      },\n      \"payment_method\": \"prepaid\",\n      \"transactions\": [\n        {\n          \"transaction_id\": \"123456\",\n          \"amount\": 100.5,\n          \"type\": 1,\n          \"card_number\": \"4111111111111111\",\n          \"source_account\": \"source_account_123\",\n          \"destination_account\": \"destination_account_456\",\n          \"status\": 1,\n          \"description\": \"Payment for order #12345\"\n        }\n      ],\n      \"is_cash_on_delivery\": false,\n      \"note\": \"Please deliver during weekdays\",\n      \"type\": \"b2b\",\n      \"meta_data\": {\n        \"name\": \"Metadata\",\n        \"has_options\": true\n      },\n      \"external_fields\": [\n        {\n          \"key\": \"order_id\",\n          \"value\": \"12345\"\n        },\n        {\n          \"key\": \"customer_name\",\n          \"value\": \"John Doe\"\n        },\n        {\n          \"key\": \"status\",\n          \"value\": \"shipped\"\n        }\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b9ad8bb2-90b5-4eb2-8f1a-2f7632e0d5b8",
+          "name": "Get Order Logs",
+          "request": {
+            "name": "Get Order Logs",
+            "description": {
+              "content": "Description Retrieve full logs of a specific order for a seller using the id which is the omniful order id.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sales-channel",
+                "public",
+                "v1",
+                "tenants",
+                "sellers",
+                ":seller_code",
+                "orders",
+                ":id",
+                "logs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "seller_code",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ecb89e56-fa3a-45d8-b3c3-35586f3245a3",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sales-channel",
+                    "public",
+                    "v1",
+                    "tenants",
+                    "sellers",
+                    ":seller_code",
+                    "orders",
+                    ":id",
+                    "logs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "seller_code",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://prodapi.omniful.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "520573f0-c95a-433f-b9a9-2327e5c939fe",
+    "name": "Omniful Integration APIs Background Jobs Orders API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Omniful unified supply chain and fulfillment platform integration APIs (Order Management, Warehouse/Inventory, Returns, Purchase Orders, Shipment/TMS, Webhooks). Derived faithfully from the provider-published Postman collection at docs.omniful.tech; paths, methods, parameters, and request examples are as published, response schemas are not enumerated in the source.",
+      "type": "text/plain"
+    }
+  }
+}

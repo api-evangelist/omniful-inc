@@ -1,0 +1,47 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Omniful Integration APIs Background Jobs Packaging Material API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Packaging Material",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Packaging Material",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v1/seller/hubs/:hub_code/orders/:order_id/packaging_materials",
+            "params": [
+              {
+                "name": "hub_code",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "order_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Packaging Material"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

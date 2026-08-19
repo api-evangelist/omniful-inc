@@ -1,0 +1,75 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Omniful Integration APIs Background Jobs Orders (V2) API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Orders (V2)",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Orders",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v2/seller/orders"
+          },
+          "docs": "Get Orders"
+        },
+        {
+          "info": {
+            "name": "Get Order Search",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v2/seller/orders/search"
+          },
+          "docs": "Get Order Search"
+        },
+        {
+          "info": {
+            "name": "Get Orders",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v2/tenants/sellers/:seller-code/orders",
+            "params": [
+              {
+                "name": "seller",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Orders"
+        },
+        {
+          "info": {
+            "name": "Get Order Search",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v2/tenants/orders/search"
+          },
+          "docs": "Searches tenant orders using optional filters and can return a maximum of 100 orders per request. Method: GETEndpoint: {{base_url}}/sales-channel/public/v2/tenants/orders/search This request is used to retrieve orders that match the supplied search criteria. Authentication appears to be required because the request uses the available {{access_token}} variable. This API can send a maximum of 100 orders only. All query parameters are optional unless otherwise indicated. Available query parameters "
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,64 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Omniful Integration APIs Background Jobs Seller Integrations API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Seller Integrations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Seller Integrations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v1/channels/integrations"
+          },
+          "docs": "Fetches all the stores integrated with the seller’s account, including metadata like platform type, store name, and activation status. 📘 Response Object IntegratedStore Object Field Data Type Description integration_id String Unique identifier for the store integration. tag String Type of integration (e.g., shopify, custom). store_entity String Store-specific identifier on the platform (if any). name String Store name given by the seller. is_active Boolean Indicates if the store integration is "
+        },
+        {
+          "info": {
+            "name": "Get Seller Integration by Token",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v1/channels/integrations/:integration_token",
+            "params": [
+              {
+                "name": "integration_token",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Fetches detailed information of a specific store integration using the integration_id. 🔸 Path Variable Variable Type Description integration_id String Unique identifier of the integrated store 📘 Response Object IntegratedStore Object Field Data Type Description integration_id String Unique identifier for the store integration. tag String Type of integration (e.g., shopify, custom). store_entity String Store-specific identifier on the platform (if any). name String Store name given by the selle"
+        },
+        {
+          "info": {
+            "name": "Seller Integrations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v1/tenants/sellers/EX-637/channels/integrations"
+          },
+          "docs": "Seller Integrations"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

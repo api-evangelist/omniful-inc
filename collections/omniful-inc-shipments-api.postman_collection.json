@@ -1,0 +1,545 @@
+{
+  "item": [
+    {
+      "id": "69acab18-4e04-4487-bd36-95915a7356cd",
+      "name": "Shipments",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d579c6e7-0d59-4710-afbd-0206d1bc3c61",
+          "name": "Create Shipment",
+          "request": {
+            "name": "Create Shipment",
+            "description": {
+              "content": "📦 Shipment API Documentation 📌 Create Shipment– Overview The Create Shipment API allows users to initiate and register a new shipment for an order or set of packages. This API enables sellers, logistics partners, and system integrators to define shipment details such as pickup location, delivery destination, package dimensions, product information, and service type. It is useful for automating the shipping process, ensuring accurate order fulfillment, and integrating with logistics partners for ",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sales-channel",
+                "public",
+                "v2",
+                "tms",
+                "shipments"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"reference_id\": \"ORD-2024-101\",\n  \"seller_reference_id\": \"Display-Order-ID\",\n  \"seller_hub_code\": \"seamlessretail\",\n  \"customer_info\": {\n    \"name\": \"John Doe\",\n    \"code\": \"CUST001\",\n    \"email\": \"john.doe@example.com\",\n    \"country_code\": \"SA\",\n    \"phone\": \"501234567\",\n    \"address\": {\n      \"code\": \"ADDR001\",\n      \"address_line_1\": \"123 Business Street\",\n      \"address_line_2\": \"Suite 100\",\n      \"city\": \"Dubai\",\n      \"state\": \"Dubai\",\n      \"country\": \"United Arab Emirates\",\n      \"country_code\": \"AE\",\n      \"city_id\": \"city_001\",\n      \"state_id\": \"state_001\",\n      \"country_id\": \"country_001\",\n      \"postal_code\": \"12345\",\n      \"latitude\": 25.2048,\n      \"longitude\": 55.2708,\n      \"national_address_code\": \"new_code\"\n    }\n  },\n  \"payment_info\": {\n    \"currency\": \"AED\",\n    \"payment_type\": \"prepaid\",\n    \"declared_value\": 150,\n    \"total_due\": 0,\n    \"total_paid\": 150\n  },\n  \"product_type\": \"physical_product\",\n  \"service_type\": \"standard\",\n  \"pickup_type\": \"pickup_by_logistics\",\n  \"delivery_type\": \"delivery_by_logistics\",\n  \"handling_granularity\": \"package\",\n  \"shipment_type\": \"forward\",\n  \"delivery_preference\": {\n    \"delivery_date\": \"2025-12-30T00:00:00Z\",\n    \"start_time\": \"2025-12-30T09:00:00Z\",\n    \"end_time\": \"2025-12-30T18:00:00Z\",\n    \"delivery_instruction\": \"Please deliver to reception desk\"\n  },\n  \"sales_channel_info\": {\n    \"seller_sales_channel_id\": \"channel_001\",\n    \"sales_channel\": {\n      \"id\": \"amazon_ae\",\n      \"tag\": \"amazon\",\n      \"name\": \"Amazon UAE\",\n      \"category\": \"marketplace\",\n      \"logo_url\": \"https://example.com/amazon-logo.png\",\n      \"link\": \"https://amazon.ae\",\n      \"store_name\": \"Amazon UAE Store\"\n    }\n  },\n  \"packages\": [\n    {\n      \"reference_id\": \"PKG-001\",\n      \"payment_info\": {\n        \"currency\": \"AED\",\n        \"payment_type\": \"prepaid\",\n        \"declared_value\": 150,\n        \"total_due\": 0,\n        \"total_paid\": 150\n      },\n      \"packaging_info\": {\n        \"length\": 30,\n        \"height\": 20,\n        \"width\": 25,\n        \"weight\": 2.5,\n        \"volume\": 15000\n      },\n      \"items\": [\n        {\n          \"item_id\": \"item_001\",\n          \"sku\": {\n            \"id\": \"sku_001\",\n            \"name\": \"Wireless Bluetooth Headphones\",\n            \"code\": \"WH-001\",\n            \"description\": \"High-quality wireless headphones with noise cancellation\",\n            \"image_urls\": [\n              \"https://example.com/headphones-1.jpg\",\n              \"https://example.com/headphones-2.jpg\"\n            ],\n            \"barcodes\": [\n              \"1234567890123\",\n              \"9876543210987\"\n            ],\n            \"weight\": 0.5,\n            \"currency\": \"AED\",\n            \"selling_price\": 150\n          },\n          \"quantity\": 1,\n          \"return_reason\": \"\",\n          \"note\": \"\",\n          \"image_urls\": [\n            \"https://example.com/headphones-1.jpg\"\n          ]\n        }\n      ]\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "84b82d74-3811-403c-acbd-f0967887beaf",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sales-channel",
+                    "public",
+                    "v2",
+                    "tms",
+                    "shipments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"reference_id\": \"ORD-2024-101\",\n  \"seller_reference_id\": \"Display-Order-ID\",\n  \"seller_hub_code\": \"seamlessretail\",\n  \"customer_info\": {\n    \"name\": \"John Doe\",\n    \"code\": \"CUST001\",\n    \"email\": \"john.doe@example.com\",\n    \"country_code\": \"SA\",\n    \"phone\": \"501234567\",\n    \"address\": {\n      \"code\": \"ADDR001\",\n      \"address_line_1\": \"123 Business Street\",\n      \"address_line_2\": \"Suite 100\",\n      \"city\": \"Dubai\",\n      \"state\": \"Dubai\",\n      \"country\": \"United Arab Emirates\",\n      \"country_code\": \"AE\",\n      \"city_id\": \"city_001\",\n      \"state_id\": \"state_001\",\n      \"country_id\": \"country_001\",\n      \"postal_code\": \"12345\",\n      \"latitude\": 25.2048,\n      \"longitude\": 55.2708,\n      \"national_address_code\": \"new_code\"\n    }\n  },\n  \"payment_info\": {\n    \"currency\": \"AED\",\n    \"payment_type\": \"prepaid\",\n    \"declared_value\": 150,\n    \"total_due\": 0,\n    \"total_paid\": 150\n  },\n  \"product_type\": \"physical_product\",\n  \"service_type\": \"standard\",\n  \"pickup_type\": \"pickup_by_logistics\",\n  \"delivery_type\": \"delivery_by_logistics\",\n  \"handling_granularity\": \"package\",\n  \"shipment_type\": \"forward\",\n  \"delivery_preference\": {\n    \"delivery_date\": \"2025-12-30T00:00:00Z\",\n    \"start_time\": \"2025-12-30T09:00:00Z\",\n    \"end_time\": \"2025-12-30T18:00:00Z\",\n    \"delivery_instruction\": \"Please deliver to reception desk\"\n  },\n  \"sales_channel_info\": {\n    \"seller_sales_channel_id\": \"channel_001\",\n    \"sales_channel\": {\n      \"id\": \"amazon_ae\",\n      \"tag\": \"amazon\",\n      \"name\": \"Amazon UAE\",\n      \"category\": \"marketplace\",\n      \"logo_url\": \"https://example.com/amazon-logo.png\",\n      \"link\": \"https://amazon.ae\",\n      \"store_name\": \"Amazon UAE Store\"\n    }\n  },\n  \"packages\": [\n    {\n      \"reference_id\": \"PKG-001\",\n      \"payment_info\": {\n        \"currency\": \"AED\",\n        \"payment_type\": \"prepaid\",\n        \"declared_value\": 150,\n        \"total_due\": 0,\n        \"total_paid\": 150\n      },\n      \"packaging_info\": {\n        \"length\": 30,\n        \"height\": 20,\n        \"width\": 25,\n        \"weight\": 2.5,\n        \"volume\": 15000\n      },\n      \"items\": [\n        {\n          \"item_id\": \"item_001\",\n          \"sku\": {\n            \"id\": \"sku_001\",\n            \"name\": \"Wireless Bluetooth Headphones\",\n            \"code\": \"WH-001\",\n            \"description\": \"High-quality wireless headphones with noise cancellation\",\n            \"image_urls\": [\n              \"https://example.com/headphones-1.jpg\",\n              \"https://example.com/headphones-2.jpg\"\n            ],\n            \"barcodes\": [\n              \"1234567890123\",\n              \"9876543210987\"\n            ],\n            \"weight\": 0.5,\n            \"currency\": \"AED\",\n            \"selling_price\": 150\n          },\n          \"quantity\": 1,\n          \"return_reason\": \"\",\n          \"note\": \"\",\n          \"image_urls\": [\n            \"https://example.com/headphones-1.jpg\"\n          ]\n        }\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7129dbfc-1c65-4bbe-9d55-8bb528e1f1be",
+          "name": "Get Shipment",
+          "request": {
+            "name": "Get Shipment",
+            "description": {
+              "content": "📌 Fetch Shipment by Shipment ID– Overview The Fetch Shipment by Shipment ID API delivers complete shipment details using the system-generated Shipment ID. This API ensures accurate retrieval of shipment records directly tied to the internal database. Response Body Format Field Data Type Description is_success boolean Indicates if the request was successful. status_code number HTTP status code of the response. data.shipment.id string Unique shipment identifier. data.shipment.awb_number string The",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sales-channel",
+                "public",
+                "v2",
+                "tms",
+                "shipments",
+                ":shipment_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "shipment_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ef70f28a-c9d7-4c7b-b7ad-213767e69c22",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sales-channel",
+                    "public",
+                    "v2",
+                    "tms",
+                    "shipments",
+                    ":shipment_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "shipment_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6de2ab73-831c-4e22-ac0f-4dbf11955020",
+          "name": "Get Shipment by Reference",
+          "request": {
+            "name": "Get Shipment by Reference",
+            "description": {
+              "content": "📌 Fetch Shipment by Reference ID – Overview The Fetch Shipment by Reference ID API allows users to retrieve shipment details based on a custom Reference ID assigned during order creation. This method is useful when shipments need to be linked to internal business processes or third-party systems.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sales-channel",
+                "public",
+                "v2",
+                "tms",
+                "shipments",
+                "reference",
+                ":reference_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "reference_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "91a9ab3b-02bb-406d-8515-77f8bdd07eea",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sales-channel",
+                    "public",
+                    "v2",
+                    "tms",
+                    "shipments",
+                    "reference",
+                    ":reference_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reference_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4f89f195-b980-4770-94ee-7250a5885210",
+          "name": "Get Shipment by Awb",
+          "request": {
+            "name": "Get Shipment by Awb",
+            "description": {
+              "content": "📌 Fetch Shipment by AWB– Overview The Fetch Shipment by AWB API provides detailed information about a shipment using its unique Air Waybill (AWB) number. This method allows users to directly track the journey of a specific parcel without needing order-level references.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sales-channel",
+                "public",
+                "v2",
+                "tms",
+                "shipments",
+                "awb",
+                ":awb"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "awb",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "aa0ee60b-37d7-44cd-80d4-8703215cda5a",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sales-channel",
+                    "public",
+                    "v2",
+                    "tms",
+                    "shipments",
+                    "awb",
+                    ":awb"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "awb",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f177bfd6-c52d-4a33-9a24-afe840b68ba4",
+          "name": "Cancel Shipment",
+          "request": {
+            "name": "Cancel Shipment",
+            "description": {
+              "content": "📌 Cancel Shipment – Overview The Cancel Shipment by Shipment ID API lets users cancel a shipment using the system-assigned Shipment ID. This approach ensures accuracy by targeting shipments uniquely identified within the system, reducing the risk of errors in cancellation. Field Data Type Required Description reason string Yes The reason for cancelling the shipment.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sales-channel",
+                "public",
+                "v2",
+                "tms",
+                "shipments",
+                ":shipment_id",
+                "cancel"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "shipment_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"reason\": \"not required now\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2ae418da-0ce6-4fb7-9040-dfe18ff9e4eb",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sales-channel",
+                    "public",
+                    "v2",
+                    "tms",
+                    "shipments",
+                    ":shipment_id",
+                    "cancel"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "shipment_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"reason\": \"not required now\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://prodapi.omniful.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "839c3738-7116-4226-8a3c-6ee419078d0b",
+    "name": "Omniful Integration APIs Background Jobs Shipments API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Omniful unified supply chain and fulfillment platform integration APIs (Order Management, Warehouse/Inventory, Returns, Purchase Orders, Shipment/TMS, Webhooks). Derived faithfully from the provider-published Postman collection at docs.omniful.tech; paths, methods, parameters, and request examples are as published, response schemas are not enumerated in the source.",
+      "type": "text/plain"
+    }
+  }
+}

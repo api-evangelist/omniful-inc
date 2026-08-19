@@ -1,0 +1,256 @@
+{
+  "item": [
+    {
+      "id": "4d4f458d-4640-468d-b026-a268a57fceff",
+      "name": "Return To Sender",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "039e0035-3a4d-434a-9af4-69e97e2601a6",
+          "name": "Create Return To Sender Order",
+          "request": {
+            "name": "Create Return To Sender Order",
+            "description": {},
+            "url": {
+              "path": [
+                "sales-channel",
+                "public",
+                "v1",
+                "tenants",
+                "sellers",
+                ":seller_code",
+                "return_to_sender"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "seller_code",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"order_id\": \"rtv_to_supplier_4\",\n  \"hub_code\": \"ONLS\",\n  \"recipient_details\": {\n    \"type\": \"supplier\",\n    \"code\": \"SA-659\"\n  },\n  \"order_items\": [\n    {\n      \"sku_code\": \"srv-sku-12323\",\n      \"name\": \"iPhone 15 Pro\",\n      \"display_price\": 799,\n      \"selling_price\": 699,\n      \"is_substituted\": false,\n      \"quantity\": 1,\n      \"tax_percent\": 10,\n      \"tax\": 69.9,\n      \"unit_price\": 699,\n      \"subtotal\": 699,\n      \"total\": 768.9,\n      \"discount\": 100,\n      \"tax_inclusive\": true\n    }\n  ],\n  \"billing_address\": {\n    \"address1\": \"123 Main Street\",\n    \"city\": \"New York\",\n    \"country\": \"United States\",\n    \"first_name\": \"John\",\n    \"last_name\": \"Doe\",\n    \"phone\": \"123-456-7890\",\n    \"state\": \"NY\",\n    \"zip\": \"10001\",\n    \"state_code\": \"NY\",\n    \"country_code\": \"US\",\n    \"latitude\": 40.7128,\n    \"longitude\": -74.006,\n    \"national_address_code\": \"nac_1234\"\n  },\n  \"shipping_address\": {\n    \"address1\": \"456 Elm Street\",\n    \"city\": \"Los Angeles\",\n    \"country\": \"United States\",\n    \"first_name\": \"Jane\",\n    \"last_name\": \"Smith\",\n    \"phone\": \"987-654-3210\",\n    \"state\": \"CA\",\n    \"zip\": \"90001\",\n    \"state_code\": \"CA\",\n    \"country_code\": \"US\",\n    \"latitude\": 34.0522,\n    \"longitude\": -118.2437,\n    \"national_address_code\": \"nac_1234\"\n  },\n  \"order_created_at\": \"2024-09-19T07:15:25.220Z\",\n  \"invoice\": {\n    \"currency\": \"USD\",\n    \"subtotal\": 699,\n    \"shipping_price\": 0,\n    \"shipping_refund\": 0,\n    \"tax\": 69.9,\n    \"discount\": 100,\n    \"total\": 768.9,\n    \"total_paid\": 768.9,\n    \"total_due\": 0,\n    \"total_refunded\": 0,\n    \"payment_method\": \"Credit Card\",\n    \"tax_percent\": 10,\n    \"shipping_tax\": 0,\n    \"sub_total_tax_inclusive\": true,\n    \"sub_total_discount_inclusive\": true,\n    \"shipping_tax_inclusive\": false,\n    \"shipping_discount_inclusive\": false\n  },\n  \"customer\": {\n    \"first_name\": \"John\",\n    \"last_name\": \"Doe\",\n    \"mobile\": \"1234567890\",\n    \"mobile_code\": \"+1\",\n    \"email\": \"john.doe@example.com\",\n    \"avatar\": \"https://example.com/avatar.jpg\",\n    \"gender\": \"male\"\n  },\n  \"shipment\": {\n    \"shipping_partner_name\": \"CourierX\",\n    \"shipping_partner_tag\": \"courierx123\",\n    \"awb_number\": \"AWB-456\",\n    \"awb_label\": \"https://example.com/awb-label.jpg\",\n    \"tracking_link\": \"https://example.com/tracking/456\"\n  },\n  \"payment_method\": \"prepaid\",\n  \"is_cash_on_delivery\": false,\n  \"note\": \"Please deliver during weekdays\",\n  \"meta_data\": {\n    \"name\": \"Metadata\",\n    \"has_options\": true\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "344b855a-0e2b-4591-89be-96c38c4ff893",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sales-channel",
+                    "public",
+                    "v1",
+                    "tenants",
+                    "sellers",
+                    ":seller_code",
+                    "return_to_sender"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "seller_code",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"order_id\": \"rtv_to_supplier_4\",\n  \"hub_code\": \"ONLS\",\n  \"recipient_details\": {\n    \"type\": \"supplier\",\n    \"code\": \"SA-659\"\n  },\n  \"order_items\": [\n    {\n      \"sku_code\": \"srv-sku-12323\",\n      \"name\": \"iPhone 15 Pro\",\n      \"display_price\": 799,\n      \"selling_price\": 699,\n      \"is_substituted\": false,\n      \"quantity\": 1,\n      \"tax_percent\": 10,\n      \"tax\": 69.9,\n      \"unit_price\": 699,\n      \"subtotal\": 699,\n      \"total\": 768.9,\n      \"discount\": 100,\n      \"tax_inclusive\": true\n    }\n  ],\n  \"billing_address\": {\n    \"address1\": \"123 Main Street\",\n    \"city\": \"New York\",\n    \"country\": \"United States\",\n    \"first_name\": \"John\",\n    \"last_name\": \"Doe\",\n    \"phone\": \"123-456-7890\",\n    \"state\": \"NY\",\n    \"zip\": \"10001\",\n    \"state_code\": \"NY\",\n    \"country_code\": \"US\",\n    \"latitude\": 40.7128,\n    \"longitude\": -74.006,\n    \"national_address_code\": \"nac_1234\"\n  },\n  \"shipping_address\": {\n    \"address1\": \"456 Elm Street\",\n    \"city\": \"Los Angeles\",\n    \"country\": \"United States\",\n    \"first_name\": \"Jane\",\n    \"last_name\": \"Smith\",\n    \"phone\": \"987-654-3210\",\n    \"state\": \"CA\",\n    \"zip\": \"90001\",\n    \"state_code\": \"CA\",\n    \"country_code\": \"US\",\n    \"latitude\": 34.0522,\n    \"longitude\": -118.2437,\n    \"national_address_code\": \"nac_1234\"\n  },\n  \"order_created_at\": \"2024-09-19T07:15:25.220Z\",\n  \"invoice\": {\n    \"currency\": \"USD\",\n    \"subtotal\": 699,\n    \"shipping_price\": 0,\n    \"shipping_refund\": 0,\n    \"tax\": 69.9,\n    \"discount\": 100,\n    \"total\": 768.9,\n    \"total_paid\": 768.9,\n    \"total_due\": 0,\n    \"total_refunded\": 0,\n    \"payment_method\": \"Credit Card\",\n    \"tax_percent\": 10,\n    \"shipping_tax\": 0,\n    \"sub_total_tax_inclusive\": true,\n    \"sub_total_discount_inclusive\": true,\n    \"shipping_tax_inclusive\": false,\n    \"shipping_discount_inclusive\": false\n  },\n  \"customer\": {\n    \"first_name\": \"John\",\n    \"last_name\": \"Doe\",\n    \"mobile\": \"1234567890\",\n    \"mobile_code\": \"+1\",\n    \"email\": \"john.doe@example.com\",\n    \"avatar\": \"https://example.com/avatar.jpg\",\n    \"gender\": \"male\"\n  },\n  \"shipment\": {\n    \"shipping_partner_name\": \"CourierX\",\n    \"shipping_partner_tag\": \"courierx123\",\n    \"awb_number\": \"AWB-456\",\n    \"awb_label\": \"https://example.com/awb-label.jpg\",\n    \"tracking_link\": \"https://example.com/tracking/456\"\n  },\n  \"payment_method\": \"prepaid\",\n  \"is_cash_on_delivery\": false,\n  \"note\": \"Please deliver during weekdays\",\n  \"meta_data\": {\n    \"name\": \"Metadata\",\n    \"has_options\": true\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d1bf6e3f-0fbd-43e3-9ea8-2410898af20f",
+          "name": "Create Order",
+          "request": {
+            "name": "Create Order",
+            "description": {
+              "content": "⚠️ Important Notice: The \"meta_data\" field will be deprecated from the response of this API, effective February 15, 2025. Please update your integrations to accommodate this change and ensure a smooth transition. 📌 Return-to-Sender Order API - Overview The Return-to-Sender Order API is used to create return orders for SKUs that need to be sent back due to expiration, quality check failures, or incorrect items received in a purchase order. 📌 Return Type Guidelines: Supplier Returns: Set the type ",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sales-channel",
+                "public",
+                "v1",
+                "return_to_sender",
+                "orders"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"order_id\": \"rtv_to_supplier_1\",\n  \"hub_code\": \"Shubhra001\",\n  \"recipient_details\": {\n    \"type\": \"supplier\",\n    \"code\": \"At-H\"\n  },\n  \"order_items\": [\n    {\n      \"sku_code\": \"iPhone 15 Pro\",\n      \"name\": \"iPhone 15 Pro\",\n      \"display_price\": 799,\n      \"selling_price\": 699,\n      \"is_substituted\": false,\n      \"quantity\": 1,\n      \"tax_percent\": 10,\n      \"tax\": 69.9,\n      \"unit_price\": 699,\n      \"subtotal\": 699,\n      \"total\": 768.9,\n      \"discount\": 100,\n      \"tax_inclusive\": true\n    }\n  ],\n  \"billing_address\": {\n    \"address1\": \"123 Main Street\",\n    \"city\": \"New York\",\n    \"country\": \"United States\",\n    \"first_name\": \"John\",\n    \"last_name\": \"Doe\",\n    \"phone\": \"123-456-7890\",\n    \"state\": \"NY\",\n    \"zip\": \"10001\",\n    \"state_code\": \"NY\",\n    \"country_code\": \"US\",\n    \"latitude\": 40.7128,\n    \"longitude\": -74.006,\n    \"national_address_code\": \"nac_1234\"\n  },\n  \"shipping_address\": {\n    \"address1\": \"456 Elm Street\",\n    \"city\": \"Los Angeles\",\n    \"country\": \"United States\",\n    \"first_name\": \"Jane\",\n    \"last_name\": \"Smith\",\n    \"phone\": \"987-654-3210\",\n    \"state\": \"CA\",\n    \"zip\": \"90001\",\n    \"state_code\": \"CA\",\n    \"country_code\": \"US\",\n    \"latitude\": 34.0522,\n    \"longitude\": -118.2437,\n    \"national_address_code\": \"nac_1234\"\n  },\n  \"order_created_at\": \"2024-09-19T07:15:25.220Z\",\n  \"invoice\": {\n    \"currency\": \"USD\",\n    \"subtotal\": 699,\n    \"shipping_price\": 0,\n    \"shipping_refund\": 0,\n    \"tax\": 69.9,\n    \"discount\": 100,\n    \"total\": 768.9,\n    \"total_paid\": 768.9,\n    \"total_due\": 0,\n    \"total_refunded\": 0,\n    \"payment_method\": \"Credit Card\",\n    \"tax_percent\": 10,\n    \"shipping_tax\": 0,\n    \"sub_total_tax_inclusive\": true,\n    \"sub_total_discount_inclusive\": true,\n    \"shipping_tax_inclusive\": false,\n    \"shipping_discount_inclusive\": false\n  },\n  \"customer\": {\n    \"first_name\": \"John\",\n    \"last_name\": \"Doe\",\n    \"mobile\": \"1234567890\",\n    \"mobile_code\": \"+1\",\n    \"email\": \"john.doe@example.com\",\n    \"avatar\": \"https://example.com/avatar.jpg\",\n    \"gender\": \"male\"\n  },\n  \"shipment\": {\n    \"shipping_partner_name\": \"CourierX\",\n    \"shipping_partner_tag\": \"courierx123\",\n    \"awb_number\": \"AWB-456\",\n    \"awb_label\": \"https://example.com/awb-label.jpg\",\n    \"tracking_link\": \"https://example.com/tracking/456\"\n  },\n  \"payment_method\": \"prepaid\",\n  \"is_cash_on_delivery\": false,\n  \"note\": \"Please deliver during weekdays\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a06e405c-1c6b-4d10-ba41-da47d0955688",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sales-channel",
+                    "public",
+                    "v1",
+                    "return_to_sender",
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"order_id\": \"rtv_to_supplier_1\",\n  \"hub_code\": \"Shubhra001\",\n  \"recipient_details\": {\n    \"type\": \"supplier\",\n    \"code\": \"At-H\"\n  },\n  \"order_items\": [\n    {\n      \"sku_code\": \"iPhone 15 Pro\",\n      \"name\": \"iPhone 15 Pro\",\n      \"display_price\": 799,\n      \"selling_price\": 699,\n      \"is_substituted\": false,\n      \"quantity\": 1,\n      \"tax_percent\": 10,\n      \"tax\": 69.9,\n      \"unit_price\": 699,\n      \"subtotal\": 699,\n      \"total\": 768.9,\n      \"discount\": 100,\n      \"tax_inclusive\": true\n    }\n  ],\n  \"billing_address\": {\n    \"address1\": \"123 Main Street\",\n    \"city\": \"New York\",\n    \"country\": \"United States\",\n    \"first_name\": \"John\",\n    \"last_name\": \"Doe\",\n    \"phone\": \"123-456-7890\",\n    \"state\": \"NY\",\n    \"zip\": \"10001\",\n    \"state_code\": \"NY\",\n    \"country_code\": \"US\",\n    \"latitude\": 40.7128,\n    \"longitude\": -74.006,\n    \"national_address_code\": \"nac_1234\"\n  },\n  \"shipping_address\": {\n    \"address1\": \"456 Elm Street\",\n    \"city\": \"Los Angeles\",\n    \"country\": \"United States\",\n    \"first_name\": \"Jane\",\n    \"last_name\": \"Smith\",\n    \"phone\": \"987-654-3210\",\n    \"state\": \"CA\",\n    \"zip\": \"90001\",\n    \"state_code\": \"CA\",\n    \"country_code\": \"US\",\n    \"latitude\": 34.0522,\n    \"longitude\": -118.2437,\n    \"national_address_code\": \"nac_1234\"\n  },\n  \"order_created_at\": \"2024-09-19T07:15:25.220Z\",\n  \"invoice\": {\n    \"currency\": \"USD\",\n    \"subtotal\": 699,\n    \"shipping_price\": 0,\n    \"shipping_refund\": 0,\n    \"tax\": 69.9,\n    \"discount\": 100,\n    \"total\": 768.9,\n    \"total_paid\": 768.9,\n    \"total_due\": 0,\n    \"total_refunded\": 0,\n    \"payment_method\": \"Credit Card\",\n    \"tax_percent\": 10,\n    \"shipping_tax\": 0,\n    \"sub_total_tax_inclusive\": true,\n    \"sub_total_discount_inclusive\": true,\n    \"shipping_tax_inclusive\": false,\n    \"shipping_discount_inclusive\": false\n  },\n  \"customer\": {\n    \"first_name\": \"John\",\n    \"last_name\": \"Doe\",\n    \"mobile\": \"1234567890\",\n    \"mobile_code\": \"+1\",\n    \"email\": \"john.doe@example.com\",\n    \"avatar\": \"https://example.com/avatar.jpg\",\n    \"gender\": \"male\"\n  },\n  \"shipment\": {\n    \"shipping_partner_name\": \"CourierX\",\n    \"shipping_partner_tag\": \"courierx123\",\n    \"awb_number\": \"AWB-456\",\n    \"awb_label\": \"https://example.com/awb-label.jpg\",\n    \"tracking_link\": \"https://example.com/tracking/456\"\n  },\n  \"payment_method\": \"prepaid\",\n  \"is_cash_on_delivery\": false,\n  \"note\": \"Please deliver during weekdays\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://prodapi.omniful.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "0decdb85-bb39-4eae-badd-1d938819a6e8",
+    "name": "Omniful Integration APIs Background Jobs Return To Sender API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Omniful unified supply chain and fulfillment platform integration APIs (Order Management, Warehouse/Inventory, Returns, Purchase Orders, Shipment/TMS, Webhooks). Derived faithfully from the provider-published Postman collection at docs.omniful.tech; paths, methods, parameters, and request examples are as published, response schemas are not enumerated in the source.",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,418 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Omniful Integration APIs Background Jobs Shipment Orders API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Shipment Orders",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create Return Shipment Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v1/seller/shipment_orders/:order_id/return_orders",
+            "params": [
+              {
+                "name": "order_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Return Shipment Order"
+        },
+        {
+          "info": {
+            "name": "Get Return Shipment Orders",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v1/seller/shipment_orders/return_orders"
+          },
+          "docs": "Get Return Shipment Orders"
+        },
+        {
+          "info": {
+            "name": "Get Return Shipment Order By ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v1/seller/shipment_orders/return_orders/:return_order_id",
+            "params": [
+              {
+                "name": "return_order_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Return Shipment Order By ID"
+        },
+        {
+          "info": {
+            "name": "Create Return Shipment Request",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v1/seller/shipment_orders/:order_id/return_requests",
+            "params": [
+              {
+                "name": "order_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Return Shipment Request"
+        },
+        {
+          "info": {
+            "name": "Get Return Shipment Requests",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v1/seller/shipment_orders/return_requests"
+          },
+          "docs": "Get Return Shipment Requests"
+        },
+        {
+          "info": {
+            "name": "Approve Return Shipment Request",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v1/seller/shipment_orders/return_requests/:order_id/approve",
+            "params": [
+              {
+                "name": "order_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Approve Return Shipment Request"
+        },
+        {
+          "info": {
+            "name": "Reject Return Shipment Request",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v1/seller/shipment_orders/return_requests/:return_request_id/reject",
+            "params": [
+              {
+                "name": "return_request_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Reject Return Shipment Request"
+        },
+        {
+          "info": {
+            "name": "Get Shipment Orders",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v1/seller/shipment_orders"
+          },
+          "docs": "Get Shipment Orders"
+        },
+        {
+          "info": {
+            "name": "Create Shipment Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v1/seller/shipment_orders",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Shipment Order"
+        },
+        {
+          "info": {
+            "name": "Get Shipment Orders By ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v1/seller/shipment_orders/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Shipment Orders By ID"
+        },
+        {
+          "info": {
+            "name": "Create Return Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v1/tenants/sellers/:seller_code/shipment_orders/:order_id/return_orders",
+            "params": [
+              {
+                "name": "seller_code",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "order_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Return Order"
+        },
+        {
+          "info": {
+            "name": "Get Return Orders",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v1/tenants/sellers/:seller_code/shipment_orders/return_orders",
+            "params": [
+              {
+                "name": "seller_code",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Return Orders"
+        },
+        {
+          "info": {
+            "name": "Get Return Order by Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v1/tenants/sellers/:seller_code/shipment_orders/return_orders/:return_order_id",
+            "params": [
+              {
+                "name": "seller_code",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "return_order_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Return Order by Id"
+        },
+        {
+          "info": {
+            "name": "Create Return Request",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v1/tenants/sellers/:seller_code/shipment_orders/:order_id/return_requests",
+            "params": [
+              {
+                "name": "seller_code",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "order_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Return Request"
+        },
+        {
+          "info": {
+            "name": "Get Return Request",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v1/tenants/sellers/:seller_code/shipment_orders/return_requests",
+            "params": [
+              {
+                "name": "seller_code",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Return Request"
+        },
+        {
+          "info": {
+            "name": "Approve Return Request",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v1/tenants/sellers/:seller_code/shipment_orders/return_requests/:return_request_id/approve",
+            "params": [
+              {
+                "name": "seller_code",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "return_request_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Approve Return Request"
+        },
+        {
+          "info": {
+            "name": "Reject Return Request",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v1/tenants/sellers/:seller_code/shipment_orders/return_requests/:return_request_id/reject",
+            "params": [
+              {
+                "name": "seller_code",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "return_request_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Reject Return Request"
+        },
+        {
+          "info": {
+            "name": "Get Shipment Orders",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v1/tenants/sellers/:seller_code/shipment_orders",
+            "params": [
+              {
+                "name": "seller_code",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Shipment Orders"
+        },
+        {
+          "info": {
+            "name": "Create Shipment Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v1/tenants/sellers/:seller_code/shipment_orders",
+            "params": [
+              {
+                "name": "seller_code",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Description 📦 Create Shipment Order API 📥 Request Body 1. Order Information Field Type Required Description display_order_id string ✅ Unique human-readable order ID shown in Omniful. client_reference_id string ❌ Client-provided reference ID for internal tracking. automatic_shipment_order_shipment_enabled boolean ❌ If true, shipment order will auto-generate a shipment. order_created_at string (ISO 8601) ❌ Date-time when the order was originally created. slot.delivery_date string (YYYY-MM-DD) ❌ "
+        },
+        {
+          "info": {
+            "name": "Get Shipment Order By ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v1/tenants/sellers/:seller_code/shipment_orders/:id",
+            "params": [
+              {
+                "name": "seller_code",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Shipment Order By ID"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

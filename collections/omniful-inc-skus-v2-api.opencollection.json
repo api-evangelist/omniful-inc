@@ -1,0 +1,53 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Omniful Integration APIs Background Jobs SKUs (V2) API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "SKUs (V2)",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Master Catalog SKUs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v2/seller/master/skus"
+          },
+          "docs": "Get Master Catalog SKUs"
+        },
+        {
+          "info": {
+            "name": "Get SKUs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v2/tenants/sellers/:seller_code/skus",
+            "params": [
+              {
+                "name": "seller_code",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get SKUs"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

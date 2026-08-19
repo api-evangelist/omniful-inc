@@ -1,0 +1,98 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Omniful Integration APIs Background Jobs Hubs API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Hubs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Tenant Hubs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v1/tenants/hubs"
+          },
+          "docs": "Description Retrieves a paginated list of hubs for a tenant. Use this endpoint to search hubs using filters such as name, code, and to optionally include address details in the response. This endpoint supports filters + pagination, and returns a structured list of hub objects. Parameters Query Parameters Name Type Required Default Example Description include_address boolean False false true If true, hub address details are included in the response code string False - \"sc-2321\" Filter hubs by exa"
+        },
+        {
+          "info": {
+            "name": "Create Hub",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v1/tenants/hubs",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Description Creates a new hub within a tenant. Use this endpoint to register a warehouse, dark store, or fulfillment location with full configuration for inventory, picking, packing, cycle count, schedule order, and other operational behaviors. On success, the endpoint returns the newly created Hub object. 📌 Required fields for creating a Hub: name — Hub name code — Unique hub code type — Hub type (e.g., \"warehouse\", \"dark_store\") email — Valid email address phone_number, country_code, country_"
+        },
+        {
+          "info": {
+            "name": "Update Hub",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v1/tenants/hubs/Dark_store_1k",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Description Updates an existing tenant hub’s details and configuration. Use this endpoint when you need to change a hub’s address, services (e.g., WMS/POS), working hours, or operational configurations (picking, packing, cycle count, etc.). The endpoint performs a partial update: most fields are optional, but when an object is provided (like address, configuration.picking, etc.), the required fields inside that object must be present. 📌 Key things to know: hub_code (in path) identifies which hu"
+        },
+        {
+          "info": {
+            "name": "Get Hub details by hub_code",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v1/tenants/hubs/:hub_code",
+            "params": [
+              {
+                "name": "hub_code",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Description Retrieves detailed information for a specific hub using its hub code. Use this endpoint to fetch full hub metadata, including its core properties, operational settings, and optionally address details (if supported by backend defaults). Parameters Path Parameters Name Type Required Description hub_code string True Unique identifier of the hub whose details are being retrieved"
+        },
+        {
+          "info": {
+            "name": "Bulk update tenant hub mapping",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v1/tenants/hubs/bulk_update",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Description Allows updating specific fields for multiple hubs in a single request. Use this endpoint when you need to activate/deactivate multiple hubs or apply batch updates to hub-level properties without calling individual update APIs. Only the fields included for each hub in the hub_mappings array will be updated. Body Parameters Body is a single object containing an array of hub updates. hub_mappings (Array of Hub Mapping Objects) Field Type Required Description hub_mappings array[object] T"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,337 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Omniful Integration APIs Background Jobs Returns API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Returns",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create Return Request",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v1/seller/orders/:order_id",
+            "params": [
+              {
+                "name": "order_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Return Request"
+        },
+        {
+          "info": {
+            "name": "Create Return Shipment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v1/return_orders/:id/shipment",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Endpoint Description This endpoint allows the user to create a shipment for a specific return order identified by :id. It is used to update the shipment details associated with a return order, including tracking information and package specifications. Request Body The request body must be in JSON format and should include the following parameters: tracking_url (string): A URL that provides tracking information for the shipment. awb_number (string): The Air Waybill number associated with the ship"
+        },
+        {
+          "info": {
+            "name": "Update Return Shipment Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v1/return_orders/:id/shipment/status",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Shipment Status for Return Orders This endpoint allows you to update the shipment status of a specific return order identified by its unique id. It is particularly useful for managing the logistics of returned items, enabling the system to track the status of shipments effectively. Request Body The request body must be in JSON format and should include the following parameter: shipment_status (string): The new status of the shipment. Following are the allowed values: \"picked_up\" \"return_t"
+        },
+        {
+          "info": {
+            "name": "Create Seller Return Shipment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v1/seller/return_orders/:id/shipment",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API endpoint is used to create shipment for any return order of the seller."
+        },
+        {
+          "info": {
+            "name": "Update Seller Return Shipment",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v1/seller/return_orders/:id/shipment/status",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API endpoint is used to update the status of shipment for any return order of the seller."
+        },
+        {
+          "info": {
+            "name": "Create Return Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v1/orders/:order_id/return_orders",
+            "params": [
+              {
+                "name": "order_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "📌 Create Return Order API – Overview The Create Return Order API allows users to generate a customer return order against the provided order_id. This API helps sellers and platforms record returned items, capture return reasons, and apply any additional charges related to the return. 📌 Required Fields return_order_id → Unique identifier for the return order. return_items → Must include at least one returned item with: seller_sku_code return_quantity 📌 Request Body Parameters Field Data Type D"
+        },
+        {
+          "info": {
+            "name": "Create Return Requests",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v1/returns/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "📌 Create Return Request API – Overview The Create Return Request API is used to initiate a return request for orders that are in the delivered state. This API ensures efficient tracking and management of returned items by capturing essential details such as order ID, reasons for return, and hub information. 📌 Key Points to Consider The order must be in the delivered state before a return request can be created. Each return request must include: order_id return_reason hub_code (if applicable) o"
+        },
+        {
+          "info": {
+            "name": "Get Return Requests",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v1/returns"
+          },
+          "docs": "📌 Get Return Request API - Overview The Get Return Request API allows users to retrieve return requests for orders based on request status, order ID, and return order ID. 📌 Filters Available: order_id – Fetch return requests for a specific order. return_order_id – Retrieve details of a specific return request. status – Filter return requests by status. created_from - Filter return request by date of creation By default, return requests will be returned for the last 3 months only. The supported"
+        },
+        {
+          "info": {
+            "name": "Reject Return Requests",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v1/returns/reject"
+          },
+          "docs": "📌 Reject Return Request API - Overview The Reject Return Request API allows users to decline a return request for a specific return order ID. This API ensures that return requests can be managed efficiently by rejecting invalid or non-eligible returns."
+        },
+        {
+          "info": {
+            "name": "Approve Return Request",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v1/returns/test-1026/approve",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "📌 Approve Return Request API - Overview The Approve Return Request API is used to approve return requests for an order based on its return order ID. This API allows users to approve full or partial returns and process refunds accordingly. 📌 Important Fields: Field Type Description order_id string Unique identifier for the order. order_items array of objects List of items being approved for return. order_items.sku_code string SKU code of the item being returned. order_items.return_quantity numb"
+        },
+        {
+          "info": {
+            "name": "Get Return Orders",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v1/return_orders/return_orders"
+          },
+          "docs": "Description: Retrieve a list of return orders with support for filtering by individual return order ID, multiple return order IDs, or the original sales channel order ID. Ideal for listing or searching return orders in bulk. Query Parameters Parameter Type Description return_order_id string Fetch return order by single ID return_order_ids array Fetch multiple return orders by ID list seller_sales_channel_order_id string Fetch by the external seller's order ID"
+        },
+        {
+          "info": {
+            "name": "Get Return Order by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v1/return_orders/:return_order_id",
+            "params": [
+              {
+                "name": "return_order_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Endpoint Description: Fetch complete details of a single return order by its unique ID, including customer info, returned items, status, pickup address, QC details, and shipment information. Path Parameters Parameter Type Description return_order_id string The unique return order ID"
+        },
+        {
+          "info": {
+            "name": "Approve Return Request",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v1/seller/orders/:order_id/:return_ request_id/approve",
+            "params": [
+              {
+                "name": "order_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "return_",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Approve Return Request"
+        },
+        {
+          "info": {
+            "name": "Reject Return Request",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v1/seller/orders/:order_id/reject",
+            "params": [
+              {
+                "name": "order_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Reject Return Request"
+        },
+        {
+          "info": {
+            "name": "Create Return Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v1/seller/orders/:order_id/return_order",
+            "params": [
+              {
+                "name": "order_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Return Order"
+        },
+        {
+          "info": {
+            "name": "Get Seller Return Order (To Be Deprecated)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v1/seller/return_orders"
+          },
+          "docs": "This API endpoint is used for getting all Return Orders of the seller."
+        },
+        {
+          "info": {
+            "name": "Get Seller Return Requests",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v1/seller/return_requests"
+          },
+          "docs": "📌 Get Seller Return Request API - Overview The Get Seller Return Request API allows users to retrieve return requests for orders based on request status, order ID, and return order ID. 📌 Filters Available: order_id – Fetch return requests for a specific order. status – Filter return requests by status. created_from - Filter return request by date of creation created_to - Filter return request by date of creation By default, return requests will be returned for the last 3 months only. The suppo"
+        },
+        {
+          "info": {
+            "name": "Get Seller Return Orders",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v2/seller/return_orders"
+          },
+          "docs": "Get Seller Return Orders"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

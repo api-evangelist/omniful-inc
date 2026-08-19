@@ -1,0 +1,192 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Omniful Integration APIs Background Jobs Billing API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Billing",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Contracts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v1/tenants/billings/contracts"
+          },
+          "docs": "Get Contracts"
+        },
+        {
+          "info": {
+            "name": "Create Contract",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v1/tenants/billings/contracts",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Contract"
+        },
+        {
+          "info": {
+            "name": "Get Single Contract",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v1/tenants/billings/contracts/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Single Contract"
+        },
+        {
+          "info": {
+            "name": "Terminate Contract",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v1/tenants/billings/contracts/:id/terminate",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Terminate Contract"
+        },
+        {
+          "info": {
+            "name": "Get Bills",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v1/tenants/bills"
+          },
+          "docs": "Get Bills"
+        },
+        {
+          "info": {
+            "name": "Get Bill",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v1/tenants/bills/:bill_name",
+            "params": [
+              {
+                "name": "bill_name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Bill"
+        },
+        {
+          "info": {
+            "name": "Get Hub Bills",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v1/tenants/hubs/:bill_name/bills",
+            "params": [
+              {
+                "name": "bill_name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Hub Bills"
+        },
+        {
+          "info": {
+            "name": "Generate Bill",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v1/tenants/bills/generate",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Generate Bill"
+        },
+        {
+          "info": {
+            "name": "Update Bill Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v1/tenants/bills/:bill_name/status",
+            "params": [
+              {
+                "name": "bill_name",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Bill Status"
+        },
+        {
+          "info": {
+            "name": "Create Finalize Bill",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v1/tenants/bills/:bill_name/finalize",
+            "params": [
+              {
+                "name": "bill_name",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Finalize Bill"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

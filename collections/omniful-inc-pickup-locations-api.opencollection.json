@@ -1,0 +1,131 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Omniful Integration APIs Background Jobs Pickup Locations API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Pickup Locations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Pickup Locations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v1/seller/pickup_locations"
+          },
+          "docs": "Get Pickup Locations"
+        },
+        {
+          "info": {
+            "name": "Upsert Pickup Locations",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v1/seller/pickup_locations",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Upsert Pickup Locations"
+        },
+        {
+          "info": {
+            "name": "Get Pickup Location By Code",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v1/seller/pickup_locations/:pickup_location_code",
+            "params": [
+              {
+                "name": "pickup_location_code",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Pickup Location By Code"
+        },
+        {
+          "info": {
+            "name": "Get Pickup Locations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v1/tenants/sellers/:seller_code/pickup_locations",
+            "params": [
+              {
+                "name": "seller_code",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Description Retrieves all pickup locations configured for a specific seller under a tenant. Useful for fetching active hubs/warehouses and their details."
+        },
+        {
+          "info": {
+            "name": "Upsert Pickup Locations",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v1/tenants/sellers/:seller_code/pickup_locations",
+            "params": [
+              {
+                "name": "seller_code",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Pickup Location API Description Creates a new pickup (hub) location for a seller. A pickup location can be physical or virtual and is used for fulfilling orders and assigning shipments. 📋 Field Descriptions Top-Level Fields Field Type Required Description name string ✅ Name of the pickup location (e.g., “Main Warehouse”). email string ✅ Contact email for the pickup location. phone_number object ✅ Contact phone details (number, code, country). external_hub_identifier string ✅ External sys"
+        },
+        {
+          "info": {
+            "name": "Get Pickup Location By Code",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v1/tenants/sellers/:seller_code/pickup_locations/:pickup_location_code",
+            "params": [
+              {
+                "name": "seller_code",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "pickup_location_code",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Description Fetches details of a specific pickup location (hub) for a given seller, using the hub’s external_hub_identifier. 🔗 Path Parameters Parameter Type Required Description seller_code string ✅ Unique seller code (e.g., 0099). external_hub_identifier string ✅ External identifier of the hub/pickup location (e.g., HUB123456)."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

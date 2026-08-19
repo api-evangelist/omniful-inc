@@ -1,0 +1,628 @@
+{
+  "item": [
+    {
+      "id": "38067fe9-46ca-4403-9d88-ef28aa2cb015",
+      "name": "Pickup Locations",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c3736a95-75e8-46e8-be46-cac1f2590035",
+          "name": "Upsert Pickup Locations",
+          "request": {
+            "name": "Upsert Pickup Locations",
+            "description": {},
+            "url": {
+              "path": [
+                "sales-channel",
+                "public",
+                "v1",
+                "seller",
+                "pickup_locations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Axis Logsitcs\",\n  \"email\": \"warehouse@example.com\",\n  \"phone_number\": {\n    \"number\": \"1234567890\",\n    \"country_calling_code\": \"+91\",\n    \"country_code\": \"IN\"\n  },\n  \"external_hub_identifier\": \"2128915624\",\n  \"address\": {\n    \"address_1\": \"Flat 803, Marina Pinnacle Tower\",\n    \"address_2\": \"\",\n    \"postal_code\": \"00000\",\n    \"city_name\": \"Dubai\",\n    \"country_name\": \"United Arab Emirates\",\n    \"state_name\": \"Dubai\",\n    \"country_code\": \"UAE\",\n    \"state_code\": \"DU\",\n    \"latitude\": 25.0865,\n    \"longitude\": 55.1483,\n    \"national_address_code\": \"00000\"\n  },\n  \"virtual_hub_type\": \"virtual\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3b168b8d-b5ad-4029-b8f7-d28bbd3f44c5",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sales-channel",
+                    "public",
+                    "v1",
+                    "seller",
+                    "pickup_locations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Axis Logsitcs\",\n  \"email\": \"warehouse@example.com\",\n  \"phone_number\": {\n    \"number\": \"1234567890\",\n    \"country_calling_code\": \"+91\",\n    \"country_code\": \"IN\"\n  },\n  \"external_hub_identifier\": \"2128915624\",\n  \"address\": {\n    \"address_1\": \"Flat 803, Marina Pinnacle Tower\",\n    \"address_2\": \"\",\n    \"postal_code\": \"00000\",\n    \"city_name\": \"Dubai\",\n    \"country_name\": \"United Arab Emirates\",\n    \"state_name\": \"Dubai\",\n    \"country_code\": \"UAE\",\n    \"state_code\": \"DU\",\n    \"latitude\": 25.0865,\n    \"longitude\": 55.1483,\n    \"national_address_code\": \"00000\"\n  },\n  \"virtual_hub_type\": \"virtual\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0068daf8-8270-4012-a7bb-260fcad061c1",
+          "name": "Get Pickup Locations",
+          "request": {
+            "name": "Get Pickup Locations",
+            "description": {},
+            "url": {
+              "path": [
+                "sales-channel",
+                "public",
+                "v1",
+                "seller",
+                "pickup_locations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6247162f-82bf-422c-8cfb-02cc1add0b04",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sales-channel",
+                    "public",
+                    "v1",
+                    "seller",
+                    "pickup_locations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "aa8abede-3aa1-4bec-bd91-788dbe6d5e8c",
+          "name": "Get Pickup Location By Code",
+          "request": {
+            "name": "Get Pickup Location By Code",
+            "description": {},
+            "url": {
+              "path": [
+                "sales-channel",
+                "public",
+                "v1",
+                "seller",
+                "pickup_locations",
+                ":pickup_location_code"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "pickup_location_code",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ad4d68bc-92ca-4d32-b2b0-e4a5d0c4591e",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sales-channel",
+                    "public",
+                    "v1",
+                    "seller",
+                    "pickup_locations",
+                    ":pickup_location_code"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pickup_location_code",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "43d1c650-fabf-4fd8-912b-62bd4b654f6b",
+          "name": "Upsert Pickup Locations",
+          "request": {
+            "name": "Upsert Pickup Locations",
+            "description": {
+              "content": "Create Pickup Location API Description Creates a new pickup (hub) location for a seller. A pickup location can be physical or virtual and is used for fulfilling orders and assigning shipments. 📋 Field Descriptions Top-Level Fields Field Type Required Description name string ✅ Name of the pickup location (e.g., “Main Warehouse”). email string ✅ Contact email for the pickup location. phone_number object ✅ Contact phone details (number, code, country). external_hub_identifier string ✅ External syst",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sales-channel",
+                "public",
+                "v1",
+                "tenants",
+                "sellers",
+                ":seller_code",
+                "pickup_locations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "seller_code",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Main Warehouse\",\n  \"email\": \"warehouse@example.com\",\n  \"phone_number\": {\n    \"number\": \"1234567890\",\n    \"country_calling_code\": \"+91\",\n    \"country_code\": \"IN\"\n  },\n  \"external_hub_identifier\": \"HUB123456\",\n  \"address\": {\n    \"address_1\": \"123 Street Name\",\n    \"address_2\": \"Suite 400\",\n    \"postal_code\": \"560001\",\n    \"city_name\": \"Riyadh\",\n    \"country_name\": \"Saudi Arabia\",\n    \"state_name\": \"Riyadh\",\n    \"country_code\": \"SA\",\n    \"state_code\": \"01\",\n    \"latitude\": 24.8506269,\n    \"longitude\": 46.8180723,\n    \"national_address_code\": \"\"\n  },\n  \"virtual_hub_type\": \"virtual\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "09911d3e-1170-4372-951a-b8f6d31d021e",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sales-channel",
+                    "public",
+                    "v1",
+                    "tenants",
+                    "sellers",
+                    ":seller_code",
+                    "pickup_locations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "seller_code",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Main Warehouse\",\n  \"email\": \"warehouse@example.com\",\n  \"phone_number\": {\n    \"number\": \"1234567890\",\n    \"country_calling_code\": \"+91\",\n    \"country_code\": \"IN\"\n  },\n  \"external_hub_identifier\": \"HUB123456\",\n  \"address\": {\n    \"address_1\": \"123 Street Name\",\n    \"address_2\": \"Suite 400\",\n    \"postal_code\": \"560001\",\n    \"city_name\": \"Riyadh\",\n    \"country_name\": \"Saudi Arabia\",\n    \"state_name\": \"Riyadh\",\n    \"country_code\": \"SA\",\n    \"state_code\": \"01\",\n    \"latitude\": 24.8506269,\n    \"longitude\": 46.8180723,\n    \"national_address_code\": \"\"\n  },\n  \"virtual_hub_type\": \"virtual\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "da863546-a654-4e39-9807-c26d2f9e0dfe",
+          "name": "Get Pickup Locations",
+          "request": {
+            "name": "Get Pickup Locations",
+            "description": {
+              "content": "Description Retrieves all pickup locations configured for a specific seller under a tenant. Useful for fetching active hubs/warehouses and their details.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sales-channel",
+                "public",
+                "v1",
+                "tenants",
+                "sellers",
+                ":seller_code",
+                "pickup_locations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "seller_code",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2202c00e-7770-405e-abb9-52e0ad33cfc3",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sales-channel",
+                    "public",
+                    "v1",
+                    "tenants",
+                    "sellers",
+                    ":seller_code",
+                    "pickup_locations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "seller_code",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "26ffc90e-1f9d-4206-ab43-98adfee96c20",
+          "name": "Get Pickup Location By Code",
+          "request": {
+            "name": "Get Pickup Location By Code",
+            "description": {
+              "content": "Description Fetches details of a specific pickup location (hub) for a given seller, using the hub’s external_hub_identifier. 🔗 Path Parameters Parameter Type Required Description seller_code string ✅ Unique seller code (e.g., 0099). external_hub_identifier string ✅ External identifier of the hub/pickup location (e.g., HUB123456).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sales-channel",
+                "public",
+                "v1",
+                "tenants",
+                "sellers",
+                ":seller_code",
+                "pickup_locations",
+                ":pickup_location_code"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "seller_code",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "pickup_location_code",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fae5c6ec-59ad-4928-80b4-e2858261897c",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sales-channel",
+                    "public",
+                    "v1",
+                    "tenants",
+                    "sellers",
+                    ":seller_code",
+                    "pickup_locations",
+                    ":pickup_location_code"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "seller_code",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pickup_location_code",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://prodapi.omniful.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "18b15a28-6ccb-433d-a694-2a7b8f90badb",
+    "name": "Omniful Integration APIs Background Jobs Pickup Locations API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Omniful unified supply chain and fulfillment platform integration APIs (Order Management, Warehouse/Inventory, Returns, Purchase Orders, Shipment/TMS, Webhooks). Derived faithfully from the provider-published Postman collection at docs.omniful.tech; paths, methods, parameters, and request examples are as published, response schemas are not enumerated in the source.",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,134 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Omniful Integration APIs Background Jobs Stock Transfer Request API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Stock Transfer Request",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Stock Transfer Requests",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v1/orders/sto/requests"
+          },
+          "docs": "Response Fields Explained is_success (boolean): Indicates if the request was successful. status_code (integer): The HTTP status code returned by the API. data (array): Contains the list of stock transfer requests. sto_id (string): Unique identifier for the stock transfer. customer (object): Information about the customer associated with the transfer. first_name (string): Customer's first name. last_name (string): Customer's last name. mobile (string): Customer's mobile number. mobile_code (strin"
+        },
+        {
+          "info": {
+            "name": "Create Stock Transfer Request",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v1/orders/sto/requests",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Required Fields for Creating Stock Transfer Requests: transfer_id (string): The unique identifier for the stock transfer (must be unique always). order_items (array of objects): An array of objects representing the items in the stock transfer. sku_code (string): The stock keeping unit code for the item. quantity (integer): The quantity of the item being transferred. source_hub_code (string): The hub code from which the stock is being transferred. destination_hub_code (string): The hub code to wh"
+        },
+        {
+          "info": {
+            "name": "Get Stock Transfer Request",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v1/orders/sto/requests/:sto_request_id",
+            "params": [
+              {
+                "name": "sto_request_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Response Fields Explained is_success (boolean): Indicates if the request was successful. status_code (integer): The HTTP status code returned by the API. data (object): Contains details about the stock transfer request. sto_id (string): Unique identifier for the stock transfer. customer (object): Information about the customer associated with the transfer. first_name (string): Customer's first name. last_name (string): Customer's last name. mobile (string): Customer's mobile number. mobile_code "
+        },
+        {
+          "info": {
+            "name": "Update Stock Transfer Request",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v1/orders/sto/requests/:sto_request_id",
+            "params": [
+              {
+                "name": "sto_request_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Required Fields for Updating Stock Transfer Requests: action_type (string): Specifies the action to perform. \"add_items\": To add new items to the stock transfer request. \"edit_items\": To edit existing items in the stock transfer request. order_items (array of objects): An array of objects representing the items in the stock transfer. sku_code (string): The stock keeping unit code for the item. quantity (integer): The quantity of the item to be added or updated."
+        },
+        {
+          "info": {
+            "name": "Approve Stock Transfer Request",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v1/orders/sto/requests/:sto_request_id/approve",
+            "params": [
+              {
+                "name": "sto_request_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Required Fields for Approving Stock Transfer Requests: order_items (array of objects): An array of objects representing the items being approved in the stock transfer. sku_code (string): The stock keeping unit code for the item. quantity (integer): The quantity of the item being approved."
+        },
+        {
+          "info": {
+            "name": "Reject Stock Transfer Request",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v1/orders/sto/requests/:sto_request_id/reject",
+            "params": [
+              {
+                "name": "sto_request_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Required Fields for Rejecting Stock Transfer Requests: reason (string): A mandatory field that specifies the reason for rejecting the stock transfer request. This helps provide clarity on the decision."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

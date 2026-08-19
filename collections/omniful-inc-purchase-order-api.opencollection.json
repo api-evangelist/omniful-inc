@@ -1,0 +1,225 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Omniful Integration APIs Background Jobs Purchase Order API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Purchase Order",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Purchase Orders",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v1/purchase_orders/hubs/:hub_code",
+            "params": [
+              {
+                "name": "hub_code",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "📌 Get Purchase Order API - Overview The Get Purchase Order API allows users to retrieve all purchase orders for a specific hub using various query filters. 📌 Filters Available: Date Range – Fetch purchase orders within a specific time period. Status – Filter purchase orders based on their current processing status. Purchase Order Number – Retrieve details of a specific purchase order. This API helps users track, manage, and analyze purchase orders efficiently within the hub."
+        },
+        {
+          "info": {
+            "name": "Create Purchase Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v1/purchase_orders/hubs/:hub_code",
+            "params": [
+              {
+                "name": "hub_code",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "📌 Create Purchase Order API – Overview The Create Purchase Order API allows users to generate new purchase orders for suppliers, enabling streamlined procurement and inventory management. 📌 Key Points to Consider To route the purchase order to a specific hub, provide the hub_code in the path parameter. A purchase order must include at least one valid SKU in purchase_order_items. Currency must be defined using a 3-letter ISO code (e.g., SAR for Saudi Riyal, USD for US Dollar). ✅ Required Fields"
+        },
+        {
+          "info": {
+            "name": "Update Purchase Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v1/purchase_orders/hubs/:hub_code",
+            "params": [
+              {
+                "name": "hub_code",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "📌 Important Fields for Purchase Order Field Data Type Description Required remark string Additional notes or remarks related to the purchase order ❌ No awb string Air Waybill number – a unique identifier assigned to a shipment for tracking purposes ❌ No purchase_order_id string Unique identifier for the purchase order ✅ Yes sku_code string SKU code of the item included in the purchase order ✅ Yes quantity string Quantity of the item being purchased ❌ No unit_price string Unit price of the item "
+        },
+        {
+          "info": {
+            "name": "Get Single Purchase Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v1/purchase_orders/hubs/:hub_code/purchase_order/:purchase_order_id",
+            "params": [
+              {
+                "name": "hub_code",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "purchase_order_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "📌 Get Single Purchase Order API - Overview The Get Single Purchase Order API retrieves the details of a specific purchase order using its purchase order ID for the provided hub ID. This API helps users access complete purchase order information. Field Name Type Description purchase_order_id String The unique ID for this purchase order. order_details.quantity Integer The total number of items ordered in this purchase order. order_details.grn_pass_quantity Integer The number of items that passed "
+        },
+        {
+          "info": {
+            "name": "Get All Suppliers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v1/suppliers"
+          },
+          "docs": "Get All the suppilers"
+        },
+        {
+          "info": {
+            "name": "Create Supplier",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v1/suppliers",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "📌 Important Fields for Supplier Field Data Type Description Required name string The name of the supplier ✅ Yes contact_person string The contact person associated with the supplier ❌ No email string The supplier’s email address ✅ Yes phone string The supplier’s phone number ✅ Yes code string Supplier code; if left empty, the system will automatically assign a new one ❌ No"
+        },
+        {
+          "info": {
+            "name": "Get Purchase Orders",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v1/tenants/hubs/:hub_code/purchase_orders",
+            "params": [
+              {
+                "name": "hub_code",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Purchase Orders"
+        },
+        {
+          "info": {
+            "name": "Create Purchase Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v1/tenants/hubs/:hub_code/purchase_orders",
+            "params": [
+              {
+                "name": "hub_code",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Purchase Order"
+        },
+        {
+          "info": {
+            "name": "Get Single Purchase Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v1/tenants/hubs/:hub_code/purchase_orders/:purchase_order_id",
+            "params": [
+              {
+                "name": "hub_code",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "purchase_order_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Single Purchase Order"
+        },
+        {
+          "info": {
+            "name": "Update Purchase Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v1/tenants/hubs/:hub_code/purchase_orders/:purchase_order_id",
+            "params": [
+              {
+                "name": "hub_code",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "purchase_order_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Purchase Order"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

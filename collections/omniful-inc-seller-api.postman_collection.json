@@ -1,0 +1,427 @@
+{
+  "item": [
+    {
+      "id": "bbfcb12e-3147-4024-a28d-f5e5d6136768",
+      "name": "Seller",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ca4e5bfe-5b69-4756-b9de-f9d8424c1165",
+          "name": "Get Sellers",
+          "request": {
+            "name": "Get Sellers",
+            "description": {
+              "content": "Description Retrieves a paginated list of sellers belonging to the tenant. Use this endpoint when you need to fetch sellers by filters such as seller code, name, or email. Parameters Query Parameters Name Type Required Example page integer True 1 per_page integer True 10 email string False store@saudielectronics.com seller_codes array[string] False seller_codes=GP-803&amp;seller_codes=SG-333 name string False Saudi is_active boolean False true include_all_sellers boolean False true Filters &amp;",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sales-channel",
+                "public",
+                "v1",
+                "tenants",
+                "sellers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "65307af6-094c-4e47-ae23-285595150dd3",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sales-channel",
+                    "public",
+                    "v1",
+                    "tenants",
+                    "sellers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3aefaa57-48a1-4cac-87ef-dc8b39c3032e",
+          "name": "Create Seller",
+          "request": {
+            "name": "Create Seller",
+            "description": {
+              "content": "Description Creates a new seller under the authenticated Omniful tenant. Use this endpoint when onboarding a new seller.The endpoint returns the created Seller ID on success. Parameters Body Parameters Name Type Required Example name string True \"Omniful Electronics Store\" phone string True \"501234567\" code string True \"Test-123\" country_code string True \"SA\" country_calling_code string True \"+966\" email string True \"omniful@saudielectronics.com\" address object True {...} address object Field Ty",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sales-channel",
+                "public",
+                "v1",
+                "tenants",
+                "sellers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Omniful Electronics Store\",\n  \"phone\": \"501234565\",\n  \"code\": \"Test-hj\",\n  \"country_code\": \"SA\",\n  \"country_calling_code\": \"+966\",\n  \"email\": \"23ewdew4@saudielectronics.com\",\n  \"address\": {\n    \"address_line1\": \"King Fahd Road\",\n    \"address_line2\": \"Al Olaya District\",\n    \"city_name\": \"Riyadh\",\n    \"country_name\": \"Saudi Arabia\",\n    \"national_address_code\": \"nac_1234\",\n    \"postal_code\": \"12214\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "bb3650cb-1c8c-4b51-9356-c02a811364eb",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sales-channel",
+                    "public",
+                    "v1",
+                    "tenants",
+                    "sellers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Omniful Electronics Store\",\n  \"phone\": \"501234565\",\n  \"code\": \"Test-hj\",\n  \"country_code\": \"SA\",\n  \"country_calling_code\": \"+966\",\n  \"email\": \"23ewdew4@saudielectronics.com\",\n  \"address\": {\n    \"address_line1\": \"King Fahd Road\",\n    \"address_line2\": \"Al Olaya District\",\n    \"city_name\": \"Riyadh\",\n    \"country_name\": \"Saudi Arabia\",\n    \"national_address_code\": \"nac_1234\",\n    \"postal_code\": \"12214\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b8d66b52-5a06-40e3-84be-66a507e4a7e3",
+          "name": "Get Single Seller",
+          "request": {
+            "name": "Get Single Seller",
+            "description": {
+              "content": "Description Retrieves details of a single seller belonging to the tenant. Use this endpoint when you need to fetch a seller using their seller_code. Parameters Query Parameters Name Type Required Example seller_code string True seller_codes=GP-803",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sales-channel",
+                "public",
+                "v1",
+                "tenants",
+                "sellers",
+                ":seller_code"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "seller_code",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9620a81f-10eb-436f-8f43-4b93ffcdb3d8",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sales-channel",
+                    "public",
+                    "v1",
+                    "tenants",
+                    "sellers",
+                    ":seller_code"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "seller_code",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "04312d16-657f-4657-a5b8-4eaf219002f3",
+          "name": "Update Seller",
+          "request": {
+            "name": "Update Seller",
+            "description": {
+              "content": "Description Updates an existing seller under the authenticated Omniful tenant. Use this endpoint when modifying seller details such as name, phone number, address or status (active/inactive). The endpoint returns the updated Seller ID on success. Parameters Body Parameters Name Type Required Example name string True \"Saudi Electronics Store\" phone string True \"501234567\" country_code string True \"SA\" country_calling_code string True \"+966\" email string True \"omniful@saudielectronics.com\" address",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sales-channel",
+                "public",
+                "v1",
+                "tenants",
+                "sellers",
+                ":seller_code"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "seller_code",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Saudi Electronics Store\",\n  \"phone\": \"501234567\",\n  \"country_code\": \"SA\",\n  \"country_calling_code\": \"+966\",\n  \"email\": \"wew@saudielectronics.com\",\n  \"address\": {\n    \"address_line1\": \"King Fahd Road\",\n    \"address_line2\": \"Al Olaya District\",\n    \"city_name\": \"Riyadh\",\n    \"country_name\": \"Saudi Arabia\",\n    \"postal_code\": \"12214\",\n    \"national_address_code\": \"code\"\n  },\n  \"is_active\": true\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "de88e107-e599-4a3d-868a-edd5ec8a640b",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sales-channel",
+                    "public",
+                    "v1",
+                    "tenants",
+                    "sellers",
+                    ":seller_code"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "seller_code",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Saudi Electronics Store\",\n  \"phone\": \"501234567\",\n  \"country_code\": \"SA\",\n  \"country_calling_code\": \"+966\",\n  \"email\": \"wew@saudielectronics.com\",\n  \"address\": {\n    \"address_line1\": \"King Fahd Road\",\n    \"address_line2\": \"Al Olaya District\",\n    \"city_name\": \"Riyadh\",\n    \"country_name\": \"Saudi Arabia\",\n    \"postal_code\": \"12214\",\n    \"national_address_code\": \"code\"\n  },\n  \"is_active\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://prodapi.omniful.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "460afb6b-a01a-4034-99d2-37f5037e7630",
+    "name": "Omniful Integration APIs Background Jobs Seller API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Omniful unified supply chain and fulfillment platform integration APIs (Order Management, Warehouse/Inventory, Returns, Purchase Orders, Shipment/TMS, Webhooks). Derived faithfully from the provider-published Postman collection at docs.omniful.tech; paths, methods, parameters, and request examples are as published, response schemas are not enumerated in the source.",
+      "type": "text/plain"
+    }
+  }
+}

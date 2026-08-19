@@ -1,0 +1,65 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Omniful Integration APIs Background Jobs Cycle Count API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Cycle Count",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Cycle Counts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v1/hubs/:hub_code/cycle_counts",
+            "params": [
+              {
+                "name": "hub_code",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Cycle Counts"
+        },
+        {
+          "info": {
+            "name": "Get Cycle Counts SKUs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v1/hubs/:hub_code/cycle_counts/:cycle_count_id/skus",
+            "params": [
+              {
+                "name": "hub_code",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "cycle_count_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Cycle Counts SKUs"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

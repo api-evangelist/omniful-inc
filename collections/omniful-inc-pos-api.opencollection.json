@@ -1,0 +1,54 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Omniful Integration APIs Background Jobs POS API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "POS",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create POS Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v1/pos/order",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Query Params should_not_adjust_inventory (string): Set to true if you do not want to adjust inventory; otherwise, the inventory will always be adjusted. Example: {{base_url}}/sales-channel/public/v1/pos/order?should_not_adjust_inventory=true Order Details order_id (String) Unique identifier for the order. order_alias (String) Alias or alternate identifier for the order. customer (Object) Details of the customer placing the order. first_name (String): First name of the customer. last_name (String"
+        },
+        {
+          "info": {
+            "name": "Create POS Return Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v1/pos/returns/order",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Return Order Details return_order_id (String) Unique identifier for the return order. order_id (String) Original order's identifier. return_order_alias (String) Alias or alternate identifier for the return order. hub_code (String) Code identifying the hub related to the return order. customer (Object) Details of the customer returning the order. id (String): Unique identifier for the customer. first_name (String): First name of the customer. last_name (String): Last name of the customer. order_i"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

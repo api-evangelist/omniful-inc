@@ -1,0 +1,115 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Omniful Integration APIs Background Jobs Shipments API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Shipments",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create Shipment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v2/tms/shipments",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "📦 Shipment API Documentation 📌 Create Shipment– Overview The Create Shipment API allows users to initiate and register a new shipment for an order or set of packages. This API enables sellers, logistics partners, and system integrators to define shipment details such as pickup location, delivery destination, package dimensions, product information, and service type. It is useful for automating the shipping process, ensuring accurate order fulfillment, and integrating with logistics partners fo"
+        },
+        {
+          "info": {
+            "name": "Get Shipment",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v2/tms/shipments/:shipment_id",
+            "params": [
+              {
+                "name": "shipment_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "📌 Fetch Shipment by Shipment ID– Overview The Fetch Shipment by Shipment ID API delivers complete shipment details using the system-generated Shipment ID. This API ensures accurate retrieval of shipment records directly tied to the internal database. Response Body Format Field Data Type Description is_success boolean Indicates if the request was successful. status_code number HTTP status code of the response. data.shipment.id string Unique shipment identifier. data.shipment.awb_number string Th"
+        },
+        {
+          "info": {
+            "name": "Get Shipment by Reference",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v2/tms/shipments/reference/:reference_id",
+            "params": [
+              {
+                "name": "reference_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "📌 Fetch Shipment by Reference ID – Overview The Fetch Shipment by Reference ID API allows users to retrieve shipment details based on a custom Reference ID assigned during order creation. This method is useful when shipments need to be linked to internal business processes or third-party systems."
+        },
+        {
+          "info": {
+            "name": "Get Shipment by Awb",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v2/tms/shipments/awb/:awb",
+            "params": [
+              {
+                "name": "awb",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "📌 Fetch Shipment by AWB– Overview The Fetch Shipment by AWB API provides detailed information about a shipment using its unique Air Waybill (AWB) number. This method allows users to directly track the journey of a specific parcel without needing order-level references."
+        },
+        {
+          "info": {
+            "name": "Cancel Shipment",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v2/tms/shipments/:shipment_id/cancel",
+            "params": [
+              {
+                "name": "shipment_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "📌 Cancel Shipment – Overview The Cancel Shipment by Shipment ID API lets users cancel a shipment using the system-assigned Shipment ID. This approach ensures accuracy by targeting shipments uniquely identified within the system, reducing the risk of errors in cancellation. Field Data Type Required Description reason string Yes The reason for cancelling the shipment."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

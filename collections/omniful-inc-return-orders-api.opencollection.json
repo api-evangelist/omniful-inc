@@ -1,0 +1,150 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Omniful Integration APIs Background Jobs Return Orders API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Return Orders",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create Sales Channel Shipment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v1/tenants/sellers/:seller_id/return_orders/:return_order_id/shipment",
+            "params": [
+              {
+                "name": "seller_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "return_order_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add Shipment for Return Order This endpoint allows the user to add a shipment for a specific return order belonging to a seller. Request Body tracking_url (string) - The URL for tracking the shipment. awb_number (string) - The Air Waybill (AWB) number for the shipment. awb_label (string) - The URL to the AWB label for the shipment. package_details (object) - Details of the package including number of boxes, weight, dimensions, and remarks. number_of_boxes (integer) - The number of boxes in the s"
+        },
+        {
+          "info": {
+            "name": "Update Sales Channel Shipment status",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v1/tenants/sellers/:seller_id/return_orders/:return_order_id/shipment/status",
+            "params": [
+              {
+                "name": "seller_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "return_order_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Allowed Shipment Status: [ picked_up, return_to_origin, cancelled]"
+        },
+        {
+          "info": {
+            "name": "Create Customer Return Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v1/tenants/sellers/:seller_code/orders/:order_id/return_orders",
+            "params": [
+              {
+                "name": "seller_code",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "order_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API endpoint allows you to create a return order for any forward order that has been marked as Delivered. Precondition The order must have the status Delivered to be eligible for a return. Field Descriptions Field Type Mandatory/Optional Description return_order_id string Mandatory Unique identifier for the return order. return_items array of objects Mandatory List of items being returned, including item_id, sku_code, and return_quantity. item_id string Mandatory Original order item ID. sku"
+        },
+        {
+          "info": {
+            "name": "Create Courier Partner Return Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v1/tenants/sellers/:seller_code/orders/:order_id/return_orders/courier",
+            "params": [
+              {
+                "name": "seller_code",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "order_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API endpoint allows you to create a return order for any forward order that has been marked as Return To Origin. Precondition The order must have the status Return To Origin to be eligible for a return. Field Descriptions Field Type Mandatory/Optional Description return_order_id string Mandatory Unique identifier for the return order. Notes return_order_id must always be provided."
+        },
+        {
+          "info": {
+            "name": "Get Return Orders (To Be Deprecated)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v1/tenants/sellers/:seller_code/return_orders/",
+            "params": [
+              {
+                "name": "seller_code",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Return Orders (To Be Deprecated)"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

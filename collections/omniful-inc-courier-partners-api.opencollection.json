@@ -1,0 +1,46 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Omniful Integration APIs Background Jobs Courier Partners API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Courier Partners",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Courier Partners",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v1/courier_partners"
+          },
+          "docs": "Get Courier Partners"
+        },
+        {
+          "info": {
+            "name": "Get Courier Partners",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v1/tenants/courier_partners"
+          },
+          "docs": "Get Courier Partners"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

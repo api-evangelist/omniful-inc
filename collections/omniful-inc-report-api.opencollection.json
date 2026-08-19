@@ -1,0 +1,89 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Omniful Integration APIs Background Jobs Report API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Report",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Fetch Supported Reports",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v1/reports"
+          },
+          "docs": "This API returns a list of categories, each containing a list of reports. You can optionally filter to show only archived reports or only active reports.Query Parameters Parameter Type Required Description Example is_archived boolean No Filter reports by archive status. If true, returns only archived reports. If false or not provided, returns only active reports. true or false Each report has a display name, key name, and a list of filters. Each filter has information about whether it is require"
+        },
+        {
+          "info": {
+            "name": "Download Report",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v1/reports/:category/:report/download",
+            "params": [
+              {
+                "name": "category",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "report",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "To use this API, you need to send a POST request to the specified endpoint with the category key name and report key name from the Fetch Supported Reports API. The request body should contain the timezone and the filters for the report. Each filter should have a key name and a value. The key names should be according to the key name given in Fetch Supported Reports API. The values for these keys should be replaced with your actual values in the same format as given in sample_values of Fetch Supp"
+        },
+        {
+          "info": {
+            "name": "Download Archived Report",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v1/reports/archived/:category/:report/download",
+            "params": [
+              {
+                "name": "category",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "report",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Download Archived Reports Overview This API allows you to download archived reports with specific granularity (monthly). Archived reports contain historical data that has been moved to archive status and can be accessed for compliance or historical analysis purposes. Endpoint POST {{base_url}}/sales-channel/public/v1/reports/archived/:category/:report/download Path Parameters Parameter Type Required Description Example category string Yes The category key name of the report fulfilment report str"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

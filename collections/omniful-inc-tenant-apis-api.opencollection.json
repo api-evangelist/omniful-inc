@@ -1,0 +1,39 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Omniful Integration APIs Background Jobs Tenant APIs API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Tenant APIs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve Access Token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://prodapi.omniful.com/sales-channel/public/v1/tenants/token",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API allows you to obtain a new access token and refresh token using a refresh token grant type. Access tokens are short-lived tokens that grant access to specific resources or actions within an API, while refresh tokens are used to request new access tokens without requiring the user to re-authenticate. Upon sending this request to the Omniful API, you will receive a response containing the new access token and refresh token, which you can then use to access protected resources and perform "
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

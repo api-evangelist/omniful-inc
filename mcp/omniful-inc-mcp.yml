@@ -5,8 +5,8 @@ source: openapi/omniful-inc-openapi.yml
 server:
   name: omniful
   transport: http
-note: No official hosted MCP server was found. Tools below are candidates derived one-per-operation from the OpenAPI harvested
-  from the provider Postman collection.
+note: No official hosted MCP server was found. Tools below are candidates derived one-per-operation from
+  the OpenAPI harvested from the provider Postman collection.
 tools:
 - name: postCreateOrder
   description: Create Order
@@ -524,3 +524,9 @@ tools:
 - name: putCancelShipment
   description: Cancel Shipment
   source_operation: openapi/omniful-inc-openapi.yml#putCancelShipment
+deployment:
+  mode: none
+  verified: derived
+  tools: 172
+  checked: '2026-08-12'
+  source: catalog MCP census
