@@ -48,6 +48,17 @@ tags:
 - Transportation Management
 - Inventory
 - Returns
+- E-Commerce
+- Logistics
+tags_raw:
+- Company
+- Supply Chain
+- Fulfillment
+- Order Management
+- Warehouse Management
+- Transportation Management
+- Inventory
+- Returns
 - E-commerce
 - Logistics
 apis:
@@ -187,6 +198,8 @@ apis:
   humanURL: https://docs.omniful.tech
   baseURL: https://prodapi.omniful.com
   tags:
+  - Hub
+  tags_raw:
   - Hubs
   properties:
   - type: OpenAPI
@@ -239,6 +252,8 @@ apis:
   humanURL: https://docs.omniful.tech
   baseURL: https://prodapi.omniful.com
   tags:
+  - Order
+  tags_raw:
   - Orders
   properties:
   - type: OpenAPI
@@ -369,6 +384,8 @@ apis:
   humanURL: https://docs.omniful.tech
   baseURL: https://prodapi.omniful.com
   tags:
+  - Point-of-Sale
+  tags_raw:
   - POS
   properties:
   - type: OpenAPI
@@ -919,6 +936,8 @@ apis:
   humanURL: https://docs.omniful.tech
   baseURL: https://prodapi.omniful.com
   tags:
+  - Webhook
+  tags_raw:
   - Webhooks
   properties:
   - type: OpenAPI
