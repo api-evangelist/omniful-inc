@@ -210,7 +210,7 @@ apis:
   humanURL: https://docs.omniful.tech
   baseURL: https://prodapi.omniful.com
   tags:
-  - Hub
+  - Hubs
   tags_raw:
   - Hubs
   properties:
@@ -396,7 +396,7 @@ apis:
   humanURL: https://docs.omniful.tech
   baseURL: https://prodapi.omniful.com
   tags:
-  - Point-of-Sale
+  - POS
   tags_raw:
   - POS
   properties:
