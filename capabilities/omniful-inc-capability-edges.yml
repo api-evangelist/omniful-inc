@@ -11,7 +11,7 @@ capability_model:
   attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
     CC BY 4.0
   notice: NOTICE
-edge_count: 9
+edge_count: 15
 edges:
 - tag: Inventory
   spec_file: omniful-inc-inventory-api-openapi.yml
@@ -35,6 +35,17 @@ edges:
   reason: Full purchase-order lifecycle (create, read, update, retrieve single PO) against hubs, plus
     supplier creation and listing. This is purchase order management within procure-to-pay, not a transport
     capability.
+- tag: Shipments
+  spec_file: omniful-inc-shipments-api-openapi.yml
+  capability_id: BC-520.50
+  capability_id_l1: BC-520
+  capability_name: Logistics Operations Management
+  confidence: 0.85
+  evidence: POST /sales-channel/public/v2/tms/shipments  Create Shipment; GET /sales-channel/public/v2/tms/shipments/awb/{awb}  Get
+    Shipment by Awb
+  reason: TMS shipment creation, lookup by air waybill and cancellation are transport/logistics execution
+    operations, squarely Logistics Operations Management.
+  recovered_from: sweep-20260829T005356Z-edges.json
 - tag: Customers
   spec_file: omniful-inc-customers-api-openapi.yml
   capability_id: BC-420.10
@@ -76,6 +87,41 @@ edges:
     Master Catalog Kit; putUpdateSku  Update SKU
   reason: CRUD over a master catalogue of SKUs and kits per seller is product master-data maintenance,
     i.e. Master Data Management, rather than any transport-specific capability.
+- tag: Shipment Orders
+  spec_file: omniful-inc-shipment-orders-api-openapi.yml
+  capability_id: BC-520.40
+  capability_id_l1: BC-520
+  capability_name: Order Fulfilment Management
+  confidence: 0.72
+  evidence: POST /sales-channel/public/v1/seller/shipment_orders  postCreateShipmentOrder  Create Shipment
+    Order; PUT .../return_requests/{order_id}/approve  Approve Return Shipment Request
+  reason: Operations create and retrieve seller shipment orders and handle return orders/requests (approve,
+    reject) — order fulfilment orchestration and returns within the supply chain, not a technical object.
+    Sub-capability choice between fulfilment and returns handling is somewhat ambiguous, hence moderate
+    confidence.
+  recovered_from: sweep-20260829T005356Z-edges.json
+- tag: Stock Transfer Request
+  spec_file: omniful-inc-stock-transfer-request-api-openapi.yml
+  capability_id: BC-530
+  capability_id_l1: BC-530
+  capability_name: Inventory Management
+  confidence: 0.72
+  evidence: POST /sales-channel/public/v1/orders/sto/requests  Create Stock Transfer Request; PUT .../approve  Approve
+    Stock Transfer Request
+  reason: Create/update/approve/reject inter-hub stock transfer requests is inventory movement and replenishment
+    governance; sub-capability (replenishment vs allocation) is not clearly determined by the evidence.
+  recovered_from: sweep-20260829T005356Z-edges.json
+- tag: Billing
+  spec_file: omniful-inc-billing-api-openapi.yml
+  capability_id: BC-200.30
+  capability_id_l1: BC-200
+  capability_name: Accounts Receivable Management
+  confidence: 0.7
+  evidence: POST /sales-channel/public/v1/tenants/bills/generate postGenerateBill 'Generate Bill'; GET
+    .../billings/contracts 'Get Contracts'; POST .../bills/{bill_name}/finalize 'Create Finalize Bill'
+  reason: Operations create billing contracts and generate, finalise and status-manage bills to customers/hubs
+    — customer invoicing, i.e. accounts receivable; not a SaaS subscription-metering surface.
+  recovered_from: sweep-20260829T005356Z-edges.json
 - tag: Cycle Count
   spec_file: omniful-inc-cycle-count-api-openapi.yml
   capability_id: BC-530.40
@@ -106,3 +152,24 @@ edges:
     putApproveReturnRequest3  Approve Return Request
   reason: Intake, approval and rejection of customer return requests is the triage step of returns/reverse-logistics
     handling on a fulfilment platform.
+- tag: Shipment
+  spec_file: omniful-inc-shipment-api-openapi.yml
+  capability_id: BC-520.50
+  capability_id_l1: BC-520
+  capability_name: Logistics Operations Management
+  confidence: 0.7
+  evidence: postTriggerShipment 'Trigger Shipment'; putUpdateShipmentStatus 'Update Shipment Status';
+    postCreateManualShipment 'Create Manual Shipment'
+  reason: Creation, detail maintenance and status tracking of outbound shipments against orders — transport/shipping
+    execution within the supply chain (TMS scope stated in the vendor description).
+  recovered_from: sweep-20260829T005356Z-edges.json
+- tag: Stock Transfer Order
+  spec_file: omniful-inc-stock-transfer-order-api-openapi.yml
+  capability_id: BC-530
+  capability_id_l1: BC-530
+  capability_name: Inventory Management
+  confidence: 0.7
+  evidence: GET /sales-channel/public/v1/orders/sto/hubs/{hub_code}  getGetStockorders  GetStockOrders
+  reason: Stock transfer orders retrieved per hub represent movement of inventory between warehouse locations
+    — inventory management across the network. Evidence is read-only and does not name a specific sub-capability.
+  recovered_from: sweep-20260829T005356Z-edges.json
