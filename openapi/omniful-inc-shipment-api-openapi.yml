@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Omniful Integration APIs Background Jobs Shipment API
+  title: Omniful Integration Shipment API
   version: v1
   description: Omniful unified supply chain and fulfillment platform integration APIs (Order Management, Warehouse/Inventory, Returns, Purchase Orders, Shipment/TMS, Webhooks). Derived faithfully from the provider-published Postman collection at docs.omniful.tech; paths, methods, parameters, and request examples are as published, response schemas are not enumerated in the source.
   contact:
@@ -160,7 +160,7 @@ paths:
       operationId: putUpdateShipmentStatus2
       tags:
       - Shipment
-      description: 'This API is used to update shipment status when shipment type of the order is sales_channel_generated &amp; omniful_generated. Allowed Shipment Status: [ dispatched, out_for_delivery, in_transit, delivered, return_to_origin]'
+      description: 'This API is used to update shipment status when shipment type of the order is sales_channel_generated & omniful_generated. Allowed Shipment Status: [ dispatched, out_for_delivery, in_transit, delivered, return_to_origin]'
       parameters:
       - name: seller_code
         in: path

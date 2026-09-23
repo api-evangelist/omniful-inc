@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Omniful Integration APIs Background Jobs Stock Transfer Request API
+  title: Omniful Integration Stock Transfer Request API
   version: v1
   description: Omniful unified supply chain and fulfillment platform integration APIs (Order Management, Warehouse/Inventory, Returns, Purchase Orders, Shipment/TMS, Webhooks). Derived faithfully from the provider-published Postman collection at docs.omniful.tech; paths, methods, parameters, and request examples are as published, response schemas are not enumerated in the source.
   contact:
@@ -75,7 +75,7 @@ paths:
       operationId: getGetStockTransferRequest
       tags:
       - Stock Transfer Request
-      description: 'Response Fields Explained is_success (boolean): Indicates if the request was successful. status_code (integer): The HTTP status code returned by the API. data (object): Contains details about the stock transfer request. sto_id (string): Unique identifier for the stock transfer. customer (object): Information about the customer associated with the transfer. first_name (string): Customer''s first name. last_name (string): Customer''s last name. mobile (string): Customer''s mobile number. mobile_code '
+      description: 'Response Fields Explained is_success (boolean): Indicates if the request was successful. status_code (integer): The HTTP status code returned by the API. data (object): Contains details about the stock transfer request. sto_id (string): Unique identifier for the stock transfer. customer (object): Information about the customer associated with the transfer. first_name (string): Customer''s first name. last_name (string): Customer''s last name. mobile (string): Customer''s mobile number. mobile_code'
       parameters:
       - name: sto_request_id
         in: path

@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Omniful Integration APIs Background Jobs Seller API
+  title: Omniful Integration Seller API
   version: v1
   description: Omniful unified supply chain and fulfillment platform integration APIs (Order Management, Warehouse/Inventory, Returns, Purchase Orders, Shipment/TMS, Webhooks). Derived faithfully from the provider-published Postman collection at docs.omniful.tech; paths, methods, parameters, and request examples are as published, response schemas are not enumerated in the source.
   contact:
@@ -18,7 +18,7 @@ paths:
       operationId: getGetSellers
       tags:
       - Seller
-      description: Description Retrieves a paginated list of sellers belonging to the tenant. Use this endpoint when you need to fetch sellers by filters such as seller code, name, or email. Parameters Query Parameters Name Type Required Example page integer True 1 per_page integer True 10 email string False store@saudielectronics.com seller_codes array[string] False seller_codes=GP-803&amp;seller_codes=SG-333 name string False Saudi is_active boolean False true include_all_sellers boolean False true Filters &amp;
+      description: Description Retrieves a paginated list of sellers belonging to the tenant. Use this endpoint when you need to fetch sellers by filters such as seller code, name, or email. Parameters Query Parameters Name Type Required Example page integer True 1 per_page integer True 10 email string False store@saudielectronics.com seller_codes array[string] False seller_codes=GP-803&seller_codes=SG-333 name string False Saudi is_active boolean False true include_all_sellers boolean False true Filters &
       responses:
         '200':
           description: Successful response

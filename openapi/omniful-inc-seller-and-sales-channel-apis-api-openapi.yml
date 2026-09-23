@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Omniful Integration APIs Background Jobs Seller and Sales Channel APIs API
+  title: Omniful Integration Seller and Sales Channel APIs API
   version: v1
   description: Omniful unified supply chain and fulfillment platform integration APIs (Order Management, Warehouse/Inventory, Returns, Purchase Orders, Shipment/TMS, Webhooks). Derived faithfully from the provider-published Postman collection at docs.omniful.tech; paths, methods, parameters, and request examples are as published, response schemas are not enumerated in the source.
   contact:
@@ -18,7 +18,7 @@ paths:
       operationId: postRetrieveAccessToken
       tags:
       - Seller and Sales Channel APIs
-      description: 'This API allows you to obtain a new access token and refresh token using a refresh token grant type. Access tokens are short-lived tokens that grant access to specific resources or actions within an API, while refresh tokens are used to request new access tokens without requiring the user to re-authenticate. Upon sending this request to the Omniful API, you will receive a response containing the new access token and refresh token, which you can then use to access protected resources and perform '
+      description: This API allows you to obtain a new access token and refresh token using a refresh token grant type. Access tokens are short-lived tokens that grant access to specific resources or actions within an API, while refresh tokens are used to request new access tokens without requiring the user to re-authenticate. Upon sending this request to the Omniful API, you will receive a response containing the new access token and refresh token, which you can then use to access protected resources and perform
       requestBody:
         content:
           application/json: {}

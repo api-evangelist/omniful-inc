@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Omniful Integration APIs Background Jobs SKUs API
+  title: Omniful Integration SK Us API
   version: v1
   description: Omniful unified supply chain and fulfillment platform integration APIs (Order Management, Warehouse/Inventory, Returns, Purchase Orders, Shipment/TMS, Webhooks). Derived faithfully from the provider-published Postman collection at docs.omniful.tech; paths, methods, parameters, and request examples are as published, response schemas are not enumerated in the source.
   contact:
@@ -10,14 +10,14 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: SKUs
+- name: Skus
 paths:
   /sales-channel/public/v1/master/skus:
     get:
       summary: Get Master Catalog SKUs (⚠️ To be deprecated on 30-07-2026)
       operationId: getGetMasterCatalogSkusToBeDeprecatedOn30072026
       tags:
-      - SKUs
+      - Skus
       description: 📌 Overview The Get Master Catalog SKUs API retrieves all SKU details available in the Master Catalog (Seller Catalog).
       responses:
         '200':
@@ -26,7 +26,7 @@ paths:
       summary: Create Master Catalog SKUs
       operationId: postCreateMasterCatalogSkus
       tags:
-      - SKUs
+      - Skus
       description: '📌 Create Master SKU API – Overview The Create Master SKU API allows users to create a new SKU in the Master Catalogue. This API is used to add products to the seller’s catalog with essential details such as SKU code, pricing, attributes, and classification. ✅ Required Fields for Creating a Master SKU sku_code → Unique identifier for the SKU (e.g., "SKU-TV-123") type → SKU type ("simple" or "bundle") status → SKU lifecycle status (must be one of: all, live, ready_to_list, under_review, draft, un_'
       requestBody:
         content:
@@ -38,7 +38,7 @@ paths:
       summary: Update Master Catalog SKUs
       operationId: putUpdateMasterCatalogSkus
       tags:
-      - SKUs
+      - Skus
       description: '📌 Overview The Update Master SKU API allows users to update the SKU in the Master Catalog. This API helps in updating products to the seller’s master catalog with essential details such as SKU code, pricing, and attributes. 📌 Required fields for Updating a Master SKU: sku_code: A unique code that identifies the SKU, for example, "SKU-TV-123" type: Specifies the type of the SKU, which can be "simple" or "bundle". Here''s the documentation for each field in the provided JSON: Field Data Type Descri'
       requestBody:
         content:
@@ -51,7 +51,7 @@ paths:
       summary: Create Master Catalog Kit
       operationId: postCreateMasterCatalogKit
       tags:
-      - SKUs
+      - Skus
       requestBody:
         content:
           application/json:
@@ -74,7 +74,7 @@ paths:
       summary: Update Master Catalog Kit
       operationId: putUpdateMasterCatalogKit
       tags:
-      - SKUs
+      - Skus
       requestBody:
         content:
           application/json:
@@ -98,8 +98,8 @@ paths:
       summary: Get SKUs (⚠️ To be deprecated on 30-07-2026)
       operationId: getGetSkusToBeDeprecatedOn30072026
       tags:
-      - SKUs
-      description: 'Description Retrieves a paginated list of SKUs associated with a specific seller in the Seller Master Catalog. Parameters Path Parameters Name Type Required Example seller_code string True "KO-SE-1" Query Parameters Name Type Required Example page integer False 1 per_page integer False 10 Filters &amp; pagination Filters supported: Query Parameter Type sku_code string sku_codes []string updated_at_start_date string updated_at_end_date string query string include_inventory bool hub_code string So'
+      - Skus
+      description: 'Description Retrieves a paginated list of SKUs associated with a specific seller in the Seller Master Catalog. Parameters Path Parameters Name Type Required Example seller_code string True "KO-SE-1" Query Parameters Name Type Required Example page integer False 1 per_page integer False 10 Filters & pagination Filters supported: Query Parameter Type sku_code string sku_codes []string updated_at_start_date string updated_at_end_date string query string include_inventory bool hub_code string So'
       parameters:
       - name: seller_code
         in: path
@@ -113,7 +113,7 @@ paths:
       summary: Create SKUs
       operationId: postCreateSkus
       tags:
-      - SKUs
+      - Skus
       description: 'Description Creates one or more SKUs for a specific seller in the Seller Master Catalog. Use this endpoint when onboarding new SKUs into the seller’s Master Catalog. The endpoint returns the created SKU IDs on success. 📌 Required fields for Creating a Master SKU: name: Name of the SKU, for example, "42 inch LED TV". sku_code: A unique code that identifies the SKU, for example, "SKU-TV-123" type: Specifies the type of the SKU, which can be "simple" or "bundle". currency → 3 letter ISO 4217 code e'
       parameters:
       - name: seller_code
@@ -132,8 +132,8 @@ paths:
       summary: Get Single SKU
       operationId: getGetSingleSku
       tags:
-      - SKUs
-      description: 'Description Retrieves detailed information for a specific SKU belonging to a seller in the Seller Master Catalog. Parameters Path Parameters Name Type Required Example seller_code string True "KO-SE-1" sku_code string True "srv-sku-12" Filters &amp; pagination Filters supported: Query Parameter Type include_inventory bool hub_code string Sorting: Not supported Pagination behavior: page + per_page , Where page represents the page number of response and per_page represents number of response items'
+      - Skus
+      description: 'Description Retrieves detailed information for a specific SKU belonging to a seller in the Seller Master Catalog. Parameters Path Parameters Name Type Required Example seller_code string True "KO-SE-1" sku_code string True "srv-sku-12" Filters & pagination Filters supported: Query Parameter Type include_inventory bool hub_code string Sorting: Not supported Pagination behavior: page + per_page , Where page represents the page number of response and per_page represents number of response items'
       parameters:
       - name: seller_code
         in: path
@@ -152,7 +152,7 @@ paths:
       summary: Update SKU
       operationId: putUpdateSku
       tags:
-      - SKUs
+      - Skus
       description: 'Description Updates an existing SKU for a specific seller in the Seller Master Catalog. Use this endpoint when modifying SKU attributes such as name, description, barcode, pricing, status, dimensions, or perishable settings. The endpoint returns the updated SKU ID on success. 📌 Required fields for Updating a Master SKU: sku_code: A unique code that identifies the SKU, for example, "SKU-TV-123" type: Specifies the type of the SKU, which can be "simple" or "bundle". Parameters Path Parameters Name'
       parameters:
       - name: seller_code
