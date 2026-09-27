@@ -1,5 +1,5 @@
 aid: omniful-inc
-name: Omniful, Inc.
+name: Omniful
 description: >-
   Omniful is an AI-powered unified supply chain and fulfillment platform that
   consolidates order management (OMS), warehouse management (WMS), transportation
@@ -1025,3 +1025,4 @@ common:
   url: https://www.omniful.ai/privacy-policy
 - type: LLMsTxt
   url: llms/omniful-inc-llms.txt
+x-legal-name: Omniful, Inc.
