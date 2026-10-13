@@ -1,5 +1,5 @@
 generated: '2026-10-12'
-method: none
+method: searched
 source:
 - https://zapier.com/apps/omniful-inc/integrations
 - https://zapier.com/apps/omniful/integrations
@@ -8,6 +8,7 @@ source:
 - https://composio.dev/toolkits/omniful-inc
 - https://monid.ai/tools/omniful-inc
 checked:
+- https://aws.amazon.com/marketplace/
 - https://composio.dev/toolkits/omniful-inc
 - https://monid.ai/tools/omniful-inc
 - https://n8n.io/integrations/omniful-inc/
@@ -16,5 +17,23 @@ checked:
 - https://zapier.com/apps/omniful/integrations
 summary: null
 marketplace_apps: []
-edges: []
+edges:
+- partner_name: AWS Marketplace
+  partner: amazon-web-services
+  partner_match: aggregator
+  type: marketplace
+  marketplace: aws-marketplace
+  channel: distribution
+  relationship: platform-app
+  direction: provider-built
+  evidence: https://aws.amazon.com/marketplace/seller-profile?id=seller-5sjkix6szprq2
+  listing_count: 4
+  apps:
+  - Omniful Warehouse Management System (WMS)
+  - Omniful Order Management System (OMS)
+  - Omniful Transportation Management System (TMS)
+  - Omniful Point of Sale (POS)
+  seller_name: Omniful
+  detected_by: sweep-cloud-marketplaces.py
+  detected: '2026-10-13'
 templates: []
