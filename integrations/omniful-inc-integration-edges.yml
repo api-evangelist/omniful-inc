@@ -15,6 +15,7 @@ checked:
 - https://n8n.io/integrations/omniful/
 - https://zapier.com/apps/omniful-inc/integrations
 - https://zapier.com/apps/omniful/integrations
+- shopify/integrations/shopify-integration-edges.yml
 summary: null
 marketplace_apps: []
 edges:
@@ -36,4 +37,20 @@ edges:
   seller_name: Omniful
   detected_by: sweep-cloud-marketplaces.py
   detected: '2026-10-13'
+- partner_name: Shopify (own)
+  partner: shopify
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://apps.shopify.com/omniful
+  mirror_of: shopify/integrations/shopify-integration-edges.yml
+  apps:
+  - Omniful
+  listing_count: 1
+  detected: '2026-10-15'
+  detected_by: mirror-platform-listings.py
 templates: []
